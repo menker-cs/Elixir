@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Hidden.csproj",
+      "projectUniqueName": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Hidden.csproj",
       "projectName": "Hidden",
-      "projectPath": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Hidden.csproj",
+      "projectPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Hidden.csproj",
       "packagesPath": "C:\\Users\\Tommy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\obj\\",
+      "outputPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
