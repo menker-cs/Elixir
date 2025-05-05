@@ -14,6 +14,6 @@ Join our **Discord server** for more information.
 Hidden Menu is an illegal mod menu, meaning that there is a slight chance you can get banned using it. If you do happen to get banned it is not our fault because you took the risk of using the menu
 ## ❤️ Credits  
 Credits to **NXO** for the original template that this menu uses.
-Credits to my friend Revanent for making the GUI a while ago.
+Credits to my friend **Revanent** for making the GUI a while ago.
 
 **https://discord.gg/QFeUpmg8vd**
