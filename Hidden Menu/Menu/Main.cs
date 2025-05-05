@@ -67,6 +67,7 @@ namespace Hidden.Menu
             };
             colorMaterial.SetFloat("_Mode", 2f);
 
+            status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             string not = "Not Connected To Room";
             try
@@ -81,7 +82,7 @@ namespace Hidden.Menu
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = colorMaterial.color;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = colorMaterial.color;
-                textMeshPro.text = $"\nThank You For Using Hidden! \n \nStatus: <color=green>{}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
+                textMeshPro.text = $"\nThank You For Using Hidden! \n \nStatus: <color=green>{status}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
                 textMeshPro.alignment = TextAlignmentOptions.Top;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = colorMaterial.color;

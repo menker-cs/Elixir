@@ -235,40 +235,6 @@ namespace Hidden.Mods.Categories
                 GameObject.Destroy(orb, 5f);
             }
         }
-        public static void Spam4()
-        {
-            if (pollerInstance.rightGrab)
-            {
-                GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-
-                Rigidbody body = orb.AddComponent<Rigidbody>();
-                body.mass = 0.5f;
-                body.drag = 0f;
-                body.useGravity = true;
-                body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
-
-            }
-            if (pollerInstance.leftGrab)
-            {
-                GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-
-                Rigidbody body = orb.AddComponent<Rigidbody>();
-                body.mass = 0.5f;
-                body.drag = 0f;
-                body.useGravity = true;
-                body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
-            }
-        }
         public static void Draw()
         {
             if (pollerInstance.rightGrab)
@@ -323,39 +289,6 @@ namespace Hidden.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
                 GameObject.Destroy(orb, 5f);
-            }
-        }
-        public static void GravDraw1()
-        {
-            if (pollerInstance.rightGrab)
-            {
-                GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-
-                Rigidbody body = orb.AddComponent<Rigidbody>();
-                body.mass = 0.5f;
-                body.drag = 0f;
-                body.useGravity = true;
-                body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-
-            }
-            if (pollerInstance.leftGrab)
-            {
-                GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-
-                Rigidbody body = orb.AddComponent<Rigidbody>();
-                body.mass = 0.5f;
-                body.drag = 0f;
-                body.useGravity = true;
-                body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-
             }
         }
         public static void BigSpam()

@@ -39,6 +39,7 @@ namespace Hidden.Mods
         Fun,
         Visuals,
         Creds,
+        CS,
     }
     public class ModButtons
     {
@@ -159,6 +160,7 @@ namespace Hidden.Mods
             new Button("Snake ESP", Category.Visuals, true, false, ()=>SnakeESP()),
             #endregion
 
+            new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS)),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug()),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun()),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug()),
@@ -169,6 +171,18 @@ namespace Hidden.Mods
             new Button("Bat Halo", Category.Fun, true, false, ()=> BatHalo()),
             new Button("Grab Soccer Ball [G]", Category.Fun, true, false, ()=> GrabSBall()),
             new Button("Soccer Ball Gun", Category.Fun, true, false, ()=> SBallGun()),
+
+            new Button("Draw", Category.CS, true, false, ()=> Fun.Draw()),
+            new Button("Orb Spam", Category.CS, true, false, ()=> Fun.GravDraw()),
+            new Button("Orb Launcher", Category.CS, true, false, ()=> Spam1()),
+            new Button("Tracer Orb Launcher", Category.CS, true, false, ()=> Spam2()),
+            new Button("No Grav Orb Launcher", Category.CS, true, false, ()=> Spam3()),
+            new Button("Big Orb Spam", Category.CS, true, false, ()=> BigSpam()),
+            new Button("Spaz Orb", Category.CS, true, false, ()=> SpazOrb()),
+            new Button("Gun Orb", Category.CS, true, false, ()=> OrbGun()),
+            new Button("Big Gun Orb", Category.CS, true, false, ()=> OrbGun1()),
+            new Button("Orb Rain", Category.CS, true, false, ()=> OrbRain()),
+            new Button("Orb Rain V2", Category.CS, true, false, ()=> OrbRain1()),
 
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp()),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou()),

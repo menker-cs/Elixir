@@ -380,9 +380,6 @@ namespace Hidden.Mods.Categories
 
             int p = -1;
 
-            r[p] = vrrig.rightHandTransform.position;
-            l[p] = vrrig.leftHandTransform.position;
-
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
@@ -399,6 +396,8 @@ namespace Hidden.Mods.Categories
                     {
                         GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.leftHandTransform.position - l[p]) * 4f;
                     }
+                    r[p] = vrrig.rightHandTransform.position;
+                    l[p] = vrrig.leftHandTransform.position;
                 }
             }
         }
