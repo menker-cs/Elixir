@@ -1,5 +1,3 @@
-![Mod Menu Banner](https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/Untitled_presentation-removebg-preview.png)  
-
 # Hidden Menu
 
 ## ℹ️ Info  
@@ -18,3 +16,5 @@ Credits to **NXO** for the original template that this menu uses.
 Credits to my friend **Revanent** for making the GUI a while ago.
 
 **https://discord.gg/QFeUpmg8vd**
+
+![Mod Menu Banner](https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/Untitled_presentation-removebg-preview.png)  
