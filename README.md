@@ -6,6 +6,7 @@
 - **Free Menu:** Hidden is and always will be a free menu so anyone can use it.
 - **Open Source:** Hidden will always be open source allowing you to see that there is no malicious code inside.
 - **Constant Updates:** Hidden will be updated constantly and will be undetected every update.
+
 Join our **Discord server** for more information.
 [Join Here](https://discord.gg/QFeUpmg8vd)  
 
