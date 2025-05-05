@@ -51,6 +51,7 @@ using System.Threading.Tasks;
 using UnityEngine.Networking;
 using Photon.Realtime;
 using Oculus.Interaction.Samples;
+using System.Text;
 
 namespace Hidden.Menu
 {
@@ -80,7 +81,7 @@ namespace Hidden.Menu
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = colorMaterial.color;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = colorMaterial.color;
-                textMeshPro.text = $"\nThank You For Using Hidden \n \nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
+                textMeshPro.text = $"\nThank You For Using Hidden! \n \nStatus: <color=green>{}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
                 textMeshPro.alignment = TextAlignmentOptions.Top;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = colorMaterial.color;
@@ -88,6 +89,8 @@ namespace Hidden.Menu
                 textMeshPro2.text = "\n[D?] = Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
                 textMeshPro2.GetComponent<TextMeshPro>().color = colorMaterial.color;
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"<color=green>FPS: {fps}</color>");
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = colorMaterial.color;
@@ -171,7 +174,6 @@ namespace Hidden.Menu
             trailRenderer.startColor = clr;
             trailRenderer.endColor = clr;
         }
-
         public void Awake()
         {
             ResourceLoader.LoadResources();
@@ -201,7 +203,10 @@ namespace Hidden.Menu
                 i = 0;
                 SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
             }
+
+            
         }
+        static string status = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
         public static void HandleMenuInteraction()
         {
             try
@@ -258,7 +263,7 @@ namespace Hidden.Menu
                     cm?.SetActive(true);
                 }
 
-                openMenu = rightHandedMenu ? ControllerInputPoller.instance.rightControllerSecondaryButton : ControllerInputPoller.instance.leftControllerSecondaryButton;
+                openMenu = rightHandedMenu ? ControllerInputPoller.instance.rightGrab : ControllerInputPoller.instance.leftControllerSecondaryButton;
 
                 if (openMenu && !InPcCondition)
                 {
@@ -367,7 +372,7 @@ namespace Hidden.Menu
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 4)
+            if (Theme > 5)
             {
                 Theme = 1;
                 MenuColorT = ColorLib.Hidden;

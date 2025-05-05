@@ -31,22 +31,17 @@ namespace Hidden.Mods.Categories
                 {
                     if (rig == GorillaTagger.Instance.offlineVRRig) continue;
 
-                    UnityEngine.Color clr = Color.yellow;
+                    GameObject gameObject = new GameObject("Line");
+                    LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+                    lineRenderer.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);
+                    lineRenderer.SetPosition(1, rig.transform.position);
+                    lineRenderer.startWidth = 0.0225f;
+                    lineRenderer.endWidth = 0.0225f;
 
-                    rig.mainSkin.material.shader = Shader.Find("GUI/Text Shader"); 
-                    rig.mainSkin.material.color = clr;
+                    lineRenderer.material.shader = Shader.Find("GUI/Text Shader");
+                    lineRenderer.material.color = Yellow;
 
-                    GameObject tracer1 = new GameObject("Line");
-                    LineRenderer tracer2 = tracer1.AddComponent<LineRenderer>();
-                    tracer2.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);
-                    tracer2.SetPosition(1, rig.transform.position);
-                    tracer2.startWidth = 0.0225f;
-                    tracer2.endWidth = 0.0225f;
-
-                    tracer2.material.shader = Shader.Find("GUI/Text Shader");
-                    tracer2.material.color = clr;
-
-                    UnityEngine.Object.Destroy(tracer1, Time.deltaTime);
+                    UnityEngine.Object.Destroy(gameObject, Time.deltaTime);
                 }
             }
         }
@@ -153,7 +148,7 @@ namespace Hidden.Mods.Categories
                     {
                         GameObject ESPBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         ESPBall.transform.position = vrrig.transform.position;
-                        UnityEngine.Object.Destroy(ESPBall.GetComponent<BoxCollider>());
+                        UnityEngine.Object.Destroy(ESPBall.GetComponent<SphereCollider>());
                         ESPBall.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
                         ESPBall.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                         if (vrrig.mainSkin.material.name.Contains("fected"))
@@ -182,7 +177,7 @@ namespace Hidden.Mods.Categories
                     {
                         GameObject ESPBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         ESPBall.transform.position = vrrig.transform.position;
-                        UnityEngine.Object.Destroy(ESPBall.GetComponent<BoxCollider>());
+                        UnityEngine.Object.Destroy(ESPBall.GetComponent<SphereCollider>());
                         ESPBall.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
                         ESPBall.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                         ESPBall.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
@@ -221,7 +216,7 @@ namespace Hidden.Mods.Categories
                     {
                         GameObject ESPBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         ESPBall.transform.position = vrrig.transform.position;
-                        UnityEngine.Object.Destroy(ESPBall.GetComponent<BoxCollider>());
+                        UnityEngine.Object.Destroy(ESPBall.GetComponent<SphereCollider>());
                         ESPBall.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
                         ESPBall.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                         ESPBall.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
@@ -239,7 +234,7 @@ namespace Hidden.Mods.Categories
                     {
                         GameObject ESPBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         ESPBall.transform.position = vrrig.transform.position;
-                        UnityEngine.Object.Destroy(ESPBall.GetComponent<BoxCollider>());
+                        UnityEngine.Object.Destroy(ESPBall.GetComponent<SphereCollider>());
                         ESPBall.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
                         ESPBall.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                         ESPBall.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");

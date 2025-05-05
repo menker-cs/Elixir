@@ -1,80 +1,80 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\",
+  "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\menu\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\visuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\visuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\menu\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\menu\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\modbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\modbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\fun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\fun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\menu\\buttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\buttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\menu\\optimizations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\optimizations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\utilities\\rigshit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\utilities\\rigshit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\rigshit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\utilities\\inputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\modbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\modbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\utilities\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\visuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\visuals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\menu\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\gui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\fun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\fun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\menu\\buttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:menu\\buttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\utilities\\inputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:utilities\\inputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\mods\\categories\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:mods\\categories\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -90,11 +90,11 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Tommy\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\initialization\\menuinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\initialization\\menuinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:initialization\\menuinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\downloads\\hidden menu\\hidden menu\\hidden menu\\initialization\\bepinexinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\hidden\\hidden menu\\hidden menu\\hidden menu\\initialization\\bepinexinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Hidden.csproj|solutionrelative:initialization\\bepinexinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -105,17 +105,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Main.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Main.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Main.cs",
               "RelativeDocumentMoniker": "Menu\\Main.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Main.cs",
-              "RelativeToolTip": "Menu\\Main.cs",
-              "ViewState": "AgIAACsBAAAAAAAAAAAowEgBAAArAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Main.cs*",
+              "RelativeToolTip": "Menu\\Main.cs*",
+              "ViewState": "AgIAAIABAAAAAAAAAAAAAJ4BAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T06:49:03.953Z",
               "IsPinned": true,
@@ -123,27 +123,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "GUI.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\GUI.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\GUI.cs",
               "RelativeDocumentMoniker": "Menu\\GUI.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\GUI.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\GUI.cs",
               "RelativeToolTip": "Menu\\GUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-28T03:57:40.241Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "ModButtons.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\ModButtons.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\ModButtons.cs",
               "RelativeDocumentMoniker": "Mods\\ModButtons.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\ModButtons.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\ModButtons.cs",
               "RelativeToolTip": "Mods\\ModButtons.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAgwLcAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAgwGcAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T01:41:44.505Z",
               "IsPinned": true,
@@ -151,51 +150,64 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Gun.cs",
+              "RelativeDocumentMoniker": "Utilities\\Gun.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Gun.cs",
+              "RelativeToolTip": "Utilities\\Gun.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T02:09:37.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Variables.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Variables.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Variables.cs",
               "RelativeDocumentMoniker": "Utilities\\Variables.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Variables.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Variables.cs",
               "RelativeToolTip": "Utilities\\Variables.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAAAMAAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAALgAAAAAAAAAAAAgwMEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T07:04:37.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 3,
               "Title": "RigShit.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\RigShit.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\RigShit.cs",
               "RelativeDocumentMoniker": "Utilities\\RigShit.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\RigShit.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\RigShit.cs",
               "RelativeToolTip": "Utilities\\RigShit.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAuwBsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T20:26:48.477Z"
+              "WhenOpened": "2025-04-26T20:26:48.477Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Visuals.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Visuals.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Visuals.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Visuals.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Visuals.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Visuals.cs",
               "RelativeToolTip": "Mods\\Categories\\Visuals.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T20:15:03.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T20:15:03.042Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "Inputs.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Inputs.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Inputs.cs",
               "RelativeDocumentMoniker": "Utilities\\Inputs.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Inputs.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\Inputs.cs",
               "RelativeToolTip": "Utilities\\Inputs.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAIA9wDoAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAApwDoAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T05:53:27.877Z"
             },
@@ -204,32 +216,20 @@
               "DocumentIndex": 16,
               "Title": "ControllerInputs.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEgAAAAFAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Utilities\\ControllerInputs.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAIBJwEgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-26T05:52:25.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Optimizations.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Optimizations.cs",
-              "RelativeDocumentMoniker": "Menu\\Optimizations.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Optimizations.cs",
-              "RelativeToolTip": "Menu\\Optimizations.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAswKgAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T05:06:15.161Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 18,
               "Title": "World.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\World.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\World.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\World.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\World.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\World.cs",
               "RelativeToolTip": "Mods\\Categories\\World.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -237,25 +237,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Movement.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Movement.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Movement.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Movement.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Movement.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Movement.cs",
               "RelativeToolTip": "Mods\\Categories\\Movement.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAAAH4AAAB9AAAAAAAAAA==",
+              "ViewState": "AgIAAG4BAAAAAAAAAAASwHcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T05:05:00.872Z"
+              "WhenOpened": "2025-04-23T05:05:00.872Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "Room.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Room.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Room.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Room.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Room.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Room.cs",
               "RelativeToolTip": "Mods\\Categories\\Room.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAQwIQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T23:48:16.57Z"
             },
@@ -264,20 +265,20 @@
               "DocumentIndex": 21,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAAAPEAAAAAAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Menu\\Main.cs",
+              "ViewState": "AgIAAOQAAAAAAAAAAIBJwPEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T23:23:48.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "Playerr.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Playerr.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Playerr.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Playerr.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Playerr.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Playerr.cs",
               "RelativeToolTip": "Mods\\Categories\\Playerr.cs",
               "ViewState": "AgIAADEBAAAAAAAAAAAAAFsBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -288,44 +289,44 @@
               "DocumentIndex": 19,
               "Title": "Movement.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\PsiMenu\\PSI-Menu\\Mods\\Categories\\Movement.cs",
               "ViewState": "AgIAABUBAAAAAAAAAAAUwGoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T01:39:01.628Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "ColorLib.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\ColorLib.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\ColorLib.cs",
               "RelativeDocumentMoniker": "Utilities\\ColorLib.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\ColorLib.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Utilities\\ColorLib.cs",
               "RelativeToolTip": "Utilities\\ColorLib.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAgwNcAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwNcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T06:54:31.439Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Fun.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Fun.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Fun.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Fun.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Fun.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Fun.cs",
               "RelativeToolTip": "Mods\\Categories\\Fun.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAIBJwBgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T05:13:00.99Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Intro.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Intro.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Intro.cs",
               "RelativeDocumentMoniker": "Menu\\Intro.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Intro.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\Intro.cs",
               "RelativeToolTip": "Menu\\Intro.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAkwDYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -336,9 +337,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "Settings.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Settings.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Settings.cs",
               "RelativeDocumentMoniker": "Mods\\Categories\\Settings.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Settings.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Mods\\Categories\\Settings.cs",
               "RelativeToolTip": "Mods\\Categories\\Settings.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAUwFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -349,20 +350,20 @@
               "DocumentIndex": 20,
               "Title": "Helpful1.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\OneDrive\\Documents\\GitHub\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\VioletMenu\\PsiTemp\\PsiTemp\\Mods\\Categories\\Helpful1.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAIBJwF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T23:48:07.018Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "ButtonHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\ButtonHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\ButtonHandler.cs",
               "RelativeDocumentMoniker": "Menu\\ButtonHandler.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\ButtonHandler.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Menu\\ButtonHandler.cs",
               "RelativeToolTip": "Menu\\ButtonHandler.cs",
               "ViewState": "AgIAAJ8AAAAAAAAAAAAlwLIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -370,11 +371,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "PluginInfo.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\PluginInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\PluginInfo.cs",
               "RelativeDocumentMoniker": "Initialization\\PluginInfo.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\PluginInfo.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\PluginInfo.cs",
               "RelativeToolTip": "Initialization\\PluginInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -385,10 +386,9 @@
               "DocumentIndex": 22,
               "Title": "Settings.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs",
               "ToolTip": "C:\\Users\\Tommy\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\e2164911-e1dd-4ba8-b6e4-1f70477f99e8_iis.Stupid.Template-1.6.zip.9e8\\iis.Stupid.Template-1.6\\iis.Stupid.Template-1.6\\Menu\\Settings.cs [Read Only]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-20T23:12:22.454Z",
               "EditorCaption": " [Read Only]"
@@ -397,9 +397,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "MenuInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\MenuInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\MenuInitializer.cs",
               "RelativeDocumentMoniker": "Initialization\\MenuInitializer.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\MenuInitializer.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\MenuInitializer.cs",
               "RelativeToolTip": "Initialization\\MenuInitializer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -409,9 +409,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "BepInExInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\BepInExInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\BepInExInitializer.cs",
               "RelativeDocumentMoniker": "Initialization\\BepInExInitializer.cs",
-              "ToolTip": "C:\\Users\\Tommy\\Downloads\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\BepInExInitializer.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Hidden\\Hidden Menu\\Hidden Menu\\Hidden Menu\\Initialization\\BepInExInitializer.cs",
               "RelativeToolTip": "Initialization\\BepInExInitializer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

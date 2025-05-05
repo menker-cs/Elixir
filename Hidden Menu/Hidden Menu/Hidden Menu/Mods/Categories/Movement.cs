@@ -16,6 +16,7 @@ using BepInEx;
 using Photon.Voice;
 using Hidden.Utilities;
 using static Hidden.Utilities.ControllerInputs;
+using UnityEngine.UIElements;
 
 namespace Hidden.Mods.Categories
 {
@@ -372,21 +373,50 @@ namespace Hidden.Mods.Categories
         {
             Application.targetFrameRate = default;
         }
+        public static void SlaveWhipMod()
+        {
+            Vector3[] r = new Vector3[10];
+            Vector3[] l = new Vector3[10];
 
-        private static Vector3 oldMousePos;
+            int p = -1;
 
-        public static bool RPA = false;
-        public static bool LPA = false;
-        public static GameObject RP;
-        public static GameObject LP;
+            r[p] = vrrig.rightHandTransform.position;
+            l[p] = vrrig.leftHandTransform.position;
 
-        public static bool RPA2 = false;
-        public static bool LPA2 = false;
-        public static GameObject RP1;
-        public static GameObject LP1;
-        public static GameObject RP2;
-        public static GameObject LP2;
-        public static GameObject Pointy;
-        public static bool Ir = false;
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                {
+                    p++;
+                    float dis1 = Vector3.Distance(vrrig.rightHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
+                    float dis2 = Vector3.Distance(vrrig.leftHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
+
+                    if (dis1 < 0.4f)
+                    {
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.rightHandTransform.position - r[p]) * 4f;
+                    }
+                    if (dis2 < 0.4f)
+                    {
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.leftHandTransform.position - l[p]) * 4f;
+                    }
+                }
+            }
+        }
+
+        static Vector3 oldMousePos;
+
+        static bool RPA = false;
+        static bool LPA = false;
+        static GameObject RP;
+        static GameObject LP;
+
+        static bool RPA2 = false;
+        static bool LPA2 = false;
+        static GameObject RP1;
+        static GameObject LP1;
+        static GameObject RP2;
+        static GameObject LP2;
+        static GameObject Pointy;
+        static bool Ir = false;
     }
 }

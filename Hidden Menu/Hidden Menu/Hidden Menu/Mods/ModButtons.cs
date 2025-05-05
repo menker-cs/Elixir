@@ -101,6 +101,7 @@ namespace Hidden.Mods
             new Button("Hand Fly [P]", Category.Move, true, false, ()=>HandFly()),
             new Button("Slingshot Fly [T]", Category.Move, true, false, ()=>SlingshotFly()),
             new Button("Iron Monke [G]", Category.Move, true, false, ()=>IronMonkey()),
+            new Button("Punch Mod [Buggy]", Category.Move, true, false, ()=>SlaveWhipMod()),
             new Button("Car Monke [T]", Category.Move, true, false, ()=>carmonkey()),
             new Button("Up & Down [T]", Category.Move, true, false, ()=>UpAndDown()),
             new Button("Shit Hertz", Category.Move, false, false, ()=>Hertz(10)),
@@ -167,6 +168,7 @@ namespace Hidden.Mods
             new Button("Snipe Bat [G]", Category.Fun, true, false, ()=> SnipeBat()),
             new Button("Bat Halo", Category.Fun, true, false, ()=> BatHalo()),
             new Button("Grab Soccer Ball [G]", Category.Fun, true, false, ()=> GrabSBall()),
+            new Button("Soccer Ball Gun", Category.Fun, true, false, ()=> SBallGun()),
 
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp()),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou()),
