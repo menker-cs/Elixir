@@ -21,7 +21,7 @@ namespace Hidden.Menu
 
         #region Important Variables
         public Rect guiRect = new Rect(400f, 200f, 525f, 365f);
-        public enum Page { Home, Room, Movement, Player, Visuals, Fun, World, Settings }
+        public enum Page { Home, Settings, Room, Movement, Player, Visuals, Fun, World }
 
         public static Category SettingsIndex = Hidden.Mods.Category.Settings;
         public static Category RoomIndex = Hidden.Mods.Category.Room;

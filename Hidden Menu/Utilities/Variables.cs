@@ -43,6 +43,7 @@ namespace Hidden.Utilities
         public static int ButtonsPerPage = 8;
         public static bool toggledisconnectButton = false;
         public static bool rightHandedMenu = false;
+        public static bool outl = true;
         public static bool catsSwitch = true;
         public static bool toggleNotifications = true;
         public static bool PCMenuOpen = false;

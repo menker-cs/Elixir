@@ -32,7 +32,10 @@ namespace Hidden.Mods.Categories
         {
             bark = setActive;
         }
-
+        public static void OLine(bool setActive)
+        {
+            outl = setActive;
+        }
         public static void ClearNotifications()
         {
             NotificationLib.ClearAllNotifications();
@@ -82,7 +85,7 @@ namespace Hidden.Mods.Categories
         }
         public static void Discord()
         {
-            UnityEngine.Application.OpenURL("https://discord.gg/WFJ9nJQxnr");
+            UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
         }
 
         public static int espColor = 1;

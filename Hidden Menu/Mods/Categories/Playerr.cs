@@ -61,23 +61,6 @@ namespace Hidden.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
-        public static void FlickTagGun()
-        {
-            GunTemplate.StartBothGuns(() =>
-            {
-                if (IAmInfected && !RigIsInfected(vrrig))
-                {
-                    GorillaTagger.Instance.leftHandTransform.position = spherepointer.transform.position;
-                }
-                else
-                {
-                    GorillaTagger.Instance.leftHandTransform = GorillaTagger.Instance.leftHandTransform;
-                }
-            }, true);
-            {
-                GorillaTagger.Instance.leftHandTransform = GorillaTagger.Instance.leftHandTransform;
-            }
-        }
         public static void TagAura()
         {
             if (IAmInfected && ControllerInputPoller.instance.rightGrab | UnityInput.Current.GetKey(KeyCode.G))

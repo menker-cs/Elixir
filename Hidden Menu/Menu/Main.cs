@@ -82,7 +82,7 @@ namespace Hidden.Menu
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = colorMaterial.color;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = colorMaterial.color;
-                textMeshPro.text = $"\nThank You For Using Hidden! \n \nStatus: <color=green>{status}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
+                textMeshPro.text = $"\nThank You For Using Hidden!\n\nStatus: <color=green>{status}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
                 textMeshPro.alignment = TextAlignmentOptions.Top;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = colorMaterial.color;
@@ -149,15 +149,11 @@ namespace Hidden.Menu
             {
                 UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
-            #region Layout Manager
-            // sets layout to default
-            // change int to however many layouts you have
-            if (Laytou > 3)
+            try
             {
-                Laytou = 1;
-                RefreshMenu();
+                Stumpy();
             }
-            #endregion
+            catch { }
         }
         public static float j = 0f;
         public static float k = 0.2f;
@@ -264,7 +260,7 @@ namespace Hidden.Menu
                     cm?.SetActive(true);
                 }
 
-                openMenu = rightHandedMenu ? ControllerInputPoller.instance.rightGrab : ControllerInputPoller.instance.leftControllerSecondaryButton;
+                openMenu = rightHandedMenu ? ControllerInputPoller.instance.rightControllerSecondaryButton : ControllerInputPoller.instance.leftControllerSecondaryButton;
 
                 if (openMenu && !InPcCondition)
                 {
@@ -336,14 +332,17 @@ namespace Hidden.Menu
         }
         public static void Outline(GameObject obj, Color clr)
         {
-            GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
-            UnityEngine.Object.Destroy(gameObject.GetComponent<BoxCollider>());
-            gameObject.transform.parent = obj.transform;
-            gameObject.transform.rotation = Quaternion.identity;
-            gameObject.transform.localPosition = obj.transform.localPosition;
-            gameObject.transform.localScale = obj.transform.localScale + new Vector3(-0.01f, 0.0145f, 0.0145f);
-            gameObject.GetComponent<Renderer>().material.color = clr;
+            if (outl)
+            {
+                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
+                UnityEngine.Object.Destroy(gameObject.GetComponent<BoxCollider>());
+                gameObject.transform.parent = obj.transform;
+                gameObject.transform.rotation = Quaternion.identity;
+                gameObject.transform.localPosition = obj.transform.localPosition;
+                gameObject.transform.localScale = obj.transform.localScale + new Vector3(-0.01f, 0.0145f, 0.0145f);
+                gameObject.GetComponent<Renderer>().material.color = clr;
+            }
         }
 
         private static void CreateBackground()
@@ -373,7 +372,7 @@ namespace Hidden.Menu
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 5)
+            if (Theme > 4)
             {
                 Theme = 1;
                 MenuColorT = ColorLib.Hidden;
@@ -386,7 +385,7 @@ namespace Hidden.Menu
                 RefreshMenu();
             }
             if (Theme == 1)
-            {
+            { 
                 MenuColorT = ColorLib.Hidden;
                 MenuColor = ColorLib.Hidden;
                 ButtonColorOff = DarkGrey;
@@ -398,7 +397,7 @@ namespace Hidden.Menu
                 RefreshMenu();
             }
             if (Theme == 2)
-            {
+            { 
                 MenuColorT = SkyBlueTransparent;
                 MenuColor = SkyBlue;
                 ButtonColorOff = RoyalBlue;
@@ -410,7 +409,7 @@ namespace Hidden.Menu
                 RefreshMenu();
             }
             if (Theme == 3)
-            {
+            { 
                 MenuColorT = FireBrickTransparent;
                 MenuColor = FireBrick;
                 ButtonColorOff = WineRed;
@@ -422,7 +421,7 @@ namespace Hidden.Menu
                 RefreshMenu();
             }
             if (Theme == 4)
-            {
+            { 
                 MenuColorT = MediumAquamarineTransparent;
                 MenuColor = MediumAquamarine;
                 ButtonColorOff = MediumSeaGreen;
@@ -431,18 +430,6 @@ namespace Hidden.Menu
                 outColor = Lime;
                 disOut = outColor;
                 NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
-                RefreshMenu();
-            }
-            if (Theme == 5)
-            {
-                MenuColorT = White;
-                MenuColor = White;
-                ButtonColorOff = Red;
-                ButtonColorOn = DarkRed;
-                DisconnecyColor = ButtonColorOff;
-                outColor = Red;
-                disOut = outColor;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Nazi Theme</color>");
                 RefreshMenu();
             }
         }
@@ -485,6 +472,15 @@ namespace Hidden.Menu
         public static void ChangeLayout()
         {
             Laytou++;
+            if (Laytou > 3)
+                Laytou = 1;
+                RefreshMenu();
+            if (Laytou == 1)
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
+            if (Laytou == 2)
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
+            if (Laytou == 3)
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Top</color>");
             RefreshMenu();
         }
         #endregion
@@ -507,8 +503,8 @@ namespace Hidden.Menu
 
                 // Disconnect Button Text
                 Text discontext = new GameObject { transform = { parent = canvasObj.transform } }.AddComponent<Text>();
-                discontext.text = Theme == 5 ? "卍Disconnect卍" : "Disconnect";
-                discontext.font = Font.CreateDynamicFontFromOSFont("Anton", 1);
+                discontext.text = "Disconnect";
+                discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
                 if (Theme == 3)
                 {
@@ -527,6 +523,28 @@ namespace Hidden.Menu
                 rectt.localPosition = new Vector3(0.064f, 0f, 0.227f);
                 rectt.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             }
+        }
+        private static GameObject StumpText = new GameObject("Stump");
+        public static void Stumpy()
+        {
+            if (StumpText == null)
+            {
+                StumpText = new GameObject("Stump");
+            }
+            if (StumpText.GetComponent<TextMeshPro>() == null)
+            {
+                TextMeshPro textMeshPro = StumpText.AddComponent<TextMeshPro>();
+                textMeshPro.fontSize = 3;
+                textMeshPro.fontStyle = FontStyles.Bold;
+                textMeshPro.characterSpacing = 1f;
+                textMeshPro.alignment = TextAlignmentOptions.Center;
+                textMeshPro.color = ColorLib.Hidden;
+                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=green>{status}</color>\nVERSION:  <color=green>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color> with love";
+            }
+
+            StumpText.transform.position = new Vector3(-66.8087f, 12.1808f, -82.5265f);
+            StumpText.transform.LookAt(Camera.main.transform);
+            StumpText.transform.Rotate(0f, 180f, 0f);
         }
         private static void CreateMenuCanvasAndTitle()
         {
@@ -547,7 +565,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 3 || Theme == 5)
+            if (Theme == 3)
             {
                 title.color = Black;
             }
@@ -566,36 +584,15 @@ namespace Hidden.Menu
             titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             titleTransform.sizeDelta = new Vector2(0.295f, 0.06f);
         }
-        private static GameObject StumpText = new GameObject("StumpText");
-        public static void Display()
-        {
-            if (StumpText == null)
-            {
-                StumpText = new GameObject("StumpText");
-            }
-            if (StumpText.GetComponent<TextMeshPro>() == null)
-            {
-                TextMeshPro textMeshPro = StumpText.AddComponent<TextMeshPro>();
-                textMeshPro.fontSize = 3;
-                textMeshPro.fontStyle = FontStyles.Bold;
-                textMeshPro.characterSpacing = 1f;
-                textMeshPro.alignment = TextAlignmentOptions.Center;
-                textMeshPro.color = new Color32(25, 25, 25, 80);
-                textMeshPro.text = "<color=grey> Hidden Menu: </color> <color=green>UND</color>\nVERSION:  <color=green>" + Initialization.PluginInfo.menuVersion.ToString() + "</color>\n <size=1.5>Made By <color=blue>Menker</color></size>";
-            }
-
-            StumpText.transform.position = new Vector3(-66.8087f, 12.1808f, -82.5265f);
-            StumpText.transform.LookAt(playerInstance.transform);
-            StumpText.transform.Rotate(0f, 180f, 0f);
-        }
         public static bool Page = false;
         public static void AddTitleAndFPSCounter()
         {
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             title.fontStyle = FontStyle.Bold;
+            title.font = font;
 
             title.text =
-            $"{menuName} | V{menuVersion}";
+            $"{menuName} ┇ V{menuVersion}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {
@@ -629,10 +626,10 @@ namespace Hidden.Menu
             titleObj.transform.SetParent(canvasObj.transform, false);
             titleObj.transform.localScale = new Vector3(0.95f, 0.95f, 1f);
             Text title = titleObj.GetComponent<Text>();
-            title.text = Theme == 5 ? "卍"+button.buttonText+"卍" : button.buttonText;
+            title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 3 || Theme == 5)
+            if (Theme == 3)
             {
                 title.color = Black;
             }
@@ -719,7 +716,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3 || Theme == 5)
+                if (Theme == 3)
                 {
                     title.color = Black;
                 }
@@ -728,21 +725,14 @@ namespace Hidden.Menu
                     title.color = White;
                 }
                 title.fontSize = 5;
-                title.fontStyle = FontStyle.Normal;
+                title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
                 title.resizeTextForBestFit = true;
                 title.resizeTextMinSize = 0;
                 RectTransform titleTransform = title.GetComponent<RectTransform>();
                 titleTransform.localPosition = Vector3.zero;
                 titleTransform.sizeDelta = new Vector2(0.5f, 0.06f);
-                if (Theme == 5)
-                {
-                    title.text = "卍";
-                }
-                else
-                {
-                    title.text = button.Contains("<") ? "⋘" : "⋙";
-                }
+                title.text = button.Contains("<") ? "⋘" : "⋙";
                 titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
                 titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.1955f : -0.1955f, 0f);
             }
@@ -781,7 +771,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3 || Theme == 5)
+                if (Theme == 3)
                 {
                     title.color = Black;
                 }
@@ -790,21 +780,14 @@ namespace Hidden.Menu
                     title.color = White;
                 }
                 title.fontSize = 5;
-                title.fontStyle = FontStyle.Normal;
+                title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
                 title.resizeTextForBestFit = true;
                 title.resizeTextMinSize = 0;
                 RectTransform titleTransform = title.GetComponent<RectTransform>();
                 titleTransform.localPosition = Vector3.zero;
                 titleTransform.sizeDelta = new Vector2(0.5f, 0.05f);
-                if (Theme == 5)
-                {
-                    title.text = "卍";
-                }
-                else
-                {
-                    title.text = button.Contains("<") ? "⋘" : "⋙";
-                }
+                title.text = button.Contains("<") ? "⋘" : "⋙";
                 titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
                 titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.087f : -.087f, -0.163f);
             }
@@ -844,7 +827,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3 || Theme == 5)
+                if (Theme == 3)
                 {
                     title.color = Black;
                 }
@@ -853,21 +836,14 @@ namespace Hidden.Menu
                     title.color = White;
                 }
                 title.fontSize = 5;
-                title.fontStyle = FontStyle.Normal;
+                title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
                 title.resizeTextForBestFit = true;
                 title.resizeTextMinSize = 0;
                 RectTransform titleTransform = title.GetComponent<RectTransform>();
                 titleTransform.localPosition = Vector3.zero;
                 titleTransform.sizeDelta = new Vector2(0.5f, 0.05f);
-                if (Theme == 5)
-                {
-                    title.text = "卍";
-                }
-                else
-                {
-                    title.text = button.Contains("<") ? "⋘" : "⋙";
-                }
+                title.text = button.Contains("<") ? "⋘" : "⋙";
                 titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
                 titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.087f : -.087f, 0.124f);
             }
@@ -914,8 +890,8 @@ namespace Hidden.Menu
                     Text title = titleObj.AddComponent<Text>();
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
-                    title.text = Theme == 5 ? "卍Return卍" : "Return";
-                    if (Theme == 3 || Theme == 5)
+                    title.text = "Return";
+                    if (Theme == 3)
                     {
                         title.color = Black;
                     }
@@ -970,8 +946,8 @@ namespace Hidden.Menu
                     Text title = titleObj.AddComponent<Text>();
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
-                    title.text = Theme == 5 ? "卍Return卍" : "Return";
-                    if (Theme == 3 || Theme == 5)
+                    title.text = "Return";
+                    if (Theme == 3)
                     {
                         title.color = Black;
                     }
@@ -1026,8 +1002,8 @@ namespace Hidden.Menu
                     Text title = titleObj.AddComponent<Text>();
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
-                    title.text = Theme == 5 ? "卍Return卍" : "Return";
-                    if (Theme == 3 || Theme == 5)
+                    title.text = "Return";
+                    if (Theme == 3)
                     {
                         title.color = Black;
                     }

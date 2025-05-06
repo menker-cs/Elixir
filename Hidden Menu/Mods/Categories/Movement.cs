@@ -344,10 +344,12 @@ namespace Hidden.Mods.Categories
             if(rightGrip())
             {
                 GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.rightHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
+                GorillaTagger.Instance.StartVibration(false, 1f, 2f);
             }
             if (leftGrip())
             {
                 GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.leftHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
+                GorillaTagger.Instance.StartVibration(true, 1f, 2f);
             }
         }
         public static void SlingshotFly()
@@ -377,7 +379,6 @@ namespace Hidden.Mods.Categories
         {
             Vector3[] r = new Vector3[10];
             Vector3[] l = new Vector3[10];
-
             int p = -1;
 
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
@@ -400,6 +401,10 @@ namespace Hidden.Mods.Categories
                     l[p] = vrrig.leftHandTransform.position;
                 }
             }
+        }
+        public static void Velocity(float d)
+        {
+            GorillaTagger.Instance.rigidbody.drag = d;
         }
 
         static Vector3 oldMousePos;

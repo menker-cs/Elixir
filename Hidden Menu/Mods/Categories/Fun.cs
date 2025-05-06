@@ -481,5 +481,17 @@ namespace Hidden.Mods.Categories
 
         static GameObject draw;
         #endregion
+
+        public static void Vibrator()
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                GorillaTagger.Instance.StartVibration(false, 1f, 2f);
+            }
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                GorillaTagger.Instance.StartVibration(true, 1f, 2f);
+            }
+        }
     }
 }
