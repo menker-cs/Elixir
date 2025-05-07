@@ -370,7 +370,7 @@ namespace Hidden.Menu
             GUI.Label(new Rect(123f, 95f, 165f, 30f), VersionOfMenu, CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
 
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
-            GUI.Label(new Rect(115f, 172f, 400f, 150f), "Added GUI\nOptimized Template\nAdded Hertz Mods\n", CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft));
+            GUI.Label(new Rect(115f, 172f, 400f, 150f), "Added Punch Mod\nAdded Random CS Mods\nAdded Velocity Jump\nAdvanced Nametags", CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft));
         }
         #endregion
 

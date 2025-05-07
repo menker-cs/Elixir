@@ -420,6 +420,7 @@ namespace Hidden.Mods.Categories
         static GameObject LP1;
         static GameObject RP2;
         static GameObject LP2;
+
         static GameObject Pointy;
         static bool Ir = false;
     }

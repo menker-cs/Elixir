@@ -12,10 +12,13 @@ using System.Linq;
 using Photon.Realtime;
 using UnityEngine.InputSystem.Controls;
 using System.Xml.Linq;
+using HarmonyLib;
 using Hidden.Utilities;
 using Cinemachine;
 using Hidden.Utilities;
 using UnityEngine.Splines.Interpolators;
+using static UnityEngine.Rendering.DebugUI;
+using GorillaLocomotion;
 
 namespace Hidden.Mods.Categories
 {
@@ -44,6 +47,10 @@ namespace Hidden.Mods.Categories
                     UnityEngine.Object.Destroy(gameObject, Time.deltaTime);
                 }
             }
+        }
+        public static void Shadows(bool b)
+        {
+            GameLightingManager.instance.SetCustomDynamicLightingEnabled(b);
         }
         public static void ESP()
         {
@@ -617,7 +624,7 @@ namespace Hidden.Mods.Categories
                 textMesh.characterSize = 0.1f;
                 textMesh.anchor = TextAnchor.MiddleCenter;
                 textMesh.alignment = TextAlignment.Center;
-                textMesh.color = Green;
+                textMesh.color = White;
                 textMesh.text = Player.name;
                 float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
                 name.transform.position = Player.headMesh.transform.position + new Vector3(0f, .90f, 0f);
@@ -626,6 +633,45 @@ namespace Hidden.Mods.Categories
                 name.GetComponent<TextMesh>().text = RigManager.GetPlayerFromVRRig(Player).NickName;
                 GameObject.Destroy(name, Time.deltaTime);
             }
+        }
+        public static void AdvNametags()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
+                name = new GameObject($"{vrrig.name}'s Nametag");
+                TextMesh textMesh = name.AddComponent<TextMesh>();
+                textMesh.fontSize = 20;
+                textMesh.fontStyle = FontStyle.Normal;
+                textMesh.characterSize = 0.1f;
+                textMesh.anchor = TextAnchor.MiddleCenter;
+                textMesh.alignment = TextAlignment.Left;
+                textMesh.color = White;
+                textMesh.text = vrrig.name;
+                float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
+                name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, .90f, 0f);
+                name.transform.LookAt(Camera.main.transform.position);
+                name.transform.Rotate(0, 180, 0);
+                name.GetComponent<TextMesh>().text = $"<color=#6ffcf3>{vrrig.OwningNetPlayer.NickName}</color>\nFPS: <color=#6ffcf3>{Traverse.Create(vrrig).Field("fps".ToString()).GetValue<int>()}</color>\nID: <color=#6ffcf3>{vrrig.Creator.UserId}</color>\nActor Number: <color=#6ffcf3>{vrrig.Creator.ActorNumber}</color>";
+                GameObject.Destroy(name, Time.deltaTime);
+            }
+        }
+        public static void InformationDisplayy()
+        {
+            Color COLOR = new Color(0.5f, 0f, 0.5f);
+            Vector3 position = GTPlayer.Instance.headCollider.transform.position + GTPlayer.Instance.headCollider.transform.forward * 5f + GTPlayer.Instance.headCollider.transform.up * 0.5f - GTPlayer.Instance.headCollider.transform.right * 0.5f;
+            GameObject Textobj;
+            Textobj = new GameObject("Text");
+            TextMesh textMesh = Textobj.AddComponent<TextMesh>();
+            textMesh.text = "FPS: " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString() + "\n" + "ID: " + PhotonNetwork.LocalPlayer.UserId + "\n" + "User: " + PhotonNetwork.LocalPlayer.NickName + "\n" + "";
+            textMesh.color = COLOR;
+            textMesh.fontSize = 17;
+            textMesh.alignment = TextAlignment.Center;
+            textMesh.anchor = TextAnchor.MiddleCenter;
+            Textobj.transform.position = position;
+            Textobj.transform.forward = GTPlayer.Instance.headCollider.transform.forward;
+            Textobj.transform.localScale *= 0.1f;
+            Object.Destroy(Textobj, Time.deltaTime);
         }
         public static void SnakeESP()
         {

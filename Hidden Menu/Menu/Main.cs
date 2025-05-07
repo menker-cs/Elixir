@@ -79,17 +79,18 @@ namespace Hidden.Menu
                 WallMonitor.GetComponent<Renderer>().material = mat;
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().text = $"Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}\n--------------------------------------------";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = colorMaterial.color;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = new Color32(111, 252, 243, 255);
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = colorMaterial.color;
-                textMeshPro.text = $"\nThank You For Using Hidden!\n\nStatus: <color=green>{status}</color>\nCurrent User: <color=green>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=green>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=green>{fps}</color> \nCurrent Room: <color=green>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
+                textMeshPro.text = $"\nThank You For Using Hidden!\n\nStatus: <color=#6ffcf3>{status}</color>\nCurrent User: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=#6ffcf3>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=#6ffcf3>{fps}</color> \nCurrent Room: <color=#6ffcf3>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
                 textMeshPro.alignment = TextAlignmentOptions.Top;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = colorMaterial.color;
+
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings\n-----------------------------";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = new Color32(111,252,243,255);
                 TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COC Text").GetComponent<TextMeshPro>();
+                textMeshPro2.GetComponent<TextMeshPro>().color = colorMaterial.color;
                 textMeshPro2.text = "\n[D?] = Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
-                textMeshPro2.GetComponent<TextMeshPro>().color = colorMaterial.color;
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"<color=green>FPS: {fps}</color>");
 
@@ -151,7 +152,7 @@ namespace Hidden.Menu
             }
             try
             {
-                Stumpy();
+               // Stumpy();
             }
             catch { }
         }
@@ -539,12 +540,17 @@ namespace Hidden.Menu
                 textMeshPro.characterSpacing = 1f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.color = ColorLib.Hidden;
-                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=green>{status}</color>\nVERSION:  <color=green>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color> with love";
+                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color> with love";
+                textMeshPro.font = TMP_FontAsset.CreateFontAsset(font);
             }
 
             StumpText.transform.position = new Vector3(-66.8087f, 12.1808f, -82.5265f);
             StumpText.transform.LookAt(Camera.main.transform);
             StumpText.transform.Rotate(0f, 180f, 0f);
+        }
+        public static void STUMPY()
+        {
+            UnityEngine.Object.Destroy(StumpText);
         }
         private static void CreateMenuCanvasAndTitle()
         {

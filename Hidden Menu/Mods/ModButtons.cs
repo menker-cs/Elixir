@@ -62,12 +62,12 @@ namespace Hidden.Mods
             new Button("Disconnect Button", Category.Settings, true, true, ()=>ToggleDisconnectButton(true), ()=>ToggleDisconnectButton(false)),
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false)),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications()),
-            new Button("Change ESP Color", Category.Settings, false, false, ()=>ESPChange()),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false)),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false)),
             new Button("Change Layout", Category.Settings, false, false, ()=> ChangeLayout()),
             new Button("Change Theme", Category.Settings, false, false, ()=> ChangeTheme()),
             new Button("Change Sound", Category.Settings, false, false, ()=> ChangeSound()),
+            new Button("Change ESP Color", Category.Settings, false, false, ()=>ESPChange()),
             new Button("Refresh Menu", Category.Settings, false, false, ()=> RefreshMenu()),
             #endregion
 
@@ -104,7 +104,7 @@ namespace Hidden.Mods
             new Button("Hand Fly [P]", Category.Move, true, false, ()=>HandFly()),
             new Button("Slingshot Fly [T]", Category.Move, true, false, ()=>SlingshotFly()),
             new Button("Iron Monke [G]", Category.Move, true, false, ()=>IronMonkey()),
-            new Button("Punch Mod", Category.Move, true, false, ()=>SlaveWhipMod()),
+            new Button("Punch Mod [BUGGY]", Category.Move, true, false, ()=>SlaveWhipMod()),
             new Button("Car Monke [T]", Category.Move, true, false, ()=>carmonkey()),
             new Button("Up & Down [T]", Category.Move, true, false, ()=>UpAndDown()),
             new Button("Shit Hertz", Category.Move, false, false, ()=>Hertz(10)),
@@ -158,11 +158,13 @@ namespace Hidden.Mods
             new Button("Sphere ESP", Category.Visuals, true, false, ()=>BallESP()),
             new Button("Distance ESP", Category.Visuals, true, false, ()=>DistanceESP()),
             new Button("Nametags", Category.Visuals, true, false, ()=>Nametags()),
+            new Button("Advanced Nametags", Category.Visuals, true, false, ()=>AdvNametags()),
+            //new Button("", Category.Visuals, true, false, ()=>InformationDisplayy()),
             new Button("Snake ESP", Category.Visuals, true, false, ()=>SnakeESP()),
             #endregion
 
             new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS)),
-            new Button("Random CS Mods", Category.Fun, false, false, ()=>Vibrator()),
+            new Button("Vibrator", Category.Fun, false, false, ()=>Vibrator()),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug()),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun()),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug()),
@@ -184,13 +186,15 @@ namespace Hidden.Mods
             new Button("Gun Orb", Category.CS, true, false, ()=> OrbGun()),
             new Button("Big Gun Orb", Category.CS, true, false, ()=> OrbGun1()),
             new Button("Orb Rain", Category.CS, true, false, ()=> OrbRain()),
-            new Button("Orb Rain V2", Category.CS, true, false, ()=> OrbRain1()),
+            new Button("Orb Rain Trace", Category.CS, true, false, ()=> OrbRain1()),
 
+            new Button("Stump Text", Category.World, true, true, ()=>Stumpy(), ()=> STUMPY()),
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp()),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou()),
             new Button("Enable Rain", Category.World, true, false, ()=>Rain(), ()=>Rain1()),
             new Button("Change Time Night", Category.World, false, false, ()=> NightTimeMod()),
             new Button("Change Time Day", Category.World, false, false, ()=> idkTimeMod()),
+            new Button("Enable Shadows", Category.World, true, false, ()=> Shadows(true), ()=> Shadows(false)),
 
             #region Credits
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder()),
