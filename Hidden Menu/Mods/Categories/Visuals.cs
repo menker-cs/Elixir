@@ -656,15 +656,15 @@ namespace Hidden.Mods.Categories
                 GameObject.Destroy(name, Time.deltaTime);
             }
         }
-        public static void InformationDisplayy()
+        public static void InfoDisplay()
         {
-            Color COLOR = new Color(0.5f, 0f, 0.5f);
+            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             Vector3 position = GTPlayer.Instance.headCollider.transform.position + GTPlayer.Instance.headCollider.transform.forward * 5f + GTPlayer.Instance.headCollider.transform.up * 0.5f - GTPlayer.Instance.headCollider.transform.right * 0.5f;
             GameObject Textobj;
             Textobj = new GameObject("Text");
             TextMesh textMesh = Textobj.AddComponent<TextMesh>();
-            textMesh.text = "FPS: " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString() + "\n" + "ID: " + PhotonNetwork.LocalPlayer.UserId + "\n" + "User: " + PhotonNetwork.LocalPlayer.NickName + "\n" + "";
-            textMesh.color = COLOR;
+            textMesh.text = $"Name: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName}</color>\nFPS: <color=#6ffcf3>{fps}</color>\nID: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.UserId}</color>\nActor Number: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.ActorNumber}</color>";
+            textMesh.color = White;
             textMesh.fontSize = 17;
             textMesh.alignment = TextAlignment.Center;
             textMesh.anchor = TextAnchor.MiddleCenter;
@@ -673,6 +673,7 @@ namespace Hidden.Mods.Categories
             Textobj.transform.localScale *= 0.1f;
             Object.Destroy(Textobj, Time.deltaTime);
         }
+
         public static void SnakeESP()
         {
             if (espColor == 1)
@@ -808,7 +809,7 @@ namespace Hidden.Mods.Categories
         public static GameObject name;
         public static GameObject distance;
         public static float l;
-        public static bool fps;
+        public static bool fps1;
     }
 }
 

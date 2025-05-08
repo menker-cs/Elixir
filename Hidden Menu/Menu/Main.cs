@@ -67,7 +67,6 @@ namespace Hidden.Menu
             };
             colorMaterial.SetFloat("_Mode", 2f);
 
-            status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             string not = "Not Connected To Room";
             try
@@ -91,8 +90,6 @@ namespace Hidden.Menu
                 textMeshPro2.GetComponent<TextMeshPro>().color = colorMaterial.color;
                 textMeshPro2.text = "\n[D?] = Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"<color=green>FPS: {fps}</color>");
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = colorMaterial.color;
@@ -204,7 +201,7 @@ namespace Hidden.Menu
 
             
         }
-        static string status = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
+        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try
@@ -220,13 +217,13 @@ namespace Hidden.Menu
                         AddButtonClicker(thirdPersonCamera?.transform);
                     }
                     else
-                    { 
+                    {
                         AddButtonClicker(thirdPersonCamera?.transform);
+                        AddTitleAndFPSCounter();
 
                         if (thirdPersonCamera != null)
                         {
                             PositionMenuForKeyboard();
-                            AddTitleAndFPSCounter();
 
                             try
                             {
@@ -261,22 +258,19 @@ namespace Hidden.Menu
                     cm?.SetActive(true);
                 }
 
-                openMenu = rightHandedMenu ? ControllerInputPoller.instance.rightControllerSecondaryButton : ControllerInputPoller.instance.leftControllerSecondaryButton;
+                openMenu = rightHandedMenu ? pollerInstance.rightControllerSecondaryButton : pollerInstance.leftControllerSecondaryButton;
 
                 if (openMenu && !InPcCondition)
                 {
                     InMenuCondition = true;
                     if (menuObj == null)
                     {
-                        
                         Draw();
                         AddRigidbodyToMenu();
                         AddButtonClicker(rightHandedMenu ? playerInstance.leftControllerTransform : playerInstance.rightControllerTransform);
                     }
                     else
                     {
-                        AddTitleAndFPSCounter();
-                        Trail(menuObj, MenuColor);
                         PositionMenuForHand();
                     }
                 }
@@ -300,6 +294,7 @@ namespace Hidden.Menu
                 UnityEngine.Debug.LogError($"Error handling menu interaction. Exception: {ex}");
             }
         }
+
         public static void Draw()
         {
             if (menuObj != null)
@@ -307,6 +302,7 @@ namespace Hidden.Menu
                 ClearMenuObjects();
                 return;
             }
+
             CreateMenuObject();
             CreateBackground();
             CreateMenuCanvasAndTitle();

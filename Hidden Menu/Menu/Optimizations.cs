@@ -161,22 +161,5 @@ namespace Hidden.Menu
             ClearMenuObjects();
             Draw();
         }
-
-        public static void DestroyAndNullify<T>(ref T obj, float delay = 0f) where T : UnityEngine.Object
-        {
-            if (obj != null)
-            {
-                Component component = obj as Component;
-                if (component != null)
-                {
-                    UnityEngine.Object.Destroy(component.gameObject, delay);
-                }
-                else
-                {
-                    UnityEngine.Object.Destroy(obj, delay);
-                }
-                obj = default(T);
-            }
-        }
     }
 }

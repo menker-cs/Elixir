@@ -27,6 +27,7 @@ namespace Hidden.Initialization
                 menuObject.AddComponent<Main>();
                 menuObject.AddComponent<NotificationLib>();
                 menuObject.AddComponent<Intro>();
+                //menuObject.AddComponent<SimpleMemoryLeakTracker.MemoryLeakPlugin>();
                 GameObject.DontDestroyOnLoad(menuObject);
                 Debug.Log($"{PluginInfo.menuName} successfully initialized.");
             }

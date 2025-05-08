@@ -159,7 +159,7 @@ namespace Hidden.Mods
             new Button("Distance ESP", Category.Visuals, true, false, ()=>DistanceESP()),
             new Button("Nametags", Category.Visuals, true, false, ()=>Nametags()),
             new Button("Advanced Nametags", Category.Visuals, true, false, ()=>AdvNametags()),
-            //new Button("", Category.Visuals, true, false, ()=>InformationDisplayy()),
+            new Button("VR Info Display", Category.Visuals, true, false, ()=>InfoDisplay()),
             new Button("Snake ESP", Category.Visuals, true, false, ()=>SnakeESP()),
             #endregion
 
