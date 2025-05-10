@@ -52,6 +52,7 @@ using Photon.Realtime;
 using Oculus.Interaction.Samples;
 using System.Text;
 using Hidden.Utilities.Notifs;
+using GorillaLocomotion;
 
 namespace Hidden.Menu
 {
@@ -217,7 +218,6 @@ namespace Hidden.Menu
                     else
                     {
                         AddButtonClicker(thirdPersonCamera?.transform);
-                        AddTitleAndFPSCounter();
 
                         if (thirdPersonCamera != null)
                         {
@@ -283,7 +283,6 @@ namespace Hidden.Menu
                         currentMenuRigidbody.velocity = currentVelocity;
                         previousVelocity = currentVelocity;
                     }
-
                     CleanupMenu(1);
                 }
             }
@@ -306,6 +305,7 @@ namespace Hidden.Menu
             CreateMenuCanvasAndTitle();
             AddDisconnectButton();
             AddReturnButton();
+            AddTitleAndFPSCounter();
             AddPageButton(">");
             AddPageButton("<");
 
@@ -354,7 +354,6 @@ namespace Hidden.Menu
             background.name = "menucolor";
             background.transform.position = new Vector3(0.05f, 0f, 0f);
         }
-
         #region settings
         public static int Theme = 1;
         public static Color MenuColorT = ColorLib.Hidden;
@@ -584,7 +583,6 @@ namespace Hidden.Menu
             titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             titleTransform.sizeDelta = new Vector2(0.295f, 0.06f);
         }
-        public static bool Page = false;
         public static void AddTitleAndFPSCounter()
         {
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;

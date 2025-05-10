@@ -344,12 +344,12 @@ namespace Hidden.Mods.Categories
             if(rightGrip())
             {
                 GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.rightHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
-                GorillaTagger.Instance.StartVibration(false, 1f, 2f);
+                GorillaTagger.Instance.StartVibration(false, 1f, 1f);
             }
             if (leftGrip())
             {
                 GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.leftHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
-                GorillaTagger.Instance.StartVibration(true, 1f, 2f);
+                GorillaTagger.Instance.StartVibration(true, 1f, 1f);
             }
         }
         public static void SlingshotFly()

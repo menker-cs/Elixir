@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
-using static Hidden.Utilities.sfd;
 using static Hidden.Utilities.ColorLib;
 using UnityEngine.Animations.Rigging;
 using System.Collections;

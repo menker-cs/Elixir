@@ -22,6 +22,8 @@ using HarmonyLib;
 using BepInEx;
 using System.Threading.Tasks;
 using Hidden.Utilities.Notifs;
+using Valve.VR;
+using GorillaLocomotion;
 
 namespace Hidden.Mods.Categories
 {

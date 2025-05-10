@@ -145,7 +145,7 @@ namespace Hidden.Mods
             new Button("Bees [G]", Category.Player, true, false, ()=>Bees()),
             new Button("Fast Bees [G]", Category.Player, true, false, ()=>FBees()),
             new Button("Rig Gun", Category.Player, true, false, ()=>RigGun()),
-            new Button("Grab Rig Gun", Category.Player, true, false, ()=>GrabGun()),
+            new Button("Grab Your Rig Gun", Category.Player, true, false, ()=>GrabGun()),
             new Button("Tag Gun", Category.Player, true, false, ()=>TagGun()),
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura()),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll()),
@@ -167,7 +167,7 @@ namespace Hidden.Mods
             #endregion
 
             new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS)),
-            new Button("Vibrator", Category.Fun, false, false, ()=>Vibrator()),
+            new Button("Vibrator", Category.Fun, true, false, ()=>Vibrator()),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug()),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun()),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug()),
@@ -203,7 +203,7 @@ namespace Hidden.Mods
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder()),
             new Button("Menker", Category.Creds, false, false, ()=>Placeholder()),
             new Button("NxO Template", Category.Creds, false, false, ()=>Placeholder()),
-            new Button("Revanent GUI", Category.Creds, false, false, ()=>Placeholder()),
+            new Button("Revanent", Category.Creds, false, false, ()=>Placeholder()),
             new Button("Join The Discord!", Category.Creds, false, false, ()=>Discord()),
             #endregion
         };
