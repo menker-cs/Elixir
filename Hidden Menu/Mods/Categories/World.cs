@@ -10,11 +10,11 @@ using static Hidden.Mods.ModButtons;
 using static Hidden.Mods.Categories.Settings;
 using UnityEngine;
 using BepInEx;
-using Hidden.Utilities;
 using UnityEngine.InputSystem;
 using GorillaNetworking;
 using TMPro;
 using Photon.Pun;
+using Hidden.Utilities.Notifs;
 
 
 namespace Hidden.Mods.Categories

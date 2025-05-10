@@ -10,7 +10,6 @@ using static Hidden.Utilities.Variables;
 using static Hidden.Menu.Main;
 using static Hidden.Menu.ButtonHandler;
 using static Hidden.Menu.Optimizations;
-using Hidden.Utilities;
 using Hidden.Menu;
 using static Hidden.Mods.Categories.Move;
 using static Hidden.Utilities.Patches.OtherPatches;
@@ -18,6 +17,7 @@ using static Hidden.Utilities.GunTemplate;
 using System.Linq;
 using Oculus.Platform;
 using Photon.Pun;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Mods.Categories
 {

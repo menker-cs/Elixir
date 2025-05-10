@@ -20,8 +20,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using HarmonyLib;
 using BepInEx;
-using Hidden.Utilities;
 using System.Threading.Tasks;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Mods.Categories
 {
@@ -333,6 +333,44 @@ namespace Hidden.Mods.Categories
                 }
             }
             else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void OrbitPGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(LockedPlayer.transform, 15);
+                GorillaTagger.Instance.offlineVRRig.transform.LookAt(LockedPlayer.transform);
+            }, true);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
+            }
+        }
+        public static void OrbitGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(spherepointer.transform, 15);
+                GorillaTagger.Instance.offlineVRRig.transform.LookAt(spherepointer.transform);
+            }, false);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
+            }
+        }
+        public static void GrabGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.rightHandTransform.position;
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.rightHandTransform.rotation;
+            }, true);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }

@@ -6,6 +6,7 @@ using PlayFab;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Utilities.Patches
 {

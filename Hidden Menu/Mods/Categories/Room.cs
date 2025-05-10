@@ -3,10 +3,9 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using static Hidden.Utilities.NotificationLib;
+using static Hidden.Utilities.Notifs.NotificationLib;
 using static Hidden.Utilities.Variables;
 using static Hidden.Menu.Main;
-using Hidden.Utilities;
 using System.Diagnostics;
 using Valve.VR;
 using Cinemachine;
@@ -21,6 +20,7 @@ using UnityEngine.XR;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using BepInEx;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Mods.Categories
 {

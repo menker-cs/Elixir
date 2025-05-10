@@ -8,7 +8,7 @@ using static Hidden.Menu.Optimizations;
 using HarmonyLib;
 using Photon.Pun;
 
-namespace Hidden.Utilities
+namespace Hidden.Utilities.Notifs
 {
     internal class NotificationLib : MonoBehaviour
     {

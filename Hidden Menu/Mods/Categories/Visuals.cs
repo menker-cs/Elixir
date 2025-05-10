@@ -19,6 +19,7 @@ using Hidden.Utilities;
 using UnityEngine.Splines.Interpolators;
 using static UnityEngine.Rendering.DebugUI;
 using GorillaLocomotion;
+using Oculus.Interaction;
 
 namespace Hidden.Mods.Categories
 {
@@ -638,42 +639,42 @@ namespace Hidden.Mods.Categories
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
-                name = new GameObject($"{vrrig.name}'s Nametag");
-                TextMesh textMesh = name.AddComponent<TextMesh>();
-                textMesh.fontSize = 20;
-                textMesh.fontStyle = FontStyle.Normal;
-                textMesh.characterSize = 0.1f;
-                textMesh.anchor = TextAnchor.MiddleCenter;
-                textMesh.alignment = TextAlignment.Left;
-                textMesh.color = White;
-                textMesh.text = vrrig.name;
-                float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
-                name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, .90f, 0f);
-                name.transform.LookAt(Camera.main.transform.position);
-                name.transform.Rotate(0, 180, 0);
-                name.GetComponent<TextMesh>().text = $"<color=#6ffcf3>{vrrig.OwningNetPlayer.NickName}</color>\nFPS: <color=#6ffcf3>{Traverse.Create(vrrig).Field("fps".ToString()).GetValue<int>()}</color>\nID: <color=#6ffcf3>{vrrig.Creator.UserId}</color>\nActor Number: <color=#6ffcf3>{vrrig.Creator.ActorNumber}</color>";
-                GameObject.Destroy(name, Time.deltaTime);
+                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                {
+                    name = new GameObject("Text");
+                    TextMesh textMesh = name.AddComponent<TextMesh>();
+                    textMesh.fontSize = 20;
+                    textMesh.fontStyle = FontStyle.Normal;
+                    textMesh.characterSize = 0.1f;
+                    textMesh.anchor = TextAnchor.MiddleCenter;
+                    textMesh.alignment = TextAlignment.Left;
+                    textMesh.color = White;
+                    textMesh.text = vrrig.name;
+                    float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
+                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, .90f, 0f);
+                    name.transform.LookAt(Camera.main.transform.position);
+                    name.transform.Rotate(0, 180, 0);
+                    name.GetComponent<TextMesh>().text = $"<color=#6ffcf3>{vrrig.OwningNetPlayer.NickName}</color>\nID: <color=#6ffcf3>{vrrig.Creator.UserId}</color>\nIs Master: <color=#6ffcf3>{IsUserMaster(vrrig).ToString()}</color>\nActor Number: <color=#6ffcf3>{vrrig.Creator.ActorNumber}</color>\nTagged: <color=#6ffcf3>{RigIsInfected(vrrig).ToString()}</color>\nFPS: <color=#6ffcf3>{Traverse.Create(vrrig).Field("fps".ToString()).GetValue<int>()}</color>";
+                    GameObject.Destroy(name, Time.deltaTime);
+                }
             }
         }
         public static void InfoDisplay()
         {
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
-            Vector3 position = GTPlayer.Instance.headCollider.transform.position + GTPlayer.Instance.headCollider.transform.forward * 5f + GTPlayer.Instance.headCollider.transform.up * 0.5f - GTPlayer.Instance.headCollider.transform.right * 0.5f;
             GameObject Textobj;
             Textobj = new GameObject("Text");
             TextMesh textMesh = Textobj.AddComponent<TextMesh>();
-            textMesh.text = $"Name: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName}</color>\nFPS: <color=#6ffcf3>{fps}</color>\nID: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.UserId}</color>\nActor Number: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.ActorNumber}</color>";
+            textMesh.text = $"Name: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName}</color>\nID: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.UserId}</color>\nMaster Client: <color=#6ffcf3>{PhotonNetwork.MasterClient}</color>\nActor Number: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\nTagged: <color=#6ffcf3>{IAmInfected.ToString()}</color>\nFPS: <color=#6ffcf3>{fps}</color>\n";
             textMesh.color = White;
             textMesh.fontSize = 17;
-            textMesh.alignment = TextAlignment.Center;
+            textMesh.alignment = TextAlignment.Right;
             textMesh.anchor = TextAnchor.MiddleCenter;
-            Textobj.transform.position = position;
+            Textobj.transform.position = GTPlayer.Instance.headCollider.transform.position + GTPlayer.Instance.headCollider.transform.forward * 5f + GTPlayer.Instance.headCollider.transform.up * 0.5f - GTPlayer.Instance.headCollider.transform.right * 0.5f;
             Textobj.transform.forward = GTPlayer.Instance.headCollider.transform.forward;
             Textobj.transform.localScale *= 0.1f;
             Object.Destroy(Textobj, Time.deltaTime);
         }
-
         public static void SnakeESP()
         {
             if (espColor == 1)

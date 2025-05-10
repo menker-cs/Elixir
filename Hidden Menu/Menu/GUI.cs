@@ -12,6 +12,7 @@ using Hidden.Mods;
 using static Hidden.Utilities.Variables;
 using static Hidden.Utilities.ColorLib;
 using Hidden.Utilities;
+using System.Net;
 
 namespace Hidden.Menu
 {

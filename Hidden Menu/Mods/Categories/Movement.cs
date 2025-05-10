@@ -391,14 +391,14 @@ namespace Hidden.Mods.Categories
 
                     if (dis1 < 0.4f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.rightHandTransform.position - r[p]) * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.rightHandTransform.forward - r[p]) * 4f;
                     }
                     if (dis2 < 0.4f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.leftHandTransform.position - l[p]) * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.leftHandTransform.forward - l[p]) * 4f;
                     }
-                    r[p] = vrrig.rightHandTransform.position;
-                    l[p] = vrrig.leftHandTransform.position;
+                    r[p] = vrrig.rightHandTransform.forward;
+                    l[p] = vrrig.leftHandTransform.forward;
                 }
             }
         }

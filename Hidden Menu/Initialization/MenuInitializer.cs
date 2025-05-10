@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 using System;
-using Hidden.Utilities;
 using Hidden.Menu;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Initialization
 {

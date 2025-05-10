@@ -30,7 +30,6 @@ using Hidden.Menu;
 using static GorillaTelemetry;
 using Hidden.Menu;
 using Hidden.Mods;
-using Hidden.Utilities;
 using static Hidden.Menu.ButtonHandler;
 using static Hidden.Menu.Optimizations;
 using UnityEngine.UIElements;
@@ -52,6 +51,7 @@ using UnityEngine.Networking;
 using Photon.Realtime;
 using Oculus.Interaction.Samples;
 using System.Text;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Menu
 {
@@ -198,8 +198,6 @@ namespace Hidden.Menu
                 i = 0;
                 SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
             }
-
-            
         }
         static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()

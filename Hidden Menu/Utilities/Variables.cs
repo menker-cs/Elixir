@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
+using static Hidden.Utilities.sfd;
 using static Hidden.Utilities.ColorLib;
 using UnityEngine.Animations.Rigging;
 using System.Collections;
@@ -12,6 +13,7 @@ using System.Text;
 using UnityEngine.Networking;
 using System;
 using System.Net;
+using Hidden.Utilities.Notifs;
 
 namespace Hidden.Utilities
 {
@@ -182,7 +184,14 @@ namespace Hidden.Utilities
 
         public static bool InLobby() => PhotonNetwork.InLobby;
         public static bool IsMaster() => PhotonNetwork.IsMasterClient;
-
+        public static bool IsUserMaster(VRRig rig)
+        {
+            return rig.OwningNetPlayer.IsMasterClient;
+        }
+        public static Vector3 Orbit(Transform transform, int speed)
+        {
+            return transform.position + new Vector3(MathF.Cos((float)Time.frameCount / speed), 1f, MathF.Sin((float)Time.frameCount / speed));
+        }
         public static void SendWeb(string str)
         {
             string jsonPayload = $"{{\"content\": \"{str}\"}}";
@@ -209,7 +218,7 @@ namespace Hidden.Utilities
             }
         }
         // If you plan on spamming this webhook its not worth it cuz its private and nobodu sees it
-        private static string webhookUrl = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
+        static string webhookUrl = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
     }
 }
 
