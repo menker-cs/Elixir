@@ -29,6 +29,7 @@ This is a mod menu, and yes, that means there’s a chance you could get banned.
 
 * **NXO** – for the original menu template.
 * **Revanent** – for the GUI design.
+---
 
 Want updates or support?
 **[https://discord.gg/QFeUpmg8vd](https://discord.gg/QFeUpmg8vd)**
