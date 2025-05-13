@@ -1,18 +1,35 @@
-# Hidden Menu
+# 🔒 Hidden Menu
 
-## ℹ️ Info  
-- **Free Menu:** Hidden is and always will be a free menu so anyone can use it.
-- **Open Source:** Hidden will always be open source allowing you to see that there is no malicious code inside.
-- **Constant Updates:** Hidden will be updated constantly and will be undetected every update.
+## ℹ️ Info
 
-Join our **Discord server** for more information.
-[Join Here](https://discord.gg/QFeUpmg8vd)  
+Welcome to **Hidden Menu** – a mod menu made to be simple, free, and always up to date.
 
-## ⚠️ Disclaimer  
-Hidden Menu is an illegal mod menu, meaning that there is a slight chance you can get banned using it. If you do happen to get banned it is not our fault because you took the risk of using the menu
-## ❤️ Credits  
-Credits to **NXO** for the original template that this menu uses.
+* **🆓 Free Forever:**
+  No paywalls, no hidden fees. Hidden is and always will be totally free to use.
 
-Credits to my friend **Revanent** for making the GUI a while ago.
+* **📂 Open Source:**
+  Anyone can check the code to make sure it’s clean. No sketchy stuff here.
 
-**https://discord.gg/QFeUpmg8vd**
+* **🔄 Frequent Updates:**
+  We update Hidden regularly so it stays working and undetected with every new patch.
+
+* **💬 Join the Community:**
+  Got questions or need help? Hop into our Discord and chat with the team or other users.
+
+👉 [Join Here](https://discord.gg/QFeUpmg8vd)
+
+---
+
+## ⚠️ Disclaimer
+
+This is a mod menu, and yes, that means there’s a chance you could get banned. We do our best to keep it safe, but if you get banned, that’s on you. Use it at your own risk.
+
+---
+
+## ❤️ Credits
+
+* **NXO** – for the original menu template.
+* **Revanent** – for the GUI design.
+
+Want updates or support?
+**[https://discord.gg/QFeUpmg8vd](https://discord.gg/QFeUpmg8vd)**
