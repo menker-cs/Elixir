@@ -50,6 +50,64 @@ namespace Hidden.Mods.Categories
         {
             toggledisconnectButton = setActive;
         }
+        public static void FlySpeed()
+        {
+            flyspeedchanger++;
+            if (flyspeedchanger > 4)
+            {
+                flyspeedchanger = 1;
+            }
+            if (flyspeedchanger == 1)
+            {
+                flyspeedchangerspeed = 15f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Normal</color>");
+            }
+            if (flyspeedchanger == 2)
+            {
+                flyspeedchangerspeed = 7f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Slow</color>");
+            }
+            if (flyspeedchanger == 3)
+            {
+                flyspeedchangerspeed = 30f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Fast</color>");
+            }
+            if (flyspeedchanger == 4)
+            {
+                flyspeedchangerspeed = 60f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Very Fast</color>");
+            }
+
+        }
+        public static void SpeedSpeed()
+        {
+            speedboostchanger++;
+            if (speedboostchanger > 4)
+            {
+                speedboostchanger = 1;
+            }
+            if (speedboostchanger == 1)
+            {
+                speedboostchangerspeed = 8f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+            }
+            if (speedboostchanger == 2)
+            {
+                speedboostchangerspeed = 6f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+            }
+            if (speedboostchanger == 3)
+            {
+                speedboostchangerspeed = 30f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+            }
+            if (speedboostchanger == 4)
+            {
+                speedboostchangerspeed = 99f;
+                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+            }
+
+        }
         public static void ESPChange()
         {
             espSetting++;
@@ -78,20 +136,28 @@ namespace Hidden.Mods.Categories
                 NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
             }
         }
-        public static void VisReport()
+        public static void VisReport(bool e)
         {
-            e = !e;
             VisReportBool = e;
         }
         public static void Discord()
         {
-            UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
+            UnityEngine.Application.OpenURL("https://discord.gg/WFJ9nJQxnr");
+        }
+        public static void Link(string url)
+        {
+            UnityEngine.Application.OpenURL(url);
         }
 
         public static int espColor = 1;
         public static int espSetting;
 
+        public static int speedboostchanger;
+        public static float speedboostchangerspeed = 15;
+
+        public static int flyspeedchanger;
+        public static float flyspeedchangerspeed = 15;
+
         public static bool VisReportBool = true;
-        public static bool e = false;
     }
 }

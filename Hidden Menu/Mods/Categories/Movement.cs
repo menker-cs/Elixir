@@ -69,7 +69,7 @@ namespace Hidden.Mods.Categories
         {
             if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
@@ -77,7 +77,7 @@ namespace Hidden.Mods.Categories
         {
             if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
@@ -88,7 +88,7 @@ namespace Hidden.Mods.Categories
                 if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
                 {
                     collider.enabled = false;
-                    GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * 15f;
+                    GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
                     GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 }
                 else
@@ -118,19 +118,9 @@ namespace Hidden.Mods.Categories
         {
             GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (g / Time.deltaTime)), ForceMode.Acceleration);
         }
-        public static void MoonWalk()
-        {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (6.66f / Time.deltaTime)), ForceMode.Acceleration);
-        }
-
-        public static void NoGrav()
-        {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (9.81f / Time.deltaTime)), ForceMode.Acceleration);
-        }
-
         public static void JupiterWalk()
         {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.down * (Time.deltaTime * (7.77f / Time.deltaTime)), ForceMode.Acceleration);
+            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.down * (Time.deltaTime * (8f / Time.deltaTime)), ForceMode.Acceleration);
         }
         public static void Noclip()
         {
@@ -148,8 +138,8 @@ namespace Hidden.Mods.Categories
         }
         public static void Speedboost()
         {
-            GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = 9.5f;
-            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = 8.25f;
+            GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
+            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchanger <= 8f ? speedboostchanger : speedboostchanger - 1f;
         }
         public static void Platforms()
         {
@@ -251,6 +241,44 @@ namespace Hidden.Mods.Categories
                 GameObject.Destroy(LP1);
                 GameObject.Destroy(LP2);
                 LPA2 = false;
+            }
+        }
+        public static void InvisPlatforms()
+        {
+            if (rightGrip())
+            {
+                if (!RPA)
+                {
+                    RP = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    UnityEngine.Object.Destroy(RP.GetComponent<Renderer>());
+                    RP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
+                    RP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
+                    RP.transform.position = GorillaTagger.Instance.rightHandTransform.position - Vector3.up * 0.045f;
+                    RPA = true;
+                }
+            }
+            else
+            {
+                GameObject.Destroy(RP);
+                RPA = false;
+            }
+
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                if (!LPA)
+                {
+                    LP = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    UnityEngine.Object.Destroy(RP.GetComponent<Renderer>());
+                    LP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
+                    LP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
+                    LP.transform.position = GorillaTagger.Instance.leftHandTransform.position - Vector3.up * 0.045f; ;
+                    LPA = true;
+                }
+            }
+            else
+            {
+                GameObject.Destroy(LP);
+                LPA = false;
             }
         }
         public static void Checkpoint()
@@ -363,7 +391,7 @@ namespace Hidden.Mods.Categories
         {
             if (rightPrimary())
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.transform.forward * Time.deltaTime * 15f;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.transform.forward * Time.deltaTime * flyspeedchangerspeed;
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
@@ -375,36 +403,39 @@ namespace Hidden.Mods.Categories
         {
             Application.targetFrameRate = default;
         }
-        public static void SlaveWhipMod()
+        public static void PunchMod()
         {
-            Vector3[] r = new Vector3[10];
-            Vector3[] l = new Vector3[10];
-            int p = -1;
-
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
-                    p++;
                     float dis1 = Vector3.Distance(vrrig.rightHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
                     float dis2 = Vector3.Distance(vrrig.leftHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
 
                     if (dis1 < 0.4f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.rightHandTransform.forward - r[p]) * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.rightHandTransform.forward * 4f;
                     }
                     if (dis2 < 0.4f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += Vector3.Normalize(vrrig.leftHandTransform.forward - l[p]) * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.leftHandTransform.forward * 4f;
                     }
-                    r[p] = vrrig.rightHandTransform.forward;
-                    l[p] = vrrig.leftHandTransform.forward;
                 }
             }
         }
         public static void Velocity(float d)
         {
             GorillaTagger.Instance.rigidbody.drag = d;
+        }
+        public static void SuperMonke()
+        {
+            if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
+            {
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = false;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
+            }
+            else { GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = false; }
         }
 
         static Vector3 oldMousePos;

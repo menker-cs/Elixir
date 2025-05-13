@@ -278,7 +278,6 @@ namespace Hidden.Mods.Categories
         public static void VisualizeAntiReport(Vector3 position, float range)
         {
             GameObject report = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            UnityEngine.Object.Destroy(report, Time.deltaTime);
             UnityEngine.Object.Destroy(report.GetComponent<Collider>());
             UnityEngine.Object.Destroy(report.GetComponent<Rigidbody>());
             report.transform.position = position;
@@ -287,6 +286,8 @@ namespace Hidden.Mods.Categories
             Color c = MenuColor;
             c.a = 0.1f;
             report.GetComponent<Renderer>().material.color = c;
+            UnityEngine.Object.Destroy(report, Time.deltaTime);
+
         }
         #endregion
     }
