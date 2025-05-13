@@ -5,10 +5,9 @@
 Welcome to **Hidden Menu** – a mod menu made to be simple, free, and always up to date.
 
 * **🆓 Free Forever:**
-  No paywalls, no hidden fees. Hidden is and always will be totally free to use.
-
+  Hidden is and always will be a free menu so anyone can use it. No paywalls, no paid menu just download and enjoy.
 * **📂 Open Source:**
-  Anyone can check the code to make sure it’s clean. No sketchy stuff here.
+  Anyone can check the code to make sure it’s clean and safe.
 
 * **🔄 Frequent Updates:**
   We update Hidden regularly so it stays working and undetected with every new patch.
