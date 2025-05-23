@@ -52,6 +52,8 @@ namespace Hidden.Utilities
         public static bool openMenu;
         public static bool menuOpen = false;
         public static bool InMenuCondition;
+        public static bool grav = true;
+        public static bool tip = true;
         public static float lastFPSTime = 0f;
         public static int fps;
         public static bool InPcCondition;
@@ -178,9 +180,12 @@ namespace Hidden.Utilities
                 return;
             }
 
-            NotificationLib.SendNotification(PhotonNetwork.IsMasterClient ? "<color=blue>Room</color> : You are master." : "<color=blue>Room</color> : You are not master.");
+            NotificationLib.SendNotification(PhotonNetwork.IsMasterClient ? "<color=blue>Room</color> : You are master." : "<color=blue>Room</color> : " + PhotonNetwork.MasterClient + "is master client");
         }
-
+        public static void UseGravity(bool useGravity)
+        {
+            GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = useGravity;
+        }
         public static bool InLobby() => PhotonNetwork.InLobby;
         public static bool IsMaster() => PhotonNetwork.IsMasterClient;
         public static bool IsUserMaster(VRRig rig)
@@ -190,6 +195,10 @@ namespace Hidden.Utilities
         public static Vector3 Orbit(Transform transform, int speed)
         {
             return transform.position + new Vector3(MathF.Cos((float)Time.frameCount / speed), 1f, MathF.Sin((float)Time.frameCount / speed));
+        }
+        public static Vector3 Annoy(Transform transform, float range)
+        {
+            return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
         public static void SendWeb(string str)
         {

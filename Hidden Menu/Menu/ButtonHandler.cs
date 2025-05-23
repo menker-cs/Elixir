@@ -81,6 +81,7 @@ namespace Hidden.Menu
 
         public static void ToggleButton(Button button)
         {
+            string str = "";
             try
             {
                 if (!button.isToggle)
@@ -89,11 +90,11 @@ namespace Hidden.Menu
 
                     if (button.Page == currentPage)
                     {
-                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}");
+                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
                     }
                     else
                     {
-                        NotificationLib.SendNotification($"<color=green>Entered Category</color> : {button.buttonText}");
+                        NotificationLib.SendNotification($"<color=green>Entered Category</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
                     }
                 }
                 else
@@ -103,12 +104,12 @@ namespace Hidden.Menu
                     if (button.Enabled)
                     {
                         button.onEnable?.Invoke();
-                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}");
+                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
                     }
                     else
                     {
                         button.onDisable?.Invoke();
-                        NotificationLib.SendNotification($"<color=red>Disabled</color> : {button.buttonText}");
+                        NotificationLib.SendNotification($"<color=red>Disabled</color> : {button.buttonText}\n");
                     }
                 }
 
@@ -124,7 +125,7 @@ namespace Hidden.Menu
         public class Button
         {
             public string buttonText { get; set; }
-            public string toolTi1p { get; set; }
+            public string tip { get; set; }
             public bool isToggle { get; set; }
             public bool NeedsMaster { get; set; }
             public bool Enabled { get; set; }
@@ -132,7 +133,7 @@ namespace Hidden.Menu
             public Action onDisable { get; set; }
             public Category Page { get; set; }
 
-            public Button(string label, Category page, bool isToggle, bool isActive, Action onClick, Action onDisable = null, bool doesNeedMaster = false)
+            public Button(string label, Category page, bool isToggle, bool isActive, Action onClick, Action onDisable = null, string tip = "This Mod Has No Tool Tip", bool doesNeedMaster = false)
             {
                 buttonText = label;
                 this.isToggle = isToggle;
@@ -140,6 +141,7 @@ namespace Hidden.Menu
                 onEnable = onClick;
                 Page = page;
                 this.onDisable = onDisable;
+                this.tip = tip;
                 NeedsMaster = doesNeedMaster;
             }
             public void SetText(string newText)

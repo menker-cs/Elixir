@@ -156,7 +156,7 @@ namespace Hidden.Menu
         }
         public static float j = 0f;
         public static float k = 0.2f;
-        public static void Trail(GameObject obj, Color clr)
+        public static void Trail(GameObject obj, Color clr, Color clr2)
         {
             GameObject trailObject = new GameObject("trail");
             trailObject.transform.position = obj.transform.position;
@@ -168,7 +168,7 @@ namespace Hidden.Menu
             trailRenderer.startWidth = 0.025f;
             trailRenderer.endWidth = 0f;
             trailRenderer.startColor = clr;
-            trailRenderer.endColor = clr;
+            trailRenderer.endColor = clr2;
         }
         public void Awake()
         {
@@ -369,62 +369,83 @@ namespace Hidden.Menu
             if (Theme > 4)
             {
                 Theme = 1;
-                MenuColorT = ColorLib.Hidden;
-                MenuColor = ColorLib.Hidden;
-                ButtonColorOff = DarkGrey;
-                ButtonColorOn = new Color32(35, 35, 35, 255);
-                outColor = DarkerGrey;
-                DisconnecyColor = ButtonColorOff;
-                disOut = outColor;
                 RefreshMenu();
             }
             if (Theme == 1)
-            { 
-                MenuColorT = ColorLib.Hidden;
-                MenuColor = ColorLib.Hidden;
-                ButtonColorOff = DarkGrey;
-                ButtonColorOn = new Color32(35, 35, 35, 255);
-                outColor = DarkerGrey;
-                DisconnecyColor = ButtonColorOff;
-                disOut = outColor;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Hidden/Default</color>");
-                RefreshMenu();
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Theme: Green")
+                    {
+                        btn.SetText("Change Theme: Dark");
+                        MenuColorT = ColorLib.Hidden;
+                        MenuColor = ColorLib.Hidden;
+                        ButtonColorOff = DarkGrey;
+                        ButtonColorOn = new Color32(35, 35, 35, 255);
+                        outColor = DarkerGrey;
+                        DisconnecyColor = ButtonColorOff;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
+                        RefreshMenu();
+                    }
+                }
             }
             if (Theme == 2)
-            { 
-                MenuColorT = SkyBlueTransparent;
-                MenuColor = SkyBlue;
-                ButtonColorOff = RoyalBlue;
-                ButtonColorOn = DodgerBlue;
-                outColor = DarkDodgerBlue;
-                DisconnecyColor = Crimson;
-                disOut = WineRed;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Menker Theme</color>");
-                RefreshMenu();
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Theme: Dark")
+                    {
+                        btn.SetText("Change Theme: Blue");
+                        MenuColorT = SkyBlueTransparent;
+                        MenuColor = SkyBlue;
+                        ButtonColorOff = RoyalBlue;
+                        ButtonColorOn = DodgerBlue;
+                        outColor = DarkDodgerBlue;
+                        DisconnecyColor = MenuColor;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
+                        RefreshMenu();
+                    }
+                }
             }
             if (Theme == 3)
-            { 
-                MenuColorT = FireBrickTransparent;
-                MenuColor = FireBrick;
-                ButtonColorOff = WineRed;
-                ButtonColorOn = IndianRed;
-                outColor = IndianRed;
-                DisconnecyColor = Crimson;
-                disOut = WineRed;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
-                RefreshMenu();
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Theme: Blue")
+                    {
+                        btn.SetText("Change Theme: Red");
+                        MenuColorT = FireBrickTransparent;
+                        MenuColor = FireBrick;
+                        ButtonColorOff = WineRed;
+                        ButtonColorOn = IndianRed;
+                        outColor = IndianRed;
+                        DisconnecyColor = Crimson;
+                        disOut = WineRed;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
+                        RefreshMenu();
+                    }
+                }
             }
             if (Theme == 4)
-            { 
-                MenuColorT = MediumAquamarineTransparent;
-                MenuColor = MediumAquamarine;
-                ButtonColorOff = MediumSeaGreen;
-                ButtonColorOn = SeaGreen;
-                DisconnecyColor = ButtonColorOff;
-                outColor = Lime;
-                disOut = outColor;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
-                RefreshMenu();
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Theme: Red")
+                    {
+                        btn.SetText("Change Theme: Green");
+                        MenuColorT = MediumAquamarineTransparent;
+                        MenuColor = MediumAquamarine;
+                        ButtonColorOff = MediumSeaGreen;
+                        ButtonColorOn = SeaGreen;
+                        DisconnecyColor = ButtonColorOff;
+                        outColor = Lime;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
+                        RefreshMenu();
+                    }
+                }
             }
         }
         public static int ActuallSound = 114;
@@ -467,14 +488,43 @@ namespace Hidden.Menu
         {
             Laytou++;
             if (Laytou > 3)
+            {
                 Laytou = 1;
                 RefreshMenu();
+            }
             if (Laytou == 1)
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Layout: Top")
+                    {
+                        btn.SetText("Change Layout: Sides");
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
+                    }
+                }
+            }
             if (Laytou == 2)
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                { 
+                    if (btn.buttonText == "Change Layout: Sides")
+                    {
+                        btn.SetText("Change Layout: Bottom");
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
+                    }
+                }
+            }
             if (Laytou == 3)
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Top</color>");
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Layout: Bottom")
+                    {
+                        btn.SetText("Change Layout: Top");
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Top</color>");
+                    }
+                }
+            }
             RefreshMenu();
         }
         #endregion
@@ -1106,7 +1156,7 @@ namespace Hidden.Menu
                 {
                     currentMenuRigidbody = menuObj.AddComponent<Rigidbody>();
                 }
-                currentMenuRigidbody.useGravity = true;
+                currentMenuRigidbody.useGravity = grav;
             }
         }
     }

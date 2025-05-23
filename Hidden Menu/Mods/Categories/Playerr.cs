@@ -272,7 +272,7 @@ namespace Hidden.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(UnityEngine.Random.Range(-1.25f, 1.25f), UnityEngine.Random.Range(-1.25f, 1.25f), UnityEngine.Random.Range(-1.25f, 1.25f));
+                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(LockedPlayer.transform, 1.25f);
             }, true);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
@@ -375,6 +375,32 @@ namespace Hidden.Mods.Categories
             }, true);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void AnnoySelf()
+        {
+            if (ControllerInputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(GorillaTagger.Instance.headCollider.transform, 1.25f);
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void OrbitSelf()
+        {
+            if (ControllerInputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(GorillaTagger.Instance.headCollider.transform, 15);
+                GorillaTagger.Instance.offlineVRRig.transform.LookAt(GorillaTagger.Instance.headCollider.transform);
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
             }
         }
 

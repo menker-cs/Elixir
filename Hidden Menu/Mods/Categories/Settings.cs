@@ -36,6 +36,10 @@ namespace Hidden.Mods.Categories
         {
             outl = setActive;
         }
+        public static void Grav(bool setActive)
+        {
+            grav = setActive;
+        }
         public static void ClearNotifications()
         {
             NotificationLib.ClearAllNotifications();
@@ -45,7 +49,10 @@ namespace Hidden.Mods.Categories
         {
             toggleNotifications = setActive;
         }
-
+        public static void ToggleTip(bool setActive)
+        {
+            tip = setActive;
+        }
         public static void ToggleDisconnectButton(bool setActive)
         {
             toggledisconnectButton = setActive;
@@ -59,23 +66,51 @@ namespace Hidden.Mods.Categories
             }
             if (flyspeedchanger == 1)
             {
-                flyspeedchangerspeed = 15f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Normal</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Fly Speed: Very Fast")
+                    {
+                        btn.SetText("Change Fly Speed: Normal");
+                        speedboostchangerspeed = 15f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    }
+                }
             }
             if (flyspeedchanger == 2)
             {
-                flyspeedchangerspeed = 7f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Slow</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Fly Speed: Normal")
+                    {
+                        btn.SetText("Change Fly Speed: Slow");
+                        speedboostchangerspeed = 7f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    }
+                }
             }
             if (flyspeedchanger == 3)
             {
-                flyspeedchangerspeed = 30f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Fast</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Fly Speed: Slow")
+                    {
+                        btn.SetText("Change Fly Speed: Fast");
+                        speedboostchangerspeed = 30f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    }
+                }
             }
             if (flyspeedchanger == 4)
             {
-                flyspeedchangerspeed = 60f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Fly Speed</color><color=white>] Very Fast</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Fly Speed: Fast")
+                    {
+                        btn.SetText("Change Fly Speed: Very Fast");
+                        speedboostchangerspeed = 60f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    }
+                }
             }
 
         }
@@ -88,23 +123,51 @@ namespace Hidden.Mods.Categories
             }
             if (speedboostchanger == 1)
             {
-                speedboostchangerspeed = 8f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Speed Boost: Very Fast")
+                    {
+                        btn.SetText("Change Speed Boost: Normal");
+                        speedboostchangerspeed = 8f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    }
+                }
             }
             if (speedboostchanger == 2)
             {
-                speedboostchangerspeed = 6f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Speed Boost: Normal")
+                    {
+                        btn.SetText("Change Speed Boost: Slow");
+                        speedboostchangerspeed = 6f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    }
+                }
             }
             if (speedboostchanger == 3)
             {
-                speedboostchangerspeed = 30f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Speed Boost: Slow")
+                    {
+                        btn.SetText("Change Speed Boost: Fast");
+                        speedboostchangerspeed = 15f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    }
+                }
             }
             if (speedboostchanger == 4)
             {
-                speedboostchangerspeed = 99f;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Speed Boost: Fast")
+                    {
+                        btn.SetText("Change Speed Boost: Very Fast");
+                        speedboostchangerspeed = 50f;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    }
+                }
             }
 
         }
@@ -117,23 +180,51 @@ namespace Hidden.Mods.Categories
             }
             if (espSetting == 1)
             {
-                espColor = 1;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change ESP Color: Menu Color")
+                    {
+                        btn.SetText("Change ESP Color: Infection");
+                        espColor = 1;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                    }
+                }
             }
             if (espSetting == 2)
             {
-                espColor = 2;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change ESP Color: Infection")
+                    {
+                        btn.SetText("Change ESP Color: Casual");
+                        espColor = 2;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
+                    }
+                }
             }
             if (espSetting == 3)
             {
-                espColor = 3;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change ESP Color: Casual")
+                    {
+                        btn.SetText("Change ESP Color: RGB");
+                        espColor = 3;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
+                    }
+                }
             }
             if (espSetting == 4)
             {
-                espColor = 4;
-                NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change ESP Color: RGB")
+                    {
+                        btn.SetText("Change ESP Color: Menu Color");
+                        espColor = 4;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                    }
+                }
             }
         }
         public static void VisReport(bool e)
@@ -150,12 +241,12 @@ namespace Hidden.Mods.Categories
         }
 
         public static int espColor = 1;
-        public static int espSetting;
+        public static int espSetting = 1;
 
-        public static int speedboostchanger;
+        public static int speedboostchanger = 1;
         public static float speedboostchangerspeed = 15;
 
-        public static int flyspeedchanger;
+        public static int flyspeedchanger = 1;
         public static float flyspeedchangerspeed = 15;
 
         public static bool VisReportBool = true;

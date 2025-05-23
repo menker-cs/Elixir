@@ -131,7 +131,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -148,7 +148,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -168,9 +168,9 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -186,9 +186,9 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -207,9 +207,9 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
@@ -223,9 +223,9 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
@@ -263,7 +263,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -279,7 +279,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -298,7 +298,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -314,7 +314,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -334,7 +334,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = spherepointer.transform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -354,7 +354,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = spherepointer.transform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -374,7 +374,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -392,7 +392,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position;
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -415,7 +415,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -430,7 +430,7 @@ namespace Hidden.Mods.Categories
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -444,12 +444,12 @@ namespace Hidden.Mods.Categories
         }
         public static void OrbRain1()
         {
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -457,15 +457,15 @@ namespace Hidden.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = body.velocity;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }
-            if (pollerInstance.leftGrab)
+            if (pollerInstance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
-                orb.GetComponent<Renderer>().material.color = MenuColorT;
+                orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
@@ -474,7 +474,7 @@ namespace Hidden.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = body.velocity;
-                Trail(orb, MenuColorT);
+                Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }
         }

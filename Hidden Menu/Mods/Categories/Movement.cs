@@ -17,6 +17,7 @@ using Photon.Voice;
 using Hidden.Utilities;
 using static Hidden.Utilities.ControllerInputs;
 using UnityEngine.UIElements;
+using Hidden.Menu;
 
 namespace Hidden.Mods.Categories
 {
@@ -322,7 +323,14 @@ namespace Hidden.Mods.Categories
         }
         public static void TagFreeze()
         {
-            GorillaLocomotion.GTPlayer.Instance.disableMovement = true;
+            foreach (ButtonHandler.Button button in ModButtons.buttons)
+            {
+                if (button.buttonText == "No Tag Freeze")
+                {
+                    button.Enabled = false;
+                    GorillaLocomotion.GTPlayer.Instance.disableMovement = true;
+                }
+            }
         }
         public static void CarMonkey()
         {
@@ -399,10 +407,6 @@ namespace Hidden.Mods.Categories
         {
             Application.targetFrameRate = hz;
         }
-        public static void ResetHz()
-        {
-            Application.targetFrameRate = default;
-        }
         public static void PunchMod()
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
@@ -412,13 +416,13 @@ namespace Hidden.Mods.Categories
                     float dis1 = Vector3.Distance(vrrig.rightHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
                     float dis2 = Vector3.Distance(vrrig.leftHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
 
-                    if (dis1 < 0.4f)
+                    if (dis1 < 0.2f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.rightHandTransform.forward * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.rightHandTransform.forward * 10f;
                     }
-                    if (dis2 < 0.4f)
+                    if (dis2 < 0.2f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.leftHandTransform.forward * 4f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.leftHandTransform.forward * 10f;
                     }
                 }
             }
@@ -435,7 +439,7 @@ namespace Hidden.Mods.Categories
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = false;
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
             }
-            else { GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = false; }
+            else { GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = true; }
         }
 
         static Vector3 oldMousePos;

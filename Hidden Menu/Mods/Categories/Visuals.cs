@@ -774,8 +774,6 @@ namespace Hidden.Mods.Categories
                         trailRenderer.time = 2f;
                         trailRenderer.startWidth = 0.2f;
                         trailRenderer.endWidth = 0f;
-                        trailRenderer.startColor = playerColor;
-                        trailRenderer.endColor = new UnityEngine.Color(playerColor.r, playerColor.g, playerColor.b, 0f);
                         trailRenderer.autodestruct = true;
                         GameObject.Destroy(trailObject, trailRenderer.time + 0.5f);
                     }
