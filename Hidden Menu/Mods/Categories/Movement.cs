@@ -140,7 +140,7 @@ namespace Hidden.Mods.Categories
         public static void Speedboost()
         {
             GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
-            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchanger <= 8f ? speedboostchanger : speedboostchanger - 1f;
+            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed + .5f;
         }
         public static void Platforms()
         {

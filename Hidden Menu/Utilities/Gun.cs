@@ -10,6 +10,7 @@ using static Hidden.Menu.Main;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using System.Reflection;
 
 namespace Hidden.Utilities
 {
@@ -42,16 +43,20 @@ namespace Hidden.Utilities
             if (ControllerInputPoller.instance.rightGrab)
             {
                 Physics.Raycast(GorillaTagger.Instance.rightHandTransform.position, -GorillaTagger.Instance.rightHandTransform.up, out raycastHit, float.MaxValue);
-                if (spherepointer == null)
+                if (spherepointer == null && gunSetting !=3)
                 {
                     spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     spherepointer.AddComponent<Renderer>();
-                    spherepointer.transform.localScale = new Vector3(0.080f, 0.080f, 0.080f);
+                    spherepointer.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
                     spherepointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
                     GameObject.Destroy(spherepointer.GetComponent<BoxCollider>());
                     GameObject.Destroy(spherepointer.GetComponent<Rigidbody>());
                     GameObject.Destroy(spherepointer.GetComponent<Collider>());
                     lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
+                }
+                if (gunSetting == 3)
+                {
+                    Destroy(spherepointer.GetComponent<Renderer>());
                 }
                 if (LockedPlayer == null)
                 {
@@ -71,8 +76,10 @@ namespace Hidden.Utilities
                 lineRenderer.endColor = DarkGrey;
                 lineRenderer.useWorldSpace = true;
                 lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
-                //gameObject.AddComponent<GunTemplate>().StartCoroutine(StartCurvyLineRenderer(lineRenderer, GorillaTagger.Instance.rightHandTransform.position, lr, spherepointer.transform.position));
+                if (gunSetting != 2)
+                {
+                    lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
+                }
                 GameObject.Destroy(lineRenderer, Time.deltaTime);
                 if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f)
                 {
@@ -113,22 +120,25 @@ namespace Hidden.Utilities
         public static void StartPcGun(Action action, bool LockOn)
         {
             Ray ray = GameObject.Find("Shoulder Camera").activeSelf ? GameObject.Find("Shoulder Camera").GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition) : GorillaTagger.Instance.mainCamera.GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition);
-
             if (Mouse.current.rightButton.isPressed)
             {
                 RaycastHit raycastHit;
                 if (Physics.Raycast(ray.origin, ray.direction, out raycastHit, float.PositiveInfinity, -32777) && spherepointer == null)
                 {
-                    if (spherepointer == null)
+                    if (spherepointer == null && gunSetting != 3)
                     {
                         spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         spherepointer.AddComponent<Renderer>();
-                        spherepointer.transform.localScale = new Vector3(0.080f, 0.080f, 0.080f);
+                        spherepointer.transform.localScale = gunSetting == 3 ? new Vector3(0.0001f, 0.0001f, 0.0001f) : new Vector3(0.12f, 0.12f, 0.12f);
                         spherepointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
                         GameObject.Destroy(spherepointer.GetComponent<BoxCollider>());
                         GameObject.Destroy(spherepointer.GetComponent<Rigidbody>());
                         GameObject.Destroy(spherepointer.GetComponent<Collider>());
                         lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
+                    }
+                    if (gunSetting == 3)
+                    {
+                        Destroy(spherepointer.GetComponent<Renderer>());
                     }
                 }
                 if (LockedPlayer == null)
@@ -149,8 +159,10 @@ namespace Hidden.Utilities
                 lineRenderer.endColor = DarkGrey;
                 lineRenderer.useWorldSpace = true;
                 lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
-                //gameObject.AddComponent<GunTemplate>().StartCoroutine(StartCurvyLineRenderer(lineRenderer, GorillaTagger.Instance.rightHandTransform.position, lr, spherepointer.transform.position));
+                if (gunSetting != 2)
+                {
+                    lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.headCollider.transform.position, spherepointer.transform.position });
+                }
                 GameObject.Destroy(lineRenderer, Time.deltaTime);
                 if (Mouse.current.leftButton.isPressed)
                 {

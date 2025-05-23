@@ -50,7 +50,7 @@ namespace Hidden.Mods.Categories
                     if (!RigIsInfected(LockedPlayer))
                     {
                         GorillaTagger.Instance.offlineVRRig.enabled = false;
-                        GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position - new Vector3(0f, 3f, 0f);
+                        GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position - new Vector3(0f, 2.5f, 0f);
                         GorillaTagger.Instance.leftHandTransform.position = spherepointer.transform.position;
                     }
                     else
@@ -90,7 +90,7 @@ namespace Hidden.Mods.Categories
                         if (!RigIsInfected(vrrig))
                         {
                             GorillaTagger.Instance.offlineVRRig.enabled = false;
-                            GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.transform.position - new Vector3(0f, 3f, 0f);
+                            GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.transform.position - new Vector3(0f, 2.5f, 0f);
                             GorillaTagger.Instance.leftHandTransform.position = vrrig.transform.position;
                             GorillaTagger.Instance.offlineVRRig.enabled = true;
                             break;

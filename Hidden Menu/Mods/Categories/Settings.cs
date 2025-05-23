@@ -227,6 +227,38 @@ namespace Hidden.Mods.Categories
                 }
             }
         }
+        public static void GunChange()
+        {
+            GunSetting++;
+            if (GunSetting > 2)
+            {
+                GunSetting = 1;
+            }
+            if (GunSetting == 1)
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Gun Type: Ball")
+                    {
+                        btn.SetText("Change Gun Type: Ball + Line");
+                        gunSetting = 1;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
+                    }
+                }
+            }
+            if (GunSetting == 2)
+            {
+                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                {
+                    if (btn.buttonText == "Change Gun Type: Ball + Line")
+                    {
+                        btn.SetText("Change Gun Type: Ball");
+                        gunSetting = 2;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                    }
+                }
+            }
+        }
         public static void VisReport(bool e)
         {
             VisReportBool = e;
@@ -241,12 +273,15 @@ namespace Hidden.Mods.Categories
         }
 
         public static int espColor = 1;
-        public static int espSetting = 1;
+        static int espSetting = 1;
 
-        public static int speedboostchanger = 1;
+        static int GunSetting = 1;
+        public static int gunSetting = 1;
+
+        static int speedboostchanger = 1;
         public static float speedboostchangerspeed = 15;
 
-        public static int flyspeedchanger = 1;
+        static int flyspeedchanger = 1;
         public static float flyspeedchangerspeed = 15;
 
         public static bool VisReportBool = true;

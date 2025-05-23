@@ -73,6 +73,7 @@ namespace Hidden.Mods
             new Button("Change ESP Color: Infection", Category.Settings, false, false, ()=>ESPChange(), null, "Changes ESP Color"),
             new Button("Change Fly Speed: Normal", Category.Settings, false, false, ()=>FlySpeed(), null, "Changes Fly Speed"),
             new Button("Change Speed Boost: Normal", Category.Settings, false, false, ()=>SpeedSpeed(), null, "Changes Speed Boost Speed"),
+            new Button("Change Gun Type: Ball + Line", Category.Settings, false, false, ()=>GunChange(), null, "Changes Speed Boost Speed"),
             new Button("Refresh Menu", Category.Settings, false, false, ()=> RefreshMenu(), null, "Refreshes The Menu"),
             #endregion
 
