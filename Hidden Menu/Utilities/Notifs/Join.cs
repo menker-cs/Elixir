@@ -13,7 +13,7 @@ internal class JoinPatch : MonoBehaviour
     {
         if (newPlayer != oldnewplayer)
         {
-            NotificationLib.SendNotification("<color=grey>[</color><color=green>Player Joined</color><color=grey>] </color><color=white>Name: " + newPlayer.NickName + "</color>");
+            NotificationLib.SendNotification("<color=white>[</color><color=green>Player Joined</color><color=white>] </color><color=white>Name: " + newPlayer.NickName + "</color>");
             oldnewplayer = newPlayer;
         }
     }

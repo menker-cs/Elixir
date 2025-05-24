@@ -37,6 +37,7 @@ namespace Hidden.Utilities
         public static Color DisconnectButtonTextColor = White;
         public static Color BackToStartTextColor = Color.grey;
         public static Color PageButtonsTextColor = White;
+        public static Color espColor = White;
 
         // --- Menu and Interaction Settings ---
         public static Category currentPage = Category.Home;
@@ -54,6 +55,7 @@ namespace Hidden.Utilities
         public static bool InMenuCondition;
         public static bool grav = true;
         public static bool tip = true;
+        public static bool vCounter = true;
         public static float lastFPSTime = 0f;
         public static int fps;
         public static bool InPcCondition;
@@ -78,10 +80,6 @@ namespace Hidden.Utilities
 
         public const float velocityThreshold = 0.05f;
         public static int Rotation = 1;
-
-        //Controllers
-
-
 
         // --- Game Mode Variables ---
         public static void Placeholder() { }

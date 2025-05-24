@@ -15,7 +15,7 @@ namespace StupidTemplate.Patches
         {
             if (otherPlayer != PhotonNetwork.LocalPlayer && otherPlayer != a)
             {
-                NotificationLib.SendNotification("<color=grey>[</color><color=red>Player Left</color><color=grey>]</color> <color=white>Name: " + otherPlayer.NickName + "</color>");
+                NotificationLib.SendNotification("<color=white>[</color><color=red>Player Left</color><color=white>]</color> <color=white>Name: " + otherPlayer.NickName + "</color>");
                 a = otherPlayer;
             }
         }

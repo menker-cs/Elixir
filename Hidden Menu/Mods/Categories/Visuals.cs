@@ -20,6 +20,7 @@ using UnityEngine.Splines.Interpolators;
 using static UnityEngine.Rendering.DebugUI;
 using GorillaLocomotion;
 using Oculus.Interaction;
+//using System.Drawing;
 
 namespace Hidden.Mods.Categories
 {
@@ -59,7 +60,7 @@ namespace Hidden.Mods.Categories
             // 2 = infection
             // 3 = rainbow
             // 4 = menu color
-            if (espColor == 1)
+            if (espSetting == 1)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -78,7 +79,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 2)
+            else if (espSetting == 2)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -89,7 +90,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 3)
+            else if (espSetting == 3)
             {
                 GradientColorKey[] array = new GradientColorKey[7];
                 array[0].color = UnityEngine.Color.red;
@@ -120,7 +121,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 4)
+            else if (espSetting == 4)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -148,7 +149,7 @@ namespace Hidden.Mods.Categories
             // 2 = infection
             // 3 = rainbow
             // 4 = menu color
-            if (espColor == 1)
+            if (espSetting == 1)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -177,7 +178,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 2)
+            else if (espSetting == 2)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -196,7 +197,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 3)
+            else if (espSetting == 3)
             {
                 GradientColorKey[] array = new GradientColorKey[7];
                 array[0].color = UnityEngine.Color.red;
@@ -234,7 +235,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 4)
+            else if (espSetting == 4)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -258,7 +259,7 @@ namespace Hidden.Mods.Categories
         {
             if (d == false)
             {
-                if (espColor == 1)
+                if (espSetting == 1)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -278,7 +279,7 @@ namespace Hidden.Mods.Categories
                             }
                             else
                             {
-                                UnityEngine.Color color = UnityEngine.Color.red;
+                                UnityEngine.Color color = UnityEngine.Color.green;
                                 color.a = 0.5f;
                                 ESPBox.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
                                 ESPBox.GetComponent<Renderer>().material.color = color;
@@ -287,7 +288,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 2)
+                if (espSetting == 2)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -306,7 +307,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 3)
+                if (espSetting == 3)
                 {
                     GradientColorKey[] array = new GradientColorKey[7];
                     array[0].color = UnityEngine.Color.red;
@@ -344,7 +345,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 4)
+                if (espSetting == 4)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -366,7 +367,7 @@ namespace Hidden.Mods.Categories
             }
             else if (d == true)
             {
-                if (espColor == 1)
+                if (espSetting == 1)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -394,7 +395,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 2)
+                if (espSetting == 2)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -412,7 +413,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 3)
+                if (espSetting == 3)
                 {
                     GradientColorKey[] array = new GradientColorKey[7];
                     array[0].color = UnityEngine.Color.red;
@@ -449,7 +450,7 @@ namespace Hidden.Mods.Categories
                         }
                     }
                 }
-                if (espColor == 4)
+                if (espSetting == 4)
                 {
                     foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                     {
@@ -471,7 +472,7 @@ namespace Hidden.Mods.Categories
         }
         public static void Tracers()
         {
-            if (espColor == 1)
+            if (espSetting == 1)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -505,7 +506,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 2)
+            else if (espSetting == 2)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -527,7 +528,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 3)
+            else if (espSetting == 3)
             {
                 GradientColorKey[] array = new GradientColorKey[7];
                 array[0].color = UnityEngine.Color.red;
@@ -568,7 +569,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 4)
+            else if (espSetting == 4)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -641,31 +642,51 @@ namespace Hidden.Mods.Categories
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
-                    name = new GameObject("Text");
+                    GameObject name = new GameObject("Text");
                     TextMesh textMesh = name.AddComponent<TextMesh>();
                     textMesh.fontSize = 20;
                     textMesh.fontStyle = FontStyle.Normal;
                     textMesh.characterSize = 0.1f;
                     textMesh.anchor = TextAnchor.MiddleCenter;
                     textMesh.alignment = TextAlignment.Left;
-                    textMesh.color = White;
-                    textMesh.text = vrrig.name;
-                    float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
-                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, .90f, 0f);
+                    textMesh.color = Color.white;
+
+                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
                     name.transform.LookAt(Camera.main.transform.position);
                     name.transform.Rotate(0, 180, 0);
-                    name.GetComponent<TextMesh>().text = $"<color=#6ffcf3>{vrrig.OwningNetPlayer.NickName}</color>\nID: <color=#6ffcf3>{vrrig.Creator.UserId}</color>\nIs Master: <color=#6ffcf3>{IsUserMaster(vrrig).ToString()}</color>\nActor Number: <color=#6ffcf3>{vrrig.Creator.ActorNumber}</color>\nTagged: <color=#6ffcf3>{RigIsInfected(vrrig).ToString()}</color>\nFPS: <color=#6ffcf3>{Traverse.Create(vrrig).Field("fps".ToString()).GetValue<int>()}</color>";
+
+                    int fpps = Traverse.Create(vrrig).Field("fps").GetValue<int>();
+                    string fpsColor = fpps < 45 ? "red" : (fpps > 80 ? "green" : "orange");
+
+                    textMesh.text =
+                        $"<color=green>{vrrig.OwningNetPlayer.NickName}</color>\n" +
+                        $"ID: <color=green>{vrrig.Creator.UserId}</color>\n" +
+                        $"Is Master: <color=green>{IsUserMaster(vrrig)}</color>\n" +
+                        $"Actor Number: <color=green>{vrrig.Creator.ActorNumber}</color>\n" +
+                        $"Tagged: <color=green>{RigIsInfected(vrrig)}</color>\n" +
+                        $"FPS: <color={fpsColor}>{fpps}</color>";
+
                     GameObject.Destroy(name, Time.deltaTime);
                 }
             }
         }
+
         public static void InfoDisplay()
         {
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             GameObject Textobj;
             Textobj = new GameObject("Text");
             TextMesh textMesh = Textobj.AddComponent<TextMesh>();
-            textMesh.text = $"Name: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName}</color>\nID: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.UserId}</color>\nMaster Client: <color=#6ffcf3>{PhotonNetwork.MasterClient}</color>\nActor Number: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\nTagged: <color=#6ffcf3>{IAmInfected.ToString()}</color>\nFPS: <color=#6ffcf3>{fps}</color>\n";
+
+            string fpsColor = fps > 80 ? "green" : "orange";
+            textMesh.text =
+                $"Name: <color=green>{PhotonNetwork.LocalPlayer.NickName}</color>\n" +
+                $"ID: <color=green>{PhotonNetwork.LocalPlayer.UserId}</color>\n" +
+                $"Master Client: <color=green>{PhotonNetwork.MasterClient}</color>\n" +
+                $"Actor Number: <color=green>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\n" +
+                $"Tagged: <color=green>{IAmInfected}</color>\n" +
+                $"FPS: <color={(fps < 45 ? "red" : fpsColor)}>{fps}</color>\n";
+
             textMesh.color = White;
             textMesh.fontSize = 17;
             textMesh.alignment = TextAlignment.Right;
@@ -677,7 +698,7 @@ namespace Hidden.Mods.Categories
         }
         public static void SnakeESP()
         {
-            if (espColor == 1)
+            if (espSetting == 1)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -712,7 +733,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 2)
+            else if (espSetting == 2)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -737,7 +758,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 3)
+            else if (espSetting == 3)
             {
                 GradientColorKey[] array = new GradientColorKey[7];
                 array[0].color = UnityEngine.Color.red;
@@ -770,7 +791,7 @@ namespace Hidden.Mods.Categories
                         TrailRenderer trailRenderer = trailObject.AddComponent<TrailRenderer>();
                         trailRenderer.material = new Material(Shader.Find("Unlit/Color"));
                         color.a = 0.5f;
-                        trailRenderer.material.color = color;
+                        trailRenderer.startColor = color;
                         trailRenderer.time = 2f;
                         trailRenderer.startWidth = 0.2f;
                         trailRenderer.endWidth = 0f;
@@ -779,7 +800,7 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-            else if (espColor == 4)
+            else if (espSetting == 4)
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
@@ -804,7 +825,8 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-        }//
+        }
+
         public static GameObject name;
         public static GameObject distance;
         public static float l;

@@ -14,7 +14,6 @@ using HarmonyLib;
 using static Hidden.Initialization.PluginInfo;
 using Hidden.Utilities;
 using System.IO;
-//using g3;
 using Valve.VR;
 using UnityEngine.Animations.Rigging;
 using Photon.Pun;
@@ -69,7 +68,6 @@ namespace Hidden.Menu
             colorMaterial.SetFloat("_Mode", 2f);
 
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
-            string not = "Not Connected To Room";
             try
             {
                 Material mat;
@@ -82,7 +80,7 @@ namespace Hidden.Menu
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = new Color32(111, 252, 243, 255);
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = colorMaterial.color;
-                textMeshPro.text = $"\nThank You For Using Hidden!\n\nStatus: <color=#6ffcf3>{status}</color>\nCurrent User: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=#6ffcf3>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=#6ffcf3>{fps}</color> \nCurrent Room: <color=#6ffcf3>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : not)} </color> \n\n We Hope You Enjoy The Menu";
+                textMeshPro.text = $"\nThank You For Using Hidden!\n\nStatus: <color=#6ffcf3>{status}</color>\nCurrent User: <color=#6ffcf3>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \nCurrent Ping: <color=#6ffcf3>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\nCurrent FPS: <color=#6ffcf3>{fps}</color> \nCurrent Room: <color=#6ffcf3>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n We Hope You Enjoy The Menu";
                 textMeshPro.alignment = TextAlignmentOptions.Top;
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = "Menu Meanings\n-----------------------------";
@@ -93,7 +91,7 @@ namespace Hidden.Menu
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = colorMaterial.color;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = new Color32(111, 252, 243, 255);
             }
             catch
             {
@@ -371,9 +369,9 @@ namespace Hidden.Menu
                 Theme = 1;
                 RefreshMenu();
             }
-            if (Theme == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Theme == 1)
                 {
                     if (btn.buttonText == "Change Theme: Green")
                     {
@@ -389,10 +387,7 @@ namespace Hidden.Menu
                         RefreshMenu();
                     }
                 }
-            }
-            if (Theme == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Theme == 2)
                 {
                     if (btn.buttonText == "Change Theme: Dark")
                     {
@@ -408,11 +403,9 @@ namespace Hidden.Menu
                         RefreshMenu();
                     }
                 }
-            }
-            if (Theme == 3)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Theme == 3)
                 {
+
                     if (btn.buttonText == "Change Theme: Blue")
                     {
                         btn.SetText("Change Theme: Red");
@@ -427,10 +420,7 @@ namespace Hidden.Menu
                         RefreshMenu();
                     }
                 }
-            }
-            if (Theme == 4)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Theme == 4)
                 {
                     if (btn.buttonText == "Change Theme: Red")
                     {
@@ -448,6 +438,7 @@ namespace Hidden.Menu
                 }
             }
         }
+       
         public static int ActuallSound = 114;
         public static int LOJUHFDG = 6;
         public static void ChangeSound()
@@ -492,9 +483,9 @@ namespace Hidden.Menu
                 Laytou = 1;
                 RefreshMenu();
             }
-            if (Laytou == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Laytou == 1)
                 {
                     if (btn.buttonText == "Change Layout: Top")
                     {
@@ -502,21 +493,15 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
                     }
                 }
-            }
-            if (Laytou == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
-                { 
+                if (Laytou == 2)
+                {
                     if (btn.buttonText == "Change Layout: Sides")
                     {
                         btn.SetText("Change Layout: Bottom");
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
                     }
                 }
-            }
-            if (Laytou == 3)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (Laytou == 3)
                 {
                     if (btn.buttonText == "Change Layout: Bottom")
                     {
@@ -629,7 +614,7 @@ namespace Hidden.Menu
             title.resizeTextMinSize = 0;
             RectTransform titleTransform = title.GetComponent<RectTransform>();
             titleTransform.localPosition = Vector3.zero;
-            titleTransform.position = new Vector3(0.07f, 0f, .16f);
+            titleTransform.position = new Vector3(0.07f, 0f, .1645f);
             titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             titleTransform.sizeDelta = new Vector2(0.295f, 0.06f);
         }
@@ -640,7 +625,7 @@ namespace Hidden.Menu
             title.font = font;
 
             title.text =
-            $"{menuName} ┇ V{menuVersion}";
+            $"{menuName}{(vCounter ? " ┇" + menuVersion : "")}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {
@@ -900,7 +885,6 @@ namespace Hidden.Menu
         {
             if (currentPage != Category.Home)
             {
-
                 if (Laytou == 2)
                 {
                     // Return Button

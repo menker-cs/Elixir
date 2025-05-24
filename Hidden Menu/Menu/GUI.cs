@@ -362,7 +362,7 @@ namespace Hidden.Menu
             DoTexture(new Rect(314f, 70f, 195f, 70f), timeTexture, 12);
             DoTexture(new Rect(110f, 150f, guiRect.width - 125f, guiRect.height - 156f), updatesTexture, 12);
 
-            GUI.Label(new Rect(115f, 2f, guiRect.width, 45f), $"We're glad your here, {PhotonNetwork.LocalPlayer.NickName.ToLower().FirstToUpper()}!", CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleLeft));
+            GUI.Label(new Rect(115f, 2f, guiRect.width, 45f), $"Thanks for using the menu, {PhotonNetwork.LocalPlayer.NickName.ToLower().FirstToUpper()}!", CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleLeft));
             GUI.Label(new Rect(115f, 29f, guiRect.width, 45f), "Press INSERT to toggle this GUI", CreateLabelStyle(Color.gray, 17, FontStyle.Italic, TextAnchor.MiddleLeft));
 
             GUI.Label(new Rect(122f, 68f, 165f, 30f), "Version", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleCenter));
@@ -371,7 +371,15 @@ namespace Hidden.Menu
             GUI.Label(new Rect(123f, 95f, 165f, 30f), VersionOfMenu, CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
 
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
-            GUI.Label(new Rect(115f, 172f, 400f, 150f), "Added Punch Mod\nAdded Random CS Mods\nAdded Velocity Jump\nAdvanced Nametags", CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft));
+            GUI.Label(new Rect(115f, 172f, 400f, 150f), 
+                "Added Tool Tips\n" +
+                "Added Toggle Version Counter\n" +
+                "Added Setting Text Display\n" +
+                "Added Gun Customizations\n" +
+                "Added Orbit/Annoy Self\n" +
+                "Fixed All Bugs I Found", 
+                CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft)
+            );
         }
         #endregion
 

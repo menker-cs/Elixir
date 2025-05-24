@@ -214,6 +214,7 @@ namespace Hidden.Utilities
         public static Shader uberShader = Shader.Find("GorillaTag/UberShader");
 
         public static Color32 Hidden = new Color32(25, 25, 25, 255);
+        public static Color32 Menker = new Color32(111, 252, 243, 255);
 
         public static int CurrentTheme = 0;
         public static Color32[] ThemeArraya = new Color32[]

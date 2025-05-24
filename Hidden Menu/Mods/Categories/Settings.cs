@@ -53,6 +53,10 @@ namespace Hidden.Mods.Categories
         {
             tip = setActive;
         }
+        public static void ToggleVCounter(bool setActive)
+        {
+            vCounter = setActive;
+        }
         public static void ToggleDisconnectButton(bool setActive)
         {
             toggledisconnectButton = setActive;
@@ -178,50 +182,37 @@ namespace Hidden.Mods.Categories
             {
                 espSetting = 1;
             }
-            if (espSetting == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (espSetting == 1)
                 {
                     if (btn.buttonText == "Change ESP Color: Menu Color")
                     {
                         btn.SetText("Change ESP Color: Infection");
-                        espColor = 1;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
                     }
                 }
-            }
-            if (espSetting == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (espSetting == 2)
                 {
                     if (btn.buttonText == "Change ESP Color: Infection")
                     {
                         btn.SetText("Change ESP Color: Casual");
-                        espColor = 2;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
                     }
                 }
-            }
-            if (espSetting == 3)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (espSetting == 3)
                 {
                     if (btn.buttonText == "Change ESP Color: Casual")
                     {
                         btn.SetText("Change ESP Color: RGB");
-                        espColor = 3;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
                     }
                 }
-            }
-            if (espSetting == 4)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (espSetting == 4)
                 {
                     if (btn.buttonText == "Change ESP Color: RGB")
                     {
                         btn.SetText("Change ESP Color: Menu Color");
-                        espColor = 4;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
                     }
                 }
@@ -229,31 +220,26 @@ namespace Hidden.Mods.Categories
         }
         public static void GunChange()
         {
-            GunSetting++;
-            if (GunSetting > 2)
+            gunSetting++;
+            if (gunSetting > 2)
             {
-                GunSetting = 1;
+                gunSetting = 1;
             }
-            if (GunSetting == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (gunSetting == 1)
                 {
                     if (btn.buttonText == "Change Gun Type: Ball")
                     {
                         btn.SetText("Change Gun Type: Ball + Line");
-                        gunSetting = 1;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
                     }
                 }
-            }
-            if (GunSetting == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (gunSetting == 2)
                 {
                     if (btn.buttonText == "Change Gun Type: Ball + Line")
                     {
                         btn.SetText("Change Gun Type: Ball");
-                        gunSetting = 2;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
                     }
                 }
@@ -265,17 +251,15 @@ namespace Hidden.Mods.Categories
         }
         public static void Discord()
         {
-            UnityEngine.Application.OpenURL("https://discord.gg/WFJ9nJQxnr");
+            UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
         }
         public static void Link(string url)
         {
             UnityEngine.Application.OpenURL(url);
         }
 
-        public static int espColor = 1;
-        static int espSetting = 1;
+        public static int espSetting = 1;
 
-        static int GunSetting = 1;
         public static int gunSetting = 1;
 
         static int speedboostchanger = 1;

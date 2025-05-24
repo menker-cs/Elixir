@@ -60,6 +60,7 @@ namespace Hidden.Mods
             new Button("Disable All Mods", Category.Settings, false, false, ()=>DisableAllMods(), null, "Disables All Mods"),
             new Button("Right Handed Menu", Category.Settings, true, false, ()=>SwitchHands(true), ()=>SwitchHands(false), "Switches Hand The Menu Is On"),
             new Button("Disconnect Button", Category.Settings, true, true, ()=>ToggleDisconnectButton(true), ()=>ToggleDisconnectButton(false), "Toggles The Disconnect Button"),
+            new Button("Toggle Version Counter", Category.Settings, true, true, ()=>ToggleVCounter(true), ()=>ToggleVCounter(false), "Toggles The Version Counter"),
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false), "Toggles Notifications"),
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false), "Toggles Tool Tips"),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null, "Clears Notifications"),
