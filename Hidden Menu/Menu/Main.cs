@@ -137,6 +137,7 @@ namespace Hidden.Menu
                 }
 
                 HandleMenuInteraction();
+                UpdateClr();
             }
             catch (NullReferenceException ex)
             {
@@ -146,11 +147,6 @@ namespace Hidden.Menu
             {
                 UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
-            try
-            {
-               // Stumpy();
-            }
-            catch { }
         }
         public static float j = 0f;
         public static float k = 0.2f;
@@ -281,6 +277,7 @@ namespace Hidden.Menu
                         currentMenuRigidbody.velocity = currentVelocity;
                         previousVelocity = currentVelocity;
                     }
+
                     CleanupMenu(1);
                 }
             }
@@ -345,7 +342,19 @@ namespace Hidden.Menu
             Destroy(background.GetComponent<Rigidbody>());
             Destroy(background.GetComponent<BoxCollider>());
             Outline(background, outColor);
-            background.GetComponent<MeshRenderer>().material.color = MenuColor;
+            if (Theme == 2 || Theme == 3)
+            {
+                background.GetComponent<MeshRenderer>().material = Theme == 2 ? DFade : DBreath;
+            }
+            else if (Theme == 4)
+            {
+                background.GetComponent<MeshRenderer>().material = RGB;
+
+            }
+            else
+            {
+                background.GetComponent<MeshRenderer>().material.color = MenuColor;
+            }
             background.transform.parent = menuObj.transform;
             background.transform.rotation = Quaternion.identity;
             background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
@@ -364,7 +373,7 @@ namespace Hidden.Menu
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 4)
+            if (Theme > 7)
             {
                 Theme = 1;
                 RefreshMenu();
@@ -391,6 +400,54 @@ namespace Hidden.Menu
                 {
                     if (btn.buttonText == "Change Theme: Dark")
                     {
+                        btn.SetText("Change Theme: Fading");
+                        MenuColorT = ColorLib.Hidden;
+                        MenuColor = ColorLib.Hidden;
+                        ButtonColorOff = DarkGrey;
+                        ButtonColorOn = new Color32(35, 35, 35, 255);
+                        outColor = DarkerGrey;
+                        DisconnecyColor = ButtonColorOff;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
+                        RefreshMenu();
+                    }
+                }
+                if (Theme == 3)
+                {
+                    if (btn.buttonText == "Change Theme: Fading")
+                    {
+                        btn.SetText("Change Theme: Breathing");
+                        MenuColorT = ColorLib.Hidden;
+                        MenuColor = ColorLib.Hidden;
+                        ButtonColorOff = DarkGrey;
+                        ButtonColorOn = new Color32(35, 35, 35, 255);
+                        outColor = DarkerGrey;
+                        DisconnecyColor = ButtonColorOff;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
+                        RefreshMenu();
+                    }
+                }
+                if (Theme == 4)
+                {
+                    if (btn.buttonText == "Change Theme: Breathing")
+                    {
+                        btn.SetText("Change Theme: RGB");
+                        MenuColorT = ColorLib.Hidden;
+                        MenuColor = RGB.color;
+                        ButtonColorOff = new Color32(30, 30, 30, 255);
+                        ButtonColorOn = DarkerGrey;
+                        outColor = Black;
+                        DisconnecyColor = ButtonColorOff;
+                        disOut = outColor;
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] RGB</color>");
+                        RefreshMenu();
+                    }
+                }
+                if (Theme == 5)
+                {
+                    if (btn.buttonText == "Change Theme: RGB")
+                    {
                         btn.SetText("Change Theme: Blue");
                         MenuColorT = SkyBlueTransparent;
                         MenuColor = SkyBlue;
@@ -403,7 +460,7 @@ namespace Hidden.Menu
                         RefreshMenu();
                     }
                 }
-                if (Theme == 3)
+                if (Theme == 6)
                 {
 
                     if (btn.buttonText == "Change Theme: Blue")
@@ -420,7 +477,7 @@ namespace Hidden.Menu
                         RefreshMenu();
                     }
                 }
-                if (Theme == 4)
+                if (Theme == 7)
                 {
                     if (btn.buttonText == "Change Theme: Red")
                     {
@@ -535,7 +592,7 @@ namespace Hidden.Menu
                 discontext.text = "Disconnect";
                 discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
-                if (Theme == 3)
+                if (Theme == 5)
                 {
                     discontext.color = Black;
                 }
@@ -599,7 +656,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 3)
+            if (Theme == 5)
             {
                 title.color = Black;
             }
@@ -662,7 +719,7 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 3)
+            if (Theme == 5)
             {
                 title.color = Black;
             }
@@ -749,7 +806,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3)
+                if (Theme == 5)
                 {
                     title.color = Black;
                 }
@@ -804,7 +861,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3)
+                if (Theme == 5)
                 {
                     title.color = Black;
                 }
@@ -860,7 +917,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 3)
+                if (Theme == 5)
                 {
                     title.color = Black;
                 }
@@ -923,7 +980,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 3)
+                    if (Theme == 5)
                     {
                         title.color = Black;
                     }
@@ -979,7 +1036,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 3)
+                    if (Theme == 5)
                     {
                         title.color = Black;
                     }
@@ -1035,7 +1092,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 3)
+                    if (Theme == 5)
                     {
                         title.color = Black;
                     }

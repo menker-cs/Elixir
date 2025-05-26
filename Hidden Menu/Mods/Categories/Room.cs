@@ -94,6 +94,10 @@ namespace Hidden.Mods.Categories
                 PhotonNetwork.Disconnect();
             }
         }
+        public static void Servers(string svr)
+        {
+            PhotonNetwork.ConnectToRegion(svr);
+        }
         public static void JoinRoom(string RoomCode)
         {
             PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(RoomCode, JoinType.Solo);

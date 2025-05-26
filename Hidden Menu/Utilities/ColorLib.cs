@@ -4,6 +4,7 @@ using UnityEngine;
 using static Hidden.Menu.Optimizations;
 using UnityEngine.Networking;
 using System.Collections;
+//using System.Drawing;
 
 namespace Hidden.Utilities
 {
@@ -212,6 +213,18 @@ namespace Hidden.Utilities
 
         public static Shader guiShader = Shader.Find("GUI/Text Shader");
         public static Shader uberShader = Shader.Find("GorillaTag/UberShader");
+
+        public static Material RGB = new Material(uberShader);
+        public static Material DFade = new Material(uberShader);
+        public static Material DBreath = new Material(uberShader);
+        public static void UpdateClr()
+        {
+            float num = Mathf.PingPong(Time.time * 0.3f, 1f);
+            float num2 = 0.75f;
+            RGB.color = Color.HSVToRGB(num, 1f, num2);
+            DFade.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1f));
+            DBreath.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1.5f));
+        }
 
         public static Color32 Hidden = new Color32(25, 25, 25, 255);
         public static Color32 Menker = new Color32(111, 252, 243, 255);
