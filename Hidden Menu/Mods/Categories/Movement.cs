@@ -460,3 +460,15 @@ namespace Hidden.Mods.Categories
         static bool Ir = false;
     }
 }
+
+public static void Leap()
+		{
+			bool rightControllerSecondaryButton = ControllerInputPoller.instance.rightControllerSecondaryButton;
+			if (rightControllerSecondaryButton)
+			{
+				GTPlayer instance = GTPlayer.Instance;
+				Transform transform = instance.bodyCollider.transform;
+				Vector3 velocity = transform.forward * 10f;
+				instance.bodyCollider.attachedRigidbody.velocity = velocity;
+			}
+		}
