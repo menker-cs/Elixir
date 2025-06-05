@@ -443,4 +443,43 @@ public static void WaterBalloonSpam()
 					Projectiles.EnableAllProjs();
 		  }
 }
-		
+
+public static void GetHoverboard()
+		{
+			GTPlayer instance = GTPlayer.Instance;
+			bool flag = instance == null;
+			if (!flag)
+			{
+				bool rightGrab = ControllerInputPoller.instance.rightGrab;
+				if (rightGrab)
+				{
+					bool flag2 = Hoverboards.cangrabR;
+					if (flag2)
+					{
+						instance.GrabPersonalHoverboard(false, Vector3.zero, GorillaTagger.Instance.rightHandTransform.transform.rotation * Quaternion.Euler(0f, 180f, 0f), Color.red);
+						Hoverboards.cangrabR = false;
+					}
+				}
+				else
+				{
+					Hoverboards.cangrabR = true;
+				}
+				bool leftGrab = ControllerInputPoller.instance.leftGrab;
+				if (leftGrab)
+				{
+					bool flag3 = Hoverboards.cangrabL;
+					if (flag3)
+					{
+						instance.GrabPersonalHoverboard(true, Vector3.zero, GorillaTagger.Instance.leftHandTransform.transform.rotation * Quaternion.Euler(0f, 180f, 0f), Color.red);
+						Hoverboards.cangrabL = false;
+					}
+				}
+				else
+				{
+					Hoverboards.cangrabL = true;
+			}
+}
+public static bool cangrabR = true;
+
+public static bool cangrabL = true;
+
