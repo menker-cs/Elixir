@@ -424,3 +424,23 @@ public static void SpazSpin()
 				GorillaTagger.Instance.offlineVRRig.enabled = true;
 			}
 }
+
+public static void WaterBalloonSpam()
+		{
+			bool flag = ControllerInputPoller.instance.rightControllerGripFloat > 0.1f || UnityInput.Current.GetKey(103);
+			if (flag)
+			{
+				bool flag2 = Projectiles.projModsEnabled;
+				if (flag2)
+				{
+					Vector3 velocity = -GorillaTagger.Instance.offlineVRRig.rightHandTransform.transform.up * 0f;
+					Vector3 position = GorillaTagger.Instance.offlineVRRig.rightHandTransform.transform.position;
+					Quaternion rotation = GorillaTagger.Instance.offlineVRRig.rightHandTransform.rotation;
+					Projectiles.LaunchSnowBallProjectile("Player Objects/Local VRRig/Local Gorilla Player/RigAnchor/rig/body/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R/TransferrableItemRightHand/WaterBalloonRightAnchor(Clone)", "LMAEY. RIGHT.", velocity, position, rotation, Color.white, true);
+				}
+				else
+				{
+					Projectiles.EnableAllProjs();
+		  }
+}
+		
