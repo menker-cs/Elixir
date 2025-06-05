@@ -99,6 +99,7 @@ namespace Hidden.Mods
             new Button("Copy ID Gun", Category.Room, true, false, ()=> CopyIDGun(), null, "Copys A Player's ID"),
             new Button("Anti Report", Category.Room, true, true, ()=>AntiReport(), null, "Disconnects You When People Try To Report You"),
             new Button("Strict Anti Report", Category.Room, true, false, ()=>StrictAntiReport(), null, "Anti Report But Bigger"),
+            new Button("Primary Disconnect", Category.Room, true, false, ()=>Primary Disconnect(), null, "Disconnect With Primary Button"),
             #endregion
 
             #region Movement
@@ -133,6 +134,7 @@ namespace Hidden.Mods
             new Button("TP To Player Gun", Category.Move, true, false, ()=>TPPlayerGun(), null, "TP To A Player"),
             new Button("Hover Gun", Category.Move, true, false, ()=>HoverGun(), null, "Hover Over A Player"),
             new Button("Check Point [RG, RT, A]", Category.Move, true, false, ()=>Checkpoint(), null, "Create Checkpoints"),
+            new Button("Leap", Category.Move, true, false, ()=>Leap(), null, "Makes Yourself Leap Forward"),
             #endregion
             
             #region Player
