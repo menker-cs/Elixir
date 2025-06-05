@@ -409,3 +409,18 @@ namespace Hidden.Mods.Categories
         private static bool lag = false;
     }
 }
+
+public static void SpazSpin()
+		{
+			bool leftGrab = ControllerInputPoller.instance.leftGrab;
+			bool flag = leftGrab;
+			if (flag)
+			{
+				GorillaTagger.Instance.offlineVRRig.enabled = false;
+				GorillaTagger.Instance.offlineVRRig.transform.Rotate(new Vector3(90f, 90f, 90f));
+			}
+			else
+			{
+				GorillaTagger.Instance.offlineVRRig.enabled = true;
+			}
+}
