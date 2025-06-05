@@ -99,7 +99,6 @@ namespace Hidden.Mods
             new Button("Copy ID Gun", Category.Room, true, false, ()=> CopyIDGun(), null, "Copys A Player's ID"),
             new Button("Anti Report", Category.Room, true, true, ()=>AntiReport(), null, "Disconnects You When People Try To Report You"),
             new Button("Strict Anti Report", Category.Room, true, false, ()=>StrictAntiReport(), null, "Anti Report But Bigger"),
-            new Button("Primary Disconnect", Category.Room, true, false, ()=>Primary Disconnect(), null, "Disconnect With Primary Button"),
             #endregion
 
             #region Movement
