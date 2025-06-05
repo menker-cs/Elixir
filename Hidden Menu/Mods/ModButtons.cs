@@ -168,6 +168,7 @@ namespace Hidden.Mods
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
             new Button("Spaz Spin", Category.Player, true, false, ()=>SpazSpin(), null, "Spaz Your Rig In A Circle "),
             new Button("Water Balloon Spam", Category.Player, true, false, ()=>WaterBalloonSpam(), null, "Spams Water Ballons"),
+            new Button("Get Hoverboard", Category.Player, true, false, ()=>WaterBalloonSpam(), null, "Gives You're Hoverboard To Yourself"),
             #endregion
 
             #region Visuals
