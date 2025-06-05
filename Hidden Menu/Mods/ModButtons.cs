@@ -135,12 +135,13 @@ namespace Hidden.Mods
             new Button("Hover Gun", Category.Move, true, false, ()=>HoverGun(), null, "Hover Over A Player"),
             new Button("Check Point [RG, RT, A]", Category.Move, true, false, ()=>Checkpoint(), null, "Create Checkpoints"),
             new Button("Leap", Category.Move, true, false, ()=>Leap(), null, "Makes Yourself Leap Forward"),
+            new Button("Pull Mod", Category.Move, true, false, ()=>PullMod(), null, "Pull Yourself And Others"),
             #endregion
             
             #region Player
             new Button("Long Arms", Category.Player, true, false, ()=>LongArms(), ()=>FixArms(), "Makes Your Arms Longer"),
             new Button("Very Long Arms", Category.Player, true, false, ()=>VeryLongArms(), ()=>FixArms(), "Very Long Arms"),
-            new Button("<color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
+            new Button("<cnew Button("Leap", Category.Move, true, false, ()=>Leap(), null, "Makes Yourself Leap Forward"),olor=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
             new Button("Short Arms", Category.Player, true, false, ()=>FlatMonk(), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
             new Button("Backwards Head", Category.Player, true, false, ()=>BackwardsHead(), ()=>FixHead(), "Makes Your Head Backwards"),
@@ -166,6 +167,7 @@ namespace Hidden.Mods
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura(), null, "Tag People Near You"),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
+            new Button("Spaz Spin", Category.Player, true, false, ()=>SpazSpin(), null, "Spaz Your Rig In A Circle "),
             #endregion
 
             #region Visuals
