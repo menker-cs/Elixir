@@ -168,6 +168,7 @@ namespace Hidden.Mods
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
             new Button("Spaz Spin", Category.Player, true, false, ()=>SpazSpin(), null, "Spaz Your Rig In A Circle "),
+            new Button("Water Balloon Spam", Category.Player, true, false, ()=>WaterBalloonSpam(), null, "Spams Water Ballons"),
             #endregion
 
             #region Visuals
