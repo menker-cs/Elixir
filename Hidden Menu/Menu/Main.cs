@@ -625,7 +625,7 @@ namespace Hidden.Menu
                 textMeshPro.characterSpacing = 1f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.color = ColorLib.Hidden;
-                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color> with love";
+                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker and Leanie</color> with love";
                 textMeshPro.font = TMP_FontAsset.CreateFontAsset(font);
             }
 
