@@ -22,15 +22,14 @@ using Hidden.Utilities;
 using Hidden.Mods.Categories;
 using static Hidden.Menu.ButtonHandler;
 using Unity.Mathematics;
+using Hidden.Menu;
 
 namespace Hidden.Mods
 {
     public enum Category
     {
-        // Starting Page
         Home,
 
-        // Mod Categories
         Settings,
         Room,
         Player,
@@ -64,6 +63,7 @@ namespace Hidden.Mods
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false), "Toggles Notifications"),
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false), "Toggles Tool Tips"),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null, "Clears Notifications"),
+            new Button("Toggle Array List", Category.Settings, true, true, ()=>HiddenGUI.ToggleArrayList(true), ()=>HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false), "Toggles Bark Menu Position"),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false), "Toggles Menu Outline"),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false), "Toggles Menu Gravity"),
@@ -133,14 +133,12 @@ namespace Hidden.Mods
             new Button("TP To Player Gun", Category.Move, true, false, ()=>TPPlayerGun(), null, "TP To A Player"),
             new Button("Hover Gun", Category.Move, true, false, ()=>HoverGun(), null, "Hover Over A Player"),
             new Button("Check Point [RG, RT, A]", Category.Move, true, false, ()=>Checkpoint(), null, "Create Checkpoints"),
-            new Button("Leap", Category.Move, true, false, ()=>Leap(), null, "Makes Yourself Leap Forward"),
-            new Button("Pull Mod", Category.Move, true, false, ()=>PullMod(), null, "Pull Yourself And Others"),
             #endregion
             
             #region Player
             new Button("Long Arms", Category.Player, true, false, ()=>LongArms(), ()=>FixArms(), "Makes Your Arms Longer"),
             new Button("Very Long Arms", Category.Player, true, false, ()=>VeryLongArms(), ()=>FixArms(), "Very Long Arms"),
-            new Button("<cnew Button("Leap", Category.Move, true, false, ()=>Leap(), null, "Makes Yourself Leap Forward"),olor=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
+            new Button("color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
             new Button("Short Arms", Category.Player, true, false, ()=>FlatMonk(), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
             new Button("Backwards Head", Category.Player, true, false, ()=>BackwardsHead(), ()=>FixHead(), "Makes Your Head Backwards"),
@@ -166,9 +164,7 @@ namespace Hidden.Mods
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura(), null, "Tag People Near You"),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
-            new Button("Spaz Spin", Category.Player, true, false, ()=>SpazSpin(), null, "Spaz Your Rig In A Circle "),
-            new Button("Water Balloon Spam", Category.Player, true, false, ()=>WaterBalloonSpam(), null, "Spams Water Ballons"),
-            new Button("Get Hoverboard", Category.Player, true, false, ()=>WaterBalloonSpam(), null, "Gives You're Hoverboard To Yourself"),
+
             #endregion
 
             #region Visuals
@@ -185,6 +181,7 @@ namespace Hidden.Mods
             new Button("Snake ESP", Category.Visuals, true, false, ()=>SnakeESP(), null, "Creates Snake ESP On Players"),
             #endregion
 
+            #region Fun
             new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS), null, "Opens CS Category"),
             new Button("Vibrator", Category.Fun, true, false, ()=>Vibrator(), null, "Vibrates"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
@@ -197,7 +194,9 @@ namespace Hidden.Mods
             new Button("Bat Halo", Category.Fun, true, false, ()=> BatHalo(), null, "Halos The Bat Above You"),
             new Button("Grab Soccer Ball [G]", Category.Fun, true, false, ()=> GrabSBall(), null, "Grabs The Soccer Ball"),
             new Button("Soccer Ball Gun", Category.Fun, true, false, ()=> SBallGun(), null, "Places The Ball Where You Shoot"),
+            #endregion
 
+            #region CS
             new Button("Draw", Category.CS, true, false, ()=> Fun.Draw(), null, "You Can Draw On Air"),
             new Button("Orb Spam", Category.CS, true, false, ()=> Fun.GravDraw(), null, "Spams Orbs"),
             new Button("Orb Launcher", Category.CS, true, false, ()=> Spam1(), null, "Launches Obrs"),
@@ -209,7 +208,9 @@ namespace Hidden.Mods
             new Button("Big Gun Orb", Category.CS, true, false, ()=> OrbGun1(), null, "Shoot Big Orbs"),
             new Button("Orb Rain", Category.CS, true, false, ()=> OrbRain(), null, "Rains Orbs"),
             new Button("Orb Rain Trace", Category.CS, true, false, ()=> OrbRain1(), null, "Nicer Looking Orb Rain"),
+            #endregion
 
+            #region World
             new Button("Stump Text", Category.World, true, true, ()=>Stumpy(), ()=> STUMPY(), "Makes Text In Stump"),
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp(), null, "Unlocks Comp"),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou(), "Toggles I Lava You Update"),
@@ -217,12 +218,15 @@ namespace Hidden.Mods
             new Button("Change Time Night", Category.World, false, false, ()=> NightTimeMod(), null, "Makes It Night"),
             new Button("Change Time Day", Category.World, false, false, ()=> idkTimeMod(), null, "Makes It Day"),
             new Button("Enable Shadows", Category.World, true, false, ()=> Shadows(true), ()=> Shadows(false), "Toggles Shadows"),
+#endregion
 
             #region Credits
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder(), null, "Credits Of The Menu"),
             new Button("Menker", Category.Creds, false, false, ()=>Placeholder(), null, "Menu Owner"),
             new Button("NxO Template", Category.Creds, false, false, ()=>Placeholder(), null, "Template This Is Based From"),
             new Button("Revanent", Category.Creds, false, false, ()=>Placeholder(), null, "GUI Creator"),
+            new Button("Wizzy", Category.Creds, false, false, ()=>Placeholder(), null, "Mod Helper"),
+            new Button("cum_gobbler99", Category.Creds, false, false, ()=>Placeholder(), null, "Custom Boards"),
             new Button("Join The Discord!", Category.Creds, false, false, ()=>Discord(), null, "Join Our Discord Server"),
             #endregion
         };

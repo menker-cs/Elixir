@@ -228,5 +228,16 @@ namespace Hidden.Utilities
 
         public static Color32 Hidden = new Color32(25, 25, 25, 255);
         public static Color32 Menker = new Color32(111, 252, 243, 255);
+
+        public static int CurrentTheme = 0;
+        public static Color32[] ThemeArraya = new Color32[]
+        {
+            new Color32(0, 0, 200, 255),    // Blue
+            new Color32(0, 0, 0, 255),     // Black
+            new Color32(123, 3, 200, 255), // Purple
+            new Color32(0, 100, 0, 255),   // Green
+            new Color32(200, 0, 0, 255),   // Red
+            new Color32(200, 60, 0, 255),  // Orange
+        };
     }
 }
