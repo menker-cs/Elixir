@@ -177,24 +177,9 @@ namespace Hidden.Menu
             table.Add("Hidden Menu", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
 
-            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
+            status = status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
         }
-        private static int i = 0;
-        [HarmonyPrefix]
-        public static void Update()
-        {
-            if (PhotonNetwork.InRoom && i < 1)
-            {
-                i++;
-                SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has joined code: **{PhotonNetwork.CurrentRoom.Name}**, Players In Lobby: " + PhotonNetwork.CurrentRoom.PlayerCount + "/10");
-            }
-            if (!PhotonNetwork.InRoom && i >= 1)
-            {
-                i = 0;
-                SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
-            }
-        }
-        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
+        static string status;
         public static void HandleMenuInteraction()
         {
             try
@@ -349,7 +334,6 @@ namespace Hidden.Menu
             else if (Theme == 4)
             {
                 background.GetComponent<MeshRenderer>().material = RGB;
-
             }
             else
             {
@@ -592,7 +576,7 @@ namespace Hidden.Menu
                 discontext.text = "Disconnect";
                 discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     discontext.color = Black;
                 }
@@ -656,7 +640,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
+            if (Theme == 8)
             {
                 title.color = Black;
             }
@@ -682,7 +666,7 @@ namespace Hidden.Menu
             title.font = font;
 
             title.text =
-            $"{menuName}{(vCounter ? " ┇" + menuVersion : "")}";
+            $"{menuName}{(vCounter ? " ┇ " + menuVersion : "")}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {
@@ -719,7 +703,7 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
+            if (Theme == 8)
             {
                 title.color = Black;
             }
@@ -806,7 +790,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -861,7 +845,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -917,7 +901,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -980,7 +964,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }
@@ -1036,7 +1020,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }
@@ -1092,7 +1076,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }

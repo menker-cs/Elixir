@@ -153,7 +153,7 @@ namespace Hidden.Menu
         public class BtnCollider : MonoBehaviour
         {
             public Button clickedButton;
-            public static int clickCooldown = 1;
+            public static float clickCooldown = 0.8f;
 
             public void OnTriggerEnter(Collider collider)
             {

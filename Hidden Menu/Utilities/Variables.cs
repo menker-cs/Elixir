@@ -28,7 +28,7 @@ namespace Hidden.Utilities
         public static GameObject ModButton = null;
         public static Text title;
 
-        public static Font font = Font.CreateDynamicFontFromOSFont("MS Gothic", 16);
+        public static Font font = Font.CreateDynamicFontFromOSFont("Fixedsys", 16);
 
         // --- UI Colors ---
         public static Color ClickerColor = Color.black;
@@ -198,33 +198,6 @@ namespace Hidden.Utilities
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
-        public static void SendWeb(string str)
-        {
-            string jsonPayload = $"{{\"content\": \"{str}\"}}";
-
-            GorillaTagger.Instance.StartCoroutine(SendWebhook(jsonPayload));
-        }
-        private static IEnumerator SendWebhook(string jsonPayload)
-        {
-            using (UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST"))
-            {
-                byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
-                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-
-                yield return request.SendWebRequest();
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                }
-                else
-                {
-                }
-            }
-        }
-        // If you plan on spamming this webhook its not worth it cuz its private and nobodu sees it
-        static string webhookUrl = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
     }
 }
 
