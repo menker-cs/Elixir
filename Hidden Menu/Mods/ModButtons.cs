@@ -29,7 +29,7 @@ namespace Hidden.Mods
     public enum Category
     {
         Home,
-
+        EnabledMods,
         Settings,
         Room,
         Player,
