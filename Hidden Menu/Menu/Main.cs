@@ -7,51 +7,15 @@ using static Hidden.Utilities.Variables;
 using static Hidden.Utilities.ColorLib;
 using static Hidden.Menu.Optimizations;
 using static Hidden.Menu.ButtonHandler;
-using static Hidden.Mods.Categories.Room;
 using BepInEx;
 using UnityEngine.InputSystem;
 using HarmonyLib;
 using static Hidden.Initialization.PluginInfo;
 using Hidden.Utilities;
-using System.IO;
-using Valve.VR;
-using UnityEngine.Animations.Rigging;
 using Photon.Pun;
-using UnityEngine.ProBuilder.MeshOperations;
-using GorillaNetworking;
 using System.Net;
-using System.Threading;
-using Hidden.Mods.Categories;
-using GorillaExtensions;
 using TMPro;
-using System.Reflection;
-using Hidden.Menu;
-using static GorillaTelemetry;
-using Hidden.Menu;
-using Hidden.Mods;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Menu.Optimizations;
-using UnityEngine.UIElements;
-using BepInEx;
-using HarmonyLib;
-using PlayFab.ExperimentationModels;
-using System;
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.UIElements;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine.Networking;
-using Photon.Realtime;
-using Oculus.Interaction.Samples;
-using System.Text;
 using Hidden.Utilities.Notifs;
-using GorillaLocomotion;
 
 namespace Hidden.Menu
 {
@@ -164,6 +128,7 @@ namespace Hidden.Menu
             trailRenderer.startColor = clr;
             trailRenderer.endColor = clr2;
         }
+
         public void Awake()
         {
             ResourceLoader.LoadResources();
@@ -177,7 +142,7 @@ namespace Hidden.Menu
             table.Add("Hidden Menu", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
 
-            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
+            status = status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
         }
         private static int i = 0;
         [HarmonyPrefix]
@@ -194,7 +159,7 @@ namespace Hidden.Menu
                 SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
             }
         }
-        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
+        static string status;
         public static void HandleMenuInteraction()
         {
             try
@@ -334,7 +299,6 @@ namespace Hidden.Menu
                 gameObject.GetComponent<Renderer>().material.color = clr;
             }
         }
-
         private static void CreateBackground()
         {
             // Background
@@ -349,17 +313,11 @@ namespace Hidden.Menu
             else if (Theme == 4)
             {
                 background.GetComponent<MeshRenderer>().material = RGB;
-
             }
             else
             {
                 background.GetComponent<MeshRenderer>().material.color = MenuColor;
             }
-            background.transform.parent = menuObj.transform;
-            background.transform.rotation = Quaternion.identity;
-            background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
-            background.name = "menucolor";
-            background.transform.position = new Vector3(0.05f, 0f, 0f);
         }
         #region settings
         public static int Theme = 1;
@@ -592,7 +550,7 @@ namespace Hidden.Menu
                 discontext.text = "Disconnect";
                 discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     discontext.color = Black;
                 }
@@ -625,7 +583,7 @@ namespace Hidden.Menu
                 textMeshPro.characterSpacing = 1f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.color = ColorLib.Hidden;
-                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker and Leanie</color> with love";
+                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color>";
                 textMeshPro.font = TMP_FontAsset.CreateFontAsset(font);
             }
 
@@ -656,7 +614,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
+            if (Theme == 8)
             {
                 title.color = Black;
             }
@@ -719,7 +677,7 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
+            if (Theme == 8)
             {
                 title.color = Black;
             }
@@ -806,7 +764,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -861,7 +819,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -917,7 +875,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
+                if (Theme == 8)
                 {
                     title.color = Black;
                 }
@@ -980,7 +938,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }
@@ -1036,7 +994,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }
@@ -1092,7 +1050,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
+                    if (Theme == 8)
                     {
                         title.color = Black;
                     }

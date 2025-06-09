@@ -13,6 +13,7 @@ using static Hidden.Utilities.Variables;
 using static Hidden.Utilities.ColorLib;
 using Hidden.Utilities;
 using System.Net;
+using System.Linq;
 
 namespace Hidden.Menu
 {
@@ -24,17 +25,14 @@ namespace Hidden.Menu
         public Rect guiRect = new Rect(400f, 200f, 525f, 365f);
         public enum Page { Home, Room, Movement, Player, Visuals, Fun, World, Settings }
 
-        public static Category SettingsIndex = Hidden.Mods.Category.Settings;
-        public static Category RoomIndex = Hidden.Mods.Category.Room;
-        public static Category MovementIndex = Hidden.Mods.Category.Move;
-        public static Category PlayerIndex = Hidden.Mods.Category.Player;
-        public static Category VisualsIndex = Hidden.Mods.Category.Visuals;
-        public static Category MasterIndex = Hidden.Mods.Category.Fun;
-        public static Category OverpoweredIndex = Hidden.Mods.Category.World;
-
         public static bool ArrayListShown = true;
         public static bool GUIShown = true;
         public static bool TexturesSet = false;
+
+        public static void ToggleArrayList(bool ssss)
+        {
+            ArrayListShown = ssss;
+        }
 
         public static string NameOfMenu = "Hidden";
         public static string VersionOfMenu = Hidden.Initialization.PluginInfo.menuVersion;
@@ -97,8 +95,10 @@ namespace Hidden.Menu
             GUI.Label(new Rect(750f, 10f, arrayLabelStyle.CalcSize(new GUIContent($"{NameOfMenu} v{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString())).x + 13.5f, 33.5f), $"{NameOfMenu} v{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString(), arrayLabelStyle);
             if (ArrayListShown)
             {
+                var buttonList = ModButtons.buttons.OrderByDescending(b => b.buttonText.Length);
+
                 GUIStyle arrayButtonStyle = new GUIStyle(GUI.skin.box) { fontSize = 21, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter, wordWrap = false, normal = { background = arrayListTexture, textColor = colorMaterial.color } };
-                foreach (ButtonHandler.Button button in ModButtons.buttons)
+                foreach (ButtonHandler.Button button in buttonList)
                 {
                     if (button.Enabled)
                     {
@@ -113,6 +113,8 @@ namespace Hidden.Menu
                 }
             }
         }
+        static string[] str = new string[] { "Settings", "Room", "Movement", "Player", "Visuals", "Fun", "World" };
+        static string currentPage;
         public void DrawGUI(int id)
         {
             if (!TexturesSet)
@@ -127,7 +129,7 @@ namespace Hidden.Menu
                 DoTexture(new Rect(4f, 34f, 95f, guiRect.height - 40f), containerTexture, 12);
 
                 GUIStyle titleStyle = new GUIStyle(GUI.skin.label) { fontSize = 26, fontStyle = FontStyle.Bold };
-                GUI.Label(new Rect(15f, 1f, guiRect.width, guiRect.height), NameOfMenu, titleStyle);
+                GUI.Label(new Rect(10f, 1f, guiRect.width, guiRect.height), NameOfMenu, titleStyle);
 
                 GUILayout.BeginArea(new Rect(7.5f, 30f, 100f, guiRect.height));
                 GUILayout.BeginVertical();
@@ -151,30 +153,38 @@ namespace Hidden.Menu
                 switch (Category)
                 {
                     case Page.Room:
-                        DrawRoomPage();
+                        DrawModPage(Mods.Category.Room);
+                        currentPage = str[1];
                         break;
 
                     case Page.Movement:
-                        DrawMovementPage();
+                        DrawModPage(Mods.Category.Move);
+                        currentPage = str[2];
                         break;
+
                     case Page.Player:
-                        DrawPlayerPage();
+                        DrawModPage(Mods.Category.Player);
+                        currentPage = str[3];
                         break;
 
                     case Page.Visuals:
-                        DrawVisualsPage();
+                        DrawModPage(Mods.Category.Visuals);
+                        currentPage = str[4];
                         break;
 
                     case Page.Fun:
-                        DrawMasterPage();
+                        DrawModPage(Mods.Category.Fun);
+                        currentPage = str[5];
                         break;
 
                     case Page.World:
-                        DrawOverpoweredPage();
+                        DrawModPage(Mods.Category.World);
+                        currentPage = str[6];
                         break;
 
                     case Page.Settings:
-                        DrawSettingsPage();
+                        DrawModPage(Mods.Category.Settings);
+                        currentPage = str[0];
                         break;
 
                     default:
@@ -187,159 +197,17 @@ namespace Hidden.Menu
             }
         }
         #region Draw Pages Logic
-        private void DrawRoomPage()
+        private void DrawModPage(Category category)
         {
+            GUI.Label(new Rect(115f, 2f, guiRect.width, 35f), $"Current Category: {currentPage}", CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleLeft));
+
             GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
             GUILayout.BeginVertical();
 
             Scrolling = GUILayout.BeginScrollView(Scrolling);
 
             List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(RoomIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawMovementPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(MovementIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawPlayerPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(PlayerIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawVisualsPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(VisualsIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawMasterPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(MasterIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawOverpoweredPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(OverpoweredIndex));
-
-            foreach (ButtonHandler.Button button in list)
-            {
-                if (RoundedButton(button.buttonText, button))
-                {
-                    ButtonHandler.Toggle(button);
-                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
-                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(Main.ActuallSound, rightHandedMenu, 1f);
-                }
-            }
-
-            GUILayout.EndScrollView();
-            GUILayout.EndVertical();
-            GUILayout.EndArea();
-        }
-        private void DrawSettingsPage()
-        {
-            GUILayout.BeginArea(new Rect(115f, 30f, 370f, guiRect.height - 50f));
-            GUILayout.BeginVertical();
-
-            Scrolling = GUILayout.BeginScrollView(Scrolling);
-
-            List<ButtonHandler.Button> list = new List<ButtonHandler.Button>();
-            list.AddRange(ButtonHandler.GetButtonInfoByPage(SettingsIndex));
+            list.AddRange(ButtonHandler.GetButtonInfoByPage(category));
 
             foreach (ButtonHandler.Button button in list)
             {
@@ -371,13 +239,13 @@ namespace Hidden.Menu
             GUI.Label(new Rect(123f, 95f, 165f, 30f), VersionOfMenu, CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
 
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
-            GUI.Label(new Rect(115f, 172f, 400f, 150f), 
+            GUI.Label(new Rect(115f, 172f, 400f, 150f),
                 "Added Tool Tips\n" +
                 "Added Toggle Version Counter\n" +
                 "Added Setting Text Display\n" +
                 "Added Gun Customizations\n" +
                 "Added Orbit/Annoy Self\n" +
-                "Fixed All Bugs I Found", 
+                "Fixed All Bugs I Found",
                 CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft)
             );
         }
