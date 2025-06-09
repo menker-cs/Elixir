@@ -29,7 +29,6 @@ namespace Hidden.Mods
     public enum Category
     {
         Home,
-
         Settings,
         Room,
         Player,
@@ -138,7 +137,7 @@ namespace Hidden.Mods
             #region Player
             new Button("Long Arms", Category.Player, true, false, ()=>LongArms(), ()=>FixArms(), "Makes Your Arms Longer"),
             new Button("Very Long Arms", Category.Player, true, false, ()=>VeryLongArms(), ()=>FixArms(), "Very Long Arms"),
-            new Button("color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
+            new Button("<color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
             new Button("Short Arms", Category.Player, true, false, ()=>FlatMonk(), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
             new Button("Backwards Head", Category.Player, true, false, ()=>BackwardsHead(), ()=>FixHead(), "Makes Your Head Backwards"),

@@ -13,45 +13,10 @@ using UnityEngine.InputSystem;
 using HarmonyLib;
 using static Hidden.Initialization.PluginInfo;
 using Hidden.Utilities;
-using System.IO;
-using Valve.VR;
-using UnityEngine.Animations.Rigging;
 using Photon.Pun;
-using UnityEngine.ProBuilder.MeshOperations;
-using GorillaNetworking;
 using System.Net;
-using System.Threading;
-using Hidden.Mods.Categories;
-using GorillaExtensions;
 using TMPro;
-using System.Reflection;
-using Hidden.Menu;
-using static GorillaTelemetry;
-using Hidden.Menu;
-using Hidden.Mods;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Menu.Optimizations;
-using UnityEngine.UIElements;
-using BepInEx;
-using HarmonyLib;
-using PlayFab.ExperimentationModels;
-using System;
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.UIElements;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEngine.Networking;
-using Photon.Realtime;
-using Oculus.Interaction.Samples;
-using System.Text;
 using Hidden.Utilities.Notifs;
-using GorillaLocomotion;
 
 namespace Hidden.Menu
 {
@@ -625,7 +590,7 @@ namespace Hidden.Menu
                 textMeshPro.characterSpacing = 1f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.color = ColorLib.Hidden;
-                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker and Leanie</color> with love";
+                textMeshPro.text = $"Hidden Menu</color>\n<size=2>Status: <color=#6ffcf3>{status}</color>\nVERSION:  <color=#6ffcf3>{menuVersion}</color></size>\n <size=1.5>Made By <color=#6ffcf3>Menker</color>";
                 textMeshPro.font = TMP_FontAsset.CreateFontAsset(font);
             }
 
@@ -682,7 +647,7 @@ namespace Hidden.Menu
             title.font = font;
 
             title.text =
-            $"{menuName}{(vCounter ? " ┇" + menuVersion : "")}";
+            $"{menuName}{(vCounter ? " ┇ V" + menuVersion[0] : "")}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {

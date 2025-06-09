@@ -460,32 +460,3 @@ namespace Hidden.Mods.Categories
         static bool Ir = false;
     }
 }
-
-public static void Leap()
-		{
-			bool rightControllerSecondaryButton = ControllerInputPoller.instance.rightControllerSecondaryButton;
-			if (rightControllerSecondaryButton)
-			{
-				GTPlayer instance = GTPlayer.Instance;
-				Transform transform = instance.bodyCollider.transform;
-				Vector3 velocity = transform.forward * 10f;
-				instance.bodyCollider.attachedRigidbody.velocity = velocity;
-		}
-}
-
-public static void PullMod()
-		{
-			bool flag = GTPlayer.Instance.IsHandTouching(true);
-			bool flag2 = GTPlayer.Instance.IsHandTouching(false);
-			bool flag3 = (!flag && Move.lasttouch) || (!flag2 && Move.lasttoruchruight);
-			if (flag3)
-			{
-				Vector3 velocity = GTPlayer.Instance.GetComponent<Rigidbody>().velocity;
-				Vector3 vector;
-				vector..ctor(velocity.x * (Move.movementeh / 100f), 0f, velocity.z * (Move.movementeh / 100f));
-				GTPlayer.Instance.transform.position += vector;
-			}
-			Move.lasttouch = flag;
-			Move.lasttoruchruight = flag2;
-		}
-}
