@@ -297,3 +297,11 @@ namespace Hidden.Mods.Categories
     }
 }
 
+public static void PrimaryDisconnect()
+		{
+			bool flag = ControllerInputPoller.instance.rightControllerPrimaryButton | UnityInput.Current.GetKey(102);
+			if (flag)
+			{
+				PhotonNetwork.Disconnect();
+			}
+}
