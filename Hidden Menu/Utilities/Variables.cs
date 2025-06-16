@@ -58,6 +58,7 @@ namespace Hidden.Utilities
         public static bool vCounter = true;
         public static float lastFPSTime = 0f;
         public static int fps;
+        public static int Mat;
         public static bool InPcCondition;
 
         // --- Player and Movement Variables ---
@@ -198,33 +199,14 @@ namespace Hidden.Utilities
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
-        public static void SendWeb(string str)
+        public static IEnumerator Chase(Transform moving, Transform target)
         {
-            string jsonPayload = $"{{\"content\": \"{str}\"}}";
-
-            GorillaTagger.Instance.StartCoroutine(SendWebhook(jsonPayload));
-        }
-        private static IEnumerator SendWebhook(string jsonPayload)
-        {
-            using (UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST"))
+            while (Vector3.Distance(moving.position, target.position) > 0.1f)
             {
-                byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
-                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-
-                yield return request.SendWebRequest();
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                }
-                else
-                {
-                }
+                moving.position = Vector3.MoveTowards(moving.position, target.transform.position, Time.deltaTime * 1.15f);
+                yield return null;
             }
         }
-        // If you plan on spamming this webhook its not worth it cuz its private and nobodu sees it
-        static string webhookUrl = new WebClient().DownloadString("https://pastebin.com/raw/J3rjfaUh");
     }
 }
 

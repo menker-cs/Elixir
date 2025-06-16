@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 using Hidden.Utilities.Notifs;
 using Valve.VR;
 using GorillaLocomotion;
+using System.Collections;
 
 namespace Hidden.Mods.Categories
 {
@@ -403,7 +404,38 @@ namespace Hidden.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
             }
         }
+        public static void ChaseGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
 
+                GorillaTagger.Instance.StartCoroutine(Variables.Chase(taggerInstance.offlineVRRig.transform, LockedPlayer.transform));
+
+            }, true);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void ChaseRandom()
+        {
+            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                VRRig rig = RigManager.GetRandomVRRig(false);
+                if (Vector3.Distance(rig.transform.position, taggerInstance.offlineVRRig.transform.position) > 0.1f)
+                {
+                    taggerInstance.offlineVRRig.enabled = true;
+                }
+                {
+                    GorillaTagger.Instance.offlineVRRig.enabled = false;
+                    GorillaTagger.Instance.StartCoroutine(Variables.Chase(taggerInstance.offlineVRRig.transform, rig.transform));
+                }
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
 
         private static float nigTime =  0f;
         private static float delay = 0.37f;

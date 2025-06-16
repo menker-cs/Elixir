@@ -157,6 +157,7 @@ namespace Hidden.Mods
             new Button("Orbit Self", Category.Player, true, false, ()=>OrbitSelf(), null, "Orbit Yourself"),
             new Button("Bees [G]", Category.Player, true, false, ()=>Bees(), null, "Fly Around The Map"),
             new Button("Fast Bees [G]", Category.Player, true, false, ()=>FBees(), null, "Bees But Faster"),
+            new Button("Chase Gun", Category.Player, true, false, ()=>ChaseGun(), null, "Bees But Faster"),
             new Button("Rig Gun", Category.Player, true, false, ()=>RigGun(), null, "Put Your Rig Where You Shoot"),
             new Button("Grab Your Rig Gun", Category.Player, true, false, ()=>GrabGun(), null, "Makes People Grab Your Rig"),
             new Button("Tag Gun", Category.Player, true, false, ()=>TagGun(), null, "Tags A Player"),
