@@ -1,28 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine.InputSystem;
-using UnityEngine;
-using Object = UnityEngine.Object;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Utilities.Variables;
+﻿using static Hidden.Utilities.Variables;
 using static Hidden.Menu.Main;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Menu.Optimizations;
 using Hidden.Menu;
-using static Hidden.Mods.Categories.Move;
-using static Hidden.Utilities.Patches.OtherPatches;
-using static Hidden.Utilities.GunTemplate;
-using System.Linq;
-using Oculus.Platform;
-using Photon.Pun;
 using Hidden.Utilities.Notifs;
 
 namespace Hidden.Mods.Categories
 {
     public class Settings
-    {
+    { 
         public static void SwitchHands(bool setActive)
         {
             rightHandedMenu = setActive;

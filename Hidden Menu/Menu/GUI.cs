@@ -92,7 +92,7 @@ namespace Hidden.Menu
                 guiRect = GUI.Window(1, guiRect, new GUI.WindowFunction(DrawGUI), "");
             }
             GUIStyle arrayLabelStyle = new GUIStyle(GUI.skin.box) { fontSize = 26, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleCenter, wordWrap = false, normal = { background = arrayListTexture, textColor = colorMaterial.color } };
-            GUI.Label(new Rect(750f, 10f, arrayLabelStyle.CalcSize(new GUIContent($"{NameOfMenu} v{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString())).x + 13.5f, 33.5f), $"{NameOfMenu} v{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString(), arrayLabelStyle);
+            GUI.Label(new Rect(750f, 10f, arrayLabelStyle.CalcSize(new GUIContent($"{NameOfMenu} v{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString())).x + 13.5f, 33.5f), $"{NameOfMenu} V{VersionOfMenu} | " + "FPS : " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString(), arrayLabelStyle);
             if (ArrayListShown)
             {
                 var buttonList = ModButtons.buttons.OrderByDescending(b => b.buttonText.Length);
@@ -236,15 +236,13 @@ namespace Hidden.Menu
             GUI.Label(new Rect(122f, 68f, 165f, 30f), "Version", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleCenter));
             GUI.Label(new Rect(322f, 68f, 165f, 30f), "Current Time", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleCenter));
             GUI.Label(new Rect(323f, 95f, 165f, 30f), DateTime.Now.ToString("hh:mm tt"), CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
-            GUI.Label(new Rect(123f, 95f, 165f, 30f), VersionOfMenu, CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
+            GUI.Label(new Rect(123f, 95f, 165f, 30f), "V" + VersionOfMenu, CreateLabelStyle(Color.white, 22, FontStyle.Bold, TextAnchor.MiddleCenter));
 
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
             GUI.Label(new Rect(115f, 172f, 400f, 150f),
-                "Added Tool Tips\n" +
-                "Added Toggle Version Counter\n" +
-                "Added Setting Text Display\n" +
-                "Added Gun Customizations\n" +
-                "Added Orbit/Annoy Self\n" +
+                "Added Chase Player Gun\n" +
+                "Added Report/Mute Gun\n" +
+                "Added Water Splash Mods\n" +
                 "Fixed All Bugs I Found",
                 CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft)
             );

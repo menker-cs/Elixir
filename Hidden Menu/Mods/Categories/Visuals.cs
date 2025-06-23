@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using static Hidden.Utilities.Variables;
 using static Hidden.Utilities.ColorLib;
 using static Hidden.Mods.Categories.Settings;
 using static Hidden.Menu.Main;
 using Photon.Pun;
 using Object = UnityEngine.Object;
-using System.Linq;
 using Photon.Realtime;
-using UnityEngine.InputSystem.Controls;
-using System.Xml.Linq;
 using HarmonyLib;
 using Hidden.Utilities;
-using Cinemachine;
-using Hidden.Utilities;
-using UnityEngine.Splines.Interpolators;
-using static UnityEngine.Rendering.DebugUI;
 using GorillaLocomotion;
-using Oculus.Interaction;
+using TMPro;
 //using System.Drawing;
 
 namespace Hidden.Mods.Categories
@@ -597,20 +587,23 @@ namespace Hidden.Mods.Categories
             foreach (VRRig Player in GorillaParent.instance.vrrigs)
             {
                 if (Player == GorillaTagger.Instance.offlineVRRig) continue;
-                distance = new GameObject($"{Player.name}'s Distance");
-                TextMesh textMesh = distance.AddComponent<TextMesh>();
-                textMesh.fontSize = 20;
-                textMesh.fontStyle = FontStyle.Normal;
-                textMesh.characterSize = 0.1f;
-                textMesh.anchor = TextAnchor.MiddleCenter;
-                textMesh.alignment = TextAlignment.Center;
-                textMesh.color = Green;
-                textMesh.text = Player.name;
-                float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
-                distance.transform.position = Player.headMesh.transform.position + new Vector3(0f, .65f, 0f);
-                distance.transform.LookAt(Camera.main.transform.position);
+
+                GameObject distance = new GameObject($"{Player.name}'s Distance");
+                TextMeshPro textMeshPro = distance.AddComponent<TextMeshPro>();
+
+                textMeshPro.fontSize = 3.5f;
+                textMeshPro.alignment = TextAlignmentOptions.Center;
+                textMeshPro.color = RGB.color;
+                textMeshPro.text = Player.name;
+                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+
+                distance.transform.position = Player.headMesh.transform.position + new Vector3(0f, 0.65f, 0f);
+                distance.transform.LookAt(Camera.main.transform);
                 distance.transform.Rotate(0, 180, 0);
-                distance.GetComponent<TextMesh>().text = $"{Convert.ToInt32(Vector3.Distance(GorillaLocomotion.GTPlayer.Instance.headCollider.transform.position, Player.transform.position))}m";
+
+                float distanceToPlayer = Vector3.Distance(GorillaLocomotion.GTPlayer.Instance.headCollider.transform.position, Player.transform.position);
+                textMeshPro.text = $"{Mathf.RoundToInt(distanceToPlayer)}m";
+
                 GameObject.Destroy(distance, Time.deltaTime);
             }
         }
@@ -619,20 +612,22 @@ namespace Hidden.Mods.Categories
             foreach (VRRig Player in GorillaParent.instance.vrrigs)
             {
                 if (Player == GorillaTagger.Instance.offlineVRRig) continue;
-                name = new GameObject($"{Player.name}'s Nametag");
-                TextMesh textMesh = name.AddComponent<TextMesh>();
-                textMesh.fontSize = 20;
-                textMesh.fontStyle = FontStyle.Normal;
-                textMesh.characterSize = 0.1f;
-                textMesh.anchor = TextAnchor.MiddleCenter;
-                textMesh.alignment = TextAlignment.Center;
-                textMesh.color = White;
-                textMesh.text = Player.name;
-                float textWidth = textMesh.GetComponent<Renderer>().bounds.size.x;
-                name.transform.position = Player.headMesh.transform.position + new Vector3(0f, .90f, 0f);
-                name.transform.LookAt(Camera.main.transform.position);
+
+                GameObject name = new GameObject($"{Player.name}'s Nametag");
+                TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
+
+                textMeshPro.color = RGB.color;
+                textMeshPro.material.shader = Shader.Find("GUI/Text Shader");
+                textMeshPro.fontSize = 3.5f;
+                textMeshPro.fontStyle = FontStyles.Normal;
+                textMeshPro.alignment = TextAlignmentOptions.Center;
+                textMeshPro.text = RigManager.GetPlayerFromVRRig(Player).NickName;
+                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+
+                name.transform.position = Player.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
+                name.transform.LookAt(Camera.main.transform);
                 name.transform.Rotate(0, 180, 0);
-                name.GetComponent<TextMesh>().text = RigManager.GetPlayerFromVRRig(Player).NickName;
+
                 GameObject.Destroy(name, Time.deltaTime);
             }
         }
@@ -643,57 +638,63 @@ namespace Hidden.Mods.Categories
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
                     GameObject name = new GameObject("Text");
-                    TextMesh textMesh = name.AddComponent<TextMesh>();
-                    textMesh.fontSize = 20;
-                    textMesh.fontStyle = FontStyle.Normal;
-                    textMesh.characterSize = 0.1f;
-                    textMesh.anchor = TextAnchor.MiddleCenter;
-                    textMesh.alignment = TextAlignment.Left;
-                    textMesh.color = Color.white;
+                    TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
 
-                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
-                    name.transform.LookAt(Camera.main.transform.position);
+                    textMeshPro.fontSize = 2f;
+                    textMeshPro.fontStyle = FontStyles.Normal;
+                    textMeshPro.alignment = TextAlignmentOptions.Center;
+                    textMeshPro.color = Color.white;
+                    textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+
+                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.2f, 0f);
+                    name.transform.LookAt(Camera.main.transform);
                     name.transform.Rotate(0, 180, 0);
 
                     int fpps = Traverse.Create(vrrig).Field("fps").GetValue<int>();
                     string fpsColor = fpps < 45 ? "red" : (fpps > 80 ? "green" : "orange");
 
-                    textMesh.text =
-                        $"<color=green>{vrrig.OwningNetPlayer.NickName}</color>\n" +
-                        $"ID: <color=green>{vrrig.Creator.UserId}</color>\n" +
-                        $"Is Master: <color=green>{IsUserMaster(vrrig)}</color>\n" +
-                        $"Actor Number: <color=green>{vrrig.Creator.ActorNumber}</color>\n" +
-                        $"Tagged: <color=green>{RigIsInfected(vrrig)}</color>\n" +
+                    textMeshPro.text =
+                        $"<color={hexColor}>{vrrig.OwningNetPlayer.NickName}</color>\n" +
+                        $"ID: <color={hexColor}>{vrrig.Creator.UserId}</color>\n" +
+                        $"Is Master: <color={hexColor}>{IsUserMaster(vrrig)}</color>\n" +
+                        $"Actor Number: <color={hexColor}>{vrrig.Creator.ActorNumber}</color>\n" +
+                        $"Tagged: <color={hexColor}>{RigIsInfected(vrrig)}</color>\n" +
                         $"FPS: <color={fpsColor}>{fpps}</color>";
 
                     GameObject.Destroy(name, Time.deltaTime);
                 }
             }
         }
-
         public static void InfoDisplay()
         {
-            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
-            GameObject Textobj;
-            Textobj = new GameObject("Text");
-            TextMesh textMesh = Textobj.AddComponent<TextMesh>();
+            int fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
+
+            GameObject Textobj = new GameObject("InfoDisplay TMP");
+            TextMeshPro textMeshPro = Textobj.AddComponent<TextMeshPro>();
 
             string fpsColor = fps > 80 ? "green" : "orange";
-            textMesh.text =
-                $"Name: <color=green>{PhotonNetwork.LocalPlayer.NickName}</color>\n" +
-                $"ID: <color=green>{PhotonNetwork.LocalPlayer.UserId}</color>\n" +
-                $"Master Client: <color=green>{PhotonNetwork.MasterClient}</color>\n" +
-                $"Actor Number: <color=green>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\n" +
-                $"Tagged: <color=green>{IAmInfected}</color>\n" +
-                $"FPS: <color={(fps < 45 ? "red" : fpsColor)}>{fps}</color>\n";
+            string fpsColor2 = fps < 45 ? "red" : fpsColor;
 
-            textMesh.color = White;
-            textMesh.fontSize = 17;
-            textMesh.alignment = TextAlignment.Right;
-            textMesh.anchor = TextAnchor.MiddleCenter;
-            Textobj.transform.position = GTPlayer.Instance.headCollider.transform.position + GTPlayer.Instance.headCollider.transform.forward * 5f + GTPlayer.Instance.headCollider.transform.up * 0.5f - GTPlayer.Instance.headCollider.transform.right * 0.5f;
-            Textobj.transform.forward = GTPlayer.Instance.headCollider.transform.forward;
-            Textobj.transform.localScale *= 0.1f;
+            textMeshPro.text =
+                $"Name: <color={hexColor}>{PhotonNetwork.LocalPlayer.NickName}</color>\n" +
+                $"ID: <color={hexColor}>{PhotonNetwork.LocalPlayer.UserId}</color>\n" +
+                $"Master Client: <color={hexColor}>{PhotonNetwork.MasterClient}</color>\n" +
+                $"Actor Number: <color={hexColor}>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\n" +
+                $"Tagged: <color={hexColor}>{IAmInfected}</color>\n" +
+                $"FPS: <color={fpsColor2}>{fps}</color>";
+
+            textMeshPro.color = Color.white;
+            textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+            textMeshPro.fontSize = 6.5f;
+            textMeshPro.alignment = TextAlignmentOptions.Right;
+            textMeshPro.enableWordWrapping = false;
+            textMeshPro.richText = true;
+
+            Transform head = GTPlayer.Instance.headCollider.transform;
+            Textobj.transform.position = head.position + head.forward * 2f + head.up * 0.5f - head.right * 0.5f;
+            Textobj.transform.forward = head.forward;
+            Textobj.transform.localScale = Vector3.one * 0.1f;
+
             Object.Destroy(Textobj, Time.deltaTime);
         }
         public static void SnakeESP()

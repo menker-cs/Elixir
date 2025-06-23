@@ -1,26 +1,12 @@
 ﻿using GorillaNetworking;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
-using static Hidden.Utilities.Notifs.NotificationLib;
 using static Hidden.Utilities.Variables;
 using static Hidden.Menu.Main;
-using System.Diagnostics;
-using Valve.VR;
-using Cinemachine;
-using HarmonyLib;
-using System.Reflection;
-using UnityEngine.InputSystem;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Fusion;
-using UnityEngine.XR;
 using Photon.Realtime;
-using ExitGames.Client.Photon;
 using BepInEx;
 using Hidden.Utilities.Notifs;
+using Hidden.Utilities;
 
 namespace Hidden.Mods.Categories
 {
@@ -113,26 +99,56 @@ namespace Hidden.Mods.Categories
         public static void ReportAll()
         {
             GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
-            foreach (GorillaPlayerScoreboardLine Report in Board)
+            foreach (GorillaPlayerScoreboardLine report in Board)
             {
-                if (Report.linePlayer != null)
+                if (report.linePlayer != null)
                 {
-                    Report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
+                    report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
                 }
             }
         }
         public static void MuteAll()
         {
             GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
-            foreach (GorillaPlayerScoreboardLine Mute in Board)
+            foreach (GorillaPlayerScoreboardLine mute in Board)
             {
-                if (Mute.linePlayer != null)
+                if (mute.linePlayer != null)
                 {
-                    Mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
-                    Mute.muteButton.isOn = true;
-                    Mute.muteButton.UpdateColor();
+                    mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                    mute.muteButton.isOn = true;
+                    mute.muteButton.UpdateColor();
                 }
             }
+        }
+        public static void MuteGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+                foreach (GorillaPlayerScoreboardLine mute in Board)
+                {
+                    if (mute.linePlayer == GunTemplate.LockedPlayer.OwningNetPlayer)
+                    {
+                        mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                        mute.muteButton.isOn = true;
+                        mute.muteButton.UpdateColor();
+                    }
+                }
+            }, true);
+        }
+        public static void ReportGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+                foreach (GorillaPlayerScoreboardLine report in Board)
+                {
+                    if (report.linePlayer == GunTemplate.LockedPlayer.OwningNetPlayer)
+                    {
+                        report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
+                    }
+                }
+            }, true);
         }
         #region nigport
         public static void AntiReport()

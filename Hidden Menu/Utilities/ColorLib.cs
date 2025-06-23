@@ -217,11 +217,13 @@ namespace Hidden.Utilities
         public static Material RGB = new Material(uberShader);
         public static Material DFade = new Material(uberShader);
         public static Material DBreath = new Material(uberShader);
+        public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
         public static void UpdateClr()
         {
             float num = Mathf.PingPong(Time.time * 0.3f, 1f);
             float num2 = 0.75f;
             RGB.color = Color.HSVToRGB(num, 1f, num2);
+            hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
             DFade.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1f));
             DBreath.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1.5f));
         }

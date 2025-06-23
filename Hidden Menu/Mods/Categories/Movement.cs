@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static Hidden.Utilities.GunTemplate;
+﻿using static Hidden.Utilities.GunTemplate;
 using static Hidden.Menu.Main;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Utilities.RigManager;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Mods.ModButtons;
 using static Hidden.Mods.Categories.Settings;
 using UnityEngine;
-using Valve.VR;
-using System.Reflection;
 using BepInEx;
-using Photon.Voice;
 using Hidden.Utilities;
-using static Hidden.Utilities.ControllerInputs;
-using UnityEngine.UIElements;
+using static Hidden.Utilities.Inputs;
 using Hidden.Menu;
 
 namespace Hidden.Mods.Categories

@@ -1,29 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.ColorLib;
+﻿using static Hidden.Utilities.GunTemplate;
 using static Hidden.Utilities.Variables;
-using static Hidden.Menu.Main;
-using static Hidden.Mods.Categories.Settings;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Hidden.Utilities;
-using UnityEngine.XR;
-using UnityEngine.Animations.Rigging;
-using UnityEngine.XR.Interaction.Toolkit;
-using GorillaNetworking;
-using Hidden.Utilities.Patches;
-using Hidden.Menu;
-using ExitGames.Client.Photon;
 using Photon.Pun;
-using Photon.Realtime;
-using HarmonyLib;
 using BepInEx;
-using System.Threading.Tasks;
 using Hidden.Utilities.Notifs;
-using Valve.VR;
-using GorillaLocomotion;
 using System.Collections;
 
 namespace Hidden.Mods.Categories
@@ -380,7 +361,7 @@ namespace Hidden.Mods.Categories
         }
         public static void AnnoySelf()
         {
-            if (ControllerInputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
+            if (Inputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(GorillaTagger.Instance.headCollider.transform, 1.25f);
@@ -392,7 +373,7 @@ namespace Hidden.Mods.Categories
         }
         public static void OrbitSelf()
         {
-            if (ControllerInputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
+            if (Inputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(GorillaTagger.Instance.headCollider.transform, 15);
@@ -409,32 +390,22 @@ namespace Hidden.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-
-                GorillaTagger.Instance.StartCoroutine(Variables.Chase(taggerInstance.offlineVRRig.transform, LockedPlayer.transform));
+                GorillaTagger.Instance.StartCoroutine(Chase());
 
             }, true);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
-        public static void ChaseRandom()
+        private static IEnumerator Chase()
         {
-            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            Transform myRig = GorillaTagger.Instance.offlineVRRig.transform;
+            while (Vector3.Distance(myRig.position, LockedPlayer.transform.position) > 0.1f)
             {
-                VRRig rig = RigManager.GetRandomVRRig(false);
-                if (Vector3.Distance(rig.transform.position, taggerInstance.offlineVRRig.transform.position) > 0.1f)
-                {
-                    taggerInstance.offlineVRRig.enabled = true;
-                }
-                {
-                    GorillaTagger.Instance.offlineVRRig.enabled = false;
-                    GorillaTagger.Instance.StartCoroutine(Variables.Chase(taggerInstance.offlineVRRig.transform, rig.transform));
-                }
+                myRig.position = Vector3.MoveTowards(myRig.position, LockedPlayer.transform.position, Time.deltaTime * 1f);
+                yield return null;
             }
-            else
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-            }
+            GorillaTagger.Instance.offlineVRRig.enabled = true;
         }
 
         private static float nigTime =  0f;

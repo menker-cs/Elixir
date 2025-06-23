@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GorillaLocomotion;
 using static Hidden.Menu.Main;
 using static Hidden.Utilities.Variables;
 using static Hidden.Utilities.ColorLib;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Mods.ModButtons;
-using static Hidden.Mods.Categories.Settings;
 using static Hidden.Utilities.GunTemplate;
 using UnityEngine;
 using BepInEx;
 using Hidden.Utilities;
-using UnityEngine.InputSystem;
-using GorillaNetworking;
 using Photon.Pun;
-using Oculus.Interaction.PoseDetection;
-using Fusion;
 
 namespace Hidden.Mods.Categories
 {
@@ -73,7 +63,7 @@ namespace Hidden.Mods.Categories
             }, false);
         }
         public static void SnipeBug()
-        { 
+        {
             GorillaTagger.Instance.rightHandTransform.transform.position = Bug.transform.position;
         }
         public static void SnipeBat()
@@ -121,7 +111,7 @@ namespace Hidden.Mods.Categories
         public static GameObject Bat = GameObject.Find("Cave Bat Holdable");
         public static GameObject Bug = GameObject.Find("Floating Bug Holdable");
         public static GameObject SBall = GameObject.Find("GameBall");
-#endregion
+        #endregion
 
         #region fun spammers cs
         public static void Spam1()
@@ -405,7 +395,7 @@ namespace Hidden.Mods.Categories
 
                 GameObject.Destroy(orb, 5f);
 
-                
+
             }
         }
         public static void OrbRain()
@@ -491,6 +481,53 @@ namespace Hidden.Mods.Categories
             if (ControllerInputPoller.instance.leftGrab)
             {
                 GorillaTagger.Instance.StartVibration(true, 1f, 2f);
+            }
+        }
+        static float splashDelay;
+        static void Splash(Vector3 splashPosition, Quaternion splashRotation, float splashScale)
+        {
+            if (Time.time > splashDelay)
+            {
+                splashDelay = Time.time + 0.4f;
+
+                GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RpcTarget.All, new object[]
+                {
+                    splashPosition,
+                    splashRotation,
+                    splashScale,
+                    splashScale,
+                    true,
+                    true,
+                });
+            }
+        }
+        public static void SplashHands()
+        {
+            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                Splash(GorillaTagger.Instance.rightHandTransform.position, GorillaTagger.Instance.rightHandTransform.rotation, 0.5f);
+            }
+            if (ControllerInputPoller.instance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                Splash(GorillaTagger.Instance.leftHandTransform.position, GorillaTagger.Instance.leftHandTransform.rotation, 0.5f);
+            }
+        }
+        public static void SplashGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                taggerInstance.offlineVRRig.enabled = false;
+                taggerInstance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+
+                Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 0.5f);
+            }, false);
+            { taggerInstance.offlineVRRig.enabled = true; }
+        }
+        public static void SplashAura()
+        {
+            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                Splash(Annoy(GorillaTagger.Instance.bodyCollider.transform, 1f), GorillaTagger.Instance.headCollider.transform.rotation, 0.5f);
             }
         }
     }

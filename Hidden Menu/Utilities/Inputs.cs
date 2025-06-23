@@ -7,18 +7,8 @@ using Valve.VR;
 
 namespace Hidden.Utilities
 {
-    public class ControllerInputs
+    public class Inputs
     {
-        public static bool leftStick()
-        {
-            bool output;
-            if (GameObject.Find("[SteamVR]") != null)
-                output = SteamVR_Actions.gorillaTag_LeftJoystickClick.GetState(SteamVR_Input_Sources.LeftHand);
-            else
-                InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.primary2DAxisClick, out output);
-            return output;
-        }
-
         public static bool leftGrip()
         {
             return ControllerInputPoller.instance.leftGrab;
@@ -26,7 +16,7 @@ namespace Hidden.Utilities
 
         public static bool leftTrigger()
         {
-            return ControllerInputPoller.instance.leftControllerIndexFloat > 0.5f;
+            return ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f;
         }
 
         public static bool leftPrimary()
@@ -39,16 +29,6 @@ namespace Hidden.Utilities
             return ControllerInputPoller.instance.leftControllerSecondaryButton;
         }
 
-        public static bool rightStick()
-        {
-            bool output;
-            if (GameObject.Find("[SteamVR]") != null)
-                output = SteamVR_Actions.gorillaTag_RightJoystickClick.GetState(SteamVR_Input_Sources.RightHand);
-            else
-                InputDevices.GetDeviceAtXRNode(XRNode.RightHand).TryGetFeatureValue(CommonUsages.primary2DAxisClick, out output);
-            return output;
-        }
-
         public static bool rightGrip()
         {
             return ControllerInputPoller.instance.rightGrab;
@@ -56,7 +36,7 @@ namespace Hidden.Utilities
 
         public static bool rightTrigger()
         {
-            return ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f;
+            return ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f;
         }
 
         public static bool rightPrimary()

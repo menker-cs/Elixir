@@ -199,14 +199,6 @@ namespace Hidden.Utilities
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
-        public static IEnumerator Chase(Transform moving, Transform target)
-        {
-            while (Vector3.Distance(moving.position, target.position) > 0.1f)
-            {
-                moving.position = Vector3.MoveTowards(moving.position, target.transform.position, Time.deltaTime * 1.15f);
-                yield return null;
-            }
-        }
     }
 }
 

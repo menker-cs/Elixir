@@ -12,17 +12,7 @@ using static Hidden.Menu.ButtonHandler;
 using static Hidden.Menu.Optimizations;
 using static Hidden.Menu.Optimizations.ResourceLoader;
 using static Hidden.Menu.Main;
-using UnityEngine;
-using Fusion;
-using System;
-using ExitGames.Client.Photon;
-using Photon.Pun;
-using System.Collections.Generic;
-using Hidden.Utilities;
 using Hidden.Mods.Categories;
-using static Hidden.Menu.ButtonHandler;
-using Unity.Mathematics;
-using Hidden.Menu;
 
 namespace Hidden.Mods
 {
@@ -62,7 +52,7 @@ namespace Hidden.Mods
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false), "Toggles Notifications"),
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false), "Toggles Tool Tips"),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null, "Clears Notifications"),
-            new Button("Toggle Array List", Category.Settings, true, true, ()=>HiddenGUI.ToggleArrayList(true), ()=>HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
+            //new Button("Toggle Array List", Category.Settings, true, true, ()=>HiddenGUI.ToggleArrayList(true), ()=>HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false), "Toggles Bark Menu Position"),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false), "Toggles Menu Outline"),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false), "Toggles Menu Gravity"),
@@ -92,7 +82,9 @@ namespace Hidden.Mods
             new Button("Join Code MOD", Category.Room, false, false, ()=>JoinRoom("MOD"), null, "Joins Code MOD"),
             new Button("Join Code PBBV", Category.Room, false, false, ()=>JoinRoom("PBBV"), null, "Joins Code PBBV"),
             new Button("Join Code Daisy09", Category.Room, false, false, ()=>JoinRoom("DAISY09"), null, "Joins Code DAISY09"),
+            new Button("Mute Gun", Category.Room, true, false, ()=>MuteGun(), null, "Mutes Who You Shoot"),
             new Button("Mute Everyone", Category.Room, false, false, ()=>MuteAll(), null, "Mutes Everyone"),
+            new Button("Report Gun", Category.Room, true, false, ()=>ReportGun(), null, "Reports Who You Shoot"),
             new Button("Report Everyone", Category.Room, false, false, ()=>ReportAll(), null, "Reports Everyone"),
             new Button("Copy Self ID", Category.Room, false, false, ()=> CopySelfID(), null, "Copys Your ID"),
             new Button("Copy ID Gun", Category.Room, true, false, ()=> CopyIDGun(), null, "Copys A Player's ID"),
@@ -164,6 +156,9 @@ namespace Hidden.Mods
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura(), null, "Tag People Near You"),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
+            new Button("Splash Hands [G]", Category.Player, true, false, ()=>SplashHands(), null, "Splashes Your Hands"),
+            new Button("Splash Gun", Category.Player, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
+            new Button("Splash Aura [G]", Category.Player, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
 
             #endregion
 
@@ -211,6 +206,7 @@ namespace Hidden.Mods
             #endregion
 
             #region World
+            new Button("Custom Boards", Category.World, true, true, ()=>Boards(true), ()=> Boards(false), "Makes Stump Have Custom Boards"),
             new Button("Stump Text", Category.World, true, true, ()=>Stumpy(), ()=> STUMPY(), "Makes Text In Stump"),
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp(), null, "Unlocks Comp"),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou(), "Toggles I Lava You Update"),
