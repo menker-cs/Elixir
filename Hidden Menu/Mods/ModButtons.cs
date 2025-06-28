@@ -52,7 +52,7 @@ namespace Hidden.Mods
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false), "Toggles Notifications"),
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false), "Toggles Tool Tips"),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null, "Clears Notifications"),
-            //new Button("Toggle Array List", Category.Settings, true, true, ()=>HiddenGUI.ToggleArrayList(true), ()=>HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
+            new Button("Toggle Array List", Category.Settings, true, true, ()=>Menu.HiddenGUI.ToggleArrayList(true), ()=>Menu.HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false), "Toggles Bark Menu Position"),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false), "Toggles Menu Outline"),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false), "Toggles Menu Gravity"),
@@ -71,6 +71,7 @@ namespace Hidden.Mods
             new Button("Quit Game", Category.Room, true, false, ()=>QuitGTAG(), null, "..."),
             new Button("Join Random", Category.Room, false, false, ()=>JoinRandomPublic(), null, "Joins A Random Room"),
             new Button("Disconnect", Category.Room, false, false, ()=>Disconnect(), null, "Disconnects You From The Lobby"),
+            new Button("Rejoin Room", Category.Room, true, false, ()=>RejoinRoom(), null, "Disconnects You From The Lobby"),
             new Button("Primary Disconnect", Category.Room, true, false, ()=>PrimaryDisconnect(), null, "Disconnects You If You Click Your A Button"),
             new Button("Check Master Client", Category.Room, false, false, ()=>IsMasterCheck(), null, "Checks Who Is Master"),
             new Button("Disable Network Triggers", Category.Room, false, false, ()=>DisableNetworkTriggers(), null, "Disables Network Triggers"),
@@ -93,9 +94,9 @@ namespace Hidden.Mods
             #endregion
 
             #region Movement
-            new Button("Platforms [G]", Category.Move, true, false, ()=>Platforms(), null, "Walk On Air"),
-            new Button("Invis Platforms [G]", Category.Move, true, false, ()=>InvisPlatforms(), null, "Invisible Platforms"),
-            new Button("Sticky Platforms [G]", Category.Move, true, false, ()=>StickyPlatforms(), null, "Sticky Platforms But Weird IDK"),
+            new Button("Platforms [G]", Category.Move, true, false, ()=>Platforms(false, false), null, "Walk On Air"),
+            new Button("Invis Platforms [G]", Category.Move, true, false, ()=>Platforms(true, false), null, "Invisible Platforms"),
+            new Button("Plank Platforms", Category.Move, true, false, ()=>Platforms(false, true), null, "Long Platforms"),
             new Button("Force Tag Freeze", Category.Move, false, false, ()=>TagFreeze(), null, "Forces Tag Freeze"),
             new Button("No Tag Freeze", Category.Move, true, false, ()=>NoTagFreeze(), null, "No Tag Freeze"),
             new Button("NoClip [T]", Category.Move, true, false, ()=>Noclip(), null, "Walk Through Walls"),
@@ -104,7 +105,6 @@ namespace Hidden.Mods
             new Button("Fly [P]", Category.Move, true, false, ()=>Fly(), null, "Fly In The Air"),
             new Button("Trigger Fly [T]", Category.Move, true, false, ()=>TriggerFly(), null, "Fly With Your Trigger"),
             new Button("Super Monke [P]", Category.Move, true, false, ()=>SuperMonke(), ()=>UseGravity(true), "Fly With No Gravity"),
-            //new Button("Noclip Fly [P]", Category.Move, true, false, ()=>NoclipFly()),
             new Button("Hand Fly [P]", Category.Move, true, false, ()=>HandFly(), null, "Fly With Your Hand"),
             new Button("Slingshot Fly [T]", Category.Move, true, false, ()=>SlingshotFly(), null, "Fly With Velocity"),
             new Button("Iron Monke [G]", Category.Move, true, false, ()=>IronMonkey(), null, "Become Iron Man"),
@@ -133,6 +133,7 @@ namespace Hidden.Mods
             new Button("Short Arms", Category.Player, true, false, ()=>FlatMonk(), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
             new Button("Backwards Head", Category.Player, true, false, ()=>BackwardsHead(), ()=>FixHead(), "Makes Your Head Backwards"),
+            new Button("Snap Neck", Category.Player, true, false, ()=>SnapNeck(), ()=>FixHead(), "Snaps Your Neck Dummy"),
             new Button("Invis Monke [P]", Category.Player, true, false, ()=>InvisibleMonke(), null, "Go Invisible"),
             new Button("Ghost Monke [P]", Category.Player, true, false, ()=>GhostMonke(), null, "Freeze Your Rig In Place"),
             new Button("Head Spin X", Category.Player, true, false, ()=>HeadSpinx(), ()=>FixHead(), "Spin Head On X Axis"),
@@ -156,9 +157,8 @@ namespace Hidden.Mods
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura(), null, "Tag People Near You"),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
-            new Button("Splash Hands [G]", Category.Player, true, false, ()=>SplashHands(), null, "Splashes Your Hands"),
-            new Button("Splash Gun", Category.Player, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
-            new Button("Splash Aura [G]", Category.Player, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
+            new Button("Max Quest Score", Category.Player, false, false, ()=>QuestScore(99999), null, "Splashes Your Hands"),
+            new Button("69420 Quest Score", Category.Player, false, false, ()=>QuestScore(69420), null, "Splashes Where You Shoot"),
 
             #endregion
 
@@ -169,6 +169,8 @@ namespace Hidden.Mods
             new Button("2D Box ESP", Category.Visuals, true, false, ()=>BoxESP(false), null, "Creates A 2D Box"),
             new Button("3D Box ESP", Category.Visuals, true, false, ()=>BoxESP(true), null, "Creates A 3D Box"),
             new Button("Sphere ESP", Category.Visuals, true, false, ()=>BallESP(), null, "Creates A Sphere"),
+            new Button("Bug ESP", Category.Visuals, true, false, ()=>EntityESP(false), null, "Creates A Sphere"),
+            new Button("Bat ESP", Category.Visuals, true, false, ()=>EntityESP(true), null, "Creates A Sphere"),
             new Button("Distance ESP", Category.Visuals, true, false, ()=>DistanceESP(), null, "Measures Distance Of Players"),
             new Button("Nametags", Category.Visuals, true, false, ()=>Nametags(), null, "Shows Players Names"),
             new Button("Advanced Nametags", Category.Visuals, true, false, ()=>AdvNametags(), null, "Nametags But More Info"),
@@ -179,6 +181,9 @@ namespace Hidden.Mods
             #region Fun
             new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS), null, "Opens CS Category"),
             new Button("Vibrator", Category.Fun, true, false, ()=>Vibrator(), null, "Vibrates"),
+            new Button("Splash Hands [G]", Category.Fun, true, false, ()=>SplashHands(), null, "Splashes Your Hands"),
+            new Button("Splash Gun", Category.Fun, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
+            new Button("Splash Aura [G]", Category.Fun, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun(), null, "Places The Bug Where You Shoot"),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug(), null, "Snipes The Bug"),
@@ -222,7 +227,7 @@ namespace Hidden.Mods
             new Button("NxO Template", Category.Creds, false, false, ()=>Placeholder(), null, "Template This Is Based From"),
             new Button("Revanent", Category.Creds, false, false, ()=>Placeholder(), null, "GUI Creator"),
             new Button("Wizzy", Category.Creds, false, false, ()=>Placeholder(), null, "Mod Helper"),
-            new Button("cum_gobbler99", Category.Creds, false, false, ()=>Placeholder(), null, "Custom Boards"),
+            new Button("Cockrs", Category.Creds, false, false, ()=>Placeholder(), null, "Custom Boards"),
             new Button("Join The Discord!", Category.Creds, false, false, ()=>Discord(), null, "Join Our Discord Server"),
             #endregion
         };

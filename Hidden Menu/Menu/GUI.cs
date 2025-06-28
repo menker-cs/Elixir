@@ -240,9 +240,7 @@ namespace Hidden.Menu
 
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
             GUI.Label(new Rect(115f, 172f, 400f, 150f),
-                "Added Chase Player Gun\n" +
-                "Added Report/Mute Gun\n" +
-                "Added Water Splash Mods\n" +
+                "Added Quest Score Mods\n" +
                 "Fixed All Bugs I Found",
                 CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft)
             );

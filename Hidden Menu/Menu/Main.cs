@@ -233,7 +233,7 @@ namespace Hidden.Menu
                     cm?.SetActive(true);
                 }
 
-                openMenu = rightHandedMenu ? pollerInstance.rightControllerSecondaryButton : pollerInstance.leftControllerSecondaryButton;
+                openMenu = rightHandedMenu ? pollerInstance.rightControllerPrimaryButton : pollerInstance.leftControllerSecondaryButton;
 
                 if (openMenu && !InPcCondition)
                 {
@@ -317,7 +317,6 @@ namespace Hidden.Menu
                 gameObject.GetComponent<Renderer>().material.color = clr;
             }
         }
-
         private static void CreateBackground()
         {
             // Background
@@ -343,6 +342,7 @@ namespace Hidden.Menu
             background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
             background.name = "menucolor";
             background.transform.position = new Vector3(0.05f, 0f, 0f);
+            
         }
         #region settings
         public static int Theme = 1;

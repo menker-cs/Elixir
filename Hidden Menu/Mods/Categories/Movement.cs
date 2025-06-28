@@ -6,6 +6,7 @@ using BepInEx;
 using Hidden.Utilities;
 using static Hidden.Utilities.Inputs;
 using Hidden.Menu;
+using Oculus.Interaction;
 
 namespace Hidden.Mods.Categories
 {
@@ -130,146 +131,37 @@ namespace Hidden.Mods.Categories
             GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
             GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed + .5f;
         }
-        public static void Platforms()
+        public static void Platforms(ref GameObject platform, bool grabbing, Transform hand, bool invis, bool loong)
         {
-            if (rightGrip())
+            if (grabbing)
             {
-                if (!RPA)
+                if (!platform)
                 {
-                    RP = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    RP.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    RP.GetComponent<Renderer>().material.color = MenuColorT;
-                    Outline(RP, outColor);
-                    RP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
-                    RP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    RP.transform.position = GorillaTagger.Instance.rightHandTransform.position - Vector3.up * 0.045f;
-                    RPA = true;
+                    platform = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    platform.transform.localScale = loong ? new Vector3(0.80f, 0.015f, 0.28f) : new Vector3(0.28f, 0.015f, 0.28f);
+                    platform.transform.position = hand.position + new Vector3(0f, -0.02f, 0f);
+                    platform.transform.rotation = hand.rotation * Quaternion.Euler(0f, 0f, -90f);
+                    platform.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
+                    platform.GetComponent<Renderer>().material = Variables.background.GetComponent<Renderer>().material;
+                    if (invis) { platform.GetComponent<Renderer>().enabled = false; }
                 }
             }
             else
             {
-                GameObject.Destroy(RP);
-                RPA = false;
-            }
-
-            if (ControllerInputPoller.instance.leftGrab)
-            {
-                if (!LPA)
+                if (platform)
                 {
-                    LP = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    LP.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    LP.GetComponent<Renderer>().material.color = MenuColorT;
-                    Outline(LP, outColor);
-                    LP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
-                    LP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    LP.transform.position = GorillaTagger.Instance.leftHandTransform.position - Vector3.up * 0.045f; ;
-                    LPA = true;
+                    Object.Destroy(platform);
+                    platform = null;
                 }
-            }
-            else
-            {
-                GameObject.Destroy(LP);
-                LPA = false;
             }
         }
-        public static void StickyPlatforms()
+
+        public static void Platforms(bool invis, bool loong)
         {
-            if (rightGrip())
-            {
-                if (!RPA2)
-                {
-                    RP1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    RP1.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    RP1.GetComponent<Renderer>().material.color = MenuColorT;
-                    RP1.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
-                    RP1.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    RP1.transform.position = GorillaTagger.Instance.rightHandTransform.position - Vector3.up * 0.045f;
-
-                    RP2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    RP2.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    RP2.GetComponent<Renderer>().material.color = MenuColorT;
-                    RP2.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
-                    RP2.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    RP2.transform.position = GorillaTagger.Instance.rightHandTransform.position + Vector3.up * 0.045f;
-                    RPA2 = true;
-                    Outline(RP1, outColor);
-                    Outline(RP2, outColor);
-                }
-            }
-            else
-            {
-                GameObject.Destroy(RP1);
-                GameObject.Destroy(RP2);
-                RPA2 = false;
-            }
-
-            if (ControllerInputPoller.instance.leftGrab)
-            {
-                if (!LPA2)
-                {
-                    LP1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    LP1.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    LP1.GetComponent<Renderer>().material.color = MenuColorT;
-                    LP1.transform.rotation = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
-                    LP1.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    LP1.transform.position = GorillaTagger.Instance.leftHandTransform.position - Vector3.up * 0.045f;
-
-                    LP2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    LP2.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    LP2.GetComponent<Renderer>().material.color = MenuColorT;
-                    LP2.transform.rotation = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
-                    LP2.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    LP2.transform.position = GorillaTagger.Instance.leftHandTransform.position + Vector3.up * 0.045f;
-                    LPA2 = true;
-                    Outline(LP1, outColor);
-                    Outline(LP2, outColor);
-                }
-            }
-            else
-            {
-                GameObject.Destroy(LP1);
-                GameObject.Destroy(LP2);
-                LPA2 = false;
-            }
+            Platforms(ref RP, ControllerInputPoller.instance.rightGrab, Variables.playerInstance.rightControllerTransform, invis, loong);
+            Platforms(ref LP, ControllerInputPoller.instance.leftGrab, Variables.playerInstance.leftControllerTransform, invis, loong);
         }
-        public static void InvisPlatforms()
-        {
-            if (rightGrip())
-            {
-                if (!RPA)
-                {
-                    RP = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    UnityEngine.Object.Destroy(RP.GetComponent<Renderer>());
-                    RP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
-                    RP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    RP.transform.position = GorillaTagger.Instance.rightHandTransform.position - Vector3.up * 0.045f;
-                    RPA = true;
-                }
-            }
-            else
-            {
-                GameObject.Destroy(RP);
-                RPA = false;
-            }
 
-            if (ControllerInputPoller.instance.leftGrab)
-            {
-                if (!LPA)
-                {
-                    LP = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    UnityEngine.Object.Destroy(RP.GetComponent<Renderer>());
-                    LP.transform.rotation = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.rotation;
-                    LP.transform.localScale = new Vector3(0.01f, 0.3f, 0.4f);
-                    LP.transform.position = GorillaTagger.Instance.leftHandTransform.position - Vector3.up * 0.045f; ;
-                    LPA = true;
-                }
-            }
-            else
-            {
-                GameObject.Destroy(LP);
-                LPA = false;
-            }
-        }
         public static void Checkpoint()
         {
             if (rightGrip())
@@ -432,17 +324,8 @@ namespace Hidden.Mods.Categories
 
         static Vector3 oldMousePos;
 
-        static bool RPA = false;
-        static bool LPA = false;
         static GameObject RP;
         static GameObject LP;
-
-        static bool RPA2 = false;
-        static bool LPA2 = false;
-        static GameObject RP1;
-        static GameObject LP1;
-        static GameObject RP2;
-        static GameObject LP2;
 
         static GameObject Pointy;
         static bool Ir = false;

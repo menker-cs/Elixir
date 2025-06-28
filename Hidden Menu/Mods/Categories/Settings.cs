@@ -52,9 +52,9 @@ namespace Hidden.Mods.Categories
             {
                 flyspeedchanger = 1;
             }
-            if (flyspeedchanger == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (flyspeedchanger == 1)
                 {
                     if (btn.buttonText == "Change Fly Speed: Very Fast")
                     {
@@ -63,10 +63,7 @@ namespace Hidden.Mods.Categories
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
                     }
                 }
-            }
-            if (flyspeedchanger == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (flyspeedchanger == 2)
                 {
                     if (btn.buttonText == "Change Fly Speed: Normal")
                     {
@@ -75,10 +72,7 @@ namespace Hidden.Mods.Categories
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
                     }
                 }
-            }
-            if (flyspeedchanger == 3)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (flyspeedchanger == 3)
                 {
                     if (btn.buttonText == "Change Fly Speed: Slow")
                     {
@@ -87,10 +81,7 @@ namespace Hidden.Mods.Categories
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
                     }
                 }
-            }
-            if (flyspeedchanger == 4)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (flyspeedchanger == 4)
                 {
                     if (btn.buttonText == "Change Fly Speed: Fast")
                     {
@@ -100,7 +91,6 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-
         }
         public static void SpeedSpeed()
         {
@@ -109,9 +99,9 @@ namespace Hidden.Mods.Categories
             {
                 speedboostchanger = 1;
             }
-            if (speedboostchanger == 1)
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (speedboostchanger == 1)
                 {
                     if (btn.buttonText == "Change Speed Boost: Very Fast")
                     {
@@ -120,22 +110,16 @@ namespace Hidden.Mods.Categories
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
                     }
                 }
-            }
-            if (speedboostchanger == 2)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (speedboostchanger == 2)
                 {
                     if (btn.buttonText == "Change Speed Boost: Normal")
                     {
                         btn.SetText("Change Speed Boost: Slow");
-                        speedboostchangerspeed = 6f;
+                        speedboostchangerspeed = 7.3f;
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
                     }
                 }
-            }
-            if (speedboostchanger == 3)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (speedboostchanger == 3)
                 {
                     if (btn.buttonText == "Change Speed Boost: Slow")
                     {
@@ -144,10 +128,7 @@ namespace Hidden.Mods.Categories
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
                     }
                 }
-            }
-            if (speedboostchanger == 4)
-            {
-                foreach (ButtonHandler.Button btn in ModButtons.buttons)
+                if (speedboostchanger == 4)
                 {
                     if (btn.buttonText == "Change Speed Boost: Fast")
                     {
@@ -157,7 +138,6 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }
-
         }
         public static void ESPChange()
         {

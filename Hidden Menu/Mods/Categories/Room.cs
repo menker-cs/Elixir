@@ -7,13 +7,12 @@ using Photon.Realtime;
 using BepInEx;
 using Hidden.Utilities.Notifs;
 using Hidden.Utilities;
+using Hidden.Menu;
 
 namespace Hidden.Mods.Categories
 {
     public class Room : MonoBehaviourPunCallbacks
     {
-        public static string roomCode;
-
         public static void QuitGTAG()
         {
             Application.Quit();
@@ -23,7 +22,6 @@ namespace Hidden.Mods.Categories
         {
             PhotonNetwork.Disconnect();
         }
-
         public static void JoinRandomPublic()
         {
             if (PhotonNetwork.InRoom)

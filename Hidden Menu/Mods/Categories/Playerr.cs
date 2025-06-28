@@ -183,6 +183,10 @@ namespace Hidden.Mods.Categories
         {
             GorillaTagger.Instance.offlineVRRig.head.trackingRotationOffset.y = 180f;
         }
+        public static void SnapNeck()
+        {
+            GorillaTagger.Instance.offlineVRRig.head.trackingRotationOffset.y = 90f;
+        }
         public static void UpsidedownHead()
         {
             GorillaTagger.Instance.offlineVRRig.head.trackingRotationOffset.z = 180f;
@@ -407,6 +411,15 @@ namespace Hidden.Mods.Categories
             }
             GorillaTagger.Instance.offlineVRRig.enabled = true;
         }
+        public static void QuestScore(int score)
+        {
+            if (Time.time > lvlDelay)
+            {
+                lvlDelay = Time.time + 1f;
+                GorillaTagger.Instance.offlineVRRig.SetQuestScore(score);
+            }
+        }
+        private static float lvlDelay;
 
         private static float nigTime =  0f;
         private static float delay = 0.37f;

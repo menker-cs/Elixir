@@ -827,6 +827,19 @@ namespace Hidden.Mods.Categories
                 }
             }
         }
+        public static void EntityESP(bool bat)
+        {
+            GameObject ESP = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            ESP.transform.position = bat ? Fun.Bat.transform.position : Fun.Bug.transform.position;
+            UnityEngine.Object.Destroy(ESP.GetComponent<SphereCollider>());
+            ESP.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
+            ESP.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
+            ESP.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
+            UnityEngine.Color color = MenuColor;
+            color.a = 0.5f;
+            ESP.GetComponent<Renderer>().material.color = color;
+            UnityEngine.Object.Destroy(ESP, Time.deltaTime);
+        }
 
         public static GameObject name;
         public static GameObject distance;
