@@ -271,6 +271,7 @@ namespace Hidden.Menu
                 AddModButtons(i * 0.09f, PageToDraw[i]);
             }
         }
+        static Vector3 pos = new Vector3(0.56f, 0.54f, 0.23f);
         private static void CreateMenuObject()
         {
             // Menu Object
@@ -315,7 +316,6 @@ namespace Hidden.Menu
             else if (Theme == 4)
             {
                 background.GetComponent<MeshRenderer>().material = RGB;
-
             }
             else
             {
@@ -658,26 +658,13 @@ namespace Hidden.Menu
             // Mod Buttons
             ModButton = ButtonPool.GetButton();
             Rigidbody btnRigidbody = ModButton.GetComponent<Rigidbody>();
-            if (btnRigidbody != null)
-            {
-                Destroy(btnRigidbody);
-            }
+            if (btnRigidbody != null) { Destroy(btnRigidbody); }
             BoxCollider btnCollider = ModButton.GetComponent<BoxCollider>();
-            if (btnCollider != null)
-            {
-                btnCollider.isTrigger = true;
-            }
+            if (btnCollider != null) { btnCollider.isTrigger = true; }
             ModButton.transform.SetParent(menuObj.transform, false);
             ModButton.transform.rotation = Quaternion.identity;
             ModButton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
-            if (Laytou == 3)
-            {
-                ModButton.transform.localPosition = new Vector3(0.56f, 0f, 0.225f - offset);
-            }
-            else
-            {
-                ModButton.transform.localPosition = new Vector3(0.56f, 0f, 0.32f - offset);
-            }
+            ModButton.transform.localPosition = new Vector3(0.56f, 0f, Laytou == 3 ? 0.225f - offset : 0.32f - offset);
             BtnCollider btnColScript = ModButton.GetComponent<BtnCollider>() ?? ModButton.AddComponent<BtnCollider>();
             btnColScript.clickedButton = button;
             // Mod Buttons Text
@@ -688,36 +675,17 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
-            {
-                title.color = Black;
-            }
-            else
-            {
-                title.color = White;
-            }
+            if (Theme == 5) { title.color = Black; }
+            else { title.color = White; }
+
             RectTransform titleTransform = title.GetComponent<RectTransform>();
-            if (Laytou == 3)
-            {
-                titleTransform.localPosition = new Vector3(.064f, 0, .089f - offset / 2.6f);
-            }
-            else
-            {
-                titleTransform.localPosition = new Vector3(.064f, 0, .126f - offset / 2.6f);
-            }
+            titleTransform.localPosition = new Vector3(.064f, 0,Laytou == 3 ? .089f - offset / 2.6f : .126f - offset / 2.6f);
             titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             titleTransform.sizeDelta = new Vector2(0.21f, 0.02225f);
 
             GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Destroy(gameObject.GetComponent<Collider>());
-            if (Theme == 0)
-            {
-                Outline(gameObject, DarkerGrey);
-            }
-            else
-            {
-                Outline(gameObject, outColor);
-            }
+            Outline(gameObject, outColor);
             gameObject.transform.parent = menuObj.transform;
             gameObject.transform.position = ModButton.transform.position;
             gameObject.transform.rotation = ModButton.transform.rotation;
