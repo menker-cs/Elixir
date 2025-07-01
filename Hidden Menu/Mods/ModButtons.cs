@@ -28,6 +28,7 @@ namespace Hidden.Mods
         Visuals,
         Creds,
         CS,
+        IHateMyself
     }
     public class ModButtons
     {
@@ -71,7 +72,6 @@ namespace Hidden.Mods
             new Button("Quit Game", Category.Room, true, false, ()=>QuitGTAG(), null, "..."),
             new Button("Join Random", Category.Room, false, false, ()=>JoinRandomPublic(), null, "Joins A Random Room"),
             new Button("Disconnect", Category.Room, false, false, ()=>Disconnect(), null, "Disconnects You From The Lobby"),
-            new Button("Rejoin Room", Category.Room, true, false, ()=>RejoinRoom(), null, "Disconnects You From The Lobby"),
             new Button("Primary Disconnect", Category.Room, true, false, ()=>PrimaryDisconnect(), null, "Disconnects You If You Click Your A Button"),
             new Button("Check Master Client", Category.Room, false, false, ()=>IsMasterCheck(), null, "Checks Who Is Master"),
             new Button("Disable Network Triggers", Category.Room, false, false, ()=>DisableNetworkTriggers(), null, "Disables Network Triggers"),
@@ -101,6 +101,8 @@ namespace Hidden.Mods
             new Button("No Tag Freeze", Category.Move, true, false, ()=>NoTagFreeze(), null, "No Tag Freeze"),
             new Button("NoClip [T]", Category.Move, true, false, ()=>Noclip(), null, "Walk Through Walls"),
             new Button("Speed Boost", Category.Move, true, false, ()=>Speedboost(), null, "Makes You Faster"),
+            new Button("Dash [P]", Category.Move, true, false, ()=>DashJump(true), null, "Pushes You Forward"),
+            new Button("Fling [P]", Category.Move, true, false, ()=>DashJump(false), null, "Flings You"),
             new Button("Velocity Jump", Category.Move, true, false, ()=>Velocity(-1f), ()=> Velocity(default), "Makes You Gain Velocity When Jumping"),
             new Button("Fly [P]", Category.Move, true, false, ()=>Fly(), null, "Fly In The Air"),
             new Button("Trigger Fly [T]", Category.Move, true, false, ()=>TriggerFly(), null, "Fly With Your Trigger"),
@@ -184,6 +186,7 @@ namespace Hidden.Mods
             new Button("Splash Hands [G]", Category.Fun, true, false, ()=>SplashHands(), null, "Splashes Your Hands"),
             new Button("Splash Gun", Category.Fun, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
             new Button("Splash Aura [G]", Category.Fun, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
+            new Button("Give Splash Gun", Category.Fun, true, false, ()=>GiveSplash(), null, "Makes Others Splash"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun(), null, "Places The Bug Where You Shoot"),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug(), null, "Snipes The Bug"),
@@ -211,7 +214,6 @@ namespace Hidden.Mods
             #endregion
 
             #region World
-            new Button("Custom Boards", Category.World, true, true, ()=>Boards(true), ()=> Boards(false), "Makes Stump Have Custom Boards"),
             new Button("Stump Text", Category.World, true, true, ()=>Stumpy(), ()=> STUMPY(), "Makes Text In Stump"),
             new Button("Unlock Comp", Category.World, true, false, ()=>UnlockComp(), null, "Unlocks Comp"),
             new Button("Enable I Lava You Update", Category.World, true, false, ()=>EnableILavaYou(), ()=>DisableILavaYou(), "Toggles I Lava You Update"),

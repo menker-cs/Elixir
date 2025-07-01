@@ -16,65 +16,58 @@ using Photon.Pun;
 using System.Net;
 using TMPro;
 using Hidden.Utilities.Notifs;
+using System.Collections;
+using UnityEngine.Networking;
+using Oculus.Platform;
+using Hidden.Mods.Categories;
+using System.IO;
+using System.Reflection;
+using UnityEngine.ProBuilder.MeshOperations;
 
 namespace Hidden.Menu
 {
     [HarmonyPatch(typeof(GorillaLocomotion.GTPlayer), "LateUpdate")]
     public class Main : MonoBehaviour
     {
-        public static bool boards = true;
-        public static void Boards(bool b)
-        {
-            boards = b;
-        }
         [HarmonyPrefix]
         public static void Prefix()
         {
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             try
             {
-                if (boards)
-                {
-                    Material mat;
-                    mat = new Material(Shader.Find("GorillaTag/UberShader"));
-                    mat.color = DFade.color;
-                    GameObject WallMonitor = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
-                    WallMonitor.GetComponent<Renderer>().material = mat;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}</color>\n--------------------------------------------";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = DFade.color;
+                TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
+                textMeshPro.GetComponent<TextMeshPro>().color = DFade.color;
+                textMeshPro.text = $"" +
+                    $"\nThank You For Using Hidden!\n\n" +
+                    $"Status: <color={hexColor}>{status}</color>\n" +
+                    $"Current User: <color={hexColor}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
+                    $"Current Ping: <color={hexColor}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
+                    $"Current FPS: <color={hexColor}>{fps}</color> \nCurrent Room: <color={hexColor}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
+                    $" <color={hexColor}>I Hope You Enjoy The Menu</color>";
 
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}</color>\n--------------------------------------------";
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motd (1)").GetComponent<TextMeshPro>().color = DFade.color;
-                    TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>();
-                    textMeshPro.GetComponent<TextMeshPro>().color = DFade.color;
-                    textMeshPro.text = $"" +
-                        $"\nThank You For Using Hidden!\n\n" +
-                        $"Status: <color={hexColor}>{status}</color>\n" +
-                        $"Current User: <color={hexColor}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
-                        $"Current Ping: <color={hexColor}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
-                        $"Current FPS: <color={hexColor}>{fps}</color> \nCurrent Room: <color={hexColor}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
-                        $" <color={hexColor}>We Hope You Enjoy The Menu</color>";
+                textMeshPro.alignment = TextAlignmentOptions.Top;
 
-                    textMeshPro.alignment = TextAlignmentOptions.Top;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Menu Meanings</color>\n-----------------------------";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().color = RGB.color;
+                TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData").GetComponent<TextMeshPro>();
+                textMeshPro2.GetComponent<TextMeshPro>().color = DFade.color;
+                textMeshPro2.text = $"" +
+                    $"\n[D?] - Maybe Detected \n" +
+                    $"[D] - Detected\n" +
+                    $"[U] - Use\n" +
+                    $"[P] - Primary\n" +
+                    $"[S] - Secondary\n" +
+                    $"[G] - Grip\n" +
+                    $"[T] - Trigger\n" +
+                    $"[W?] - Maybe Working\n" +
+                    $"[B] - Buggy\n\n" +
+                    $"If A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
+                textMeshPro2.alignment = TextAlignmentOptions.Top;
 
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Menu Meanings</color>\n-----------------------------";
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConduct").GetComponent<TextMeshPro>().color = DFade.color;
-                    TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COC Text").GetComponent<TextMeshPro>();
-                    textMeshPro2.GetComponent<TextMeshPro>().color = DFade.color;
-                    textMeshPro2.text = $"" +
-                        $"\n[D?] - Maybe Detected \n" +
-                        $"[D] - Detected\n" +
-                        $"[U] - Use\n" +
-                        $"[P] - Primary\n" +
-                        $"[S] - Secondary\n" +
-                        $"[G] - Grip\n" +
-                        $"[T] - Trigger\n" +
-                        $"[W?] - Maybe Working\n" +
-                        $"[B] - Buggy\n\n" +
-                        $"If A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
-                    textMeshPro2.alignment = TextAlignmentOptions.Top;
-
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = RGB.color;
-                }
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = RGB.color;
             }
             catch
             {
@@ -159,24 +152,8 @@ namespace Hidden.Menu
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("Hidden Menu", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
+        }
 
-            //SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
-        }
-        private static int i = 0;
-        [HarmonyPrefix]
-        public static void Update()
-        {
-            if (PhotonNetwork.InRoom && i < 1)
-            {
-                i++;
-                //SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has joined code: **{PhotonNetwork.CurrentRoom.Name}**, Players In Lobby: " + PhotonNetwork.CurrentRoom.PlayerCount + "/10");
-            }
-            if (!PhotonNetwork.InRoom && i >= 1)
-            {
-                i = 0;
-                //SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
-            }
-        }
         static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
@@ -324,6 +301,13 @@ namespace Hidden.Menu
             Destroy(background.GetComponent<Rigidbody>());
             Destroy(background.GetComponent<BoxCollider>());
             Outline(background, outColor);
+
+            background.transform.parent = menuObj.transform;
+            background.transform.rotation = Quaternion.identity;
+            background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
+            background.name = "menucolor";
+            background.transform.position = new Vector3(0.05f, 0f, 0f);
+
             if (Theme == 2 || Theme == 3)
             {
                 background.GetComponent<MeshRenderer>().material = Theme == 2 ? DFade : DBreath;
@@ -337,12 +321,6 @@ namespace Hidden.Menu
             {
                 background.GetComponent<MeshRenderer>().material.color = MenuColor;
             }
-            background.transform.parent = menuObj.transform;
-            background.transform.rotation = Quaternion.identity;
-            background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
-            background.name = "menucolor";
-            background.transform.position = new Vector3(0.05f, 0f, 0f);
-            
         }
         #region settings
         public static int Theme = 1;
@@ -610,7 +588,7 @@ namespace Hidden.Menu
                 tmp.characterSpacing = 1f;
                 tmp.alignment = TextAlignmentOptions.Center;
                 tmp.color = ColorLib.Hidden;
-                tmp.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+                tmp.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
             }
 
             tmp.text =

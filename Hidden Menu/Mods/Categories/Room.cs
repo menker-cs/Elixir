@@ -71,6 +71,7 @@ namespace Hidden.Mods.Categories
                 NotificationLib.SendNotification($"<color=red>Error</color>: Failed to join room '{roomCode}'. Reason: {message}.");
             }
         }
+        static string roomCode;
         public static void PrimaryDisconnect()
         {
             if (ControllerInputPoller.instance.rightControllerPrimaryButton | UnityInput.Current.GetKey(KeyCode.F))

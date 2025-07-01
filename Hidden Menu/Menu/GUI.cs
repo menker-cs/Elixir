@@ -14,6 +14,9 @@ using static Hidden.Utilities.ColorLib;
 using Hidden.Utilities;
 using System.Net;
 using System.Linq;
+using Hidden.Mods.Categories;
+using GorillaNetworking;
+using static Oculus.Interaction.OptionalAttribute;
 
 namespace Hidden.Menu
 {
@@ -83,7 +86,6 @@ namespace Hidden.Menu
             versionTexture = CreateTexture(containerColor);
             timeTexture = CreateTexture(containerColor);
             updatesTexture = CreateTexture(containerColor);
-
 
             arrayListTexture = CreateRoundedTexture(17, containerColor);
 
@@ -241,6 +243,9 @@ namespace Hidden.Menu
             GUI.Label(new Rect(265f, 152f, 400f, 30f), "Updates", CreateLabelStyle(Color.grey, 20, FontStyle.Normal, TextAnchor.MiddleLeft));
             GUI.Label(new Rect(115f, 172f, 400f, 150f),
                 "Added Quest Score Mods\n" +
+                "Added Plank Platforms\n" +
+                "Added Bat/Bug ESP\n" +
+                "Fixed ESPs\n" +
                 "Fixed All Bugs I Found",
                 CreateLabelStyle(Color.white, 19, FontStyle.Bold, TextAnchor.MiddleLeft)
             );

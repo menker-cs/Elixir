@@ -315,12 +315,34 @@ namespace Hidden.Mods.Categories
         {
             if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
             {
+                Gravity(9.81f);
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = false;
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
             }
             else { GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = true; }
         }
+        public static void DashJump(bool Dash)
+        {
+            if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
+            {
+                if (Time.time > dashDelay)
+                {
+                    dashDelay = Time.time + 2.5f;
+                    if (Dash)
+                    {
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * 12f;
+                    }
+                    else
+                    {
+                        Vector3 flinger = Random.onUnitSphere;
+                        flinger.y = Mathf.Clamp(flinger.y, 0.5f, 1.5f);
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += flinger.normalized * 12f;
+                    }
+                }
+            }
+        }
+
+        static float dashDelay;
 
         static Vector3 oldMousePos;
 

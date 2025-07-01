@@ -586,7 +586,7 @@ namespace Hidden.Mods.Categories
         {
             foreach (VRRig Player in GorillaParent.instance.vrrigs)
             {
-                if (Player == GorillaTagger.Instance.offlineVRRig) continue;
+                if (Player == null || Player == GorillaTagger.Instance.offlineVRRig) continue;
 
                 GameObject distance = new GameObject($"{Player.name}'s Distance");
                 TextMeshPro textMeshPro = distance.AddComponent<TextMeshPro>();
@@ -594,8 +594,8 @@ namespace Hidden.Mods.Categories
                 textMeshPro.fontSize = 3.5f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.color = RGB.color;
-                textMeshPro.text = Player.name;
-                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+
+                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
                 distance.transform.position = Player.headMesh.transform.position + new Vector3(0f, 0.65f, 0f);
                 distance.transform.LookAt(Camera.main.transform);
@@ -622,7 +622,7 @@ namespace Hidden.Mods.Categories
                 textMeshPro.fontStyle = FontStyles.Normal;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
                 textMeshPro.text = RigManager.GetPlayerFromVRRig(Player).NickName;
-                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
                 name.transform.position = Player.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
                 name.transform.LookAt(Camera.main.transform);
@@ -637,18 +637,18 @@ namespace Hidden.Mods.Categories
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
-                    GameObject name = new GameObject("Text");
-                    TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
+                    GameObject advName = new GameObject("Text");
+                    TextMeshPro textMeshPro = advName.AddComponent<TextMeshPro>();
 
                     textMeshPro.fontSize = 2f;
                     textMeshPro.fontStyle = FontStyles.Normal;
                     textMeshPro.alignment = TextAlignmentOptions.Center;
                     textMeshPro.color = Color.white;
-                    textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+                    textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
-                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.2f, 0f);
-                    name.transform.LookAt(Camera.main.transform);
-                    name.transform.Rotate(0, 180, 0);
+                    advName.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.2f, 0f);
+                    advName.transform.LookAt(Camera.main.transform);
+                    advName.transform.Rotate(0, 180, 0);
 
                     int fpps = Traverse.Create(vrrig).Field("fps").GetValue<int>();
                     string fpsColor = fpps < 45 ? "red" : (fpps > 80 ? "green" : "orange");
@@ -661,7 +661,7 @@ namespace Hidden.Mods.Categories
                         $"Tagged: <color={hexColor}>{RigIsInfected(vrrig)}</color>\n" +
                         $"FPS: <color={fpsColor}>{fpps}</color>";
 
-                    GameObject.Destroy(name, Time.deltaTime);
+                    GameObject.Destroy(advName, Time.deltaTime);
                 }
             }
         }
@@ -669,8 +669,8 @@ namespace Hidden.Mods.Categories
         {
             int fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
 
-            GameObject Textobj = new GameObject("InfoDisplay TMP");
-            TextMeshPro textMeshPro = Textobj.AddComponent<TextMeshPro>();
+            GameObject info = new GameObject("InfoDisplay TMP");
+            TextMeshPro textMeshPro = info.AddComponent<TextMeshPro>();
 
             string fpsColor = fps > 80 ? "green" : "orange";
             string fpsColor2 = fps < 45 ? "red" : fpsColor;
@@ -684,18 +684,18 @@ namespace Hidden.Mods.Categories
                 $"FPS: <color={fpsColor2}>{fps}</color>";
 
             textMeshPro.color = Color.white;
-            textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdtext").GetComponent<TextMeshPro>().font;
+            textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
             textMeshPro.fontSize = 6.5f;
             textMeshPro.alignment = TextAlignmentOptions.Right;
             textMeshPro.enableWordWrapping = false;
             textMeshPro.richText = true;
 
             Transform head = GTPlayer.Instance.headCollider.transform;
-            Textobj.transform.position = head.position + head.forward * 2f + head.up * 0.5f - head.right * 0.5f;
-            Textobj.transform.forward = head.forward;
-            Textobj.transform.localScale = Vector3.one * 0.1f;
+            info.transform.position = head.position + head.forward * 2f + head.up * 0.5f - head.right * 0.5f;
+            info.transform.forward = head.forward;
+            info.transform.localScale = Vector3.one * 0.1f;
 
-            Object.Destroy(Textobj, Time.deltaTime);
+            Object.Destroy(info, Time.deltaTime);
         }
         public static void SnakeESP()
         {
@@ -841,10 +841,8 @@ namespace Hidden.Mods.Categories
             UnityEngine.Object.Destroy(ESP, Time.deltaTime);
         }
 
-        public static GameObject name;
-        public static GameObject distance;
-        public static float l;
-        public static bool fps1;
+        static float l;
+        static bool fps1;
     }
 }
 

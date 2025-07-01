@@ -7,6 +7,7 @@ using UnityEngine;
 using BepInEx;
 using Hidden.Utilities;
 using Photon.Pun;
+using Hidden.Menu;
 
 namespace Hidden.Mods.Categories
 {
@@ -505,11 +506,11 @@ namespace Hidden.Mods.Categories
         {
             if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
-                Splash(GorillaTagger.Instance.rightHandTransform.position, GorillaTagger.Instance.rightHandTransform.rotation, 0.5f);
+                Splash(GorillaTagger.Instance.rightHandTransform.position, GorillaTagger.Instance.rightHandTransform.rotation, 4f);
             }
             if (ControllerInputPoller.instance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
-                Splash(GorillaTagger.Instance.leftHandTransform.position, GorillaTagger.Instance.leftHandTransform.rotation, 0.5f);
+                Splash(GorillaTagger.Instance.leftHandTransform.position, GorillaTagger.Instance.leftHandTransform.rotation, 4f);
             }
         }
         public static void SplashGun()
@@ -519,7 +520,7 @@ namespace Hidden.Mods.Categories
                 taggerInstance.offlineVRRig.enabled = false;
                 taggerInstance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
 
-                Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 0.5f);
+                Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 4f);
             }, false);
             { taggerInstance.offlineVRRig.enabled = true; }
         }
@@ -527,7 +528,19 @@ namespace Hidden.Mods.Categories
         {
             if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
-                Splash(Annoy(GorillaTagger.Instance.bodyCollider.transform, 1f), GorillaTagger.Instance.headCollider.transform.rotation, 0.5f);
+                Splash(Annoy(GorillaTagger.Instance.bodyCollider.transform, 1f), GorillaTagger.Instance.headCollider.transform.rotation, 4f);
+            }
+        }
+        public static void GiveSplash()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                    taggerInstance.offlineVRRig.enabled = false;
+                    taggerInstance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
+                    Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
+            }, true); 
+            {
+                taggerInstance.offlineVRRig.enabled = true;
             }
         }
     }
