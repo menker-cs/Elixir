@@ -6,17 +6,20 @@ using System.IO;
 using UnityEngine;
 using static Hidden.Menu.Main;
 
-[HarmonyPatch(typeof(MonoBehaviourPunCallbacks), "OnPlayerEnteredRoom")]
-internal class JoinPatch : MonoBehaviour
+namespace Hidden.Utilities.Notifs
 {
-    private static void Prefix(Player newPlayer)
+    [HarmonyPatch(typeof(MonoBehaviourPunCallbacks), "OnPlayerEnteredRoom")]
+    internal class JoinPatch : MonoBehaviour
     {
-        if (newPlayer != oldnewplayer)
+        private static void Prefix(Player newPlayer)
         {
-            NotificationLib.SendNotification("<color=white>[</color><color=green>Player Joined</color><color=white>] </color><color=white>Name: " + newPlayer.NickName + "</color>");
-            oldnewplayer = newPlayer;
+            if (newPlayer != oldnewplayer)
+            {
+                NotificationLib.SendNotification("<color=white>[</color><color=green>Player Joined</color><color=white>] </color><color=white>Name: " + newPlayer.NickName + "</color>");
+                oldnewplayer = newPlayer;
+            }
         }
-    }
 
-    private static Player oldnewplayer;
+        private static Player oldnewplayer;
+    }
 }

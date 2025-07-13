@@ -74,7 +74,7 @@ namespace Hidden.Menu
             }
             try
             {
-                if (playerInstance == null || taggerInstance == null)
+                if (playerInstance == null || GorillaTagger.Instance == null)
                 {
                     UnityEngine.Debug.LogError("Player instance or GorillaTagger is null. Skipping menu updates.");
                     return;
@@ -306,69 +306,51 @@ namespace Hidden.Menu
             background.transform.parent = menuObj.transform;
             background.transform.rotation = Quaternion.identity;
             background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
-            background.name = "menucolor";
+            background.name = "ColorLib.MenuMat[Theme-1].color";
             background.transform.position = new Vector3(0.05f, 0f, 0f);
 
-            if (Theme == 2 || Theme == 3)
-            {
-                background.GetComponent<MeshRenderer>().material = Theme == 2 ? DFade : DBreath;
-            }
-            else if (Theme == 4)
-            {
-                background.GetComponent<MeshRenderer>().material = RGB;
-            }
-            else
-            {
-                background.GetComponent<MeshRenderer>().material.color = MenuColor;
-            }
+                background.GetComponent<MeshRenderer>().material = MenuMat[Theme-1];
         }
         #region settings
         public static int Theme = 1;
-        public static Color MenuColorT = ColorLib.Hidden;
-        public static Color MenuColor = ColorLib.Hidden;
         public static Color ButtonColorOff = DarkGrey;
         public static Color ButtonColorOn = new Color32(35,35,35,255);
         public static Color outColor = DarkerGrey;
-        public static Color DisconnecyColor = ButtonColorOff;
-        public static Color disOut = outColor;
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 7)
+            if (Theme > 8)
             {
                 Theme = 1;
                 RefreshMenu();
             }
+
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
                 if (Theme == 1)
                 {
-                    if (btn.buttonText == "Change Theme: Green")
+                    if (btn.buttonText == "Change Theme: Purple")
                     {
-                        btn.SetText("Change Theme: Dark");
-                        MenuColorT = ColorLib.Hidden;
-                        MenuColor = ColorLib.Hidden;
+                        btn.SetText("Change Theme: Default");
+
                         ButtonColorOff = DarkGrey;
                         ButtonColorOn = new Color32(35, 35, 35, 255);
                         outColor = DarkerGrey;
-                        DisconnecyColor = ButtonColorOff;
-                        disOut = outColor;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Default</color>");
                         RefreshMenu();
                     }
                 }
                 if (Theme == 2)
                 {
-                    if (btn.buttonText == "Change Theme: Dark")
+                    if (btn.buttonText == "Change Theme: Default")
                     {
                         btn.SetText("Change Theme: Fading");
-                        MenuColorT = ColorLib.Hidden;
-                        MenuColor = ColorLib.Hidden;
+
                         ButtonColorOff = DarkGrey;
                         ButtonColorOn = new Color32(35, 35, 35, 255);
                         outColor = DarkerGrey;
-                        DisconnecyColor = ButtonColorOff;
-                        disOut = outColor;
+
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
                         RefreshMenu();
                     }
@@ -378,13 +360,11 @@ namespace Hidden.Menu
                     if (btn.buttonText == "Change Theme: Fading")
                     {
                         btn.SetText("Change Theme: Breathing");
-                        MenuColorT = ColorLib.Hidden;
-                        MenuColor = ColorLib.Hidden;
+
                         ButtonColorOff = DarkGrey;
                         ButtonColorOn = new Color32(35, 35, 35, 255);
                         outColor = DarkerGrey;
-                        DisconnecyColor = ButtonColorOff;
-                        disOut = outColor;
+
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
                         RefreshMenu();
                     }
@@ -393,30 +373,26 @@ namespace Hidden.Menu
                 {
                     if (btn.buttonText == "Change Theme: Breathing")
                     {
-                        btn.SetText("Change Theme: RGB");
-                        MenuColorT = ColorLib.Hidden;
-                        MenuColor = RGB.color;
+                        btn.SetText("Change Theme: Dark");
+
                         ButtonColorOff = new Color32(30, 30, 30, 255);
                         ButtonColorOn = DarkerGrey;
                         outColor = Black;
-                        DisconnecyColor = ButtonColorOff;
-                        disOut = outColor;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] RGB</color>");
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
                         RefreshMenu();
                     }
                 }
                 if (Theme == 5)
                 {
-                    if (btn.buttonText == "Change Theme: RGB")
+                    if (btn.buttonText == "Change Theme: Dark")
                     {
                         btn.SetText("Change Theme: Blue");
-                        MenuColorT = SkyBlueTransparent;
-                        MenuColor = SkyBlue;
+
                         ButtonColorOff = RoyalBlue;
                         ButtonColorOn = DodgerBlue;
                         outColor = DarkDodgerBlue;
-                        DisconnecyColor = MenuColor;
-                        disOut = outColor;
+
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
                         RefreshMenu();
                     }
@@ -427,13 +403,11 @@ namespace Hidden.Menu
                     if (btn.buttonText == "Change Theme: Blue")
                     {
                         btn.SetText("Change Theme: Red");
-                        MenuColorT = FireBrickTransparent;
-                        MenuColor = FireBrick;
+
                         ButtonColorOff = WineRed;
                         ButtonColorOn = IndianRed;
                         outColor = IndianRed;
-                        DisconnecyColor = Crimson;
-                        disOut = WineRed;
+
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
                         RefreshMenu();
                     }
@@ -443,14 +417,26 @@ namespace Hidden.Menu
                     if (btn.buttonText == "Change Theme: Red")
                     {
                         btn.SetText("Change Theme: Green");
-                        MenuColorT = MediumAquamarineTransparent;
-                        MenuColor = MediumAquamarine;
+
                         ButtonColorOff = MediumSeaGreen;
                         ButtonColorOn = SeaGreen;
-                        DisconnecyColor = ButtonColorOff;
                         outColor = Lime;
-                        disOut = outColor;
+
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
+                        RefreshMenu();
+                    }
+                }
+                if (Theme == 8)
+                {
+                    if (btn.buttonText == "Change Theme: Green")
+                    {
+                        btn.SetText("Change Theme: Purple");
+
+                        ButtonColorOff = DarkSlateBlue;
+                        ButtonColorOn = SlateBlue;
+                        outColor = Indigo;
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
                         RefreshMenu();
                     }
                 }
@@ -540,27 +526,20 @@ namespace Hidden.Menu
                 Destroy(disconnectButton.GetComponent<Rigidbody>());
                 disconnectButton.GetComponent<BoxCollider>().isTrigger = true;
                 //RoundObj(disconnectButton);
-                Outline(disconnectButton, disOut);
+                Outline(disconnectButton, outColor);
                 disconnectButton.transform.parent = menuObj.transform;
                 disconnectButton.transform.rotation = Quaternion.identity;
                 disconnectButton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
                 disconnectButton.transform.localPosition = new Vector3(0.56f, 0f, 0.59f);
                 disconnectButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("DisconnectButton", Category.Home, false, false, null, null);
-                disconnectButton.GetComponent<Renderer>().material.color = DisconnecyColor;
+                disconnectButton.GetComponent<Renderer>().material.color = ButtonColorOff;
 
                 // Disconnect Button Text
                 Text discontext = new GameObject { transform = { parent = canvasObj.transform } }.AddComponent<Text>();
                 discontext.text = "Disconnect";
                 discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
-                if (Theme == 5)
-                {
-                    discontext.color = Black;
-                }
-                else
-                {
-                    discontext.color = White;
-                }
+                discontext.color = White;
                 discontext.alignment = TextAnchor.MiddleCenter;
                 discontext.resizeTextForBestFit = true;
                 discontext.resizeTextMinSize = 0;
@@ -625,15 +604,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5)
-            {
-                title.color = Black;
-            }
-            else
-            {
-                title.color = White;
-            }
-
+            title.color = White;
             title.fontSize = 5;
             title.alignment = TextAnchor.MiddleCenter;
             title.resizeTextForBestFit = true;
@@ -675,8 +646,7 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            if (Theme == 5) { title.color = Black; }
-            else { title.color = White; }
+            title.color = White;
 
             RectTransform titleTransform = title.GetComponent<RectTransform>();
             titleTransform.localPosition = new Vector3(.064f, 0,Laytou == 3 ? .089f - offset / 2.6f : .126f - offset / 2.6f);
@@ -723,14 +693,7 @@ namespace Hidden.Menu
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                if (Theme == 0)
-                {
-                    Outline(gameObject, DarkerGrey);
-                }
-                else
-                {
-                    Outline(gameObject, outColor);
-                }
+                Outline(gameObject, outColor);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
@@ -743,14 +706,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
-                {
-                    title.color = Black;
-                }
-                else
-                {
-                    title.color = White;
-                }
+                title.color = White;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -778,14 +734,7 @@ namespace Hidden.Menu
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                if (Theme == 0)
-                {
-                    Outline(gameObject, DarkerGrey);
-                }
-                else
-                {
-                    Outline(gameObject, outColor);
-                }
+                Outline(gameObject, outColor);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
@@ -798,14 +747,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
-                {
-                    title.color = Black;
-                }
-                else
-                {
-                    title.color = White;
-                }
+                title.color = White;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -833,14 +775,7 @@ namespace Hidden.Menu
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                if (Theme == 0)
-                {
-                    Outline(gameObject, DarkerGrey);
-                }
-                else
-                {
-                    Outline(gameObject, outColor);
-                }
+                Outline(gameObject, outColor);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
@@ -854,14 +789,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                if (Theme == 5)
-                {
-                    title.color = Black;
-                }
-                else
-                {
-                    title.color = White;
-                }
+                title.color = White;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -894,14 +822,7 @@ namespace Hidden.Menu
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    if (Theme == 0)
-                    {
-                        Outline(gameObject, DarkerGrey);
-                    }
-                    else
-                    {
-                        Outline(gameObject, outColor);
-                    }
+                    Outline(gameObject, outColor);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
@@ -917,14 +838,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
-                    {
-                        title.color = Black;
-                    }
-                    else
-                    {
-                        title.color = White;
-                    }
+                    title.color = White;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;
@@ -950,14 +864,7 @@ namespace Hidden.Menu
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    if (Theme == 0)
-                    {
-                        Outline(gameObject, DarkerGrey);
-                    }
-                    else
-                    {
-                        Outline(gameObject, outColor);
-                    }
+                    Outline(gameObject, outColor);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
@@ -973,14 +880,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
-                    {
-                        title.color = Black;
-                    }
-                    else
-                    {
-                        title.color = White;
-                    }
+                    title.color = White;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;
@@ -1006,14 +906,7 @@ namespace Hidden.Menu
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    if (Theme == 0)
-                    {
-                        Outline(gameObject, DarkerGrey);
-                    }
-                    else
-                    {
-                        Outline(gameObject, outColor);
-                    }
+                    Outline(gameObject, outColor);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
@@ -1029,14 +922,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    if (Theme == 5)
-                    {
-                        title.color = Black;
-                    }
-                    else
-                    {
-                        title.color = White;
-                    }
+                    title.color = White;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;

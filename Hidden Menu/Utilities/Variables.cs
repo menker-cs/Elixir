@@ -115,7 +115,6 @@ namespace Hidden.Utilities
             gameModePaths.TryGetValue(gameMode.ToLower(), out string path);
             return path;
         }
-
         public static void IsModded()
         {
             if (!PhotonNetwork.IsConnected)
@@ -161,9 +160,9 @@ namespace Hidden.Utilities
             return GorillaGameManager.instance.GameModeName().ToLower().Contains(gamemodeName.ToLower());
         }
 
-        public static bool IsOtherPlayer(VRRig rig) => rig != null && rig != taggerInstance.offlineVRRig && !rig.isOfflineVRRig && !rig.isMyPlayer;
+        public static bool IsOtherPlayer(VRRig rig) => rig != null && rig != GorillaTagger.Instance.offlineVRRig && !rig.isOfflineVRRig && !rig.isMyPlayer;
 
-        public static bool IAmInfected => taggerInstance.offlineVRRig != null && RigIsInfected(taggerInstance.offlineVRRig);
+        public static bool IAmInfected => GorillaTagger.Instance.offlineVRRig != null && RigIsInfected(GorillaTagger.Instance.offlineVRRig);
 
         public static bool RigIsInfected(VRRig vrrig)
         {

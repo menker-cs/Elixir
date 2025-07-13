@@ -5,6 +5,7 @@ using UnityEngine;
 using BepInEx;
 using Hidden.Utilities;
 using static Hidden.Utilities.Inputs;
+using static Hidden.Utilities.Variables;
 using Hidden.Menu;
 using Oculus.Interaction;
 
@@ -169,7 +170,7 @@ namespace Hidden.Mods.Categories
                 if (!Ir)
                 {
                     Pointy = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    Pointy.GetComponent<Renderer>().material.color = MenuColor;
+                    Pointy.GetComponent<Renderer>().material = ColorLib.MenuMat[Theme-1];
                     Pointy.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     Pointy.transform.position = GorillaTagger.Instance.rightHandTransform.position;
                     Pointy.transform.rotation = GorillaTagger.Instance.rightHandTransform.rotation;

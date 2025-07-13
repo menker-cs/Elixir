@@ -6,6 +6,7 @@ using Photon.Pun;
 using BepInEx;
 using Hidden.Utilities.Notifs;
 using System.Collections;
+using GorillaLocomotion;
 
 namespace Hidden.Mods.Categories
 {
@@ -53,7 +54,7 @@ namespace Hidden.Mods.Categories
                 {
                     if (!RigIsInfected(vrrig))
                     {
-                        if (Vector3.Distance(taggerInstance.offlineVRRig.transform.position, vrrig.transform.position) < 3)
+                        if (Vector3.Distance(GorillaTagger.Instance.offlineVRRig.transform.position, vrrig.transform.position) < 3)
                         {
                             GorillaTagger.Instance.rightHandTransform.position = vrrig.transform.position;
                         }
@@ -119,10 +120,6 @@ namespace Hidden.Mods.Categories
         }
         private static bool isOn = false;
         private static bool wasButtonPressed = false;
-
-        public static bool isOn2 = false;
-        private static bool wasButtonPressed2 = false;
-
         public static void GhostMonke()
         {
             bool isButtonCurrentlyPressed = pollerInstance.rightControllerPrimaryButton;
@@ -135,11 +132,11 @@ namespace Hidden.Mods.Categories
 
             if (isOn)
             {
-                taggerInstance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
             }
             else
             {
-                taggerInstance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
 
@@ -155,12 +152,12 @@ namespace Hidden.Mods.Categories
 
             if (isOn)
             {
-                taggerInstance.offlineVRRig.enabled = false;
-                taggerInstance.offlineVRRig.transform.position = new Vector3(999f, 999f, 999f);
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = new Vector3(999f, 999f, 999f);
             }
             else
             {
-                taggerInstance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
         public static void Spaz()
@@ -191,26 +188,18 @@ namespace Hidden.Mods.Categories
         {
             GorillaTagger.Instance.offlineVRRig.head.trackingRotationOffset.z = 180f;
         }
-        public static void LongArms()
+        public static void LongArms(float length)
         {
             GorillaTagger.Instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         }
-        public static void VeryLongArms()
+        public static void Sticks()
         {
-            GorillaTagger.Instance.transform.localScale = new Vector3(2f, 2f, 2f);
-        }
-        public static void VeryLongArmsX()
-        {
-            GorillaTagger.Instance.transform.localScale = new Vector3(10f, 10f, 10f);
-        }
-
-        public static void FlatMonk()
-        {
-            GorillaTagger.Instance.transform.localScale = new Vector3(1f, 0.01f, 1f);
+            GTPlayer.Instance.leftControllerTransform.transform.position = GorillaTagger.Instance.leftHandTransform.position + (GorillaTagger.Instance.leftHandTransform.forward * .333f);
+            GTPlayer.Instance.rightControllerTransform.transform.position = GorillaTagger.Instance.rightHandTransform.position + (GorillaTagger.Instance.rightHandTransform.forward * .333f);
         }
         public static void FixArms()
         {
-            GorillaTagger.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
+            GorillaTagger.Instance.transform.localScale = Vector3.one;
         }
         public static void GrabRig()
         {
@@ -290,8 +279,8 @@ namespace Hidden.Mods.Categories
                 {
                     if (Time.time - nigTime >= delay)
                     {
-                        taggerInstance.offlineVRRig.enabled = false;
-                        taggerInstance.offlineVRRig.transform.position = RigManager.GetRandomVRRig(false).transform.position + new Vector3(0f, 2f, 0f);
+                        GorillaTagger.Instance.offlineVRRig.enabled = false;
+                        GorillaTagger.Instance.offlineVRRig.transform.position = RigManager.GetRandomVRRig(false).transform.position + new Vector3(0f, 2f, 0f);
 
                         nigTime = Time.time;
                     }
@@ -312,8 +301,8 @@ namespace Hidden.Mods.Categories
             {
                 if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
                 {
-                    taggerInstance.offlineVRRig.enabled = false;
-                    taggerInstance.offlineVRRig.transform.position = RigManager.GetRandomVRRig(false).transform.position + new Vector3(0f, 2f, 0f);
+                    GorillaTagger.Instance.offlineVRRig.enabled = false;
+                    GorillaTagger.Instance.offlineVRRig.transform.position = RigManager.GetRandomVRRig(false).transform.position + new Vector3(0f, 2f, 0f);
                 }
                 else
                 {
@@ -419,11 +408,152 @@ namespace Hidden.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.SetQuestScore(score);
             }
         }
+        public static void SexGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * -(0.4f + (Mathf.Sin(Time.frameCount / 10f) * 0.1f)));
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation;
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * -0.3f;
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * -0.3f;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            }, true);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void HeadGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * -0.4f);
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * -0.3f;
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * -0.3f;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+            }, true);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void GetHeadGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * 0.4f);
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
+
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * 0.15f;
+                GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * 0.15f;
+                GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+            }, true);
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+
         private static float lvlDelay;
 
         private static float nigTime =  0f;
         private static float delay = 0.37f;
         private static bool lag = false;
+
+
+
+
+
+
+
+
+        public static void SendFlingRPC(VRRig rig, Vector3 velocity)
+        {
+            RigManager.GetNetworkViewFromVRRig(GorillaTagger.Instance.offlineVRRig).SendRPC(
+                "DroppedByPlayer",
+                RigManager.GetPlayerFromVRRig(rig),
+                new object[] { velocity }
+            );
+        }
+
+        public static void KickAll()
+        {
+            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
+            {
+                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                {
+                    if (!vrrig.isLocal)
+                    {
+                        SendFlingRPC(vrrig, ((vrrig.transform.position.z > -22f) ? Vector3.left : (new Vector3(-48.25159f, 7.288813f, -20.5525f) - vrrig.transform.position).normalized) * 50f);
+                    }
+                }
+            }
+        }
+
+        public static void KickGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                SendFlingRPC(GunTemplate.LockedPlayer, ((GunTemplate.LockedPlayer.transform.position.z > -22f) ? Vector3.left : (new Vector3(-48.25159f, 7.288813f, -20.5525f) - GunTemplate.LockedPlayer.transform.position).normalized) * 50f);
+            }, true);
+        }
+
+        public static void CrashAll()
+        {
+            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
+            {
+                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                {
+                    if (!vrrig.isLocal && vrrig.transform.position.x < -5f)
+                    {
+                        SendFlingRPC(vrrig, ((vrrig.transform.position.y > 55f) ? Vector3.right : Vector3.up) * 50f);
+                    }
+                }
+            }
+        }
+
+        public static void CrashGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                SendFlingRPC(GunTemplate.LockedPlayer, ((GunTemplate.LockedPlayer.transform.position.y > 55f) ? Vector3.right : Vector3.up) * 50f);
+            }, true);
+        }
+
+        public static void FlingAll()
+        {
+            if (ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
+            {
+                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                {
+                    if (!vrrig.isLocal && vrrig.transform.position.x < -5f)
+                    {
+                        SendFlingRPC(vrrig, Vector3.up * 50f);
+                    }
+                }
+            }
+        }
+
+        public static void FlingGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                SendFlingRPC(GunTemplate.LockedPlayer, Vector3.up * 50f);
+            }, true);
+        }
     }
 }
-

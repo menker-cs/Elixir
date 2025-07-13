@@ -8,6 +8,7 @@ using BepInEx;
 using Hidden.Utilities.Notifs;
 using Hidden.Utilities;
 using Hidden.Menu;
+using GorillaGameModes;
 
 namespace Hidden.Mods.Categories
 {
@@ -148,6 +149,21 @@ namespace Hidden.Mods.Categories
                     }
                 }
             }, true);
+        }
+        public static void SetGamemode(GameModeType gameModeType)
+        {
+            // creds to @meep670 for this!
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.Disconnect();
+                GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
+                NotificationLib.SendNotification("Successfuly Set the gamemode in your queue to be " + GorillaComputer.instance.currentGameMode.ToString() + " Now join a private lobby for it to take effect!");
+            }
+            else
+            {
+                GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
+                NotificationLib.SendNotification("Successfuly Set the gamemode in your queue to be " + GorillaComputer.instance.currentGameMode.ToString() + " Now join a private lobby for it to take effect!");
+            }
         }
         #region nigport
         public static void AntiReport()
@@ -302,7 +318,7 @@ namespace Hidden.Mods.Categories
             report.transform.position = position;
             report.transform.localScale = new Vector3(range, range, range);
             report.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-            Color c = MenuColor;
+            Color c = ColorLib.MenuMat[Theme-1].color;
             c.a = 0.1f;
             report.GetComponent<Renderer>().material.color = c;
             UnityEngine.Object.Destroy(report, Time.deltaTime);

@@ -8,7 +8,7 @@ namespace Hidden.Utilities.Patches
     {
         public static bool Prefix(VRRig __instance)
         {
-            return !(__instance == taggerInstance.offlineVRRig);
+            return !(__instance == GorillaTagger.Instance.offlineVRRig);
         }
     }
 

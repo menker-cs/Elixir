@@ -3,6 +3,7 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 using Photon.Realtime;
+using static Hidden.Utilities.Variables;
 
 namespace Hidden.Utilities
 {

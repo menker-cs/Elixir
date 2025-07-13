@@ -162,8 +162,8 @@ namespace Hidden.Menu
                     transform.localScale = new Vector3(transform.localScale.x / 3, transform.localScale.y, transform.localScale.z);
                     clickCooldown = Time.frameCount;
 
-                    taggerInstance.StartVibration(rightHandedMenu, taggerInstance.tagHapticStrength / 2, taggerInstance.tagHapticDuration / 2);
-                    taggerInstance.offlineVRRig.PlayHandTapLocal(ActuallSound, rightHandedMenu, 1);
+                    GorillaTagger.Instance.StartVibration(rightHandedMenu, GorillaTagger.Instance.tagHapticStrength / 2, GorillaTagger.Instance.tagHapticDuration / 2);
+                    GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(ActuallSound, rightHandedMenu, 1);
                     GetComponent<BoxCollider>().enabled = true;
 
                     Toggle(clickedButton);

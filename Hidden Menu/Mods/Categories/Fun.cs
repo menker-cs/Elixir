@@ -231,19 +231,19 @@ namespace Hidden.Mods.Categories
             if (pollerInstance.rightGrab)
             {
                 draw = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                draw.transform.position = taggerInstance.rightHandTransform.position;
+                draw.transform.position = GorillaTagger.Instance.rightHandTransform.position;
                 UnityEngine.Object.Destroy(draw.GetComponent<SphereCollider>());
                 draw.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                draw.GetComponent<Renderer>().material.color = MenuColor;
+                draw.GetComponent<Renderer>().material.color = ColorLib.MenuMat[Theme-1].color;
                 GameObject.Destroy(draw, 5f);
             }
             if (pollerInstance.leftGrab)
             {
                 draw = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                draw.transform.position = taggerInstance.leftHandTransform.position;
+                draw.transform.position = GorillaTagger.Instance.leftHandTransform.position;
                 UnityEngine.Object.Destroy(draw.GetComponent<BoxCollider>());
                 draw.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                draw.GetComponent<Renderer>().material.color = MenuColor;
+                draw.GetComponent<Renderer>().material.color = ColorLib.MenuMat[Theme-1].color;
                 GameObject.Destroy(draw, 5f);
             }
         }
@@ -485,7 +485,7 @@ namespace Hidden.Mods.Categories
             }
         }
         static float splashDelay;
-        static void Splash(Vector3 splashPosition, Quaternion splashRotation, float splashScale)
+        public static void Splash(Vector3 splashPosition, Quaternion splashRotation, float splashScale)
         {
             if (Time.time > splashDelay)
             {
@@ -517,12 +517,12 @@ namespace Hidden.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                taggerInstance.offlineVRRig.enabled = false;
-                taggerInstance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
 
                 Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 4f);
             }, false);
-            { taggerInstance.offlineVRRig.enabled = true; }
+            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
         }
         public static void SplashAura()
         {
@@ -535,12 +535,12 @@ namespace Hidden.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                    taggerInstance.offlineVRRig.enabled = false;
-                    taggerInstance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
+                    GorillaTagger.Instance.offlineVRRig.enabled = false;
+                    GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
                     Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
             }, true); 
             {
-                taggerInstance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
     }

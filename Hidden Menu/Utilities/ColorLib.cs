@@ -11,6 +11,8 @@ namespace Hidden.Utilities
     public class ColorLib
     {
         #region Non-Transparent Colors
+        public static Color32 Hidden = new Color32(25, 25, 25, 255);
+        public static Color32 Menker = new Color32(111, 252, 243, 255);
 
         // Reds
         public static Color32 Red = new Color32(255, 0, 0, 255);
@@ -69,6 +71,7 @@ namespace Hidden.Utilities
         // Purples
         public static Color32 Magenta = new Color32(255, 0, 255, 255);
         public static Color32 Purple = new Color32(123, 3, 252, 255);
+        public static Color32 DarkPurple = new Color32(38, 23, 77, 255);
         public static Color32 Lavender = new Color32(230, 230, 250, 255);
         public static Color32 Plum = new Color32(221, 160, 221, 255);
         public static Color32 Indigo = new Color32(75, 0, 130, 255);
@@ -211,13 +214,20 @@ namespace Hidden.Utilities
         public static Color32 DarkerGreyTransparent = new Color32(40, 40, 40, 80);
         #endregion
 
+        #region Shaders
         public static Shader guiShader = Shader.Find("GUI/Text Shader");
         public static Shader uberShader = Shader.Find("GorillaTag/UberShader");
+        public static Shader uiShader = Shader.Find("UI/Default");
+        #endregion
 
+        #region Changing Color
         public static Material RGB = new Material(uberShader);
         public static Material DFade = new Material(uberShader);
         public static Material DBreath = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
+        #endregion
+
+        #region Weird Color Stuff
         public static void UpdateClr()
         {
             float num = Mathf.PingPong(Time.time * 0.3f, 1f);
@@ -227,19 +237,41 @@ namespace Hidden.Utilities
             DFade.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1f));
             DBreath.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1.5f));
         }
-
-        public static Color32 Hidden = new Color32(25, 25, 25, 255);
-        public static Color32 Menker = new Color32(111, 252, 243, 255);
-
-        public static int CurrentTheme = 0;
-        public static Color32[] ThemeArraya = new Color32[]
+        public static Material Color2Mat(Color color)
         {
-            new Color32(0, 0, 200, 255),    // Blue
-            new Color32(0, 0, 0, 255),     // Black
-            new Color32(123, 3, 200, 255), // Purple
-            new Color32(0, 100, 0, 255),   // Green
-            new Color32(200, 0, 0, 255),   // Red
-            new Color32(200, 60, 0, 255),  // Orange
+            return new Material(uiShader)
+            {
+                color = color
+            };
+        }
+        public static Material Url2Mat(string url)
+        {
+            WebClient webClient = new WebClient();
+            byte[] array = webClient.DownloadData(url);
+            Material material = new Material(Shader.Find("GorillaTag/UberShader"));
+            material.shaderKeywords = new string[] { "_USE_TEXTURE" };
+            string text = Application.dataPath;
+            text = text.Replace("/Gorilla Tag_Data", "");
+            Texture2D texture2D = new Texture2D(4096, 4096);
+            ImageConversion.LoadImage(texture2D, array);
+            material.mainTexture = texture2D;
+            texture2D.Apply();
+            return material;
+        }
+        #endregion
+
+        public static Material fmby = Url2Mat("https://i.ebayimg.com/images/g/XI8AAOSwwvRlMHkz/s-l1200.jpg");
+
+        public static Material[] MenuMat = new Material[]
+        {
+            Color2Mat(Hidden),
+            DFade,
+            DBreath,
+            Color2Mat(DarkerGrey),
+            Color2Mat(SkyBlue),
+            Color2Mat(FireBrick),
+            Color2Mat(MediumAquamarine),
+            Color2Mat(DarkPurple)
         };
     }
 }

@@ -10,7 +10,7 @@ using static Hidden.Menu.Main;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
-using System.Reflection;
+using static Hidden.Utilities.Variables;
 
 namespace Hidden.Utilities
 {

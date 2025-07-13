@@ -13,6 +13,7 @@ using static Hidden.Menu.Optimizations;
 using static Hidden.Menu.Optimizations.ResourceLoader;
 using static Hidden.Menu.Main;
 using Hidden.Mods.Categories;
+using GorillaGameModes;
 
 namespace Hidden.Mods
 {
@@ -28,6 +29,7 @@ namespace Hidden.Mods
         Visuals,
         Creds,
         CS,
+        OP,
         IHateMyself
     }
     public class ModButtons
@@ -58,7 +60,7 @@ namespace Hidden.Mods
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false), "Toggles Menu Outline"),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false), "Toggles Menu Gravity"),
             new Button("Change Layout: Sides", Category.Settings, false, false, ()=> ChangeLayout(), null, "Changes Menu Layout"),
-            new Button("Change Theme: Dark", Category.Settings, false, false, ()=> ChangeTheme(), null, "Changes Menu Theme"),
+            new Button("Change Theme: Default", Category.Settings, false, false, ()=> ChangeTheme(), null, "Changes Menu Theme"),
             new Button("Change Sound", Category.Settings, false, false, ()=> ChangeSound(), null, "Changes Button Sound"),
             new Button("Visualize Antireport", Category.Settings, true, true, ()=>VisReport(true), ()=>VisReport(false), "Toggles Antireport Vizualizer"),
             new Button("Change ESP Color: Infection", Category.Settings, false, false, ()=>ESPChange(), null, "Changes ESP Color"),
@@ -79,8 +81,12 @@ namespace Hidden.Mods
             new Button("Connect To US Servers", Category.Room, false, false, ()=>Servers("us"), null, "Connects To US Servers"),
             new Button("Connect To USW Servers", Category.Room, false, false, ()=>Servers("usw"), null, "Connects To USW Servers"),
             new Button("Connect To EU Servers", Category.Room, false, false, ()=>Servers("eu"), null, "Connects To EU Servers"),
+            new Button("Set Mode Paintbrawl", Category.Room, false, false, ()=>SetGamemode(GameModeType.Paintbrawl), null, ""),
+            new Button("Set Mode Hunt", Category.Room, false, false, ()=>SetGamemode(GameModeType.HuntDown), null, ""),
+            new Button("Set Mode Ambush", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ambush), null, ""),
+            new Button("Set Mode Ghost", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ghost), null, ""),
             new Button("Join Menu Code", Category.Room, false, false, ()=>JoinRoom("$HIDDEN$"), null, "Joins A Special Code For This Menu"),
-            new Button("Join Code MOD", Category.Room, false, false, ()=>JoinRoom("MOD"), null, "Joins Code MOD"),
+            new Button("Join Code MOD", Category.Room, false, false, ()=>JoinRoom("MOD"), null, "Joins Code MOD"),// Poo Poo
             new Button("Join Code PBBV", Category.Room, false, false, ()=>JoinRoom("PBBV"), null, "Joins Code PBBV"),
             new Button("Join Code Daisy09", Category.Room, false, false, ()=>JoinRoom("DAISY09"), null, "Joins Code DAISY09"),
             new Button("Mute Gun", Category.Room, true, false, ()=>MuteGun(), null, "Mutes Who You Shoot"),
@@ -129,10 +135,11 @@ namespace Hidden.Mods
             #endregion
             
             #region Player
-            new Button("Long Arms", Category.Player, true, false, ()=>LongArms(), ()=>FixArms(), "Makes Your Arms Longer"),
-            new Button("Very Long Arms", Category.Player, true, false, ()=>VeryLongArms(), ()=>FixArms(), "Very Long Arms"),
-            new Button("<color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>VeryLongArmsX(), ()=>FixArms(), "Very Very Long Arms"),
-            new Button("Short Arms", Category.Player, true, false, ()=>FlatMonk(), ()=>FixArms(), "Short Arms"),
+            new Button("Long Arms", Category.Player, true, false, ()=>LongArms(1.2f), ()=>FixArms(), "Makes Your Arms Longer"),
+            new Button("Very Long Arms", Category.Player, true, false, ()=>LongArms(2f), ()=>FixArms(), "Very Long Arms"),
+            new Button("Stick Long Arms", Category.Player, true, false, ()=>Sticks(), ()=>FixArms(), "Makes You Look Like You Use Sticks"),
+            new Button("<color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>LongArms(6f), ()=>FixArms(), "Very Very Long Arms"),
+            new Button("Short Arms", Category.Player, true, false, ()=>LongArms(0.5f), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
             new Button("Backwards Head", Category.Player, true, false, ()=>BackwardsHead(), ()=>FixHead(), "Makes Your Head Backwards"),
             new Button("Snap Neck", Category.Player, true, false, ()=>SnapNeck(), ()=>FixHead(), "Snaps Your Neck Dummy"),
@@ -155,12 +162,21 @@ namespace Hidden.Mods
             new Button("Chase Gun", Category.Player, true, false, ()=>ChaseGun(), null, "Bees But Faster"),
             new Button("Rig Gun", Category.Player, true, false, ()=>RigGun(), null, "Put Your Rig Where You Shoot"),
             new Button("Grab Your Rig Gun", Category.Player, true, false, ()=>GrabGun(), null, "Makes People Grab Your Rig"),
+            new Button("Backshots Gun", Category.Player, true, false, ()=>SexGun(), null, "Makes People Grab Your Rig"),
+            new Button("Head Gun", Category.Player, true, false, ()=>HeadGun(), null, "Makes People Grab Your Rig"),
+            new Button("Get Head Gun", Category.Player, true, false, ()=>GetHeadGun(), null, "Makes People Grab Your Rig"),
             new Button("Tag Gun", Category.Player, true, false, ()=>TagGun(), null, "Tags A Player"),
             new Button("Tag Aura [G]", Category.Player, true, false, ()=>TagAura(), null, "Tag People Near You"),
             new Button("Tag All [T]", Category.Player, true, false, ()=>TagAll(), null, "Tag Everyone"),
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
             new Button("Max Quest Score", Category.Player, false, false, ()=>QuestScore(99999), null, "Splashes Your Hands"),
             new Button("69420 Quest Score", Category.Player, false, false, ()=>QuestScore(69420), null, "Splashes Where You Shoot"),
+            new Button("Fling All", Category.Player, true, false, ()=>FlingAll(), null, "Flings Everyone"),
+            new Button("Fling Gun", Category.Player, true, false, ()=>FlingGun(), null, "Flings Who You Shoot"),
+            new Button("Kick All", Category.Player, true, false, ()=>KickAll(), null, "Kicks Everyone In Forest"),
+            new Button("Kick Gun", Category.Player, true, false, ()=>KickGun(), null, "Kicks Who You Shoot"),
+            new Button("Crash All", Category.Player, true, false, ()=>CrashAll(), null, "Crashes Everyone"),
+            new Button("Crash Gun", Category.Player, true, false, ()=>CrashGun(), null, "Crashes Who You Shoot"),
 
             #endregion
 
@@ -221,15 +237,15 @@ namespace Hidden.Mods
             new Button("Change Time Night", Category.World, false, false, ()=> NightTimeMod(), null, "Makes It Night"),
             new Button("Change Time Day", Category.World, false, false, ()=> idkTimeMod(), null, "Makes It Day"),
             new Button("Enable Shadows", Category.World, true, false, ()=> Shadows(true), ()=> Shadows(false), "Toggles Shadows"),
-#endregion
+            #endregion
 
             #region Credits
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder(), null, "Credits Of The Menu"),
             new Button("Menker", Category.Creds, false, false, ()=>Placeholder(), null, "Menu Owner"),
             new Button("NxO Template", Category.Creds, false, false, ()=>Placeholder(), null, "Template This Is Based From"),
             new Button("Revanent", Category.Creds, false, false, ()=>Placeholder(), null, "GUI Creator"),
-            new Button("Wizzy", Category.Creds, false, false, ()=>Placeholder(), null, "Mod Helper"),
-            new Button("Cockrs", Category.Creds, false, false, ()=>Placeholder(), null, "Custom Boards"),
+            new Button("Cockrs", Category.Creds, false, false, ()=>Placeholder(), null, "Coded Some Mods"),
+            new Button("Meep", Category.Creds, false, false, ()=>Placeholder(), null, "Set Gamemode Code"),
             new Button("Join The Discord!", Category.Creds, false, false, ()=>Discord(), null, "Join Our Discord Server"),
             #endregion
         };

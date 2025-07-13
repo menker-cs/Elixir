@@ -217,10 +217,6 @@ namespace Hidden.Mods.Categories
         {
             UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
         }
-        public static void Link(string url)
-        {
-            UnityEngine.Application.OpenURL(url);
-        }
 
         public static int espSetting = 1;
 

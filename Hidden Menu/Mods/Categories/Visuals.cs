@@ -118,7 +118,7 @@ namespace Hidden.Mods.Categories
                     if (vrrig != GorillaTagger.Instance.offlineVRRig)
                     {
                         vrrig.mainSkin.material.shader = Shader.Find("GUI/Text Shader");
-                        vrrig.mainSkin.material.color = MenuColor;
+                        vrrig.mainSkin.material.color = ColorLib.MenuMat[Theme-1].color;
                     }
                 }
             }
@@ -237,7 +237,7 @@ namespace Hidden.Mods.Categories
                         ESPBall.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
                         ESPBall.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                         ESPBall.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-                        UnityEngine.Color color = MenuColor;
+                        UnityEngine.Color color = ColorLib.MenuMat[Theme-1].color;
                         color.a = 0.5f;
                         ESPBall.GetComponent<Renderer>().material.color = color;
                         UnityEngine.Object.Destroy(ESPBall, Time.deltaTime);
@@ -347,7 +347,7 @@ namespace Hidden.Mods.Categories
                             ESPBox.transform.localScale = new Vector3(0.5f, 1f, 0f);
                             ESPBox.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
                             ESPBox.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-                            UnityEngine.Color color = MenuColor;
+                            UnityEngine.Color color = ColorLib.MenuMat[Theme-1].color;
                             color.a = 0.5f;
                             ESPBox.GetComponent<Renderer>().material.color = color;
                             UnityEngine.Object.Destroy(ESPBox, Time.deltaTime);
@@ -451,7 +451,7 @@ namespace Hidden.Mods.Categories
                             UnityEngine.Object.Destroy(ESPBox.GetComponent<BoxCollider>());
                             ESPBox.transform.localScale = new Vector3(0.5f, 1f, 0.5f);
                             ESPBox.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-                            UnityEngine.Color color = MenuColor;
+                            UnityEngine.Color color = ColorLib.MenuMat[Theme-1].color;
                             color.a = 0.5f;
                             ESPBox.GetComponent<Renderer>().material.color = color;
                             UnityEngine.Object.Destroy(ESPBox, Time.deltaTime);
@@ -571,7 +571,7 @@ namespace Hidden.Mods.Categories
                         Line.SetPosition(1, vrrig.transform.position);
                         Line.startWidth = 0.0225f;
                         Line.endWidth = 0.0225f;
-                        UnityEngine.Color color = MenuColor;
+                        UnityEngine.Color color = ColorLib.MenuMat[Theme-1].color;
                         color.a = 0.5f;
                         Line.startColor = color;
                         Line.endColor = color;
@@ -813,7 +813,7 @@ namespace Hidden.Mods.Categories
                         trailObject.transform.SetParent(vrrig.transform);
                         TrailRenderer trailRenderer = trailObject.AddComponent<TrailRenderer>();
                         trailRenderer.material = new Material(Shader.Find("Unlit/Color"));
-                        Color color = MenuColor;
+                        Color color = ColorLib.MenuMat[Theme-1].color;
                         color.a = 0.5f;
                         trailRenderer.material.color = color;
                         trailRenderer.time = 2f;
@@ -835,14 +835,11 @@ namespace Hidden.Mods.Categories
             ESP.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
             ESP.transform.LookAt(GorillaTagger.Instance.headCollider.transform.position);
             ESP.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-            UnityEngine.Color color = MenuColor;
+            UnityEngine.Color color = ColorLib.MenuMat[Theme-1].color;
             color.a = 0.5f;
             ESP.GetComponent<Renderer>().material.color = color;
             UnityEngine.Object.Destroy(ESP, Time.deltaTime);
         }
-
-        static float l;
-        static bool fps1;
     }
 }
 
