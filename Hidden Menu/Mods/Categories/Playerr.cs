@@ -480,80 +480,14 @@ namespace Hidden.Mods.Categories
 
 
 
-
-        public static void SendFlingRPC(VRRig rig, Vector3 velocity)
+        // patched
+        public static void Fling(VRRig rig, Vector3 velocity)
         {
             RigManager.GetNetworkViewFromVRRig(GorillaTagger.Instance.offlineVRRig).SendRPC(
                 "DroppedByPlayer",
                 RigManager.GetPlayerFromVRRig(rig),
                 new object[] { velocity }
             );
-        }
-
-        public static void KickAll()
-        {
-            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
-            {
-                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                {
-                    if (!vrrig.isLocal)
-                    {
-                        SendFlingRPC(vrrig, ((vrrig.transform.position.z > -22f) ? Vector3.left : (new Vector3(-48.25159f, 7.288813f, -20.5525f) - vrrig.transform.position).normalized) * 50f);
-                    }
-                }
-            }
-        }
-
-        public static void KickGun()
-        {
-            GunTemplate.StartBothGuns(() =>
-            {
-                SendFlingRPC(GunTemplate.LockedPlayer, ((GunTemplate.LockedPlayer.transform.position.z > -22f) ? Vector3.left : (new Vector3(-48.25159f, 7.288813f, -20.5525f) - GunTemplate.LockedPlayer.transform.position).normalized) * 50f);
-            }, true);
-        }
-
-        public static void CrashAll()
-        {
-            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
-            {
-                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                {
-                    if (!vrrig.isLocal && vrrig.transform.position.x < -5f)
-                    {
-                        SendFlingRPC(vrrig, ((vrrig.transform.position.y > 55f) ? Vector3.right : Vector3.up) * 50f);
-                    }
-                }
-            }
-        }
-
-        public static void CrashGun()
-        {
-            GunTemplate.StartBothGuns(() =>
-            {
-                SendFlingRPC(GunTemplate.LockedPlayer, ((GunTemplate.LockedPlayer.transform.position.y > 55f) ? Vector3.right : Vector3.up) * 50f);
-            }, true);
-        }
-
-        public static void FlingAll()
-        {
-            if (ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f || UnityInput.Current.GetKey(KeyCode.T))
-            {
-                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-                {
-                    if (!vrrig.isLocal && vrrig.transform.position.x < -5f)
-                    {
-                        SendFlingRPC(vrrig, Vector3.up * 50f);
-                    }
-                }
-            }
-        }
-
-        public static void FlingGun()
-        {
-            GunTemplate.StartBothGuns(() =>
-            {
-                SendFlingRPC(GunTemplate.LockedPlayer, Vector3.up * 50f);
-            }, true);
         }
     }
 }

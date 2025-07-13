@@ -85,6 +85,7 @@ namespace Hidden.Mods
             new Button("Set Mode Hunt", Category.Room, false, false, ()=>SetGamemode(GameModeType.HuntDown), null, ""),
             new Button("Set Mode Ambush", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ambush), null, ""),
             new Button("Set Mode Ghost", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ghost), null, ""),
+            new Button("Set Mode Error", Category.Room, false, false, ()=>SetGamemode(GameModeType.Count), null, ""),
             new Button("Join Menu Code", Category.Room, false, false, ()=>JoinRoom("$HIDDEN$"), null, "Joins A Special Code For This Menu"),
             new Button("Join Code MOD", Category.Room, false, false, ()=>JoinRoom("MOD"), null, "Joins Code MOD"),// Poo Poo
             new Button("Join Code PBBV", Category.Room, false, false, ()=>JoinRoom("PBBV"), null, "Joins Code PBBV"),
@@ -171,12 +172,6 @@ namespace Hidden.Mods
             new Button("Tag Self [T]", Category.Player, true, false, ()=>TagSelf(), null, "Tag Yourself"),
             new Button("Max Quest Score", Category.Player, false, false, ()=>QuestScore(99999), null, "Splashes Your Hands"),
             new Button("69420 Quest Score", Category.Player, false, false, ()=>QuestScore(69420), null, "Splashes Where You Shoot"),
-            new Button("Fling All", Category.Player, true, false, ()=>FlingAll(), null, "Flings Everyone"),
-            new Button("Fling Gun", Category.Player, true, false, ()=>FlingGun(), null, "Flings Who You Shoot"),
-            new Button("Kick All", Category.Player, true, false, ()=>KickAll(), null, "Kicks Everyone In Forest"),
-            new Button("Kick Gun", Category.Player, true, false, ()=>KickGun(), null, "Kicks Who You Shoot"),
-            new Button("Crash All", Category.Player, true, false, ()=>CrashAll(), null, "Crashes Everyone"),
-            new Button("Crash Gun", Category.Player, true, false, ()=>CrashGun(), null, "Crashes Who You Shoot"),
 
             #endregion
 
