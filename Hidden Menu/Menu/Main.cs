@@ -192,8 +192,27 @@ namespace Hidden.Menu
             cm = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera/CM vcam1");
 
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
-            table.Add("Hidden Menu", true);
+            table.Add("HiddenMenu", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
+            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
+        }
+        private static int i = 0;
+        [HarmonyPrefix]
+        public static void Update()
+        {
+            if (tracker)
+            {
+                if (PhotonNetwork.InRoom && i < 1)
+                {
+                    i++;
+                    SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has joined code: **{PhotonNetwork.CurrentRoom.Name}**, Players In Lobby: " + PhotonNetwork.CurrentRoom.PlayerCount + "/10");
+                }
+                if (!PhotonNetwork.InRoom && i >= 1)
+                {
+                    i = 0;
+                    SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
+                }
+            }
         }
 
         static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");

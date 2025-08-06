@@ -22,7 +22,7 @@ namespace Hidden.Mods.Categories
             {
                 VRRig rig = RigManager.GetVRRigFromPlayer(player);
                 string Properties = player.CustomProperties.ToString();
-                if (Properties.Contains("Hidden Menu"))
+                if (Properties.Contains("HiddenMenu"))
                 {
                     if (rig == GorillaTagger.Instance.offlineVRRig) continue;
 

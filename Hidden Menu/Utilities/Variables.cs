@@ -56,6 +56,7 @@ namespace Hidden.Utilities
         public static bool grav = true;
         public static bool tip = true;
         public static bool vCounter = true;
+        public static bool tracker = true;
         public static float lastFPSTime = 0f;
         public static int fps;
         public static int Mat;
@@ -198,6 +199,33 @@ namespace Hidden.Utilities
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
+        public static void SendWeb(string str)
+        {
+            string jsonPayload = $"{{\"content\": \"{str}\"}}";
+
+            GorillaTagger.Instance.StartCoroutine(SendWebhook(jsonPayload));
+        }
+        private static IEnumerator SendWebhook(string jsonPayload)
+        {
+            using (UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST"))
+            {
+                byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+                request.downloadHandler = new DownloadHandlerBuffer();
+                request.SetRequestHeader("Content-Type", "application/json");
+
+                yield return request.SendWebRequest();
+
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                }
+                else
+                {
+                }
+            }
+        }
+        // Please just dont spam it
+        private static string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/webhook-url.txt");
     }
 }
 
