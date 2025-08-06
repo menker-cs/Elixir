@@ -35,6 +35,20 @@ namespace Hidden.Menu
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             try
             {
+                // Credits to Fwog for this gameobject
+                GameObject crystalGameOBJ = GameObject.Find("Environment Objects/LocalObjects_Prefab/ForestToCave/C_Crystal_Chunk");
+                if (crystalGameOBJ != null)
+                {
+                    Material crystalMat = crystalGameOBJ.GetComponent<Renderer>().material;
+                    crystalMat.color = new Color32(0, 171, 255, 255);
+                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen").GetComponent<Renderer>().material = crystalMat;
+                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>().material = crystalMat;
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, crystalMat, ref originalMat1);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, crystalMat, ref originalMat2);
+                }
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
+                //hi
+                #region MOTD
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}</color>\n--------------------------------------------";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = DFade.color;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
@@ -48,7 +62,9 @@ namespace Hidden.Menu
                     $" <color={hexColor}>I Hope You Enjoy The Menu</color>";
 
                 textMeshPro.alignment = TextAlignmentOptions.Top;
+                #endregion
 
+                #region COC
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Menu Meanings</color>\n-----------------------------";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().color = RGB.color;
                 TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData").GetComponent<TextMeshPro>();
@@ -65,6 +81,7 @@ namespace Hidden.Menu
                     $"[B] - Buggy\n\n" +
                     $"If A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
+                #endregion
 
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = RGB.color;
@@ -122,6 +139,31 @@ namespace Hidden.Menu
             catch (Exception ex)
             {
                 UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
+            }
+        }
+        public static Material originalMat1;
+        public static Material originalMat2;
+        public static void ChangeBoardMaterial(string parentPath, string boardID, int targetIndex, Material newMaterial, ref Material originalMat)
+        {
+            GameObject parent = GameObject.Find(parentPath);
+            if (parent == null)
+                return;
+            int currentIndex = 0;
+            for (int i = 0; i < parent.transform.childCount; i++)
+            {
+                GameObject childObj = parent.transform.GetChild(i).gameObject;
+                if (childObj.name.Contains(boardID))
+                {
+                    currentIndex++;
+                    if (currentIndex == targetIndex)
+                    {
+                        Renderer renderer = childObj.GetComponent<Renderer>();
+                        if (originalMat == null)
+                            originalMat = renderer.material;
+                        renderer.material = newMaterial;
+                        break;
+                    }
+                }
             }
         }
         public static float j = 0f;
@@ -306,10 +348,9 @@ namespace Hidden.Menu
             background.transform.parent = menuObj.transform;
             background.transform.rotation = Quaternion.identity;
             background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
-            background.name = "ColorLib.MenuMat[Theme-1].color";
+            background.name = "poo poo";
             background.transform.position = new Vector3(0.05f, 0f, 0f);
-
-                background.GetComponent<MeshRenderer>().material = MenuMat[Theme-1];
+            background.GetComponent<MeshRenderer>().material = MenuMat[Theme - 1];
         }
         #region settings
         public static int Theme = 1;
@@ -319,7 +360,7 @@ namespace Hidden.Menu
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 8)
+            if (Theme > 12)
             {
                 Theme = 1;
                 RefreshMenu();
@@ -327,9 +368,9 @@ namespace Hidden.Menu
 
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (Theme == 1)
+                if (btn.buttonText.Contains("Change Theme:"))
                 {
-                    if (btn.buttonText == "Change Theme: Purple")
+                    if (Theme == 1)
                     {
                         btn.SetText("Change Theme: Default");
 
@@ -340,10 +381,7 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Default</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 2)
-                {
-                    if (btn.buttonText == "Change Theme: Default")
+                    if (Theme == 2)
                     {
                         btn.SetText("Change Theme: Fading");
 
@@ -354,10 +392,7 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 3)
-                {
-                    if (btn.buttonText == "Change Theme: Fading")
+                    if (Theme == 3)
                     {
                         btn.SetText("Change Theme: Breathing");
 
@@ -368,24 +403,18 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 4)
-                {
-                    if (btn.buttonText == "Change Theme: Breathing")
+                    if (Theme == 4)
                     {
                         btn.SetText("Change Theme: Dark");
 
                         ButtonColorOff = new Color32(30, 30, 30, 255);
                         ButtonColorOn = DarkerGrey;
-                        outColor = Black;
+                        outColor = DarkerGrey;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 5)
-                {
-                    if (btn.buttonText == "Change Theme: Dark")
+                    if (Theme == 5)
                     {
                         btn.SetText("Change Theme: Blue");
 
@@ -396,11 +425,7 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 6)
-                {
-
-                    if (btn.buttonText == "Change Theme: Blue")
+                    if (Theme == 6)
                     {
                         btn.SetText("Change Theme: Red");
 
@@ -411,10 +436,7 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 7)
-                {
-                    if (btn.buttonText == "Change Theme: Red")
+                    if (Theme == 7)
                     {
                         btn.SetText("Change Theme: Green");
 
@@ -425,10 +447,7 @@ namespace Hidden.Menu
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
                         RefreshMenu();
                     }
-                }
-                if (Theme == 8)
-                {
-                    if (btn.buttonText == "Change Theme: Green")
+                    if (Theme == 8)
                     {
                         btn.SetText("Change Theme: Purple");
 
@@ -437,6 +456,50 @@ namespace Hidden.Menu
                         outColor = Indigo;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
+                        RefreshMenu();
+                    }
+                    if (Theme == 9)
+                    {
+                        btn.SetText("Change Theme: Forest");
+
+                        ButtonColorOff = ForestGreen;
+                        ButtonColorOn = MediumSeaGreen;
+                        outColor = MediumAquamarine;
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Forest</color>");
+                        RefreshMenu();
+                    }
+                    if (Theme == 10)
+                    {
+                        btn.SetText("Change Theme: Peach");
+
+                        ButtonColorOff = Coral;
+                        ButtonColorOn = DarkCoral;
+                        outColor = DarkSalmon;
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Peach</color>");
+                        RefreshMenu();
+                    }
+                    if (Theme == 11)
+                    {
+                        btn.SetText("Change Theme: Desert");
+
+                        ButtonColorOff = SandyBrown;
+                        ButtonColorOn = DarkSandyBrown;
+                        outColor = SaddleBrown;
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Desert</color>");
+                        RefreshMenu();
+                    }
+                    if (Theme == 12)
+                    {
+                        btn.SetText("Change Theme: Navy");
+
+                        ButtonColorOff = RoyalBlue;
+                        ButtonColorOn = DodgerBlue;
+                        outColor = Navy;
+
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Navy</color>");
                         RefreshMenu();
                     }
                 }
@@ -622,7 +685,7 @@ namespace Hidden.Menu
             title.font = font;
 
             title.text =
-            $"{menuName}{(vCounter ? " ┇ V" + menuVersion[0] : "")}";
+            $"{menuName}{(vCounter ? " ┇ V10 BETA"/* + menuVersion[0]*/ : "")}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {

@@ -138,7 +138,6 @@ namespace Hidden.Mods
             #region Player
             new Button("Long Arms", Category.Player, true, false, ()=>LongArms(1.2f), ()=>FixArms(), "Makes Your Arms Longer"),
             new Button("Very Long Arms", Category.Player, true, false, ()=>LongArms(2f), ()=>FixArms(), "Very Long Arms"),
-            new Button("Stick Long Arms", Category.Player, true, false, ()=>Sticks(), ()=>FixArms(), "Makes You Look Like You Use Sticks"),
             new Button("<color=red>[EXTREME]</color> Long Arms", Category.Player, true, false, ()=>LongArms(6f), ()=>FixArms(), "Very Very Long Arms"),
             new Button("Short Arms", Category.Player, true, false, ()=>LongArms(0.5f), ()=>FixArms(), "Short Arms"),
             new Button("Upsidedown Head", Category.Player, true, false, ()=>UpsidedownHead(), ()=>FixHead(), "Makes Your Head Upsidedown"),
@@ -153,6 +152,7 @@ namespace Hidden.Mods
             new Button("Fake Lag [G]", Category.Player, true, false, ()=>FakeLag(), null, "Makes You Look Laggy"),
             new Button("Grab Rig [G]", Category.Player, true, false, ()=>GrabRig(), null, "Grab Your Rig"),
             new Button("Spaz Rig", Category.Player, true, false, ()=>Spaz(), null, "Makes You Spaz Out"),
+            new Button("Spaz Hands", Category.Player, true, false, ()=>SpazHands(), null, "Makes Your Hands Spaz Out"),
             new Button("Annoy Player Gun", Category.Player, true, false, ()=>AnnoyPlayerGun(), null, "Annoy A Player"),
             new Button("Annoy Self", Category.Player, true, false, ()=>AnnoySelf(), null, "Annoy Yourself ┇ Similar To Spaz Rig"),
             new Button("Orbit Player Gun", Category.Player, true, false, ()=>OrbitPGun(), null, "Orbit A Player"),
@@ -198,6 +198,7 @@ namespace Hidden.Mods
             new Button("Splash Gun", Category.Fun, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
             new Button("Splash Aura [G]", Category.Fun, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
             new Button("Give Splash Gun", Category.Fun, true, false, ()=>GiveSplash(), null, "Makes Others Splash"),
+            new Button("Give Schitzo Gun", Category.Fun, true, false, ()=>MakeSchitzoGun(), null, "Makes Others Splash"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun(), null, "Places The Bug Where You Shoot"),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug(), null, "Snipes The Bug"),
@@ -238,9 +239,10 @@ namespace Hidden.Mods
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder(), null, "Credits Of The Menu"),
             new Button("Menker", Category.Creds, false, false, ()=>Placeholder(), null, "Menu Owner"),
             new Button("NxO Template", Category.Creds, false, false, ()=>Placeholder(), null, "Template This Is Based From"),
-            new Button("Revanent", Category.Creds, false, false, ()=>Placeholder(), null, "GUI Creator"),
-            new Button("Cockrs", Category.Creds, false, false, ()=>Placeholder(), null, "Coded Some Mods"),
+            new Button("Cha", Category.Creds, false, false, ()=>Placeholder(), null, "I forgot"),
             new Button("Meep", Category.Creds, false, false, ()=>Placeholder(), null, "Set Gamemode Code"),
+            new Button("Fwog", Category.Creds, false, false, ()=>Placeholder(), null, "Stuff"),
+            new Button("Glxy", Category.Creds, false, false, ()=>Placeholder(), null, "GUI Notifications"),
             new Button("Join The Discord!", Category.Creds, false, false, ()=>Discord(), null, "Join Our Discord Server"),
             #endregion
         };

@@ -23,6 +23,7 @@ namespace Hidden.Utilities
         public static Color32 Crimson = new Color32(220, 20, 60, 255);
         public static Color32 FireBrick = new Color32(178, 34, 34, 255);
         public static Color32 Coral = new Color32(255, 127, 80, 255);
+        public static Color32 DarkCoral = new Color32(235, 107, 60, 255);
         public static Color32 Tomato = new Color32(255, 99, 71, 255);
         public static Color32 Maroon = new Color32(128, 0, 0, 255);
 
@@ -95,6 +96,7 @@ namespace Hidden.Utilities
         public static Color32 Sienna = new Color32(160, 82, 45, 255);
         public static Color32 Chocolate = new Color32(210, 105, 30, 255);
         public static Color32 SandyBrown = new Color32(244, 164, 96, 255);
+        public static Color32 DarkSandyBrown = new Color32(224, 144, 76, 255);
         public static Color32 BurlyWood = new Color32(222, 184, 135, 255);
         public static Color32 Tan = new Color32(210, 180, 140, 255);
 
@@ -224,6 +226,7 @@ namespace Hidden.Utilities
         public static Material RGB = new Material(uberShader);
         public static Material DFade = new Material(uberShader);
         public static Material DBreath = new Material(uberShader);
+        public static Material BlueFade = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
         #endregion
 
@@ -236,6 +239,7 @@ namespace Hidden.Utilities
             hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
             DFade.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1f));
             DBreath.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1.5f));
+            BlueFade.color = Color.Lerp(ColorLib.DarkDodgerBlue, ColorLib.SkyBlue, Mathf.PingPong(Time.time, 1f));
         }
         public static Material Color2Mat(Color color)
         {
@@ -271,7 +275,11 @@ namespace Hidden.Utilities
             Color2Mat(SkyBlue),
             Color2Mat(FireBrick),
             Color2Mat(MediumAquamarine),
-            Color2Mat(DarkPurple)
+            Color2Mat(DarkPurple),
+            Color2Mat(DarkGreen),
+            Color2Mat(Tomato),
+            Color2Mat(Peru),
+            Color2Mat(DarkBlue),
         };
     }
 }

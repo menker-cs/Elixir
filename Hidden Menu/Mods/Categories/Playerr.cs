@@ -1,12 +1,15 @@
-﻿using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.Variables;
-using UnityEngine;
-using Hidden.Utilities;
-using Photon.Pun;
-using BepInEx;
-using Hidden.Utilities.Notifs;
-using System.Collections;
+﻿using BepInEx;
 using GorillaLocomotion;
+using Hidden.Utilities;
+using Hidden.Utilities.Notifs;
+using Photon.Pun;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using UnityEngine;
+using static Hidden.Utilities.GunTemplate;
+using static Hidden.Utilities.Variables;
 
 namespace Hidden.Mods.Categories
 {
@@ -24,71 +27,107 @@ namespace Hidden.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
-        public static void TagGun()
+
+        #region Advantage
+        // TY Cha
+        public static void TagPlayer(VRRig plr)
         {
-            GunTemplate.StartBothGuns(() =>
+            GorillaTagger.Instance.offlineVRRig.enabled = false;
+            GorillaTagger.Instance.offlineVRRig.transform.SetPositionAndRotation(plr.transform.position + new Vector3(0f, -0.25f, 0f), plr.transform.rotation);
+
+            PhotonNetwork.SendAllOutgoingCommands();
+
+            MethodInfo method = typeof(PhotonNetwork).GetMethod("RunViewUpdate", BindingFlags.Static | BindingFlags.NonPublic);
+            if (method != null)
             {
-                if (IAmInfected)
-                {
-                    if (!RigIsInfected(LockedPlayer))
-                    {
-                        GorillaTagger.Instance.offlineVRRig.enabled = false;
-                        GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position - new Vector3(0f, 2.5f, 0f);
-                        GorillaTagger.Instance.leftHandTransform.position = spherepointer.transform.position;
-                    }
-                    else
-                    {
-                        GorillaTagger.Instance.offlineVRRig.enabled = true;
-                    }
-                }
-            }, true);
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                method.Invoke(null, Array.Empty<object>());
             }
+
+            PhotonView photonView = GameObject.Find("Player Objects/RigCache/Network Parent/GameMode(Clone)").GetPhotonView();
+            if (photonView != null)
+            {
+                photonView.RPC("RPC_ReportTag", RpcTarget.All, new object[]
+                {
+                    plr.Creator.ActorNumber
+                });
+            }
+
+            GorillaTagger.Instance.offlineVRRig.enabled = true;
+            PhotonNetwork.SendAllOutgoingCommands();
+
+            MethodInfo method2 = typeof(PhotonNetwork).GetMethod("RunViewUpdate", BindingFlags.Static | BindingFlags.NonPublic);
+            if (method2 != null)
+            {
+                method2.Invoke(null, Array.Empty<object>());
+            }
+
+            MethodInfo method3 = typeof(PhotonView).GetMethod("OnSerialize", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (method3 != null)
+            {
+                method3.Invoke(photonView, new object[2]);
+            }
+
+            PhotonNetwork.NetworkingClient.LoadBalancingPeer.SendAcksOnly();
         }
+
+
+        private static Dictionary<int, float> lastTaggedTime = new Dictionary<int, float>();
+        private static Photon.Realtime.Player player;
+        public static float Delay;
         public static void TagAura()
         {
-            if (IAmInfected && ControllerInputPoller.instance.rightGrab | UnityInput.Current.GetKey(KeyCode.G))
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && (Vector3.Distance(GorillaTagger.Instance.leftHandTransform.position, vrrig.headMesh.transform.position) < 4f || Vector3.Distance(GorillaTagger.Instance.rightHandTransform.position, vrrig.headMesh.transform.position) < 4f))
                 {
-                    if (!RigIsInfected(vrrig))
+                    PhotonView photonView = GameObject.Find("Player Objects/RigCache/Network Parent/GameMode(Clone)").GetPhotonView();
+                    if (photonView != null)
                     {
-                        if (Vector3.Distance(GorillaTagger.Instance.offlineVRRig.transform.position, vrrig.transform.position) < 3)
+                        photonView.RPC("RPC_ReportTag", RpcTarget.All, new object[]
                         {
-                            GorillaTagger.Instance.rightHandTransform.position = vrrig.transform.position;
-                        }
+                            vrrig.Creator.ActorNumber
+                        });
                     }
                 }
             }
         }
         public static void TagAll()
         {
-            if (IAmInfected)
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T))
+                int actorNumber = vrrig.Creator.ActorNumber;
+                player = PhotonNetwork.CurrentRoom.GetPlayer(actorNumber, false);
+                if (player != null && vrrig.Creator.ActorNumber == actorNumber)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    float time = Time.time;
+                    if (!lastTaggedTime.ContainsKey(actorNumber) || time - lastTaggedTime[actorNumber] >= 0.5f)
                     {
-                        if (!RigIsInfected(vrrig))
+                        TagPlayer(vrrig);
+                        lastTaggedTime[actorNumber] = time;
+                    }
+                }
+            }
+        }
+        public static void TagGun()
+        {
+            GunTemplate.StartBothGuns(delegate
+            {
+                if (GunTemplate.LockedPlayer != null && PhotonNetwork.InRoom)
+                {
+                    VRRig LockedPlayer = GunTemplate.LockedPlayer;
+                    int actorNumber = LockedPlayer.Creator.ActorNumber;
+                    player = PhotonNetwork.CurrentRoom.GetPlayer(actorNumber, false);
+                    if (player != null && LockedPlayer.Creator.ActorNumber == actorNumber)
+                    {
+                        float time = Time.time;
+                        if (!lastTaggedTime.ContainsKey(actorNumber) || time - lastTaggedTime[actorNumber] >= 5f)
                         {
-                            GorillaTagger.Instance.offlineVRRig.enabled = false;
-                            GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.transform.position - new Vector3(0f, 2.5f, 0f);
-                            GorillaTagger.Instance.leftHandTransform.position = vrrig.transform.position;
-                            GorillaTagger.Instance.offlineVRRig.enabled = true;
-                            break;
+                            TagPlayer(LockedPlayer);
+                            lastTaggedTime[actorNumber] = time;
                         }
                     }
                 }
-                else
-                {
-                    GorillaTagger.Instance.offlineVRRig.enabled = true;
-                }
-            }
-            else
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-            }
+            }, true);
         }
         public static void TagSelf()
         {
@@ -118,6 +157,8 @@ namespace Hidden.Mods.Categories
                 NotificationLib.SendNotification("<color=white>[</color><color=blue>Tag Self:</color><color=white>] You are already tagged</color>");
             }
         }
+        #endregion
+
         private static bool isOn = false;
         private static bool wasButtonPressed = false;
         public static void GhostMonke()
@@ -170,6 +211,14 @@ namespace Hidden.Mods.Categories
             GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 180), (float)UnityEngine.Random.Range(0, 180));
             GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 180), (float)UnityEngine.Random.Range(0, 180));
         }
+        public static void SpazHands()
+        {
+            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 360));
+            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 360));
+
+            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 180), (float)UnityEngine.Random.Range(0, 180));
+            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.eulerAngles = new Vector3((float)UnityEngine.Random.Range(0, 360), (float)UnityEngine.Random.Range(0, 180), (float)UnityEngine.Random.Range(0, 180));
+        }
         public static void FixHead()
         {
             GorillaTagger.Instance.offlineVRRig.head.trackingRotationOffset.y = 0f;
@@ -191,11 +240,6 @@ namespace Hidden.Mods.Categories
         public static void LongArms(float length)
         {
             GorillaTagger.Instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-        }
-        public static void Sticks()
-        {
-            GTPlayer.Instance.leftControllerTransform.transform.position = GorillaTagger.Instance.leftHandTransform.position + (GorillaTagger.Instance.leftHandTransform.forward * .333f);
-            GTPlayer.Instance.rightControllerTransform.transform.position = GorillaTagger.Instance.rightHandTransform.position + (GorillaTagger.Instance.rightHandTransform.forward * .333f);
         }
         public static void FixArms()
         {
@@ -220,7 +264,7 @@ namespace Hidden.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.headCollider.transform.position;
-                GorillaTagger.Instance.myVRRig.transform.position = GorillaTagger.Instance.headCollider.transform.position;
+                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.headCollider.transform.rotation;
             }
             else
             {
@@ -229,17 +273,17 @@ namespace Hidden.Mods.Categories
         }
         public static void HeadSpinx()
         {
-            VRMap head = RigManager.GetOwnVRRig().head;
+            VRMap head = taggerInstance.offlineVRRig.head;
             head.trackingRotationOffset.x += 15f;
         }
         public static void HeadSpiny()
         {
-            VRMap head = RigManager.GetOwnVRRig().head;
+            VRMap head = taggerInstance.offlineVRRig.head;
             head.trackingRotationOffset.y += 15f;
         }
         public static void HeadSpinz()
         {
-            VRMap head = RigManager.GetOwnVRRig().head;
+            VRMap head = taggerInstance.offlineVRRig.head;
             head.trackingRotationOffset.z += 15f;
         }
         public static void AnnoyPlayerGun()

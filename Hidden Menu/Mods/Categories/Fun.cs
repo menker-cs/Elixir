@@ -543,5 +543,30 @@ namespace Hidden.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
+
+        public static void MakeSchitzoGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+
+                if (Time.time > splashDelay)
+                {
+                    splashDelay = Time.time + 0.4f;
+
+                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer), new object[]
+                    {
+                        Annoy(LockedPlayer.transform, 0.5f),
+                        GunTemplate.spherepointer.transform.rotation,
+                        4f,
+                        4f,
+                        true,
+                        true,
+                    });
+                }
+            }, true);
+            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
+        }
     }
 }
