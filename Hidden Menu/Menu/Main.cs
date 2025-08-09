@@ -196,7 +196,7 @@ namespace Hidden.Menu
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
             SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
         }
-        private static int i = 0;
+        static int i = 0;
         [HarmonyPrefix]
         public static void Update()
         {
@@ -704,7 +704,7 @@ namespace Hidden.Menu
             title.font = font;
 
             title.text =
-            $"{menuName}{(vCounter ? " ┇ V10 BETA"/* + menuVersion[0]*/ : "")}";
+            $"{menuName}{(vCounter ? " ┇ V" + menuVersion[0] : "")}";
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {

@@ -56,7 +56,7 @@ namespace Hidden.Mods.Categories
                 return;
             }
 
-            PhotonNetworkController.Instance.AttemptToJoinPublicRoom(joinTrigger, JoinType.Solo);
+            PhotonNetworkController.Instance.AttemptToJoinPublicRoom(joinTrigger, GorillaNetworking.JoinType.Solo);
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
@@ -86,7 +86,7 @@ namespace Hidden.Mods.Categories
         }
         public static void JoinRoom(string RoomCode)
         {
-            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(RoomCode, JoinType.Solo);
+            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(RoomCode, GorillaNetworking.JoinType.Solo);
         }
         public static void DisableNetworkTriggers()
         {

@@ -16,30 +16,6 @@ namespace Hidden.Mods.Categories
 {
     public class Visuals
     {
-        public static void HiddenESP()
-        {
-            foreach (Player player in PhotonNetwork.PlayerListOthers)
-            {
-                VRRig rig = RigManager.GetVRRigFromPlayer(player);
-                string Properties = player.CustomProperties.ToString();
-                if (Properties.Contains("HiddenMenu"))
-                {
-                    if (rig == GorillaTagger.Instance.offlineVRRig) continue;
-
-                    GameObject gameObject = new GameObject("Line");
-                    LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-                    lineRenderer.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);
-                    lineRenderer.SetPosition(1, rig.transform.position);
-                    lineRenderer.startWidth = 0.0225f;
-                    lineRenderer.endWidth = 0.0225f;
-
-                    lineRenderer.material.shader = Shader.Find("GUI/Text Shader");
-                    lineRenderer.material.color = Yellow;
-
-                    UnityEngine.Object.Destroy(gameObject, Time.deltaTime);
-                }
-            }
-        }
         public static void Shadows(bool b)
         {
             GameLightingManager.instance.SetCustomDynamicLightingEnabled(b);
@@ -839,6 +815,82 @@ namespace Hidden.Mods.Categories
             color.a = 0.5f;
             ESP.GetComponent<Renderer>().material.color = color;
             UnityEngine.Object.Destroy(ESP, Time.deltaTime);
+        }
+        public static void Ignore(bool All)
+        {
+            if (All)
+            {
+                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                {
+                    if (vrrig.bodyRenderer.gameModeBodyType == GorillaBodyType.Default)
+                    {
+                        vrrig.bodyRenderer.SetGameModeBodyType(GorillaBodyType.Invisible);
+                        vrrig.bodyRenderer.bodySkeleton.material.shader = Shader.Find("GUI/Text Shader");
+                        vrrig.bodyRenderer.bodySkeleton.material.color = espColor;
+                        #region mute
+                        GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+                        foreach (GorillaPlayerScoreboardLine mute in Board)
+                        {
+                            if (mute.linePlayer != null)
+                            {
+                                mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                                mute.muteButton.isOn = true;
+                                mute.muteButton.UpdateColor();
+                            }
+                        }
+                        #endregion
+                    }
+                }
+            }
+            else
+            {
+                GunTemplate.StartBothGuns(() =>
+                {
+                    if (GunTemplate.LockedPlayer.bodyRenderer.gameModeBodyType == GorillaBodyType.Default)
+                    {
+                        GunTemplate.LockedPlayer.bodyRenderer.SetGameModeBodyType(GorillaBodyType.Invisible);
+                        GunTemplate.LockedPlayer.bodyRenderer.bodySkeleton.material.shader = Shader.Find("GUI/Text Shader");
+                        GunTemplate.LockedPlayer.bodyRenderer.bodySkeleton.material.color = espColor;
+                        #region mute
+                        GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+                        foreach (GorillaPlayerScoreboardLine mute in Board)
+                        {
+                            if (mute.linePlayer == GunTemplate.LockedPlayer.OwningNetPlayer)
+                            {
+                                mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                                mute.muteButton.isOn = true;
+                                mute.muteButton.UpdateColor();
+                            }
+                        }
+                        #endregion
+                    }
+                }, true);
+            }
+        }
+        public static void EnableSkeleton()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                {
+                    vrrig.skeleton.UpdateColor(vrrig.playerColor);
+                    vrrig.skeleton.renderer.sharedMaterial.shader = Shader.Find("GUI/Text Shader");
+                    vrrig.skeleton.renderer.sharedMaterial.color = vrrig.playerColor;
+                    vrrig.skeleton.enabled = true;
+                    vrrig.skeleton.renderer.enabled = true;
+                }
+            }
+        }
+        public static void DisableSkeleton()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                {
+                    vrrig.skeleton.enabled = false;
+                    vrrig.skeleton.renderer.enabled = false;
+                }
+            }
         }
     }
 }

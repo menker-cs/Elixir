@@ -176,7 +176,7 @@ namespace Hidden.Mods
             #endregion
 
             #region Visuals
-            new Button("Hidden User ESP", Category.Visuals, true, true, ()=>HiddenESP(), ()=>DisableESP(), "See Who Is Using The Menu"),
+            new Button("Menu Tags", Category.Visuals, true, true, ()=>Admin.TemuRoomSystem.TAGS(), null, "See Who Is Using The Menu"),
             new Button("Chams", Category.Visuals, true, false, ()=>ESP(), ()=>DisableESP(), "See People Through Walls"),
             new Button("Tracers", Category.Visuals, true, false, ()=>Tracers(), null, "Creats Tracers To Players"),
             new Button("2D Box ESP", Category.Visuals, true, false, ()=>BoxESP(false), null, "Creates A 2D Box"),
@@ -189,6 +189,8 @@ namespace Hidden.Mods
             new Button("Advanced Nametags", Category.Visuals, true, false, ()=>AdvNametags(), null, "Nametags But More Info"),
             new Button("VR Info Display", Category.Visuals, true, false, ()=>InfoDisplay(), null, "Creates A VR Info Display"),
             new Button("Snake ESP", Category.Visuals, true, false, ()=>SnakeESP(), null, "Creates Snake ESP On Players"),
+            new Button("Skeleton ESP", Category.Visuals, true, false, ()=>EnableSkeleton(), ()=> DisableSkeleton(), "View Players Skeletons"),
+            new Button("Ignore Gun [CS]", Category.Visuals, true, false, ()=>Ignore(false), null, "Completely Removes Players From Your Game"),
             #endregion
 
             #region Fun
@@ -198,7 +200,8 @@ namespace Hidden.Mods
             new Button("Splash Gun", Category.Fun, true, false, ()=>SplashGun(), null, "Splashes Where You Shoot"),
             new Button("Splash Aura [G]", Category.Fun, true, false, ()=>SplashAura(), null, "Splashes Where You Shoot"),
             new Button("Give Splash Gun", Category.Fun, true, false, ()=>GiveSplash(), null, "Makes Others Splash"),
-            new Button("Give Schitzo Gun", Category.Fun, true, false, ()=>MakeSchitzoGun(), null, "Makes Others Splash"),
+            new Button("Schitzo Gun V1", Category.Fun, true, false, ()=>SchitzoV1(), null, "Makes Others Splash"),
+            new Button("Schitzo Gun V2", Category.Fun, true, false, ()=>SchitzoV2(), null, "Makes Others Splash"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun(), null, "Places The Bug Where You Shoot"),
             new Button("Snipe Bug [G]", Category.Fun, true, false, ()=> SnipeBug(), null, "Snipes The Bug"),

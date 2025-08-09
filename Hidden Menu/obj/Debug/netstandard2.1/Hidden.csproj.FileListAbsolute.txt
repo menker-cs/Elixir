@@ -765,3 +765,4 @@ C:\Users\Tommy\OneDrive\Documents\GitHub\Hidden\Hidden Menu\bin\Debug\netstandar
 C:\Users\Tommy\OneDrive\Documents\GitHub\Hidden\Hidden Menu\bin\Debug\netstandard2.1\MonoMod.RuntimeDetour.xml
 C:\Users\Tommy\OneDrive\Documents\GitHub\Hidden\Hidden Menu\bin\Debug\netstandard2.1\MonoMod.Utils.xml
 C:\Users\Tommy\OneDrive\Documents\GitHub\Hidden\Hidden Menu\obj\Debug\netstandard2.1\Hidden.csproj.Up2Date
+C:\Users\Tommy\OneDrive\Documents\GitHub\Hidden\Hidden Menu\obj\Debug\netstandard2.1\Hidden.IgnoresAccessChecksTo.cs

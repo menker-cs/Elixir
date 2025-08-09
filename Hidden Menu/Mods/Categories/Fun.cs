@@ -1,13 +1,15 @@
-﻿using System;
-using static Hidden.Menu.Main;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Utilities.GunTemplate;
-using UnityEngine;
-using BepInEx;
+﻿using BepInEx;
+using ExitGames.Client.Photon;
+using Hidden.Menu;
 using Hidden.Utilities;
 using Photon.Pun;
-using Hidden.Menu;
+using System;
+using UnityEngine;
+using static Hidden.Menu.Main;
+using static Hidden.Utilities.ColorLib;
+using static Hidden.Utilities.GunTemplate;
+using static Hidden.Utilities.Variables;
+using Photon.Realtime;
 
 namespace Hidden.Mods.Categories
 {
@@ -501,6 +503,7 @@ namespace Hidden.Mods.Categories
                     true,
                 });
             }
+            RPC2();
         }
         public static void SplashHands()
         {
@@ -535,16 +538,16 @@ namespace Hidden.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                    GorillaTagger.Instance.offlineVRRig.enabled = false;
-                    GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
-                    Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
+                Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
             }, true); 
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
         }
 
-        public static void MakeSchitzoGun()
+        public static void SchitzoV1()
         {
             GunTemplate.StartBothGuns(() =>
             {
@@ -565,8 +568,49 @@ namespace Hidden.Mods.Categories
                         true,
                     });
                 }
+                RPC2();
             }, true);
             { GorillaTagger.Instance.offlineVRRig.enabled = true; }
+        }
+        public static void SchitzoV2()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+
+                if (Time.time > splashDelay)
+                {
+                    splashDelay = Time.time + 0.4f;
+
+                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer), new object[]
+                    {
+                        GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f),
+                        GunTemplate.spherepointer.transform.rotation,
+                        4f,
+                        4f,
+                        true,
+                        true,
+                    });
+                }
+                RPC2();
+            }, true);
+            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
+        }
+        public static void RPC2()
+        {
+            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable
+            {
+                [0] = GorillaTagger.Instance.myVRRig.ViewID
+            };
+            PhotonNetwork.NetworkingClient.OpRaiseEvent(200, hashtable, new RaiseEventOptions
+            {
+                CachingOption = (EventCaching)6,
+                TargetActors = new int[]
+                {
+            PhotonNetwork.LocalPlayer.ActorNumber
+                }
+            }, SendOptions.SendReliable);
         }
     }
 }
