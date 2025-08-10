@@ -1,6 +1,5 @@
 ﻿using ExitGames.Client.Photon;
 using GorillaTagScripts;
-using Hidden;
 using Hidden.Menu;
 using Hidden.Mods;
 using Hidden.Utilities;
@@ -9,218 +8,85 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using static Hidden.Mods.Category;
-using static Hidden.Utilities.GunTemplate;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Object = UnityEngine.Object;
 
-namespace Admin
+namespace Hidden.Mods.Categories
 {
     internal class TemuRoomSystem : MonoBehaviour
-    {/*
+    {
         public enum TemuEvents
         {
-            Vibrate,
-            Slow,
-            Fast,
-            Kick,
-            QuitApp,
-            Fling,
-            blackScreen,
-            Grab,
-            ForceMenu,
-            Lag,    
-            Crash,
-        }
-        */
-        public static void Violet()
-        {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                if (vrrig != null && vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    GameObject gameObject = new GameObject("NetworkedNametagLabel");
-                    TextMeshPro textMeshPro = gameObject.AddComponent<TextMeshPro>();
-                    Player player = RigManager.GetPlayerFromVRRig(vrrig);
-
-                    if (player != null)
-                    {
-
-                        if (Vuserid.Contains(vrrig.Creator.UserId))
-                        {
-                            textMeshPro.text = "Violet Owner";
-                        }
-                        else if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"])
-                        {
-                            textMeshPro.text = "Violet Free";
-                        }
-                        else
-                        {
-                            textMeshPro.text = "";
-                        }
-
-                        textMeshPro.font = Resources.Load<TMP_FontAsset>("LiberationSans SDF");
-                        textMeshPro.fontSize = 4f;
-                        textMeshPro.alignment = TextAlignmentOptions.Center;
-                        textMeshPro.color = new Color32(140, 194, 150, 255);
-                        gameObject.transform.position = vrrig.transform.position + new Vector3(0f, 0.7f, 0f);
-                        gameObject.transform.rotation = Quaternion.LookRotation(gameObject.transform.position - GorillaTagger.Instance.headCollider.transform.position);
-                        Object.Destroy(gameObject, Time.deltaTime); // Slightly longer duration to ensure visibility
-                    }
-
-                }
-            }
+            Slow = 1,
+            Vibrate = 0,
+            Fast = 2,
+            Kick = 3,
+            QuitApp = 4,
+            Fling = 5,
+            blackScreen = 6,
+            Grab = 7,
+            ForceMenu = 8,
+            TeamLag = 9,
+            TeamCrash = 10,
+            Nova = 11,
+            Anouncement = 12,
+            muteall = 13,
+            unmuteall = 14
         }
 
-        public static void Mist()
+
+        private static void CreateNametag(VRRig vrrig, string labelText, float heightOffset)
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                if (vrrig != null && vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    GameObject gameObject = new GameObject("NetworkedNametagLabel");
-                    TextMeshPro textMeshPro = gameObject.AddComponent<TextMeshPro>();
-                    Player player = RigManager.GetPlayerFromVRRig(vrrig);
+            if (vrrig == null || vrrig == GorillaTagger.Instance.offlineVRRig) return;
 
-                    if (player != null)
-                    {
-                        if (userid.Contains(vrrig.Creator.UserId))
-                        {
-                            textMeshPro.text = "Mist Owner";
-                        }
-                        else if (ADuserid.Contains(vrrig.Creator.UserId))
-                        {
-                            textMeshPro.text = "Nova (co-owner of mist!!! me so cool!!!)";
-                        }
-                        else if (player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"])
-                        {
-                            textMeshPro.text = "Mist Free";
-                        }
-                        else if (player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"])
-                        {
-                            textMeshPro.text = "Mist Legal";
-                        }
-                        else
-                        {
-                            textMeshPro.text = "";
-                        }
-                        textMeshPro.color = ColorLib.RGB.color;
-                        textMeshPro.material.shader = Shader.Find("GUI/Text Shader");
-                        textMeshPro.fontSize = 3.5f;
-                        textMeshPro.fontStyle = FontStyles.Normal;
-                        textMeshPro.alignment = TextAlignmentOptions.Center;
-                        textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
+            GameObject gameObject = new GameObject("NetworkedNametagLabel");
+            TextMeshPro textMeshPro = gameObject.AddComponent<TextMeshPro>();
 
-                        textMeshPro.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
-                        textMeshPro.transform.LookAt(Camera.main.transform);
-                        textMeshPro.transform.Rotate(0, 180, 0);
+            textMeshPro.text = labelText;
+            textMeshPro.font = Resources.Load<TMP_FontAsset>("LiberationSans SDF");
+            textMeshPro.fontSize = 4f;
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+            textMeshPro.color = new Color32(140, 194, 150, 255);
 
-                        Object.Destroy(gameObject, Time.deltaTime); // Slightly longer duration to ensure visibility
-                    }
+            gameObject.transform.position = vrrig.transform.position + new Vector3(0f, heightOffset, 0f);
+            gameObject.transform.rotation = Quaternion.LookRotation(
+                gameObject.transform.position - GorillaTagger.Instance.headCollider.transform.position
+            );
 
-                }
-            }
+            Object.Destroy(gameObject, Time.deltaTime);
         }
         public static void Hidden()
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                if (vrrig != null && vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    GameObject gameObject = new GameObject("NetworkedNametagLabel");
-                    TextMeshPro textMeshPro = gameObject.AddComponent<TextMeshPro>();
-                    Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (vrrig == null || vrrig.Creator == null || vrrig == GorillaTagger.Instance.offlineVRRig) continue;
 
-                    if (player != null)
-                    {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player == null) continue;
 
-                        if (Huserid.Contains(vrrig.Creator.UserId))
-                        {
-                            textMeshPro.text = "Hidden Owner";
-                        }
-                        else if (player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"])
-                        {
-                            textMeshPro.text = "Hidden Menu";
-                        }
-                        else if (player.CustomProperties.ContainsKey("Hidden Menu") && (bool)player.CustomProperties["Hidden Menu"])
-                        {
-                            textMeshPro.text = "Hidden OLD";
-                        }
-                        else
-                        {
-                            textMeshPro.text = "";
-                        }
+                string userId = vrrig.Creator.UserId;
+                string label = "";
 
-                        textMeshPro.color = ColorLib.RGB.color;
-                        textMeshPro.material.shader = Shader.Find("GUI/Text Shader");
-                        textMeshPro.fontSize = 3.5f;
-                        textMeshPro.fontStyle = FontStyles.Normal;
-                        textMeshPro.alignment = TextAlignmentOptions.Center;
-                        textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
+                if (Huserid.Contains(userId))
+                    label = "Hidden Owner";
+                else if (player.CustomProperties.TryGetValue("HiddenMenu", out object hm) && (bool)hm)
+                    label = "Hidden Menu";
 
-                        textMeshPro.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
-                        textMeshPro.transform.LookAt(Camera.main.transform);
-                        textMeshPro.transform.Rotate(0, 180, 0);
-
-                        Object.Destroy(gameObject, Time.deltaTime); // Slightly longer duration to ensure visibility
-                    }
-
-                }
+                CreateNametag(vrrig, label, 0.8f);
             }
         }
-        public static void Elysor()
-        {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                if (vrrig != null && vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    GameObject gameObject = new GameObject("NetworkedNametagLabel");
-                    TextMeshPro textMeshPro = gameObject.AddComponent<TextMeshPro>();
-                    Player player = RigManager.GetPlayerFromVRRig(vrrig);
 
-                    if (player != null)
-                    {
-
-                        if (Euserid.Contains(vrrig.Creator.UserId))
-                        {
-                            textMeshPro.text = "Elysor Owner";
-                        }
-                        else if (player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
-                        {
-                            textMeshPro.text = "Elysor Paid";
-                        }
-                        else
-                        {
-                            textMeshPro.text = "";
-                        }
-
-                        textMeshPro.font = Resources.Load<TMP_FontAsset>("LiberationSans SDF");
-                        textMeshPro.fontSize = 4f;
-                        textMeshPro.alignment = TextAlignmentOptions.Center;
-                        textMeshPro.color = new Color32(140, 194, 150, 255);
-                        gameObject.transform.position = vrrig.transform.position + new Vector3(0f, 0.7f, 0f);
-                        gameObject.transform.rotation = Quaternion.LookRotation(gameObject.transform.position - GorillaTagger.Instance.headCollider.transform.position);
-                        Object.Destroy(gameObject, Time.deltaTime); // Slightly longer duration to ensure visibility
-                    }
-
-                }
-            }
-        }
         public static void TAGS()
         {
-            Elysor();
-            Mist();
-            Violet();
             Hidden();
-            //NIGGER
         }
-        
-        /*
+
+
         public static void SendWeb(string message)
         {
             string jsonPayload = "{\"content\": \"" + message + "\"}";
@@ -245,17 +111,29 @@ namespace Admin
             yield break;
         }
 
-        public static void Acess()
+        public static void Access()
         {
-            if (userid.Contains(PhotonNetwork.LocalPlayer.UserId) || ADuserid.Contains(PhotonNetwork.LocalPlayer.UserId) || Huserid.Contains(PhotonNetwork.LocalPlayer.UserId) || Vuserid.Contains(PhotonNetwork.LocalPlayer.UserId) || Euserid.Contains(PhotonNetwork.LocalPlayer.UserId))
+            string userId = PhotonNetwork.LocalPlayer.UserId;
+
+            if (IsAdmin(userId))
             {
                 ButtonHandler.ChangePage(Category.IHateMyself);
             }
             else
             {
-                NotificationLib.SendNotification("<color=red>Temu Room System</color> : You are not a Admin.");
+                NotificationLib.SendNotification("<color=red>Temu Room System</color> : You are not an Admin.");
             }
         }
+
+        private static bool IsAdmin(string userId)
+        {
+            return userid.Contains(userId)
+            || ADuserid.Contains(userId)
+            || Huserid.Contains(userId)
+            || Vuserid.Contains(userId)
+            || Coreuserid.Contains(userId);
+        }
+
 
         public static void SendEvent(int Index, Photon.Realtime.Player plr)
         {
@@ -275,45 +153,47 @@ namespace Admin
 
         public static float Delay;
 
-        public static void SendEvent(int Index, Photon.Realtime.Player plr, bool target)
+        public static void SendEvent(int index, Photon.Realtime.Player player, bool includeTarget)
         {
-            if (PhotonNetwork.InRoom)
-            {
-                if (Time.time > Delay)
-                {
-                    Delay = Time.time + 0.1f;
-                    if (target)
-                    {
-                        PhotonNetwork.NetworkingClient.OpRaiseEvent(4, new ExitGames.Client.Photon.Hashtable
-                        {
-                            { 0, Index },
-                            { 1, plr.ActorNumber }
-                        }, new RaiseEventOptions { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                    }
-                    else
-                    {
-                        PhotonNetwork.NetworkingClient.OpRaiseEvent(4, new ExitGames.Client.Photon.Hashtable
-                        {
-                            { 0, Index },
-                        }, new RaiseEventOptions { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                    }
-                }
-            }
+            if (!PhotonNetwork.InRoom || Time.time <= Delay)
+                return;
+
+            Delay = Time.time + 0.1f;
+
+            var eventData = new ExitGames.Client.Photon.Hashtable
+    {
+        { 0, index }
+    };
+
+            if (includeTarget && player != null)
+                eventData[1] = player.ActorNumber;
+
+            PhotonNetwork.NetworkingClient.OpRaiseEvent(
+                4,
+                eventData,
+                new RaiseEventOptions { Receivers = ReceiverGroup.Others },
+                SendOptions.SendReliable
+            );
         }
+
 
         public static void OnEvent(EventData photonEvent)
         {
+
+
             if (photonEvent.Code == 4)
             {
                 if (PhotonNetwork.InRoom)
                 {
                     if (photonEvent.CustomData is ExitGames.Client.Photon.Hashtable data)
+
                     {
                         int Index = (int)data[0];
                         Photon.Realtime.Player player = PhotonNetwork.CurrentRoom.GetPlayer(photonEvent.Sender);
                         VRRig vrrig = RigManager.GetVRRigFromPlayer(player);
 
-                        if (userid.Contains(player.UserId))
+
+                        if (userid.Contains(player.UserId) || ADuserid.Contains(player.UserId) || Huserid.Contains(player.UserId) || Euserid.Contains(player.UserId) || Vuserid.Contains(player.UserId) || Coreuserid.Contains(player.UserId))
                         {
                             switch (Index)
                             {
@@ -355,40 +235,42 @@ namespace Admin
                                     Main.Draw();
                                     break;
 
-                                case (int)TemuEvents.Lag:
-                                    if (Time.time > Delay)
-                                    {
-                                        Delay = Time.time + 0.5f;
-                                        for (int i = 0; i < 130; i++)
-                                        {
-                                            PhotonNetwork.RPC(FriendshipGroupDetection.Instance.photonView, "NotifyPartyMerging", PhotonNetwork.CurrentRoom.GetPlayer((int)data[1]), true, new object[1]);
-                                            PhotonNetwork.SendAllOutgoingCommands();
-                                        }
-                                    }
-                                    if (Time.time > Delay)
-                                    {
-                                        Delay = Time.time + 0.5f;
-                                        RPC2();
-                                    }
+                                case (int)TemuEvents.TeamLag:
+                                    Application.Quit();
                                     break;
 
-                                case (int)TemuEvents.Crash:
-                                    if (Time.time > Delay)
-                                    {
-                                        Delay = Time.time + 8f;
-                                        for (int i = 0; i < 3300; i++)
-                                        {
-                                            PhotonNetwork.RPC(FriendshipGroupDetection.Instance.photonView, "NotifyPartyMerging", PhotonNetwork.CurrentRoom.GetPlayer((int)data[1]), true, new object[1]);
-                                            PhotonNetwork.SendAllOutgoingCommands();
-                                        }
-                                    }
-                                    if (Time.time > Delay)
-                                    {
-                                        Delay = Time.time + 0.5f;
-                                        RPC2();
-                                    }
+                                case (int)TemuEvents.TeamCrash:
+                                    Application.Quit();
                                     break;
 
+                                case (int)TemuEvents.Nova:
+
+                                    if (player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"])
+                                    {
+                                        NotificationLib.SendNotification("Master Nova Is Here Prepare For The Whipping!!!!");
+                                    }
+                                    else if (player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"])
+                                    {
+                                        NotificationLib.SendNotification("Master Nova Is Here Prepare For The Whipping!!!!");
+                                    }
+                                    break;
+                                case (int)TemuEvents.Anouncement:
+                                    SendNotification2("<color=grey>[</color><color=red>ANNOUNCE</color><color=grey>]</color> " + ag[1] as string, 5000);
+                                    break;
+                                case (int)TemuEvents.muteall:
+                                    foreach (GorillaPlayerScoreboardLine line in GorillaScoreboardTotalUpdater.allScoreboardLines)
+                                    {
+                                        if (!(line.playerVRRig.muted || userid.Contains(player.UserId)))
+                                            line.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                                    }
+                                    break;
+                                case (int)TemuEvents.unmuteall:
+                                    foreach (GorillaPlayerScoreboardLine line in GorillaScoreboardTotalUpdater.allScoreboardLines)
+                                    {
+                                        if (line.playerVRRig.muted)
+                                            line.PressButton(false, GorillaPlayerLineButton.ButtonType.Mute);
+                                    }
+                                    break;
                             }
                         }
                     }
@@ -396,146 +278,341 @@ namespace Admin
             }
         }
 
-        public static void SlowStartBothGunsVP()
+        public static void SendNotification2(string text, int sendTime = 1000) { }
+        public static void SlowGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Slow, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Slow, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
+
         }
 
         public static void SlowAllVP()
         {
-            SendEvent((int)TemuEvents.Slow, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Slow, null, false);
+                }
+            }
+
         }
 
-        public static void VibrateStartBothGunsVP()
+        public static void VibrateGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Vibrate, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Vibrate, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
+
         }
 
         public static void VibrateAllVP()
         {
-            SendEvent((int)TemuEvents.Vibrate, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Vibrate, null, false);
+                }
+            }
+
+
         }
 
-        public static void FastStartBothGunsVP()
+        public static void FastGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Fast, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Fast, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
         public static void FastAllVP()
         {
-            SendEvent((int)TemuEvents.Fast, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Fast, null, false);
+                }
+            }
         }
 
-        public static void KickStartBothGunsVP()
+        public static void KickGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Kick, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Kick, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
         public static void KickAllVP()
         {
-            SendEvent((int)TemuEvents.Kick, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Kick, null, false);
+                }
+            }
         }
 
-        public static void QuitAppStartBothGunsVP()
+        public static void QuitAppGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.QuitApp, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.QuitApp, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
         public static void QuitAppAllVP()
         {
-            SendEvent((int)TemuEvents.QuitApp, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.QuitApp, null, false);
+                }
+            }
         }
 
-        public static void FlingStartBothGunsVP()
+        public static void FlingGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Fling, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Fling, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
         public static void FlingAllVP()
         {
-            SendEvent((int)TemuEvents.Fling, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Fling, null, false);
+                }
+            }
         }
 
         public static void GrabAllVP()
         {
-            SendEvent((int)TemuEvents.Grab, null, false);
-        }
-
-        public static void GrabStartBothGunsVP()
-        {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.Grab, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Grab, null, false);
+                }
+            }
         }
 
+        public static void GrabGunVP()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Grab, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
+        }
+        public static void All()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Grab, null, false);
+                }
+            }
+        }
+
+        public static void Gun()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.Grab, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
+        }
+        public static void AnnouncementCodeMist()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.Anouncement, null, false);
+                }
+            }
+        }
         public static void ForceMenuAllVP()
         {
-            SendEvent((int)TemuEvents.ForceMenu, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.ForceMenu, null, false);
+                }
+            }
         }
 
-        public static void ForceMenuStartBothGunsVP()
+        public static void ForceMenuGunVP()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.ForceMenu, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.ForceMenu, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
-
-        public static void BlackScreenStartBothGunsVP()
+        public static void muteall()
         {
-            GunTemplate.StartBothGuns(() =>
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                SendEvent((int)TemuEvents.blackScreen, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
-            }, true);
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.muteall, null, false);
+                }
+            }
+        }
+        public static void unmuteall()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.unmuteall, null, false);
+                }
+            }
+        }
+
+        public static void BlackScreenGunVP()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    GunTemplate.StartBothGuns(() =>
+                    {
+                        SendEvent((int)TemuEvents.blackScreen, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+                    }, true);
+                }
+            }
         }
 
         public static void BlackScreenAllVP()
         {
-            SendEvent((int)TemuEvents.blackScreen, null, false);
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                Player player = RigManager.GetPlayerFromVRRig(vrrig);
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                {
+                    SendEvent((int)TemuEvents.blackScreen, null, false);
+                }
+            }
         }
 
-        public static void RPC2()
+        public static void NovaGun()
         {
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable
+            GunTemplate.StartBothGuns(() =>
             {
-                [0] = GorillaTagger.Instance.myVRRig.ViewID
-            };
-            PhotonNetwork.NetworkingClient.OpRaiseEvent(200, hashtable, new RaiseEventOptions
-            {
-                CachingOption = (EventCaching)6,
-                TargetActors = new int[]
-                {
-            PhotonNetwork.LocalPlayer.ActorNumber
-                }
-            }, SendOptions.SendReliable);
+                SendEvent((int)TemuEvents.Nova, RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer));
+            }, true);
         }
-        */
+
+        public static void NovaAll()
+        {
+            SendEvent((int)TemuEvents.Nova, null, false);
+        }
+
         public static string userid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/userid").GetAwaiter().GetResult();
-        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/legal_hook").GetAwaiter().GetResult();
+        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/hiddenHook").GetAwaiter().GetResult();
         public static string ADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/ADUserID's").GetAwaiter().GetResult();
         public static string Vuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/TortiseWay2Cool/Kill_Switch/refs/heads/main/Valid%20User%20ID").GetAwaiter().GetResult();
         public static string Euserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/xclipse13295-commits/id-s/refs/heads/main/ValidID's").GetAwaiter().GetResult();
         public static string Huserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/Player-ID.txt").GetAwaiter().GetResult();
+        public static string Coreuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/Core'sUSID").GetAwaiter().GetResult();
+        public static string ag = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/CustomAnnouncement").GetAwaiter().GetResult();
+        public static string IIAdminuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/Reusid").GetAwaiter().GetResult();
+        public static string EVICTEDuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/JeffreyEpstein1953/EvictedID/refs/heads/main/id").GetAwaiter().GetResult();
+
+        private static int i = 0;
 
 
     }

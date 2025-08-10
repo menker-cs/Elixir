@@ -89,6 +89,14 @@ namespace Hidden.Menu
             catch
             {
             }
+            try 
+            { 
+                PhotonNetwork.NetworkingClient.EventReceived += TemuRoomSystem.OnEvent; 
+            }
+            catch (Exception ex)
+            {
+                UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
+            }
             try
             {
                 if (playerInstance == null || GorillaTagger.Instance == null)

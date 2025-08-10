@@ -1,19 +1,20 @@
-﻿using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Mods.Categories.Move;
-using static Hidden.Mods.Categories.Playerr;
-using static Hidden.Mods.Categories.Visuals;
-using static Hidden.Mods.Categories.Room;
-using static Hidden.Mods.Categories.Settings;
-using static Hidden.Mods.Categories.Fun;
-using static Hidden.Mods.Categories.World;
+﻿using GorillaGameModes;
+using Hidden.Mods.Categories;
 using static Hidden.Menu.ButtonHandler;
+using static Hidden.Menu.Main;
 using static Hidden.Menu.Optimizations;
 using static Hidden.Menu.Optimizations.ResourceLoader;
-using static Hidden.Menu.Main;
-using Hidden.Mods.Categories;
-using GorillaGameModes;
+using static Hidden.Mods.Categories.Fun;
+using static Hidden.Mods.Categories.Move;
+using static Hidden.Mods.Categories.Playerr;
+using static Hidden.Mods.Categories.Room;
+using static Hidden.Mods.Categories.Settings;
+using static Hidden.Mods.Categories.Visuals;
+using static Hidden.Mods.Categories.World;
+using static Hidden.Mods.Categories.TemuRoomSystem;
+using static Hidden.Utilities.ColorLib;
+using static Hidden.Utilities.GunTemplate;
+using static Hidden.Utilities.Variables;
 
 namespace Hidden.Mods
 {
@@ -44,6 +45,7 @@ namespace Hidden.Mods
             new Button("Visuals", Category.Home, false, false, ()=>ChangePage(Category.Visuals), null, "Opens The Visuals Category"),
             new Button("Fun", Category.Home, false, false, ()=>ChangePage(Category.Fun), null, "Opens The Fun Category"),
             new Button("World", Category.Home, false, false, ()=>ChangePage(Category.World), null, "Opens The World Category"),
+            new Button("IHateMyself", Category.Home, false, false, ()=>Access(), null, "Opens The IHateMyself Category"),
             new Button("Creds", Category.Home, false, false, ()=>ChangePage(Category.Creds), null, "Opens The Room Category"),
             #endregion
 
@@ -176,7 +178,7 @@ namespace Hidden.Mods
             #endregion
 
             #region Visuals
-            new Button("Menu Tags", Category.Visuals, true, true, ()=>Admin.TemuRoomSystem.TAGS(), null, "See Who Is Using The Menu"),
+            new Button("Menu Tags", Category.Visuals, true, true, ()=>TAGS(), null, "See Who Is Using Menus"),
             new Button("Chams", Category.Visuals, true, false, ()=>ESP(), ()=>DisableESP(), "See People Through Walls"),
             new Button("Tracers", Category.Visuals, true, false, ()=>Tracers(), null, "Creats Tracers To Players"),
             new Button("2D Box ESP", Category.Visuals, true, false, ()=>BoxESP(false), null, "Creates A 2D Box"),
@@ -236,6 +238,30 @@ namespace Hidden.Mods
             new Button("Change Time Night", Category.World, false, false, ()=> NightTimeMod(), null, "Makes It Night"),
             new Button("Change Time Day", Category.World, false, false, ()=> idkTimeMod(), null, "Makes It Day"),
             new Button("Enable Shadows", Category.World, true, false, ()=> Shadows(true), ()=> Shadows(false), "Toggles Shadows"),
+            #endregion
+
+            #region IHateMyself
+new Button("Slow Gun", Category.IHateMyself, true, false, ()=>SlowGunVP()),
+new Button("Slow All", Category.IHateMyself, true, false, ()=>SlowAllVP()),
+new Button("Vibrate Gun", Category.IHateMyself, true, false, ()=>VibrateGunVP()),
+new Button("Vibrate All", Category.IHateMyself, true, false, ()=>VibrateAllVP()),
+new Button("Fling Gun", Category.IHateMyself, true, false, ()=>FlingGunVP()),
+new Button("Fling All", Category.IHateMyself, true, false, ()=>FlingAllVP()),
+new Button("Fast Gun", Category.IHateMyself, true, false, ()=>FastGunVP()),
+new Button("Fast All", Category.IHateMyself, true, false, ()=>FastAllVP()),
+//new Button("Force Menu Gun", Category.IHateMyself, true, false, ()=>ForceMenuGunVP()),
+//new Button("Force Menu All", Category.IHateMyself, true, false, ()=>ForceMenuAllVP()),
+new Button("Grab Gun", Category.IHateMyself, true, false, ()=>GrabGunVP()),
+new Button("Grab All", Category.IHateMyself, true, false, ()=>GrabAllVP()),
+new Button("Kick Gun", Category.IHateMyself, true, false, ()=>KickGunVP()),
+new Button("Kick All", Category.IHateMyself, true, false, ()=>KickAllVP()),
+new Button("Black Screen Gun", Category.IHateMyself, true, false, ()=>BlackScreenGunVP()),
+new Button("Black Screen All", Category.IHateMyself, true, false, ()=>BlackScreenAllVP()),
+//new Button("Nova Steam Crash Gun", Category.IHateMyself, true, false, ()=>NovaGun()),
+//new Button("Nova Steam Crash All", Category.IHateMyself, true, false, ()=>NovaAll()),
+new Button("App Quit Gun", Category.IHateMyself, true, false, ()=>QuitAppGunVP()),
+new Button("App Quit All", Category.IHateMyself, true, false, ()=>QuitAppAllVP()),
+//new Button("Code Mist Announcement", Category.IHateMyself, false, false, ()=>AnnouncementCodeMist()),
             #endregion
 
             #region Credits
