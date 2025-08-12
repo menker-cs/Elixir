@@ -1,16 +1,16 @@
-# 🔒 Hidden Menu
+# 🔒 Elixir Menu
 
 ## ℹ️ Info
 
-Welcome to **Hidden Menu** – a mod menu made to be simple, free, and always up to date.
+Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up to date.
 
 * **🆓 Free Forever:**
-  Hidden is and always will be a free menu so anyone can use it.
+  Elixir is and always will be a free menu so anyone can use it.
 * **📂 Open Source:**
   Anyone can check the code to make sure it’s clean and safe.
 
 * **🔄 Frequent Updates:**
-  We update Hidden regularly so it stays working and undetected with every new patch.
+  We update Elixir regularly so it stays working and undetected with every new patch.
 
 * **💬 Join the Community:**
   Got questions or need help? Hop into our Discord and chat with the team or other users.
@@ -28,7 +28,6 @@ This is a mod menu, and yes, that means there’s a chance you could get banned.
 ## ❤️ Credits
 
 * **NXO** – for the original menu template.
-* **Revanent** – for the GUI design.
 ---
 
 Want updates or support?
