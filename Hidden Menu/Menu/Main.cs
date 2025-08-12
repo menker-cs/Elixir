@@ -222,7 +222,7 @@ namespace Hidden.Menu
             }
         }
 
-        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/status.txt");
+        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try

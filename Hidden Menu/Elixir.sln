@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hidden", "Hidden.csproj", "{E367F447-D2E9-46B2-931A-E64D711B6035}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elixir", "Elixir.csproj", "{E367F447-D2E9-46B2-931A-E64D711B6035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
