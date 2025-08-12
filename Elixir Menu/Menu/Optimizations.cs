@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Menu.Main;
-using static Hidden.Menu.ButtonHandler;
+using static Elixir.Utilities.Variables;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Menu.Main;
+using static Elixir.Menu.ButtonHandler;
 using UnityEngine.UIElements;
 
-namespace Hidden.Menu
+namespace Elixir.Menu
 {
     public class Optimizations
     {

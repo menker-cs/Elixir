@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Mods.Categories.Settings;
-using static Hidden.Menu.Main;
+using static Elixir.Utilities.Variables;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Mods.Categories.Settings;
+using static Elixir.Menu.Main;
 using Photon.Pun;
 using Object = UnityEngine.Object;
 using Photon.Realtime;
 using HarmonyLib;
-using Hidden.Utilities;
+using Elixir.Utilities;
 using GorillaLocomotion;
 using TMPro;
 //using System.Drawing;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Visuals
     {

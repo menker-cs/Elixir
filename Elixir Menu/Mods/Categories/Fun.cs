@@ -1,17 +1,17 @@
 ﻿using BepInEx;
 using ExitGames.Client.Photon;
-using Hidden.Menu;
-using Hidden.Utilities;
+using Elixir.Menu;
+using Elixir.Utilities;
 using Photon.Pun;
 using System;
 using UnityEngine;
-using static Hidden.Menu.Main;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.Variables;
+using static Elixir.Menu.Main;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Utilities.GunTemplate;
+using static Elixir.Utilities.Variables;
 using Photon.Realtime;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Fun
     {

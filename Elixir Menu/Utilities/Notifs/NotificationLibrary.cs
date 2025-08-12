@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static Hidden.Utilities.Variables;
-using static Hidden.Menu.Optimizations;
+using static Elixir.Utilities.Variables;
+using static Elixir.Menu.Optimizations;
 using HarmonyLib;
 using Photon.Pun;
 
-namespace Hidden.Utilities.Notifs
+namespace Elixir.Utilities.Notifs
 {
     internal class NotificationLib : MonoBehaviour
     {

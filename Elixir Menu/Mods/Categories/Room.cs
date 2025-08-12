@@ -1,16 +1,16 @@
 ﻿using GorillaNetworking;
 using Photon.Pun;
 using UnityEngine;
-using static Hidden.Utilities.Variables;
-using static Hidden.Menu.Main;
+using static Elixir.Utilities.Variables;
+using static Elixir.Menu.Main;
 using Photon.Realtime;
 using BepInEx;
-using Hidden.Utilities.Notifs;
-using Hidden.Utilities;
-using Hidden.Menu;
+using Elixir.Utilities.Notifs;
+using Elixir.Utilities;
+using Elixir.Menu;
 using GorillaGameModes;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Room : MonoBehaviourPunCallbacks
     {

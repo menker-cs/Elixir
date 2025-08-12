@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 using GorillaLocomotion;
-using static Hidden.Menu.Main;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Mods.ModButtons;
-using static Hidden.Mods.Categories.Settings;
+using static Elixir.Menu.Main;
+using static Elixir.Utilities.Variables;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Menu.ButtonHandler;
+using static Elixir.Mods.ModButtons;
+using static Elixir.Mods.Categories.Settings;
 using UnityEngine;
 using BepInEx;
 using UnityEngine.InputSystem;
 using GorillaNetworking;
 using TMPro;
 using Photon.Pun;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class World
     {

@@ -1,19 +1,19 @@
-﻿using Hidden.Mods;
+﻿using Elixir.Mods;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Hidden.Utilities.Variables;
-using static Hidden.Menu.Optimizations;
-using static Hidden.Mods.Categories.Room;
+using static Elixir.Utilities.Variables;
+using static Elixir.Menu.Optimizations;
+using static Elixir.Mods.Categories.Room;
 using System.IO;
-using static Hidden.Menu.Main;
+using static Elixir.Menu.Main;
 using Valve.VR;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 
 
-namespace Hidden.Menu
+namespace Elixir.Menu
 {
     public class ButtonHandler
     {

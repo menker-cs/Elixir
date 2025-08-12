@@ -5,7 +5,7 @@ using UnityEngine.XR;
 using UnityEngine;
 using Valve.VR;
 
-namespace Hidden.Utilities
+namespace Elixir.Utilities
 {
     public class Inputs
     {

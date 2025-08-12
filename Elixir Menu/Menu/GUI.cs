@@ -6,22 +6,22 @@ using static NetworkSystem;
 using static UnityEngine.EventSystems.EventTrigger;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
-using Hidden.Menu;
-using Hidden.Initialization;
-using Hidden.Mods;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using Hidden.Utilities;
+using Elixir.Menu;
+using Elixir.Initialization;
+using Elixir.Mods;
+using static Elixir.Utilities.Variables;
+using static Elixir.Utilities.ColorLib;
+using Elixir.Utilities;
 using System.Net;
 using System.Linq;
-using Hidden.Mods.Categories;
+using Elixir.Mods.Categories;
 using GorillaNetworking;
 using static Oculus.Interaction.OptionalAttribute;
 
-namespace Hidden.Menu
+namespace Elixir.Menu
 {
-    [BepInPlugin("org.hidden.gayrillatag.gui", "Hidden GUI", Hidden.Initialization.PluginInfo.menuVersion)]
-    public class HiddenGUI : BaseUnityPlugin
+    [BepInPlugin("org.Elixir.gayrillatag.gui", "Elixir GUI", Elixir.Initialization.PluginInfo.menuVersion)]
+    public class ElixirGUI : BaseUnityPlugin
     {
 
         #region Important Variables
@@ -37,8 +37,8 @@ namespace Hidden.Menu
             ArrayListShown = ssss;
         }
 
-        public static string NameOfMenu = "Hidden";
-        public static string VersionOfMenu = $"{Hidden.Initialization.PluginInfo.menuVersion[0]}";
+        public static string NameOfMenu = "Elixir";
+        public static string VersionOfMenu = $"{Elixir.Initialization.PluginInfo.menuVersion[0]}";
 
         public Color32 buttonColor = DarkGrey;
         public Color32 buttonHoverColor = new Color32(48, 48, 48, byte.MaxValue);
@@ -46,7 +46,7 @@ namespace Hidden.Menu
 
 
         public Color32 guiBackGroundColor = new Color32(18, 18, 18, byte.MaxValue);
-        public Color32 containerColor = ColorLib.Hidden;
+        public Color32 containerColor = ColorLib.Elixir;
         #endregion
 
         #region NonImportant Variables

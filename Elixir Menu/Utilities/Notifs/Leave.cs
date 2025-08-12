@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
 using UnityEngine;
-using static Hidden.Menu.Main;
+using static Elixir.Menu.Main;
 
-namespace Hidden.Utilities.Notifs
+namespace Elixir.Utilities.Notifs
 {
     [HarmonyPatch(typeof(MonoBehaviourPunCallbacks), "OnPlayerLeftRoom")]
     internal class LeavePatch : MonoBehaviour

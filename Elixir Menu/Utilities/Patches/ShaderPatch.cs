@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-namespace Hidden.Utilities.Patches
+namespace Elixir.Utilities.Patches
 {
     [HarmonyPatch(typeof(GameObject), "CreatePrimitive", MethodType.Normal)]
     public class ShaderPatch

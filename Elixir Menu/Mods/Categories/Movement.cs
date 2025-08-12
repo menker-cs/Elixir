@@ -1,15 +1,15 @@
-﻿using static Hidden.Utilities.GunTemplate;
-using static Hidden.Menu.Main;
-using static Hidden.Mods.Categories.Settings;
+﻿using static Elixir.Utilities.GunTemplate;
+using static Elixir.Menu.Main;
+using static Elixir.Mods.Categories.Settings;
 using UnityEngine;
 using BepInEx;
-using Hidden.Utilities;
-using static Hidden.Utilities.Inputs;
-using static Hidden.Utilities.Variables;
-using Hidden.Menu;
+using Elixir.Utilities;
+using static Elixir.Utilities.Inputs;
+using static Elixir.Utilities.Variables;
+using Elixir.Menu;
 using Oculus.Interaction;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Move
     {

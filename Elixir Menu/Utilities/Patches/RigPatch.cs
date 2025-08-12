@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
-using static Hidden.Utilities.Variables;
+using static Elixir.Utilities.Variables;
 
-namespace Hidden.Utilities.Patches
+namespace Elixir.Utilities.Patches
 {
     [HarmonyPatch(typeof(VRRig), "OnDisable", MethodType.Normal)]
     public static class RigPatch

@@ -1,8 +1,8 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using static Hidden.Initialization.PluginInfo;
+using static Elixir.Initialization.PluginInfo;
 
-namespace Hidden.Initialization
+namespace Elixir.Initialization
 {
     [BepInPlugin(menuGUID, menuName, menuVersion)]
     public class BepInExInitializer : BaseUnityPlugin

@@ -1,30 +1,30 @@
-﻿using Hidden.Mods;
+﻿using Elixir.Mods;
 using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static Hidden.Utilities.Variables;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Menu.Optimizations;
-using static Hidden.Menu.ButtonHandler;
+using static Elixir.Utilities.Variables;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Menu.Optimizations;
+using static Elixir.Menu.ButtonHandler;
 using BepInEx;
 using UnityEngine.InputSystem;
 using HarmonyLib;
-using static Hidden.Initialization.PluginInfo;
-using Hidden.Utilities;
+using static Elixir.Initialization.PluginInfo;
+using Elixir.Utilities;
 using Photon.Pun;
 using System.Net;
 using TMPro;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 using System.Collections;
 using UnityEngine.Networking;
 using Oculus.Platform;
-using Hidden.Mods.Categories;
+using Elixir.Mods.Categories;
 using System.IO;
 using System.Reflection;
 using UnityEngine.ProBuilder.MeshOperations;
 
-namespace Hidden.Menu
+namespace Elixir.Menu
 {
     [HarmonyPatch(typeof(GorillaLocomotion.GTPlayer), "LateUpdate")]
     public class Main : MonoBehaviour
@@ -47,12 +47,12 @@ namespace Hidden.Menu
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
                 //hi
                 #region MOTD
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"Elixir | V{Elixir.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = Pink;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
                 textMeshPro.GetComponent<TextMeshPro>().color = Pink;
                 textMeshPro.text = $"" +
-                    $"\nThank You For Using Hidden!\n\n" +
+                    $"\nThank You For Using Elixir!\n\n" +
                     $"Status: <color={hexColor1}>{status}</color>\n" +
                     $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
                     $"Current Ping: <color={hexColor1}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
@@ -82,7 +82,7 @@ namespace Hidden.Menu
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
                 #endregion
 
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Hidden";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Elixir";
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = RGB.color;
             }
             catch
@@ -199,9 +199,9 @@ namespace Hidden.Menu
             cm = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera/CM vcam1");
 
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
-            table.Add("HiddenMenu", true);
+            table.Add("ElixirMenu", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
-            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Hidden**!");
+            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Elixir**!");
         }
         static int i = 0;
         [HarmonyPrefix]
@@ -376,17 +376,18 @@ namespace Hidden.Menu
             background.transform.localScale = new Vector3(0.1f, 1f, 1.03f);
             background.name = "poo poo";
             background.transform.position = new Vector3(0.05f, 0f, 0f);
-            background.GetComponent<MeshRenderer>().material = MenuMat[Theme - 1];
+            background.GetComponent<MeshRenderer>().material = MenuMat[Theme-1];
         }
         #region settings
         public static int Theme = 1;
-        public static Color ButtonColorOff = DarkGrey;
-        public static Color ButtonColorOn = new Color32(35,35,35,255);
-        public static Color outColor = DarkerGrey;
+        public static Color ButtonColorOff = DarkSlateBlue;
+        public static Color ButtonColorOn = SlateBlue;
+        public static Color outColor = Indigo;
+        public static Color textclr = White;
         public static void ChangeTheme()
         {
             Theme++;
-            if (Theme > 12)
+            if (Theme > 11)
             {
                 Theme = 1;
                 RefreshMenu();
@@ -398,35 +399,38 @@ namespace Hidden.Menu
                 {
                     if (Theme == 1)
                     {
-                        btn.SetText("Change Theme: Default");
+                        btn.SetText("Change Theme: Purple");
 
-                        ButtonColorOff = DarkGrey;
-                        ButtonColorOn = new Color32(35, 35, 35, 255);
-                        outColor = DarkerGrey;
+                        ButtonColorOff = DarkSlateBlue;
+                        ButtonColorOn = SlateBlue;
+                        outColor = Indigo;
+                        textclr = White;
 
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Default</color>");
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
                         RefreshMenu();
                     }
                     if (Theme == 2)
                     {
                         btn.SetText("Change Theme: Fading");
 
-                        ButtonColorOff = DarkGrey;
-                        ButtonColorOn = new Color32(35, 35, 35, 255);
-                        outColor = DarkerGrey;
+						ButtonColorOff = DarkSlateBlue;
+						ButtonColorOn = SlateBlue;
+						outColor = Indigo;
+						textclr = White;
 
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
+						NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
                         RefreshMenu();
                     }
                     if (Theme == 3)
                     {
                         btn.SetText("Change Theme: Breathing");
 
-                        ButtonColorOff = DarkGrey;
-                        ButtonColorOn = new Color32(35, 35, 35, 255);
-                        outColor = DarkerGrey;
+						ButtonColorOff = DarkSlateBlue;
+						ButtonColorOn = SlateBlue;
+						outColor = Indigo;
+						textclr = White;
 
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
+						NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
                         RefreshMenu();
                     }
                     if (Theme == 4)
@@ -436,6 +440,7 @@ namespace Hidden.Menu
                         ButtonColorOff = new Color32(30, 30, 30, 255);
                         ButtonColorOn = DarkerGrey;
                         outColor = DarkerGrey;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
                         RefreshMenu();
@@ -447,6 +452,7 @@ namespace Hidden.Menu
                         ButtonColorOff = RoyalBlue;
                         ButtonColorOn = DodgerBlue;
                         outColor = DarkDodgerBlue;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
                         RefreshMenu();
@@ -458,6 +464,7 @@ namespace Hidden.Menu
                         ButtonColorOff = WineRed;
                         ButtonColorOn = IndianRed;
                         outColor = IndianRed;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
                         RefreshMenu();
@@ -469,19 +476,21 @@ namespace Hidden.Menu
                         ButtonColorOff = MediumSeaGreen;
                         ButtonColorOn = SeaGreen;
                         outColor = Lime;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
                         RefreshMenu();
                     }
                     if (Theme == 8)
                     {
-                        btn.SetText("Change Theme: Purple");
+                        btn.SetText("Change Theme: Gray");
 
-                        ButtonColorOff = DarkSlateBlue;
-                        ButtonColorOn = SlateBlue;
-                        outColor = Indigo;
+                        ButtonColorOff = DarkGrey;
+                        ButtonColorOn = new Color32(35, 35, 35, 255);
+                        outColor = DarkerGrey;
+                        textclr = White;
 
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
+                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Gray</color>");
                         RefreshMenu();
                     }
                     if (Theme == 9)
@@ -491,6 +500,7 @@ namespace Hidden.Menu
                         ButtonColorOff = ForestGreen;
                         ButtonColorOn = MediumSeaGreen;
                         outColor = MediumAquamarine;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Forest</color>");
                         RefreshMenu();
@@ -502,6 +512,7 @@ namespace Hidden.Menu
                         ButtonColorOff = Coral;
                         ButtonColorOn = DarkCoral;
                         outColor = DarkSalmon;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Peach</color>");
                         RefreshMenu();
@@ -513,19 +524,9 @@ namespace Hidden.Menu
                         ButtonColorOff = SandyBrown;
                         ButtonColorOn = DarkSandyBrown;
                         outColor = SaddleBrown;
+                        textclr = White;
 
                         NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Desert</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 12)
-                    {
-                        btn.SetText("Change Theme: Navy");
-
-                        ButtonColorOff = RoyalBlue;
-                        ButtonColorOn = DodgerBlue;
-                        outColor = Navy;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Navy</color>");
                         RefreshMenu();
                     }
                 }
@@ -628,7 +629,7 @@ namespace Hidden.Menu
                 discontext.text = "Disconnect";
                 discontext.font = font;
                 discontext.fontStyle = FontStyle.Bold;
-                discontext.color = White;
+                discontext.color = textclr;
                 discontext.alignment = TextAnchor.MiddleCenter;
                 discontext.resizeTextForBestFit = true;
                 discontext.resizeTextMinSize = 0;
@@ -655,12 +656,12 @@ namespace Hidden.Menu
                 tmp.fontStyle = FontStyles.Bold;
                 tmp.characterSpacing = 1f;
                 tmp.alignment = TextAlignmentOptions.Center;
-                tmp.color = ColorLib.Hidden;
+                tmp.color = ColorLib.Elixir;
                 tmp.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
             }
 
             tmp.text =
-                $"<color={hexColor}>Hidden Menu</color>\n" +
+                $"<color={hexColor}>Elixir Menu</color>\n" +
                 $"<size=2>Status: <color={hexColor}>{status}</color>\n" +
                 $"VERSION: <color={hexColor}>{menuVersion}</color></size>\n" +
                 $"<size=1.5>Made By <color={hexColor}>Menker</color>";
@@ -693,7 +694,7 @@ namespace Hidden.Menu
             title = titleObj.AddComponent<Text>();
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            title.color = White;
+            title.color = textclr;
             title.fontSize = 5;
             title.alignment = TextAnchor.MiddleCenter;
             title.resizeTextForBestFit = true;
@@ -735,7 +736,7 @@ namespace Hidden.Menu
             title.text = button.buttonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
-            title.color = White;
+            title.color = textclr;
 
             RectTransform titleTransform = title.GetComponent<RectTransform>();
             titleTransform.localPosition = new Vector3(.064f, 0,Laytou == 3 ? .089f - offset / 2.6f : .126f - offset / 2.6f);
@@ -795,7 +796,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                title.color = White;
+                title.color = textclr;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -836,7 +837,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                title.color = White;
+                title.color = textclr;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -878,7 +879,7 @@ namespace Hidden.Menu
                 titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 Text title = titleObj.AddComponent<Text>();
                 title.font = font;
-                title.color = White;
+                title.color = textclr;
                 title.fontSize = 5;
                 title.fontStyle = FontStyle.Bold;
                 title.alignment = TextAnchor.MiddleCenter;
@@ -927,7 +928,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    title.color = White;
+                    title.color = textclr;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;
@@ -969,7 +970,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    title.color = White;
+                    title.color = textclr;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;
@@ -1011,7 +1012,7 @@ namespace Hidden.Menu
                     title.font = font;
                     title.fontStyle = FontStyle.Bold;
                     title.text = "Return";
-                    title.color = White;
+                    title.color = textclr;
                     title.fontSize = 3;
                     title.alignment = TextAnchor.MiddleCenter;
                     title.resizeTextForBestFit = true;
@@ -1044,7 +1045,7 @@ namespace Hidden.Menu
                 Renderer clickerRenderer = clickerObj.AddComponent<MeshRenderer>();
                 if (clickerRenderer != null)
                 {
-                    clickerRenderer.material.color = White;
+                    clickerRenderer.material.color = textclr;
                     clickerRenderer.material.shader = Shader.Find("GUI/Text Shader");
                 }
                 if (parentTransform != null)

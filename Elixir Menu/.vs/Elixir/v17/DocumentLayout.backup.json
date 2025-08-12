@@ -1,7 +1,36 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Hidden Menu\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\menu\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:menu\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:initialization\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\menu\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:menu\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\mods\\categories\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:mods\\categories\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +38,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Main.cs",
+              "RelativeDocumentMoniker": "Menu\\Main.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Main.cs",
+              "RelativeToolTip": "Menu\\Main.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:38:28.564Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -18,6 +61,79 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PluginInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Initialization\\PluginInfo.cs",
+              "RelativeDocumentMoniker": "Initialization\\PluginInfo.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Initialization\\PluginInfo.cs",
+              "RelativeToolTip": "Initialization\\PluginInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T01:23:24.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Class1.cs",
+              "RelativeDocumentMoniker": "Menu\\Class1.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Class1.cs",
+              "RelativeToolTip": "Menu\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T01:23:19.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ColorLib.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\ColorLib.cs",
+              "RelativeDocumentMoniker": "Utilities\\ColorLib.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\ColorLib.cs*",
+              "RelativeToolTip": "Utilities\\ColorLib.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAPAAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:51:14.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Variables.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\Variables.cs",
+              "RelativeDocumentMoniker": "Utilities\\Variables.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\Variables.cs",
+              "RelativeToolTip": "Utilities\\Variables.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAADwv+cAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:38:56.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Mods\\Categories\\Admin.cs",
+              "RelativeDocumentMoniker": "Mods\\Categories\\Admin.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Mods\\Categories\\Admin.cs",
+              "RelativeToolTip": "Mods\\Categories\\Admin.cs",
+              "ViewState": "AgIAAGACAAAAAAAAAAAAAGACAAB6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:38:25.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Intro.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Intro.cs",
+              "RelativeDocumentMoniker": "Menu\\Intro.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Intro.cs",
+              "RelativeToolTip": "Menu\\Intro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T00:38:02.006Z"
             }
           ]
         }

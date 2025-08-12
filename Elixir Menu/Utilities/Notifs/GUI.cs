@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BepInEx;
-using Hidden.Utilities;
+using Elixir.Utilities;
 using UnityEngine;
 
 public class Notification
@@ -108,7 +108,7 @@ public class GUINotifs : BaseUnityPlugin
     {
         if (backgroundStyle == null)
         {
-            blackTex = MakeRoundedTexture(400, 40, ColorLib.Hidden, (int)7.5);
+            blackTex = MakeRoundedTexture(400, 40, ColorLib.Elixir, (int)7.5);
 
             backgroundStyle = new GUIStyle(GUI.skin.box);
             backgroundStyle.normal.background = blackTex;

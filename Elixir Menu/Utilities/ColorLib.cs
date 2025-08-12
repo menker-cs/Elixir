@@ -1,17 +1,17 @@
 ﻿using System.Net;
 using System;
 using UnityEngine;
-using static Hidden.Menu.Optimizations;
+using static Elixir.Menu.Optimizations;
 using UnityEngine.Networking;
 using System.Collections;
 //using System.Drawing;
 
-namespace Hidden.Utilities
+namespace Elixir.Utilities
 {
     public class ColorLib
     {
         #region Non-Transparent Colors
-        public static Color32 Hidden = new Color32(25, 25, 25, 255);
+        public static Color32 Elixir = new Color32(25, 25, 25, 255);
         public static Color32 Menker = new Color32(111, 252, 243, 255);
 
         // Reds
@@ -228,7 +228,7 @@ namespace Hidden.Utilities
         public static Material DBreath = new Material(uberShader);
         public static Material BlueFade = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
-        public static string hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DarkPurple);
+        public static string hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DFade.color);
         #endregion
 
         #region Weird Color Stuff
@@ -238,9 +238,9 @@ namespace Hidden.Utilities
             float num2 = 0.75f;
             RGB.color = Color.HSVToRGB(num, 1f, num2);
             hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
-            DFade.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1f));
-            DBreath.color = Color.Lerp(ColorLib.DarkGrey, ColorLib.Hidden, Mathf.PingPong(Time.time, 1.5f));
-            BlueFade.color = Color.Lerp(ColorLib.DarkDodgerBlue, ColorLib.SkyBlue, Mathf.PingPong(Time.time, 1f));
+            hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DFade.color);
+            DFade.color = Color.Lerp(ColorLib.Indigo, ColorLib.DarkPurple, Mathf.PingPong(Time.time, 1f));
+            DBreath.color = Color.Lerp(ColorLib.Indigo, ColorLib.DarkPurple, Mathf.PingPong(Time.time, 1.5f));
         }
         public static Material Color2Mat(Color color)
         {
@@ -273,14 +273,14 @@ namespace Hidden.Utilities
 
         public static Material[] MenuMat = new Material[]
         {
-            Color2Mat(Hidden),
+            Color2Mat(DarkPurple),
             DFade,
             DBreath,
             Color2Mat(DarkerGrey),
             Color2Mat(SkyBlue),
             Color2Mat(FireBrick),
             Color2Mat(MediumAquamarine),
-            Color2Mat(DarkPurple),
+            Color2Mat(Elixir),
             Color2Mat(DarkGreen),
             Color2Mat(Tomato),
             Color2Mat(Peru),

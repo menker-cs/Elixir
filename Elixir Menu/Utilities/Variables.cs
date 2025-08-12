@@ -1,20 +1,20 @@
 ﻿using HarmonyLib;
-using Hidden.Mods;
+using Elixir.Mods;
 using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
-using static Hidden.Utilities.ColorLib;
+using static Elixir.Utilities.ColorLib;
 using UnityEngine.Animations.Rigging;
 using System.Collections;
 using System.Text;
 using UnityEngine.Networking;
 using System;
 using System.Net;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 
-namespace Hidden.Utilities
+namespace Elixir.Utilities
 {
     public class Variables : MonoBehaviourPunCallbacks
     {

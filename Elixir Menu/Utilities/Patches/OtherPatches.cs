@@ -6,9 +6,9 @@ using PlayFab;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities.Notifs;
 
-namespace Hidden.Utilities.Patches
+namespace Elixir.Utilities.Patches
 {
     public class OtherPatches
     {

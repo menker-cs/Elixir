@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Hidden.Menu
+namespace Elixir.Menu
 {
     internal class Intro : MonoBehaviour
     {

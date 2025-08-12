@@ -1,17 +1,17 @@
 ﻿using BepInEx;
 using GorillaLocomotion;
-using Hidden.Utilities;
-using Hidden.Utilities.Notifs;
+using Elixir.Utilities;
+using Elixir.Utilities.Notifs;
 using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.Variables;
+using static Elixir.Utilities.GunTemplate;
+using static Elixir.Utilities.Variables;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Playerr
     {

@@ -3,9 +3,9 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 using Photon.Realtime;
-using static Hidden.Utilities.Variables;
+using static Elixir.Utilities.Variables;
 
-namespace Hidden.Utilities
+namespace Elixir.Utilities
 {
     public class RigManager : BaseUnityPlugin
     {

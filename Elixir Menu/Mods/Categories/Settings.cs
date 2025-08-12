@@ -1,9 +1,9 @@
-﻿using static Hidden.Utilities.Variables;
-using static Hidden.Menu.Main;
-using Hidden.Menu;
-using Hidden.Utilities.Notifs;
+﻿using static Elixir.Utilities.Variables;
+using static Elixir.Menu.Main;
+using Elixir.Menu;
+using Elixir.Utilities.Notifs;
 
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     public class Settings
     { 

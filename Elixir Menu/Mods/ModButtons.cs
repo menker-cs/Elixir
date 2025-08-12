@@ -1,21 +1,21 @@
 ﻿using GorillaGameModes;
-using Hidden.Mods.Categories;
-using static Hidden.Menu.ButtonHandler;
-using static Hidden.Menu.Main;
-using static Hidden.Menu.Optimizations;
-using static Hidden.Menu.Optimizations.ResourceLoader;
-using static Hidden.Mods.Categories.Fun;
-using static Hidden.Mods.Categories.Move;
-using static Hidden.Mods.Categories.Playerr;
-using static Hidden.Mods.Categories.Room;
-using static Hidden.Mods.Categories.Settings;
-using static Hidden.Mods.Categories.Visuals;
-using static Hidden.Mods.Categories.World;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Utilities.GunTemplate;
-using static Hidden.Utilities.Variables;
+using Elixir.Mods.Categories;
+using static Elixir.Menu.ButtonHandler;
+using static Elixir.Menu.Main;
+using static Elixir.Menu.Optimizations;
+using static Elixir.Menu.Optimizations.ResourceLoader;
+using static Elixir.Mods.Categories.Fun;
+using static Elixir.Mods.Categories.Move;
+using static Elixir.Mods.Categories.Playerr;
+using static Elixir.Mods.Categories.Room;
+using static Elixir.Mods.Categories.Settings;
+using static Elixir.Mods.Categories.Visuals;
+using static Elixir.Mods.Categories.World;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Utilities.GunTemplate;
+using static Elixir.Utilities.Variables;
 
-namespace Hidden.Mods
+namespace Elixir.Mods
 {
     public enum Category
     {
@@ -56,7 +56,7 @@ namespace Hidden.Mods
             new Button("Toggle Notifications", Category.Settings, true, true, ()=>ToggleNotifications(true), ()=>ToggleNotifications(false), "Toggles Notifications"),
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false), "Toggles Tool Tips"),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null, "Clears Notifications"),
-            new Button("Toggle Array List", Category.Settings, true, true, ()=>Menu.HiddenGUI.ToggleArrayList(true), ()=>Menu.HiddenGUI.ToggleArrayList(false), "Toggles The Array List"),
+            new Button("Toggle Array List", Category.Settings, true, true, ()=>Menu.ElixirGUI.ToggleArrayList(true), ()=>Menu.ElixirGUI.ToggleArrayList(false), "Toggles The Array List"),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false), "Toggles Bark Menu Position"),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false), "Toggles Menu Outline"),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false), "Toggles Menu Gravity"),
@@ -87,7 +87,7 @@ namespace Hidden.Mods
             new Button("Set Mode Ambush", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ambush), null, ""),
             new Button("Set Mode Ghost", Category.Room, false, false, ()=>SetGamemode(GameModeType.Ghost), null, ""),
             new Button("Set Mode Error", Category.Room, false, false, ()=>SetGamemode(GameModeType.Count), null, ""),
-            new Button("Join Menu Code", Category.Room, false, false, ()=>JoinRoom("$HIDDEN$"), null, "Joins A Special Code For This Menu"),
+            new Button("Join Menu Code", Category.Room, false, false, ()=>JoinRoom("$Elixir$"), null, "Joins A Special Code For This Menu"),
             new Button("Join Code MOD", Category.Room, false, false, ()=>JoinRoom("MOD"), null, "Joins Code MOD"),// Poo Poo
             new Button("Join Code PBBV", Category.Room, false, false, ()=>JoinRoom("PBBV"), null, "Joins Code PBBV"),
             new Button("Join Code Daisy09", Category.Room, false, false, ()=>JoinRoom("DAISY09"), null, "Joins Code DAISY09"),

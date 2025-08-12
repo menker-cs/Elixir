@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using Hidden.Utilities;
-using static Hidden.Utilities.ColorLib;
-using static Hidden.Mods.Categories.Settings;
+using Elixir.Utilities;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Mods.Categories.Settings;
 using BepInEx;
-using static Hidden.Menu.Main;
+using static Elixir.Menu.Main;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
-using static Hidden.Utilities.Variables;
+using static Elixir.Utilities.Variables;
 
-namespace Hidden.Utilities
+namespace Elixir.Utilities
 {
     public class ClientInput
     {

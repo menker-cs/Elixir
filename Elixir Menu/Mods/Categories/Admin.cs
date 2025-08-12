@@ -1,9 +1,9 @@
 ﻿using ExitGames.Client.Photon;
 using GorillaTagScripts;
-using Hidden.Menu;
-using Hidden.Mods;
-using Hidden.Utilities;
-using Hidden.Utilities.Notifs;
+using Elixir.Menu;
+using Elixir.Mods;
+using Elixir.Utilities;
+using Elixir.Utilities.Notifs;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
@@ -16,7 +16,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
 /*
-namespace Hidden.Mods.Categories
+namespace Elixir.Mods.Categories
 {
     internal class TemuRoomSystem : MonoBehaviour
     {
@@ -60,7 +60,7 @@ namespace Hidden.Mods.Categories
 
             Object.Destroy(gameObject, Time.deltaTime);
         }
-        public static void Hidden()
+        public static void Elixir()
         {
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
@@ -73,9 +73,9 @@ namespace Hidden.Mods.Categories
                 string label = "";
 
                 if (Huserid.Contains(userId))
-                    label = "Hidden Owner";
-                else if (player.CustomProperties.TryGetValue("HiddenMenu", out object hm) && (bool)hm)
-                    label = "Hidden Menu";
+                    label = "Elixir Owner";
+                else if (player.CustomProperties.TryGetValue("ElixirMenu", out object hm) && (bool)hm)
+                    label = "Elixir Menu";
 
                 CreateNametag(vrrig, label, 0.8f);
             }
@@ -83,7 +83,7 @@ namespace Hidden.Mods.Categories
 
         public static void TAGS()
         {
-            Hidden();
+            Elixir();
         }
 
 
@@ -284,7 +284,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -300,7 +300,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Slow, null, false);
                 }
@@ -313,7 +313,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -329,7 +329,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Vibrate, null, false);
                 }
@@ -343,7 +343,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -358,7 +358,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Fast, null, false);
                 }
@@ -371,7 +371,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -386,7 +386,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Kick, null, false);
                 }
@@ -399,7 +399,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -414,7 +414,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.QuitApp, null, false);
                 }
@@ -426,7 +426,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -441,7 +441,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Fling, null, false);
                 }
@@ -453,7 +453,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Grab, null, false);
                 }
@@ -465,7 +465,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -479,7 +479,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Grab, null, false);
                 }
@@ -491,7 +491,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -505,7 +505,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.Anouncement, null, false);
                 }
@@ -516,7 +516,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.ForceMenu, null, false);
                 }
@@ -528,7 +528,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -543,7 +543,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.muteall, null, false);
                 }
@@ -554,7 +554,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.unmuteall, null, false);
                 }
@@ -566,7 +566,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     GunTemplate.StartBothGuns(() =>
                     {
@@ -581,7 +581,7 @@ namespace Hidden.Mods.Categories
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 Player player = RigManager.GetPlayerFromVRRig(vrrig);
-                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("HiddenMenu") && (bool)player.CustomProperties["HiddenMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
+                if (player.CustomProperties.ContainsKey("VioletFreeUser") && (bool)player.CustomProperties["VioletFreeUser"] || player.CustomProperties.ContainsKey("MistUser") && (bool)player.CustomProperties["MistUser"] || player.CustomProperties.ContainsKey("MistLegal") && (bool)player.CustomProperties["MistLegal"] || player.CustomProperties.ContainsKey("ElixirMenu") && (bool)player.CustomProperties["ElixirMenu"] || player.CustomProperties.ContainsKey("ElysorPaid") && (bool)player.CustomProperties["ElysorPaid"])
                 {
                     SendEvent((int)TemuEvents.blackScreen, null, false);
                 }
@@ -602,7 +602,7 @@ namespace Hidden.Mods.Categories
         }
 
         public static string userid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/userid").GetAwaiter().GetResult();
-        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/hiddenHook").GetAwaiter().GetResult();
+        public static string webhookUrl = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/ElixirHook").GetAwaiter().GetResult();
         public static string ADuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/Cha554/mist-ext/refs/heads/main/ADUserID's").GetAwaiter().GetResult();
         public static string Vuserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/TortiseWay2Cool/Kill_Switch/refs/heads/main/Valid%20User%20ID").GetAwaiter().GetResult();
         public static string Euserid = new HttpClient().GetStringAsync("https://raw.githubusercontent.com/xclipse13295-commits/id-s/refs/heads/main/ValidID's").GetAwaiter().GetResult();

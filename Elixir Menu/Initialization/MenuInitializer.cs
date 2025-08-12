@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 using System;
-using Hidden.Menu;
-using Hidden.Utilities.Notifs;
+using Elixir.Menu;
+using Elixir.Utilities.Notifs;
 
-namespace Hidden.Initialization
+namespace Elixir.Initialization
 {
     [HarmonyPatch(typeof(GorillaLocomotion.GTPlayer), "LateUpdate")]
     internal class MenuInitializer
