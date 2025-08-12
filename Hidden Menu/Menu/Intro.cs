@@ -18,7 +18,7 @@ namespace Hidden.Menu
         void Start()
         {
             StartCoroutine(LoadAndPlay(
-                "https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/Untitled_presentation-removebg-preview.png"
+                "https://raw.githubusercontent.com/menker-cs/Hidden/refs/heads/main/goop.png"
             ));
         }
 

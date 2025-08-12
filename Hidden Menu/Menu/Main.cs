@@ -35,40 +35,39 @@ namespace Hidden.Menu
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
             try
             {
-                // Credits to Fwog for this gameobject
-                GameObject crystalGameOBJ = GameObject.Find("Environment Objects/LocalObjects_Prefab/ForestToCave/C_Crystal_Chunk");
-                if (crystalGameOBJ != null)
+                GameObject goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
+                if (goop != null)
                 {
-                    Material crystalMat = crystalGameOBJ.GetComponent<Renderer>().material;
-                    crystalMat.color = new Color32(0, 171, 255, 255);
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen").GetComponent<Renderer>().material = crystalMat;
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>().material = crystalMat;
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, crystalMat, ref originalMat1);
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, crystalMat, ref originalMat2);
+                    Material goopy = goop.GetComponent<Renderer>().material;
+                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen").GetComponent<Renderer>().material = goopy;
+                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>().material = goopy;
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goopy, ref originalMat1);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, goopy, ref originalMat2);
                 }
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
                 //hi
                 #region MOTD
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}</color>\n--------------------------------------------";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = DFade.color;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"Hidden | V{Hidden.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = Pink;
                 TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
-                textMeshPro.GetComponent<TextMeshPro>().color = DFade.color;
+                textMeshPro.GetComponent<TextMeshPro>().color = Pink;
                 textMeshPro.text = $"" +
                     $"\nThank You For Using Hidden!\n\n" +
-                    $"Status: <color={hexColor}>{status}</color>\n" +
-                    $"Current User: <color={hexColor}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
-                    $"Current Ping: <color={hexColor}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
-                    $"Current FPS: <color={hexColor}>{fps}</color> \nCurrent Room: <color={hexColor}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
-                    $" <color={hexColor}>I Hope You Enjoy The Menu</color>";
+                    $"Status: <color={hexColor1}>{status}</color>\n" +
+                    $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
+                    $"Current Ping: <color={hexColor1}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
+                    //$"Current FPS: <color={hexColor1}>{fps}</color> \n" +
+                    $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
+                    $" <color={hexColor1}>I Hope You Enjoy The Menu</color>";
 
                 textMeshPro.alignment = TextAlignmentOptions.Top;
                 #endregion
 
                 #region COC
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().text = $"<color={hexColor}>Menu Meanings</color>\n-----------------------------";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().color = RGB.color;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().text = $"Menu Meanings<color={hexColor1}>\n-----------------------------</color>";
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().color = Pink;
                 TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData").GetComponent<TextMeshPro>();
-                textMeshPro2.GetComponent<TextMeshPro>().color = DFade.color;
+                textMeshPro2.GetComponent<TextMeshPro>().color = Pink;
                 textMeshPro2.text = $"" +
                     $"\n[D?] - Maybe Detected \n" +
                     $"[D] - Detected\n" +
@@ -91,7 +90,7 @@ namespace Hidden.Menu
             }
             try 
             { 
-                PhotonNetwork.NetworkingClient.EventReceived += TemuRoomSystem.OnEvent; 
+               //PhotonNetwork.NetworkingClient.EventReceived += TemuRoomSystem.OnEvent; 
             }
             catch (Exception ex)
             {

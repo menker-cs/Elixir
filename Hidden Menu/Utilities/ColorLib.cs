@@ -228,6 +228,7 @@ namespace Hidden.Utilities
         public static Material DBreath = new Material(uberShader);
         public static Material BlueFade = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
+        public static string hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DarkPurple);
         #endregion
 
         #region Weird Color Stuff
@@ -250,18 +251,22 @@ namespace Hidden.Utilities
         }
         public static Material Url2Mat(string url)
         {
-            WebClient webClient = new WebClient();
-            byte[] array = webClient.DownloadData(url);
-            Material material = new Material(Shader.Find("GorillaTag/UberShader"));
-            material.shaderKeywords = new string[] { "_USE_TEXTURE" };
-            string text = Application.dataPath;
-            text = text.Replace("/Gorilla Tag_Data", "");
-            Texture2D texture2D = new Texture2D(4096, 4096);
-            ImageConversion.LoadImage(texture2D, array);
-            material.mainTexture = texture2D;
-            texture2D.Apply();
+            using var webClient = new WebClient();
+            byte[] imageData = webClient.DownloadData(url);
+
+            var material = new Material(Shader.Find("GorillaTag/UberShader"))
+            {
+                shaderKeywords = new[] { "_USE_TEXTURE" }
+            };
+
+            var texture = new Texture2D(4096, 4096);
+            ImageConversion.LoadImage(texture, imageData);
+            texture.Apply();
+
+            material.mainTexture = texture;
             return material;
         }
+
         #endregion
 
         public static Material fmby = Url2Mat("https://i.ebayimg.com/images/g/XI8AAOSwwvRlMHkz/s-l1200.jpg");

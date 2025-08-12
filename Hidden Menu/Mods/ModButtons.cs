@@ -11,7 +11,6 @@ using static Hidden.Mods.Categories.Room;
 using static Hidden.Mods.Categories.Settings;
 using static Hidden.Mods.Categories.Visuals;
 using static Hidden.Mods.Categories.World;
-using static Hidden.Mods.Categories.TemuRoomSystem;
 using static Hidden.Utilities.ColorLib;
 using static Hidden.Utilities.GunTemplate;
 using static Hidden.Utilities.Variables;
@@ -45,7 +44,7 @@ namespace Hidden.Mods
             new Button("Visuals", Category.Home, false, false, ()=>ChangePage(Category.Visuals), null, "Opens The Visuals Category"),
             new Button("Fun", Category.Home, false, false, ()=>ChangePage(Category.Fun), null, "Opens The Fun Category"),
             new Button("World", Category.Home, false, false, ()=>ChangePage(Category.World), null, "Opens The World Category"),
-            new Button("IHateMyself", Category.Home, false, false, ()=>Access(), null, "Opens The IHateMyself Category"),
+           // new Button("IHateMyself", Category.Home, false, false, ()=>Access(), null, "Opens The IHateMyself Category"),
             new Button("Creds", Category.Home, false, false, ()=>ChangePage(Category.Creds), null, "Opens The Room Category"),
             #endregion
 
@@ -178,7 +177,7 @@ namespace Hidden.Mods
             #endregion
 
             #region Visuals
-            new Button("Menu Tags", Category.Visuals, true, true, ()=>TAGS(), null, "See Who Is Using Menus"),
+            //new Button("Menu Tags", Category.Visuals, true, true, ()=>TAGS(), null, "See Who Is Using Menus"),
             new Button("Chams", Category.Visuals, true, false, ()=>ESP(), ()=>DisableESP(), "See People Through Walls"),
             new Button("Tracers", Category.Visuals, true, false, ()=>Tracers(), null, "Creats Tracers To Players"),
             new Button("2D Box ESP", Category.Visuals, true, false, ()=>BoxESP(false), null, "Creates A 2D Box"),
@@ -240,6 +239,7 @@ namespace Hidden.Mods
             new Button("Enable Shadows", Category.World, true, false, ()=> Shadows(true), ()=> Shadows(false), "Toggles Shadows"),
             #endregion
 
+            /*
             #region IHateMyself
 new Button("Slow Gun", Category.IHateMyself, true, false, ()=>SlowGunVP()),
 new Button("Slow All", Category.IHateMyself, true, false, ()=>SlowAllVP()),
@@ -263,7 +263,7 @@ new Button("App Quit Gun", Category.IHateMyself, true, false, ()=>QuitAppGunVP()
 new Button("App Quit All", Category.IHateMyself, true, false, ()=>QuitAppAllVP()),
 //new Button("Code Mist Announcement", Category.IHateMyself, false, false, ()=>AnnouncementCodeMist()),
             #endregion
-
+*/
             #region Credits
             new Button("Menu Credits:", Category.Creds, false, false, ()=>Placeholder(), null, "Credits Of The Menu"),
             new Button("Menker", Category.Creds, false, false, ()=>Placeholder(), null, "Menu Owner"),

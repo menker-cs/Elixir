@@ -15,7 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
-
+/*
 namespace Hidden.Mods.Categories
 {
     internal class TemuRoomSystem : MonoBehaviour
@@ -193,7 +193,7 @@ namespace Hidden.Mods.Categories
                         VRRig vrrig = RigManager.GetVRRigFromPlayer(player);
 
 
-                        if (userid.Contains(player.UserId) || ADuserid.Contains(player.UserId) || Huserid.Contains(player.UserId) || Euserid.Contains(player.UserId) || Vuserid.Contains(player.UserId) || Coreuserid.Contains(player.UserId))
+                        if (Huserid.Contains(player.UserId))
                         {
                             switch (Index)
                             {
@@ -616,4 +616,4 @@ namespace Hidden.Mods.Categories
 
 
     }
-}
+}*/
