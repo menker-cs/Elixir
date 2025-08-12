@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:menu\\intro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir menu\\mods\\categories\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E367F447-D2E9-46B2-931A-E64D711B6035}|Elixir.csproj|solutionrelative:mods\\categories\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -38,11 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Main.cs",
               "RelativeDocumentMoniker": "Menu\\Main.cs",
@@ -51,8 +51,7 @@
               "ViewState": "AgIAAA8AAAAAAAAAAAAAADkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T00:38:28.564Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -64,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PluginInfo.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Initialization\\PluginInfo.cs",
               "RelativeDocumentMoniker": "Initialization\\PluginInfo.cs",
@@ -76,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Class1.cs",
               "RelativeDocumentMoniker": "Menu\\Class1.cs",
@@ -88,20 +87,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ColorLib.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\ColorLib.cs",
               "RelativeDocumentMoniker": "Utilities\\ColorLib.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\ColorLib.cs",
               "RelativeToolTip": "Utilities\\ColorLib.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAPAAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T00:51:14.522Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Variables.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Utilities\\Variables.cs",
               "RelativeDocumentMoniker": "Utilities\\Variables.cs",
@@ -125,15 +124,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Intro.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Intro.cs",
               "RelativeDocumentMoniker": "Menu\\Intro.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir Menu\\Menu\\Intro.cs",
               "RelativeToolTip": "Menu\\Intro.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T00:38:02.006Z"
+              "WhenOpened": "2025-08-12T00:38:02.006Z",
+              "EditorCaption": ""
             }
           ]
         }
