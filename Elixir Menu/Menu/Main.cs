@@ -1,28 +1,29 @@
-﻿using Elixir.Mods;
-using System;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
-using static Elixir.Utilities.Variables;
-using static Elixir.Utilities.ColorLib;
-using static Elixir.Menu.Optimizations;
-using static Elixir.Menu.ButtonHandler;
-using BepInEx;
-using UnityEngine.InputSystem;
-using HarmonyLib;
-using static Elixir.Initialization.PluginInfo;
-using Elixir.Utilities;
-using Photon.Pun;
-using System.Net;
-using TMPro;
-using Elixir.Utilities.Notifs;
-using System.Collections;
-using UnityEngine.Networking;
-using Oculus.Platform;
+﻿using BepInEx;
+using Elixir.Mods;
 using Elixir.Mods.Categories;
+using Elixir.Utilities;
+using Elixir.Utilities.Notifs;
+using HarmonyLib;
+using Oculus.Platform;
+using Photon.Pun;
+using System;
+using System.Collections;
+//using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Reflection;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Networking;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.UI;
+using static Elixir.Initialization.PluginInfo;
+using static Elixir.Menu.ButtonHandler;
+using static Elixir.Menu.Optimizations;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Utilities.Variables;
 
 namespace Elixir.Menu
 {
@@ -32,7 +33,7 @@ namespace Elixir.Menu
         [HarmonyPrefix]
         public static void Prefix()
         {
-            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
+            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
             try
             {
                 GameObject goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
@@ -44,41 +45,31 @@ namespace Elixir.Menu
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goopy, ref originalMat1);
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, goopy, ref originalMat2);
                 }
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
+                //GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
                 //hi
                 #region MOTD
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().text = $"Elixir | V{Elixir.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>().color = Pink;
-                TextMeshPro textMeshPro = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
-                textMeshPro.GetComponent<TextMeshPro>().color = Pink;
-                textMeshPro.text = $"" +
+                motdHeading.GetComponent<TextMeshPro>().text = $"Elixir | V{Elixir.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
+                motdHeading.GetComponent<TextMeshPro>().color = Pink;
+                motdBody.GetComponent<TextMeshPro>().color = Pink;
+                motdBody.GetComponent<TextMeshPro>().text = $"" +
                     $"\nThank You For Using Elixir!\n\n" +
                     $"Status: <color={hexColor1}>{status}</color>\n" +
                     $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
                     $"Current Ping: <color={hexColor1}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
-                    //$"Current FPS: <color={hexColor1}>{fps}</color> \n" +
+                    $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
                     $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
-                    $" <color={hexColor1}>I Hope You Enjoy The Menu</color>";
+                    $"<color={hexColor1}>I Hope You Enjoy The Menu</color> \n" +
+                    $"Made by <color={hexColor1}>Menker</color>";
 
-                textMeshPro.alignment = TextAlignmentOptions.Top;
+                motdBody.GetComponent<TextMeshPro>().alignment = TextAlignmentOptions.Top;
                 #endregion
 
                 #region COC
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().text = $"Menu Meanings<color={hexColor1}>\n-----------------------------</color>";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>().color = Pink;
-                TextMeshPro textMeshPro2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData").GetComponent<TextMeshPro>();
+                cocHeading.GetComponent<TextMeshPro>().text = $"Menu Meanings<color={hexColor1}>\n-----------------------------</color>";
+                cocHeading.GetComponent<TextMeshPro>().color = Pink;
+                TextMeshPro textMeshPro2 = cocBody.GetComponent<TextMeshPro>();
                 textMeshPro2.GetComponent<TextMeshPro>().color = Pink;
-                textMeshPro2.text = $"" +
-                    $"\n[D?] - Maybe Detected \n" +
-                    $"[D] - Detected\n" +
-                    $"[U] - Use\n" +
-                    $"[P] - Primary\n" +
-                    $"[S] - Secondary\n" +
-                    $"[G] - Grip\n" +
-                    $"[T] - Trigger\n" +
-                    $"[W?] - Maybe Working\n" +
-                    $"[B] - Buggy\n\n" +
-                    $"If A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
+                textMeshPro2.text = $"\n[D?] - Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
                 textMeshPro2.alignment = TextAlignmentOptions.Top;
                 #endregion
 
@@ -87,14 +78,6 @@ namespace Elixir.Menu
             }
             catch
             {
-            }
-            try 
-            { 
-               //PhotonNetwork.NetworkingClient.EventReceived += TemuRoomSystem.OnEvent; 
-            }
-            catch (Exception ex)
-            {
-                UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
             try
             {
@@ -189,6 +172,10 @@ namespace Elixir.Menu
             trailRenderer.startColor = clr;
             trailRenderer.endColor = clr2;
         }
+        static GameObject motdHeading;
+        static GameObject motdBody;
+        static GameObject cocHeading;
+        static GameObject cocBody;
         public void Awake()
         {
             ResourceLoader.LoadResources();
@@ -197,6 +184,10 @@ namespace Elixir.Menu
             pollerInstance = ControllerInputPoller.instance;
             thirdPersonCamera = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera");
             cm = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera/CM vcam1");
+            motdHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
+            motdBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText");
+            cocHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText");
+            cocBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData");
 
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("ElixirMenu", true);

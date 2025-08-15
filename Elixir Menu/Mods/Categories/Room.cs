@@ -25,52 +25,8 @@ namespace Elixir.Mods.Categories
         }
         public static void JoinRandomPublic()
         {
-            if (PhotonNetwork.InRoom)
-            {
-                UnityEngine.Debug.LogWarning("<color=blue>Photon</color> : Already connected to a room.");
-                NotificationLib.SendNotification("<color=blue>Photon</color> : Already connected to a room.");
-                return;
-            }
-
-            string currentMap = DetectCurrentMap();
-            if (currentMap == null)
-            {
-                UnityEngine.Debug.LogError("<color=blue>Photon</color> : Unable to detect the current map.");
-                NotificationLib.SendNotification("<color=blue>Photon</color> : Unable to detect the current map.");
-                return;
-            }
-
-            string path = GetPathForGameMode(currentMap);
-            if (path == null)
-            {
-                UnityEngine.Debug.LogError($"<color=blue>Photon</color> : No valid path found for map: {currentMap}.");
-                NotificationLib.SendNotification($"<color=blue>Photon</color> : No valid path found for map: {currentMap}.");
-                return;
-            }
-
-            GorillaNetworkJoinTrigger joinTrigger = GameObject.Find(path)?.GetComponent<GorillaNetworkJoinTrigger>();
-            if (joinTrigger == null)
-            {
-                UnityEngine.Debug.LogError($"<color=blue>Photon</color> : Join trigger not found for path: {path}.");
-                NotificationLib.SendNotification($"<color=blue>Photon</color> : Join trigger not found for path: {path}.");
-                return;
-            }
-
-            PhotonNetworkController.Instance.AttemptToJoinPublicRoom(joinTrigger, GorillaNetworking.JoinType.Solo);
-        }
-
-        public override void OnJoinRoomFailed(short returnCode, string message)
-        {
-            if (returnCode == ErrorCode.GameFull)
-            {
-                UnityEngine.Debug.LogWarning($"OnJoinRoomFailed : Failed to join room '{roomCode}'. Reason: Is Full.");
-                NotificationLib.SendNotification($"<color=red>Error</color> : Failed to join room '{roomCode}'. Reason: Is Full.");
-            }
-            else
-            {
-                UnityEngine.Debug.LogWarning($"OnJoinRoomFailed: Failed to join room '{roomCode}'. Reason: {message}.");
-                NotificationLib.SendNotification($"<color=red>Error</color>: Failed to join room '{roomCode}'. Reason: {message}.");
-            }
+            GorillaNetworkJoinTrigger trigger = PhotonNetworkController.Instance.currentJoinTrigger ?? GorillaComputer.instance.GetJoinTriggerForZone("forest");
+            PhotonNetworkController.Instance.AttemptToJoinPublicRoom(trigger, GorillaNetworking.JoinType.Solo);
         }
         static string roomCode;
         public static void PrimaryDisconnect()

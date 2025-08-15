@@ -1,18 +1,21 @@
-﻿using static Elixir.Utilities.GunTemplate;
+﻿using BepInEx;
+using Elixir.Menu;
+using Elixir.Utilities;
+using GorillaLocomotion;
+using Oculus.Interaction;
+using UnityEngine;
+using Valve.VR;
 using static Elixir.Menu.Main;
 using static Elixir.Mods.Categories.Settings;
-using UnityEngine;
-using BepInEx;
-using Elixir.Utilities;
+using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Inputs;
 using static Elixir.Utilities.Variables;
-using Elixir.Menu;
-using Oculus.Interaction;
 
 namespace Elixir.Mods.Categories
 {
     public class Move
     {
+        //cha made this
         public static void WASDFly()
         {
             float currentSpeed = 5;
@@ -55,6 +58,28 @@ namespace Elixir.Mods.Categories
                 bodyTransform.localEulerAngles = new Vector3(x, y, 0f);
             }
             oldMousePos = UnityInput.Current.mousePosition;
+        }
+        public static void DroneFly()
+        {
+            GTPlayer instance = GTPlayer.Instance;
+
+            Vector2 leftJoystickAxis = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
+            float rightJoystickY = SteamVR_Actions.gorillaTag_RightJoystick2DAxis.axis.y;
+
+            Vector3 right = instance.bodyCollider.transform.right;
+            right.y = 0f;
+            Vector3 forward = instance.bodyCollider.transform.forward;
+            forward.y = 0f;
+
+            Vector3 movement = new Vector3(leftJoystickAxis.x, rightJoystickY, leftJoystickAxis.y);
+            Vector3 finalMovement = movement.x * right + movement.z * forward + rightJoystickY * Vector3.up;
+            finalMovement *= instance.scale * flyspeedchangerspeed;
+
+            Rigidbody rigidbody = instance.bodyCollider.attachedRigidbody;
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, finalMovement, 0.1287f);
+
+            float gravityCompensation = 9.81f;
+            rigidbody.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
         }
         public static void Fly()
         {

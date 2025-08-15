@@ -146,7 +146,6 @@ namespace Elixir.Utilities.Notifs
             notificationTimestamps[content] = Time.time;
             PreviousNotification = content;
             Instance.UpdateNotificationText();
-            GUINotifs.SendNotification("Notif", content);
         }
 
         public static void ClearAllNotifications()

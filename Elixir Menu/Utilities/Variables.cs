@@ -83,39 +83,9 @@ namespace Elixir.Utilities
         public const float velocityThreshold = 0.05f;
         public static int Rotation = 1;
 
-        // --- Game Mode Variables ---
         public static void Placeholder() { }
-        public static readonly Dictionary<string, string> gameModePaths = new Dictionary<string, string>
-        {
-            { "forest", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Forest, Tree Exit" },
-            { "city", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - City Front" },
-            { "canyons", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Canyon" },
-            { "mountains", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Mountain For Computer" },
-            { "beach", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Beach from Forest" },
-            { "sky", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Clouds" },
-            { "basement", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Basement For Computer" },
-            { "metro", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Metropolis from Computer" },
-            { "arcade", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - City frm Arcade" },
-            { "rotating", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Rotating Map" },
-            { "bayou", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - BayouComputer2" },
-            { "caves", "Environment Objects/TriggerZones_Prefab/JoinRoomTriggers_Prefab/JoinPublicRoom - Cave" }
-        };
 
         // --- Utility Methods ---
-        public static string DetectCurrentMap()
-        {
-            foreach (var entry in gameModePaths)
-            {
-                if (GameObject.Find(entry.Value) != null) return entry.Key;
-            }
-            return null;
-        }
-
-        public static string GetPathForGameMode(string gameMode)
-        {
-            gameModePaths.TryGetValue(gameMode.ToLower(), out string path);
-            return path;
-        }
         public static void IsModded()
         {
             if (!PhotonNetwork.IsConnected)
