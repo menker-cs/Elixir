@@ -11,6 +11,7 @@ using static Elixir.Mods.Categories.Room;
 using static Elixir.Mods.Categories.Settings;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
+using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Utilities.ColorLib;
 using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Variables;
@@ -211,6 +212,7 @@ namespace Elixir.Mods
             new Button("Schitzo Gun V1", Category.Splash, true, false, ()=>SchitzoV1(), null, "Makes Others Splash"),
             new Button("Schitzo Gun V2", Category.Splash, true, false, ()=>SchitzoV2(), null, "Makes Others Splash"),
             #endregion
+
                 #region CS
             new Button("Back", Category.CS, false, false, ()=>ChangePage(Category.Fun), null),
             new Button("Draw", Category.CS, true, false, ()=> Fun.Draw(), null, "You Can Draw On Air"),
@@ -226,6 +228,7 @@ namespace Elixir.Mods
             new Button("Orb Rain Trace", Category.CS, true, false, ()=> OrbRain1(), null, "Nicer Looking Orb Rain"),
             #endregion
 
+            new Button("Sherbert", Category.Fun, true, false, ()=>Sherbert(), ()=>KillSherbert(), "Sherb"),
             new Button("Vibrator", Category.Fun, true, false, ()=>Vibrator(), null, "Vibrates"),
             new Button("Grab Bug [G]", Category.Fun, true, false, ()=> GrabBug(), null, "Grab The Bug"),
             new Button("Bug Gun", Category.Fun, true, false, ()=> BugGun(), null, "Places The Bug Where You Shoot"),
