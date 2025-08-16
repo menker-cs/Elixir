@@ -271,6 +271,7 @@ namespace Elixir.Utilities
 
         public static Material fmby = Url2Mat("https://i.ebayimg.com/images/g/XI8AAOSwwvRlMHkz/s-l1200.jpg");
 
+        #region Menu Colors
         public static Material[] MenuMat = new Material[]
         {
             Color2Mat(DarkPurple),
@@ -286,5 +287,49 @@ namespace Elixir.Utilities
             Color2Mat(Peru),
             Color2Mat(DarkBlue),
         };
+        public static Color[] OutlineClr = new Color[]
+        {
+            Indigo, 
+            Indigo,
+            Indigo,
+            DarkerGrey,
+            DarkDodgerBlue,
+            IndianRed,
+            Lime,
+            DarkerGrey,
+            MediumAquamarine,
+            DarkSalmon,
+            SaddleBrown,
+        };
+        public static Color[] BtnClrOff = new Color[]
+        {
+            DarkSlateBlue,
+            DarkSlateBlue,
+            DarkSlateBlue,
+            new Color32(30, 30, 30, 255),
+            RoyalBlue,
+            WineRed,
+            MediumSeaGreen,
+            DarkGrey,
+            ForestGreen,
+            Coral,
+            SandyBrown,
+        };
+        public static Color[] BtnClrOn = new Color[]
+        {
+            SlateBlue,
+            SlateBlue,
+            SlateBlue,
+            new Color32(30, 30, 30, 255),
+            DodgerBlue,
+            IndianRed,
+            SeaGreen,
+            new Color32(35, 35, 35, 255),
+            MediumSeaGreen,
+            DarkCoral,
+            DarkSandyBrown,
+        };
+
+        #endregion
     }
 }

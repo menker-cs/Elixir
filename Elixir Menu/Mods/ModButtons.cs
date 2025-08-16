@@ -66,6 +66,7 @@ namespace Elixir.Mods
             new Button("Change Sound", Category.Settings, false, false, ()=> ChangeSound(), null, "Changes Button Sound"),
             new Button("Visualize Antireport", Category.Settings, true, true, ()=>VisReport(true), ()=>VisReport(false), "Toggles Antireport Vizualizer"),
             new Button("Change ESP Color: Infection", Category.Settings, false, false, ()=>ESPChange(), null, "Changes ESP Color"),
+            new Button("Change Tracer Position: Right", Category.Settings, false, false, ()=>TracerPos(), null, "Changes Tracer Position"),
             new Button("Change Fly Speed: Normal", Category.Settings, false, false, ()=>FlySpeed(), null, "Changes Fly Speed"),
             new Button("Change Speed Boost: Normal", Category.Settings, false, false, ()=>SpeedSpeed(), null, "Changes Speed Boost Speed"),
             new Button("Change Gun Type: Ball + Line", Category.Settings, false, false, ()=>GunChange(), null, "Changes Speed Boost Speed"),

@@ -360,7 +360,7 @@ namespace Elixir.Menu
             background = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Destroy(background.GetComponent<Rigidbody>());
             Destroy(background.GetComponent<BoxCollider>());
-            Outline(background, outColor);
+            Outline(background, OutlineClr[Theme-1]);
 
             background.transform.parent = menuObj.transform;
             background.transform.rotation = Quaternion.identity;
@@ -371,9 +371,6 @@ namespace Elixir.Menu
         }
         #region settings
         public static int Theme = 1;
-        public static Color ButtonColorOff = DarkSlateBlue;
-        public static Color ButtonColorOn = SlateBlue;
-        public static Color outColor = Indigo;
         public static Color textclr = White;
         public static void ChangeTheme()
         {
@@ -381,147 +378,62 @@ namespace Elixir.Menu
             if (Theme > 11)
             {
                 Theme = 1;
-                RefreshMenu();
             }
 
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
                 if (btn.buttonText.Contains("Change Theme:"))
                 {
-                    if (Theme == 1)
+                    switch (Theme)
                     {
-                        btn.SetText("Change Theme: Purple");
-
-                        ButtonColorOff = DarkSlateBlue;
-                        ButtonColorOn = SlateBlue;
-                        outColor = Indigo;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 2)
-                    {
-                        btn.SetText("Change Theme: Fading");
-
-						ButtonColorOff = DarkSlateBlue;
-						ButtonColorOn = SlateBlue;
-						outColor = Indigo;
-						textclr = White;
-
-						NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 3)
-                    {
-                        btn.SetText("Change Theme: Breathing");
-
-						ButtonColorOff = DarkSlateBlue;
-						ButtonColorOn = SlateBlue;
-						outColor = Indigo;
-						textclr = White;
-
-						NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 4)
-                    {
-                        btn.SetText("Change Theme: Dark");
-
-                        ButtonColorOff = new Color32(30, 30, 30, 255);
-                        ButtonColorOn = DarkerGrey;
-                        outColor = DarkerGrey;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 5)
-                    {
-                        btn.SetText("Change Theme: Blue");
-
-                        ButtonColorOff = RoyalBlue;
-                        ButtonColorOn = DodgerBlue;
-                        outColor = DarkDodgerBlue;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 6)
-                    {
-                        btn.SetText("Change Theme: Red");
-
-                        ButtonColorOff = WineRed;
-                        ButtonColorOn = IndianRed;
-                        outColor = IndianRed;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 7)
-                    {
-                        btn.SetText("Change Theme: Green");
-
-                        ButtonColorOff = MediumSeaGreen;
-                        ButtonColorOn = SeaGreen;
-                        outColor = Lime;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 8)
-                    {
-                        btn.SetText("Change Theme: Gray");
-
-                        ButtonColorOff = DarkGrey;
-                        ButtonColorOn = new Color32(35, 35, 35, 255);
-                        outColor = DarkerGrey;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Gray</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 9)
-                    {
-                        btn.SetText("Change Theme: Forest");
-
-                        ButtonColorOff = ForestGreen;
-                        ButtonColorOn = MediumSeaGreen;
-                        outColor = MediumAquamarine;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Forest</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 10)
-                    {
-                        btn.SetText("Change Theme: Peach");
-
-                        ButtonColorOff = Coral;
-                        ButtonColorOn = DarkCoral;
-                        outColor = DarkSalmon;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Peach</color>");
-                        RefreshMenu();
-                    }
-                    if (Theme == 11)
-                    {
-                        btn.SetText("Change Theme: Desert");
-
-                        ButtonColorOff = SandyBrown;
-                        ButtonColorOn = DarkSandyBrown;
-                        outColor = SaddleBrown;
-                        textclr = White;
-
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Desert</color>");
-                        RefreshMenu();
+                        case 1:
+                            btn.SetText("Change Theme: Purple");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Purple</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Theme: Fading");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Fading</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change Theme: Breathing");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Breathing</color>");
+                            break;
+                        case 4:
+                            btn.SetText("Change Theme: Dark");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Dark</color>");
+                            break;
+                        case 5:
+                            btn.SetText("Change Theme: Blue");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Blue</color>");
+                            break;
+                        case 6:
+                            btn.SetText("Change Theme: Red");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Red</color>");
+                            break;
+                        case 7:
+                            btn.SetText("Change Theme: Green");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Green</color>");
+                            break;
+                        case 8:
+                            btn.SetText("Change Theme: Gray");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Gray</color>");
+                            break;
+                        case 9:
+                            btn.SetText("Change Theme: Forest");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Forest</color>");
+                            break;
+                        case 10:
+                            btn.SetText("Change Theme: Peach");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Peach</color>");
+                            break;
+                        case 11:
+                            btn.SetText("Change Theme: Desert");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Theme</color><color=white>] Desert</color>");
+                            break;
                     }
                 }
             }
+            RefreshMenu();
         }
        
         public static int ActuallSound = 114;
@@ -534,30 +446,28 @@ namespace Elixir.Menu
                 LOJUHFDG = 1;
                 ActuallSound = 66;
             }
-            if (LOJUHFDG == 1)
+            switch (LOJUHFDG)
             {
-                ActuallSound = 66;
+                case 1:
+                    ActuallSound = 66;
+                    break;
+                case 2:
+                    ActuallSound = 8;
+                    break;
+                case 3:
+                    ActuallSound = 203;
+                    break;
+                case 4:
+                    ActuallSound = 50;
+                    break;
+                case 5:
+                    ActuallSound = 67;
+                    break;
+                case 6:
+                    ActuallSound = 114;
+                    break;
             }
-            if (LOJUHFDG == 2)
-            {
-                ActuallSound = 8;
-            }
-            if (LOJUHFDG == 3)
-            {
-                ActuallSound = 203;
-            }
-            if (LOJUHFDG == 4)
-            {
-                ActuallSound = 50;
-            }
-            if (LOJUHFDG == 5)
-            {
-                ActuallSound = 67;
-            }
-            if (LOJUHFDG == 6)
-            {
-                ActuallSound = 114;
-            }
+            RefreshMenu();
         }
         public static int Laytou = 1;
         public static void ChangeLayout()
@@ -570,28 +480,22 @@ namespace Elixir.Menu
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (Laytou == 1)
+                if (btn.buttonText.Contains("Change Layout:"))
                 {
-                    if (btn.buttonText == "Change Layout: Top")
+                    switch (Laytou)
                     {
-                        btn.SetText("Change Layout: Sides");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
-                    }
-                }
-                if (Laytou == 2)
-                {
-                    if (btn.buttonText == "Change Layout: Sides")
-                    {
-                        btn.SetText("Change Layout: Bottom");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
-                    }
-                }
-                if (Laytou == 3)
-                {
-                    if (btn.buttonText == "Change Layout: Bottom")
-                    {
-                        btn.SetText("Change Layout: Top");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Top</color>");
+                        case 1:
+                            btn.SetText("Change Layout: Sides");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Sides</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Layout: Bottom");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Bottom</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change Layout: Top");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Layout</color><color=white>] Top</color>");
+                            break;
                     }
                 }
             }
@@ -606,14 +510,13 @@ namespace Elixir.Menu
                 disconnectButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(disconnectButton.GetComponent<Rigidbody>());
                 disconnectButton.GetComponent<BoxCollider>().isTrigger = true;
-                //RoundObj(disconnectButton);
-                Outline(disconnectButton, outColor);
+                Outline(disconnectButton, OutlineClr[Theme-1]);
                 disconnectButton.transform.parent = menuObj.transform;
                 disconnectButton.transform.rotation = Quaternion.identity;
                 disconnectButton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
                 disconnectButton.transform.localPosition = new Vector3(0.56f, 0f, 0.59f);
                 disconnectButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("DisconnectButton", Category.Home, false, false, null, null);
-                disconnectButton.GetComponent<Renderer>().material.color = ButtonColorOff;
+                disconnectButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
                 // Disconnect Button Text
                 Text discontext = new GameObject { transform = { parent = canvasObj.transform } }.AddComponent<Text>();
@@ -736,7 +639,7 @@ namespace Elixir.Menu
 
             GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Destroy(gameObject.GetComponent<Collider>());
-            Outline(gameObject, outColor);
+            Outline(gameObject, OutlineClr[Theme-1]);
             gameObject.transform.parent = menuObj.transform;
             gameObject.transform.position = ModButton.transform.position;
             gameObject.transform.rotation = ModButton.transform.rotation;
@@ -748,11 +651,11 @@ namespace Elixir.Menu
             {
                 if (button.Enabled)
                 {
-                    btnRenderer.material.color = ButtonColorOn;
+                    btnRenderer.material.color = BtnClrOn[Theme-1];
                 }
                 else
                 {
-                    btnRenderer.material.color = ButtonColorOff;
+                    btnRenderer.material.color = BtnClrOff[Theme-1];
                 }
             }
         }
@@ -764,21 +667,21 @@ namespace Elixir.Menu
                 Destroy(PageButtons.GetComponent<Rigidbody>());
                 PageButtons.GetComponent<BoxCollider>().isTrigger = true;
                 //RoundObj(PageButtons);
-                Outline(PageButtons, outColor);
+                Outline(PageButtons, OutlineClr[Theme-1]);
                 PageButtons.transform.parent = menuObj.transform;
                 PageButtons.transform.rotation = Quaternion.identity;
                 PageButtons.transform.localScale = new Vector3(0.09f, 0.15f, 0.9f);
                 PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.65f : -0.65f, -0);
-                PageButtons.GetComponent<Renderer>().material.color = ButtonColorOff;
+                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, outColor);
+                Outline(gameObject, OutlineClr[Theme-1]);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
 
                 // Page Buttons Text
@@ -810,16 +713,16 @@ namespace Elixir.Menu
                 PageButtons.transform.rotation = Quaternion.identity;
                 PageButtons.transform.localScale = new Vector3(0.09f, 0.25f, 0.079f);
                 PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, -0.435f);
-                PageButtons.GetComponent<Renderer>().material.color = ButtonColorOff;
+                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, outColor);
+                Outline(gameObject, OutlineClr[Theme-1]);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
 
                 // Page Buttons Text
@@ -851,16 +754,16 @@ namespace Elixir.Menu
                 PageButtons.transform.rotation = Quaternion.identity;
                 PageButtons.transform.localScale = new Vector3(0.09f, 0.25f, 0.079f);
                 PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, 0.3223f);
-                PageButtons.GetComponent<Renderer>().material.color = ButtonColorOff;
+                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
 
                 GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, outColor);
+                Outline(gameObject, OutlineClr[Theme-1]);
                 gameObject.transform.parent = menuObj.transform;
                 gameObject.transform.position = PageButtons.transform.position;
                 gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                 gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
 
                 // Page Buttons Text
@@ -899,15 +802,15 @@ namespace Elixir.Menu
                     BackToStartButton.transform.localScale = new Vector3(0.09f, 0.30625f, 0.08f);
                     BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, -0.435f);
                     BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, outColor);
+                    Outline(gameObject, OutlineClr[Theme-1]);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                     gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
 
                     // Return Button Text
@@ -941,15 +844,15 @@ namespace Elixir.Menu
                     BackToStartButton.transform.localScale = new Vector3(0.09f, 0.30625f, 0.08f);
                     BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, 0.3223f);
                     BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, outColor);
+                    Outline(gameObject, OutlineClr[Theme-1]);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                     gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
 
                     // Return Button Text
@@ -983,15 +886,15 @@ namespace Elixir.Menu
                     BackToStartButton.transform.localScale = new Vector3(0.09f, 0.82f, 0.08f);
                     BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, -0.435f);
                     BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
                     GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, outColor);
+                    Outline(gameObject, OutlineClr[Theme-1]);
                     gameObject.transform.parent = menuObj.transform;
                     gameObject.transform.position = BackToStartButton.transform.position;
                     gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = ButtonColorOff;
+                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
                     gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
 
                     // Return Button Text

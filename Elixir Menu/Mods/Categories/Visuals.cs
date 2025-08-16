@@ -183,7 +183,7 @@ namespace Elixir.Mods.Categories
                 {
                     GameObject line = new GameObject("Line");
                     LineRenderer Line = line.AddComponent<LineRenderer>();
-                    Line.SetPosition(0, GorillaTagger.Instance.rightHandTransform.position);
+                    Line.SetPosition(0, GetTracerPosition());
                     Line.SetPosition(1, vrrig.transform.position);
                     Line.startWidth = 0.0225f;
                     Line.endWidth = 0.0225f;
@@ -419,7 +419,7 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
-        private static Color GetESPColor(VRRig vrrig)
+        static Color GetESPColor(VRRig vrrig)
         {
             switch (espSetting)
             {
@@ -433,6 +433,22 @@ namespace Elixir.Mods.Categories
                     return ColorLib.MenuMat[Theme - 1].color;
                 default:
                     return vrrig.mainSkin.material.name.Contains("fected") ? Color.red : Color.green;
+            }
+        }
+        static Vector3 GetTracerPosition()
+        {
+            switch (tracePos)
+            {
+                case 1:
+                    return GorillaTagger.Instance.rightHandTransform.position;
+                case 2:
+                    return GorillaTagger.Instance.leftHandTransform.position;
+                case 3:
+                    return GorillaTagger.Instance.bodyCollider.transform.position;
+                case 4:
+                    return GorillaTagger.Instance.headCollider.transform.position;
+                default:
+                    return GorillaTagger.Instance.rightHandTransform.position;
             }
         }
     }

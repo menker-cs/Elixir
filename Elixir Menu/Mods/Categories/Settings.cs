@@ -54,40 +54,30 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (flyspeedchanger == 1)
+                if (btn.buttonText.Contains("Change Fly Speed:"))
                 {
-                    if (btn.buttonText == "Change Fly Speed: Very Fast")
+                    switch (flyspeedchanger)
                     {
-                        btn.SetText("Change Fly Speed: Normal");
-                        speedboostchangerspeed = 15f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
-                    }
-                }
-                if (flyspeedchanger == 2)
-                {
-                    if (btn.buttonText == "Change Fly Speed: Normal")
-                    {
-                        btn.SetText("Change Fly Speed: Slow");
-                        speedboostchangerspeed = 7f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
-                    }
-                }
-                if (flyspeedchanger == 3)
-                {
-                    if (btn.buttonText == "Change Fly Speed: Slow")
-                    {
-                        btn.SetText("Change Fly Speed: Fast");
-                        speedboostchangerspeed = 30f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
-                    }
-                }
-                if (flyspeedchanger == 4)
-                {
-                    if (btn.buttonText == "Change Fly Speed: Fast")
-                    {
-                        btn.SetText("Change Fly Speed: Very Fast");
-                        speedboostchangerspeed = 60f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                        case 1:
+                            btn.SetText("Change Fly Speed: Normal");
+                            speedboostchangerspeed = 15f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Fly Speed: Slow");
+                            speedboostchangerspeed = 7f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change Fly Speed: Fast");
+                            speedboostchangerspeed = 30f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                            break;
+                        case 4:
+                            btn.SetText("Change Fly Speed: Very Fast");
+                            speedboostchangerspeed = 60f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                            break;
                     }
                 }
             }
@@ -101,40 +91,30 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (speedboostchanger == 1)
+                if (btn.buttonText.Contains("Change Speed Boost:"))
                 {
-                    if (btn.buttonText == "Change Speed Boost: Very Fast")
+                    switch (speedboostchanger)
                     {
-                        btn.SetText("Change Speed Boost: Normal");
-                        speedboostchangerspeed = 8f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
-                    }
-                }
-                if (speedboostchanger == 2)
-                {
-                    if (btn.buttonText == "Change Speed Boost: Normal")
-                    {
-                        btn.SetText("Change Speed Boost: Slow");
-                        speedboostchangerspeed = 7.3f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
-                    }
-                }
-                if (speedboostchanger == 3)
-                {
-                    if (btn.buttonText == "Change Speed Boost: Slow")
-                    {
-                        btn.SetText("Change Speed Boost: Fast");
-                        speedboostchangerspeed = 15f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
-                    }
-                }
-                if (speedboostchanger == 4)
-                {
-                    if (btn.buttonText == "Change Speed Boost: Fast")
-                    {
-                        btn.SetText("Change Speed Boost: Very Fast");
-                        speedboostchangerspeed = 50f;
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                        case 1:
+                            btn.SetText("Change Speed Boost: Normal");
+                            speedboostchangerspeed = 8f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Speed Boost: Slow");
+                            speedboostchangerspeed = 7.3f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change Speed Boost: Fast");
+                            speedboostchangerspeed = 15f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                            break;
+                        case 4:
+                            btn.SetText("Change Speed Boost: Very Fast");
+                            speedboostchangerspeed = 50f;
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                            break;
                     }
                 }
             }
@@ -148,36 +128,59 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (espSetting == 1)
+                if (btn.buttonText.Contains("Change ESP Color:"))
                 {
-                    if (btn.buttonText == "Change ESP Color: Menu Color")
+                    switch (espSetting)
                     {
-                        btn.SetText("Change ESP Color: Infection");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                        case 1:
+                            btn.SetText("Change ESP Color: Infection");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change ESP Color: Casual");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change ESP Color: RGB");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
+                            break;
+                        case 4:
+                            btn.SetText("Change ESP Color: Menu Color");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                            break;
                     }
                 }
-                if (espSetting == 2)
+            }
+        }
+        public static void TracerPos()
+        {
+            tracePos++;
+            if (tracePos > 4)
+            {
+                tracePos = 1;
+            }
+            foreach (ButtonHandler.Button btn in ModButtons.buttons)
+            {
+                if (btn.buttonText.Contains("Change Tracer Position:"))
                 {
-                    if (btn.buttonText == "Change ESP Color: Infection")
+                    switch (tracePos)
                     {
-                        btn.SetText("Change ESP Color: Casual");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
-                    }
-                }
-                if (espSetting == 3)
-                {
-                    if (btn.buttonText == "Change ESP Color: Casual")
-                    {
-                        btn.SetText("Change ESP Color: RGB");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
-                    }
-                }
-                if (espSetting == 4)
-                {
-                    if (btn.buttonText == "Change ESP Color: RGB")
-                    {
-                        btn.SetText("Change ESP Color: Menu Color");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                        case 1:
+                            btn.SetText("Change Tracer Position: Right");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Right Hand</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Tracer Position: Left");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Left Hand</color>");
+                            break;
+                        case 3:
+                            btn.SetText("Change Tracer Position: Body");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Body</color>");
+                            break;
+                        case 4:
+                            btn.SetText("Change Tracer Position: Head");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Head</color>");
+                            break;
                     }
                 }
             }
@@ -191,20 +194,18 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (gunSetting == 1)
+                if (btn.buttonText.Contains("Change Gun Type:"))
                 {
-                    if (btn.buttonText == "Change Gun Type: Ball")
+                    switch (gunSetting)
                     {
-                        btn.SetText("Change Gun Type: Ball + Line");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
-                    }
-                }
-                if (gunSetting == 2)
-                {
-                    if (btn.buttonText == "Change Gun Type: Ball + Line")
-                    {
-                        btn.SetText("Change Gun Type: Ball");
-                        NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                        case 1:
+                            btn.SetText("Change Gun Type: Ball + Line");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
+                            break;
+                        case 2:
+                            btn.SetText("Change Gun Type: Ball");
+                            NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                            break;
                     }
                 }
             }
@@ -219,6 +220,8 @@ namespace Elixir.Mods.Categories
         }
 
         public static int espSetting = 1;
+
+        public static int tracePos = 1;
 
         public static int gunSetting = 1;
 
