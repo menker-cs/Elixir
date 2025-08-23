@@ -31,8 +31,8 @@ namespace Elixir.Utilities
         private const float PulseSpeed = 2f;
         private const float PulseAmplitude = 0.03f;
 
-        public static GameObject spherepointer;
-        public static VRRig LockedPlayer;
+        public static GameObject? spherepointer;
+        public static VRRig? LockedPlayer;
         public static Vector3 lr;
         public static Color32 TriggeredPointerColor = new Color32(53, 0, 0, 255);
         public static Color32 TriggeredLineColor = new Color32(53, 0, 0, 255);
@@ -43,7 +43,7 @@ namespace Elixir.Utilities
             if (ControllerInputPoller.instance.rightGrab)
             {
                 Physics.Raycast(GorillaTagger.Instance.rightHandTransform.position, -GorillaTagger.Instance.rightHandTransform.up, out raycastHit, float.MaxValue);
-                if (spherepointer == null && gunSetting !=3)
+                if (spherepointer == null && gunSetting != 3)
                 {
                     spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     spherepointer.AddComponent<Renderer>();
@@ -54,59 +54,62 @@ namespace Elixir.Utilities
                     GameObject.Destroy(spherepointer.GetComponent<Collider>());
                     lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
                 }
-                if (gunSetting == 3)
-                {
-                    Destroy(spherepointer.GetComponent<Renderer>());
-                }
-                if (LockedPlayer == null)
-                {
-                    spherepointer.transform.position = raycastHit.point;
-                    spherepointer.GetComponent<Renderer>().material.color = DarkGrey;
-                }
                 else
                 {
-                    spherepointer.transform.position = LockedPlayer.transform.position;
-                }
-                lr = Vector3.Lerp(lr, (GorillaTagger.Instance.rightHandTransform.position + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
-                GameObject gameObject = new GameObject("Line");
-                LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-                lineRenderer.startWidth = 0.022f;
-                lineRenderer.endWidth = 0.022f;
-                lineRenderer.startColor = Color.black;
-                lineRenderer.endColor = DarkGrey;
-                lineRenderer.useWorldSpace = true;
-                lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                if (gunSetting != 2)
-                {
-                    lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
-                }
-                GameObject.Destroy(lineRenderer, Time.deltaTime);
-                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f)
-                {
-                    trigger = true;
-                    lineRenderer.startColor = TriggeredLineColor;
-                    lineRenderer.endColor = TriggeredLineColor;
-                    spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
-                    if (LockOn)
+                    if (gunSetting == 3)
                     {
-                        if (LockedPlayer == null)
+                        Destroy(spherepointer!.GetComponent<Renderer>());
+                    }
+                    if (LockedPlayer == null)
+                    {
+                        spherepointer!.transform.position = raycastHit.point;
+                        spherepointer.GetComponent<Renderer>().material.color = DarkGrey;
+                    }
+                    else
+                    {
+                        spherepointer!.transform.position = LockedPlayer.transform.position;
+                    }
+                    lr = Vector3.Lerp(lr, (GorillaTagger.Instance.rightHandTransform.position + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
+                    GameObject gameObject = new GameObject("Line");
+                    LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
+                    lineRenderer.startWidth = 0.022f;
+                    lineRenderer.endWidth = 0.022f;
+                    lineRenderer.startColor = Color.black;
+                    lineRenderer.endColor = DarkGrey;
+                    lineRenderer.useWorldSpace = true;
+                    lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
+                    if (gunSetting != 2)
+                    {
+                        lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
+                    }
+                    GameObject.Destroy(lineRenderer, Time.deltaTime);
+                    if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f)
+                    {
+                        trigger = true;
+                        lineRenderer.startColor = TriggeredLineColor;
+                        lineRenderer.endColor = TriggeredLineColor;
+                        spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
+                        if (LockOn)
                         {
-                            LockedPlayer = raycastHit.collider.GetComponentInParent<VRRig>();
+                            if (LockedPlayer == null)
+                            {
+                                LockedPlayer = raycastHit.collider.GetComponentInParent<VRRig>();
+                            }
+                            if (LockedPlayer != null)
+                            {
+                                spherepointer.transform.position = LockedPlayer.transform.position;
+                                action();
+                            }
+                            return;
                         }
-                        if (LockedPlayer != null)
-                        {
-                            spherepointer.transform.position = LockedPlayer.transform.position;
-                            action();
-                        }
+                        action();
                         return;
                     }
-                    action();
-                    return;
-                }
-                else if (LockedPlayer != null)
-                {
-                    LockedPlayer = null;
-                    return;
+                    else if (LockedPlayer != null)
+                    {
+                        LockedPlayer = null;
+                        return;
+                    }
                 }
             }
             else if (spherepointer != null)
@@ -122,8 +125,7 @@ namespace Elixir.Utilities
             Ray ray = GameObject.Find("Shoulder Camera").activeSelf ? GameObject.Find("Shoulder Camera").GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition) : GorillaTagger.Instance.mainCamera.GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition);
             if (Mouse.current.rightButton.isPressed)
             {
-                RaycastHit raycastHit;
-                if (Physics.Raycast(ray.origin, ray.direction, out raycastHit, float.PositiveInfinity, -32777) && spherepointer == null)
+                if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit raycastHit, float.PositiveInfinity, -32777) && spherepointer == null)
                 {
                     if (spherepointer == null && gunSetting != 3)
                     {
@@ -138,17 +140,17 @@ namespace Elixir.Utilities
                     }
                     if (gunSetting == 3)
                     {
-                        Destroy(spherepointer.GetComponent<Renderer>());
+                        Destroy(spherepointer!.GetComponent<Renderer>());
                     }
                 }
                 if (LockedPlayer == null)
                 {
-                    spherepointer.transform.position = raycastHit.point;
+                    spherepointer!.transform.position = raycastHit.point;
                     spherepointer.GetComponent<Renderer>().material.color = DarkGrey;
                 }
                 else
                 {
-                    spherepointer.transform.position = LockedPlayer.transform.position;
+                    spherepointer!.transform.position = LockedPlayer.transform.position;
                 }
                 lr = Vector3.Lerp(lr, (GorillaTagger.Instance.rightHandTransform.position + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
                 GameObject gameObject = new GameObject("Line");

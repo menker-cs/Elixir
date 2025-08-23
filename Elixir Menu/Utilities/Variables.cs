@@ -19,14 +19,14 @@ namespace Elixir.Utilities
     public class Variables : MonoBehaviourPunCallbacks
     {
         // --- UI Variables ---
-        public static GameObject menuObj = null;
-        public static GameObject background = null;
-        public static GameObject canvasObj = null;
-        public static GameObject clickerObj = null;
-        public static GameObject PageButtons = null;
-        public static GameObject disconnectButton = null;
-        public static GameObject ModButton = null;
-        public static Text title;
+        public static GameObject? menuObj = null;
+        public static GameObject? background = null;
+        public static GameObject? canvasObj = null;
+        public static GameObject? clickerObj = null;
+        public static GameObject? PageButtons = null;
+        public static GameObject? disconnectButton = null;
+        public static GameObject? ModButton = null;
+        public static Text? title;
 
         public static Font font = Font.CreateDynamicFontFromOSFont("MS Gothic", 16);
 
@@ -63,21 +63,21 @@ namespace Elixir.Utilities
         public static bool InPcCondition;
 
         // --- Player and Movement Variables ---
-        public static GorillaLocomotion.GTPlayer playerInstance;
-        public static GorillaTagger taggerInstance;
-        public static ControllerInputPoller pollerInstance;
-        public static VRRig vrrig = null;
-        public static Material vrrigMaterial = null;
+        public static GorillaLocomotion.GTPlayer? playerInstance;
+        public static GorillaTagger? taggerInstance;
+        public static ControllerInputPoller? pollerInstance = null;
+        public static VRRig? vrrig = null;
+        public static Material? vrrigMaterial = null;
 
         // --- Camera Variables ---
-        public static GameObject thirdPersonCamera;
-        public static GameObject shoulderCamera;
-        public static GameObject TransformCam = null;
+        public static GameObject? thirdPersonCamera;
+        public static GameObject? shoulderCamera;
+        public static GameObject? TransformCam = null;
         public static bool didThirdPerson = false;
-        public static GameObject cm;
+        public static GameObject? cm;
 
         // --- Physics Variables ---
-        public static Rigidbody currentMenuRigidbody = null;
+        public static Rigidbody? currentMenuRigidbody = null;
         public static Vector3 previousVelocity = Vector3.zero;
 
         public const float velocityThreshold = 0.05f;
@@ -112,7 +112,7 @@ namespace Elixir.Utilities
         public static NetPlayer PhotonPlayerToNetPlayer(Photon.Realtime.Player player)
         {
             VRRig rig = GorillaGameManager.instance.FindPlayerVRRig(player);
-            return rig != null ? rig.Creator : null;
+            return rig != null ? rig.Creator : null!;
         }
 
         public static NetPlayer GetNetPlayerFromRig(VRRig vrrig) => vrrig.Creator;
@@ -177,25 +177,23 @@ namespace Elixir.Utilities
         }
         private static IEnumerator SendWebhook(string jsonPayload)
         {
-            using (UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST"))
+            using UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST");
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
             {
-                byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
-                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-                request.downloadHandler = new DownloadHandlerBuffer();
-                request.SetRequestHeader("Content-Type", "application/json");
-
-                yield return request.SendWebRequest();
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                }
-                else
-                {
-                }
+            }
+            else
+            {
             }
         }
         // Please just dont spam it
-        private static string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/webhook-url.txt");
+        private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/webhook-url.txt");
     }
 }
 

@@ -19,7 +19,7 @@ namespace Elixir.Menu
     {
         public static void Toggle(Button button)
         {
-            switch (button.buttonText)
+            switch (button.ButtonText)
             {
                 case "<":
                     NavigatePage(false);
@@ -81,20 +81,19 @@ namespace Elixir.Menu
 
         public static void ToggleButton(Button button)
         {
-            string str = "";
             try
             {
-                if (!button.isToggle)
+                if (!button.IsToggle)
                 {
-                    button.onEnable?.Invoke();
+                    button.OnEnable?.Invoke();
 
                     if (button.Page == currentPage)
                     {
-                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
+                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.ButtonText}");
                     }
                     else
                     {
-                        NotificationLib.SendNotification($"<color=green>Entered Category</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
+                        NotificationLib.SendNotification($"<color=green>Entered Category</color> : {button.ButtonText}");
                     }
                 }
                 else
@@ -103,13 +102,13 @@ namespace Elixir.Menu
 
                     if (button.Enabled)
                     {
-                        button.onEnable?.Invoke();
-                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.buttonText}\n{(tip ? button.tip : str)}");
+                        button.OnEnable?.Invoke();
+                        NotificationLib.SendNotification($"<color=green>Enabled</color> : {button.ButtonText}");
                     }
                     else
                     {
-                        button.onDisable?.Invoke();
-                        NotificationLib.SendNotification($"<color=red>Disabled</color> : {button.buttonText}\n");
+                        button.OnDisable?.Invoke();
+                        NotificationLib.SendNotification($"<color=red>Disabled</color> : {button.ButtonText}\n");
                     }
                 }
 
@@ -117,42 +116,40 @@ namespace Elixir.Menu
             }
             catch (Exception ex)
             {
-                Debug.LogError($"Error while toggling button '{button.buttonText}': {ex.Message}\nStack Trace: {ex.StackTrace}");
+                Debug.LogError($"Error while toggling button '{button.ButtonText}': {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
         }
 
 
         public class Button
         {
-            public string buttonText { get; set; }
-            public string tip { get; set; }
-            public bool isToggle { get; set; }
+            public string ButtonText { get; set; }
+            public bool IsToggle { get; set; }
             public bool NeedsMaster { get; set; }
             public bool Enabled { get; set; }
-            public Action onEnable { get; set; }
-            public Action onDisable { get; set; }
+            public Action? OnEnable { get; set; }
+            public Action? OnDisable { get; set; }
             public Category Page { get; set; }
 
-            public Button(string label, Category page, bool isToggle, bool isActive, Action onClick, Action onDisable = null, string tip = "This Mod Has No Tool Tip", bool doesNeedMaster = false)
+            public Button(string label, Category page, bool isToggle, bool isActive, Action? onClick, Action? onDisable = null, bool doesNeedMaster = false)
             {
-                buttonText = label;
-                this.isToggle = isToggle;
+                ButtonText = label;
+                this.IsToggle = isToggle;
                 Enabled = isActive;
-                onEnable = onClick;
+                OnEnable = onClick;
                 Page = page;
-                this.onDisable = onDisable;
-                this.tip = tip;
+                this.OnDisable = onDisable;
                 NeedsMaster = doesNeedMaster;
             }
             public void SetText(string newText)
             {
-                buttonText = newText;
+                ButtonText = newText;
             }
         }
 
         public class BtnCollider : MonoBehaviour
         {
-            public Button clickedButton;
+            public Button? clickedButton;
             public static int clickCooldown = 1;
 
             public void OnTriggerEnter(Collider collider)
@@ -166,6 +163,7 @@ namespace Elixir.Menu
                     GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(ActuallSound, rightHandedMenu, 1);
                     GetComponent<BoxCollider>().enabled = true;
 
+                    if (clickedButton == null) return;
                     Toggle(clickedButton);
                 }
             }
@@ -183,7 +181,7 @@ namespace Elixir.Menu
                 if (button.Enabled)
                 {
                     button.Enabled = false;
-                    button.onDisable?.Invoke();
+                    button.OnDisable?.Invoke();
                 }
             }
 

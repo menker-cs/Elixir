@@ -113,7 +113,7 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
-        public static void carmonkey()
+        public static void Carmonkey()
         {
             Vector3 forward = GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward;
             forward.y = 0;
@@ -157,7 +157,7 @@ namespace Elixir.Mods.Categories
             GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
             GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed + .5f;
         }
-        public static void Platforms(ref GameObject platform, bool grabbing, Transform hand, bool invis, bool loong)
+        public static void Platforms(ref GameObject? platform, bool grabbing, Transform hand, bool invis, bool loong)
         {
             if (grabbing)
             {
@@ -168,7 +168,7 @@ namespace Elixir.Mods.Categories
                     platform.transform.position = hand.position + new Vector3(0f, -0.02f, 0f);
                     platform.transform.rotation = hand.rotation * Quaternion.Euler(0f, 0f, -90f);
                     platform.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
-                    platform.GetComponent<Renderer>().material = Variables.background.GetComponent<Renderer>().material;
+                    platform.GetComponent<Renderer>().material = background?.GetComponent<Renderer>().material;
                     if (invis) { platform.GetComponent<Renderer>().enabled = false; }
                 }
             }
@@ -184,8 +184,8 @@ namespace Elixir.Mods.Categories
 
         public static void Platforms(bool invis, bool loong)
         {
-            Platforms(ref RP, ControllerInputPoller.instance.rightGrab, Variables.playerInstance.rightControllerTransform, invis, loong);
-            Platforms(ref LP, ControllerInputPoller.instance.leftGrab, Variables.playerInstance.leftControllerTransform, invis, loong);
+            Platforms(ref RP, ControllerInputPoller.instance.rightGrab, GTPlayer.Instance.rightControllerTransform, invis, loong);
+            Platforms(ref LP, ControllerInputPoller.instance.leftGrab, GTPlayer.Instance.leftControllerTransform, invis, loong);
         }
 
         public static void Checkpoint()
@@ -204,6 +204,8 @@ namespace Elixir.Mods.Categories
             }
             if (rightPrimary())
             {
+                if (Pointy == null) return; 
+
                 GorillaTagger.Instance.transform.position = Pointy.transform.position;
                 GorillaLocomotion.GTPlayer.Instance.transform.position = Pointy.transform.position;
             }
@@ -217,7 +219,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position = GunTemplate.spherepointer.transform.position;
+                GorillaLocomotion.GTPlayer.Instance.transform.position = GunTemplate.spherepointer!.transform.position;
                 GorillaTagger.Instance.transform.position = GunTemplate.spherepointer.transform.position;
                 GameObject.Destroy(spherepointer, Time.deltaTime);
             }, false);
@@ -231,7 +233,7 @@ namespace Elixir.Mods.Categories
         {
             foreach (ButtonHandler.Button button in ModButtons.buttons)
             {
-                if (button.buttonText == "No Tag Freeze")
+                if (button.ButtonText == "No Tag Freeze")
                 {
                     button.Enabled = false;
                     GorillaLocomotion.GTPlayer.Instance.disableMovement = true;
@@ -270,7 +272,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position = LockedPlayer.transform.position;
+                GorillaLocomotion.GTPlayer.Instance.transform.position = LockedPlayer!.transform.position;
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }, true);
         }
@@ -278,7 +280,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position = LockedPlayer.transform.position + new Vector3(0f, 2.5f, 0f);
+                GorillaLocomotion.GTPlayer.Instance.transform.position = LockedPlayer!.transform.position + new Vector3(0f, 2.5f, 0f);
             }, true);
         }
         public static void IronMonkey()
@@ -372,10 +374,10 @@ namespace Elixir.Mods.Categories
 
         static Vector3 oldMousePos;
 
-        static GameObject RP;
-        static GameObject LP;
+        static GameObject? RP;
+        static GameObject? LP;
 
-        static GameObject Pointy;
+        static GameObject? Pointy;
         static bool Ir = false;
     }
 }

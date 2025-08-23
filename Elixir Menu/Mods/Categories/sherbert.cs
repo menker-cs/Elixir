@@ -7,12 +7,12 @@ namespace Elixir.Mods.Categories
 {
     public class SherbertClass
     {
-        static GameObject sherbert = null;
+        static GameObject? sherbert = null;
         static bool hold = false;
         static Vector3 lastPosition;
         public static void Sherbert()
         {
-            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 if (sherbert == null)
                 {
@@ -39,7 +39,7 @@ namespace Elixir.Mods.Categories
                 sherbert.transform.rotation = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.rotation;
                 hold = true;
             }
-            else if (hold)
+            else if (hold && sherbert != null)
             {
                 Rigidbody rb = sherbert.GetComponent<Rigidbody>();
                 rb.isKinematic = false;

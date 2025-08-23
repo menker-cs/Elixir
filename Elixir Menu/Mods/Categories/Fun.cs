@@ -25,7 +25,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                string id = LockedPlayer.Creator.UserId;
+                string id = LockedPlayer!.Creator.UserId;
                 GUIUtility.systemCopyBuffer = id;
             }, true);
         }
@@ -44,7 +44,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                Bug.transform.position = GunTemplate.spherepointer.transform.position;
+                Bug.transform.position = GunTemplate.spherepointer!.transform.position;
             }, false);
         }
         public static void GrabBat()
@@ -62,7 +62,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                Bat.transform.position = GunTemplate.spherepointer.transform.position;
+                Bat.transform.position = GunTemplate.spherepointer!.transform.position;
             }, false);
         }
         public static void SnipeBug()
@@ -88,7 +88,7 @@ namespace Elixir.Mods.Categories
         {
             GunTemplate.StartBothGuns(() =>
             {
-                SBall.transform.position = GunTemplate.spherepointer.transform.position;
+                SBall.transform.position = GunTemplate.spherepointer!.transform.position;
             }, false);
         }
         public static void SnipeSBall()
@@ -119,6 +119,8 @@ namespace Elixir.Mods.Categories
         #region fun spammers cs
         public static void Spam1()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -156,6 +158,8 @@ namespace Elixir.Mods.Categories
         }
         public static void Spam2()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -195,6 +199,8 @@ namespace Elixir.Mods.Categories
         }
         public static void Spam3()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -230,6 +236,8 @@ namespace Elixir.Mods.Categories
         }
         public static void Draw()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 draw = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -251,6 +259,8 @@ namespace Elixir.Mods.Categories
         }
         public static void GravDraw()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -286,6 +296,8 @@ namespace Elixir.Mods.Categories
         }
         public static void BigSpam()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -326,7 +338,7 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = spherepointer.transform.position;
+                orb.transform.position = spherepointer!.transform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
@@ -346,7 +358,7 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                orb.transform.position = spherepointer.transform.position;
+                orb.transform.position = spherepointer!.transform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
@@ -362,6 +374,8 @@ namespace Elixir.Mods.Categories
         }
         public static void SpazOrb()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -403,6 +417,8 @@ namespace Elixir.Mods.Categories
         }
         public static void OrbRain()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab)
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -437,6 +453,8 @@ namespace Elixir.Mods.Categories
         }
         public static void OrbRain1()
         {
+            if (pollerInstance == null) return;
+
             if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -472,7 +490,7 @@ namespace Elixir.Mods.Categories
             }
         }
 
-        static GameObject draw;
+        static GameObject? draw;
         #endregion
 
         public static void Vibrator()
@@ -521,7 +539,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer!.transform.position + new Vector3(0f, -2f, 0f);
 
                 Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 4f);
             }, false);
@@ -539,7 +557,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + new Vector3(0f, -2f, 0f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.transform.position + new Vector3(0f, -2f, 0f);
                 Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
             }, true); 
             {
@@ -552,15 +570,15 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer!.transform.position + new Vector3(0f, -2f, 0f);
 
                 if (Time.time > splashDelay)
                 {
                     splashDelay = Time.time + 0.4f;
 
-                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer), new object[]
+                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer!), new object[]
                     {
-                        Annoy(LockedPlayer.transform, 0.5f),
+                        Annoy(LockedPlayer!.transform, 0.5f),
                         GunTemplate.spherepointer.transform.rotation,
                         4f,
                         4f,
@@ -577,13 +595,13 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer!.transform.position + new Vector3(0f, -2f, 0f);
 
                 if (Time.time > splashDelay)
                 {
                     splashDelay = Time.time + 0.4f;
 
-                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer), new object[]
+                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer!), new object[]
                     {
                         GunTemplate.spherepointer.transform.position + new Vector3(0f, -2f, 0f),
                         GunTemplate.spherepointer.transform.rotation,

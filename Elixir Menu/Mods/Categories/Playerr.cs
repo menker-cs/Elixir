@@ -21,7 +21,7 @@ namespace Elixir.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
 
-                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0f, 1f, 0f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer!.transform.position + new Vector3(0f, 1f, 0f);
             }, false);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
@@ -38,13 +38,10 @@ namespace Elixir.Mods.Categories
             PhotonNetwork.SendAllOutgoingCommands();
 
             MethodInfo method = typeof(PhotonNetwork).GetMethod("RunViewUpdate", BindingFlags.Static | BindingFlags.NonPublic);
-            if (method != null)
-            {
-                method.Invoke(null, Array.Empty<object>());
-            }
+            method?.Invoke(null, Array.Empty<object>());
 
             PhotonView photonView = GameObject.Find("Player Objects/RigCache/Network Parent/GameMode(Clone)").GetPhotonView();
-            if (photonView != null)
+            if (photonView)
             {
                 photonView.RPC("RPC_ReportTag", RpcTarget.All, new object[]
                 {
@@ -56,23 +53,17 @@ namespace Elixir.Mods.Categories
             PhotonNetwork.SendAllOutgoingCommands();
 
             MethodInfo method2 = typeof(PhotonNetwork).GetMethod("RunViewUpdate", BindingFlags.Static | BindingFlags.NonPublic);
-            if (method2 != null)
-            {
-                method2.Invoke(null, Array.Empty<object>());
-            }
+            method2?.Invoke(null, Array.Empty<object>());
 
             MethodInfo method3 = typeof(PhotonView).GetMethod("OnSerialize", BindingFlags.Instance | BindingFlags.NonPublic);
-            if (method3 != null)
-            {
-                method3.Invoke(photonView, new object[2]);
-            }
+            method3?.Invoke(photonView, new object[2]);
 
             PhotonNetwork.NetworkingClient.LoadBalancingPeer.SendAcksOnly();
         }
 
 
-        private static Dictionary<int, float> lastTaggedTime = new Dictionary<int, float>();
-        private static Photon.Realtime.Player player;
+        private static readonly Dictionary<int, float> lastTaggedTime = new Dictionary<int, float>();
+        private static Photon.Realtime.Player? player;
         public static float Delay;
         public static void TagAura()
         {
@@ -81,7 +72,7 @@ namespace Elixir.Mods.Categories
                 if (vrrig != GorillaTagger.Instance.offlineVRRig && (Vector3.Distance(GorillaTagger.Instance.leftHandTransform.position, vrrig.headMesh.transform.position) < 4f || Vector3.Distance(GorillaTagger.Instance.rightHandTransform.position, vrrig.headMesh.transform.position) < 4f))
                 {
                     PhotonView photonView = GameObject.Find("Player Objects/RigCache/Network Parent/GameMode(Clone)").GetPhotonView();
-                    if (photonView != null)
+                    if (photonView)
                     {
                         photonView.RPC("RPC_ReportTag", RpcTarget.All, new object[]
                         {
@@ -163,7 +154,7 @@ namespace Elixir.Mods.Categories
         private static bool wasButtonPressed = false;
         public static void GhostMonke()
         {
-            bool isButtonCurrentlyPressed = pollerInstance.rightControllerPrimaryButton;
+            bool isButtonCurrentlyPressed = ControllerInputPoller.instance.rightControllerPrimaryButton;
             if (!wasButtonPressed && isButtonCurrentlyPressed | UnityInput.Current.GetKey(KeyCode.P))
             {
                 isOn = !isOn;
@@ -183,7 +174,7 @@ namespace Elixir.Mods.Categories
 
         public static void InvisibleMonke()
         {
-            bool isButtonCurrentlyPressed = pollerInstance.rightControllerPrimaryButton;
+            bool isButtonCurrentlyPressed = ControllerInputPoller.instance.rightControllerPrimaryButton;
             if (!wasButtonPressed && isButtonCurrentlyPressed | UnityInput.Current.GetKey(KeyCode.P))
             {
                 isOn = !isOn;
@@ -239,7 +230,7 @@ namespace Elixir.Mods.Categories
         }
         public static void LongArms(float length)
         {
-            GorillaTagger.Instance.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            GorillaTagger.Instance.transform.localScale = new Vector3(length, length, length);
         }
         public static void FixArms()
         {
@@ -273,17 +264,17 @@ namespace Elixir.Mods.Categories
         }
         public static void HeadSpinx()
         {
-            VRMap head = taggerInstance.offlineVRRig.head;
+            VRMap head = GorillaTagger.Instance.offlineVRRig.head;
             head.trackingRotationOffset.x += 15f;
         }
         public static void HeadSpiny()
         {
-            VRMap head = taggerInstance.offlineVRRig.head;
+            VRMap head = GorillaTagger.Instance.offlineVRRig.head;
             head.trackingRotationOffset.y += 15f;
         }
         public static void HeadSpinz()
         {
-            VRMap head = taggerInstance.offlineVRRig.head;
+            VRMap head = GorillaTagger.Instance.offlineVRRig.head;
             head.trackingRotationOffset.z += 15f;
         }
         public static void AnnoyPlayerGun()
@@ -291,7 +282,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(LockedPlayer.transform, 1.25f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(LockedPlayer!.transform, 1.25f);
             }, true);
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
@@ -363,7 +354,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(LockedPlayer.transform, 15);
+                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(LockedPlayer!.transform, 15);
                 GorillaTagger.Instance.offlineVRRig.transform.LookAt(LockedPlayer.transform);
             }, true);
             {
@@ -376,7 +367,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(spherepointer.transform, 15);
+                GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(spherepointer!.transform, 15);
                 GorillaTagger.Instance.offlineVRRig.transform.LookAt(spherepointer.transform);
             }, false);
             {
@@ -389,7 +380,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.rightHandTransform.position;
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.rightHandTransform.position;
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.rightHandTransform.rotation;
             }, true);
             {
@@ -437,7 +428,7 @@ namespace Elixir.Mods.Categories
         private static IEnumerator Chase()
         {
             Transform myRig = GorillaTagger.Instance.offlineVRRig.transform;
-            while (Vector3.Distance(myRig.position, LockedPlayer.transform.position) > 0.1f)
+            while (Vector3.Distance(myRig.position, LockedPlayer!.transform.position) > 0.1f)
             {
                 myRig.position = Vector3.MoveTowards(myRig.position, LockedPlayer.transform.position, Time.deltaTime * 1f);
                 yield return null;
@@ -458,7 +449,7 @@ namespace Elixir.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
 
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * -(0.4f + (Mathf.Sin(Time.frameCount / 10f) * 0.1f)));
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.transform.position + (LockedPlayer.transform.forward * -(0.4f + (Mathf.Sin(Time.frameCount / 10f) * 0.1f)));
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation;
 
                 GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * -0.3f;
@@ -477,7 +468,7 @@ namespace Elixir.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
 
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * -0.4f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * -0.4f);
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
 
                 GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * -0.3f;
@@ -497,7 +488,7 @@ namespace Elixir.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
 
-                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * 0.4f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.transform.position + (LockedPlayer.transform.forward * (0.4f + (Mathf.Sin(Time.frameCount / 6f) * 0.1f))) + (LockedPlayer.transform.up * 0.4f);
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
 
                 GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * 0.15f;
@@ -515,7 +506,7 @@ namespace Elixir.Mods.Categories
         private static float lvlDelay;
 
         private static float nigTime =  0f;
-        private static float delay = 0.37f;
+        private static readonly float delay = 0.37f;
         private static bool lag = false;
 
 

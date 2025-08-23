@@ -13,7 +13,7 @@ namespace Elixir.Menu
     {
         public static class ButtonPool
         {
-            private static List<GameObject> buttonPool = new List<GameObject>();
+            private static readonly List<GameObject> buttonPool = new List<GameObject>();
             private static int currentIndex = 0;
 
             public static GameObject GetButton()
@@ -62,7 +62,7 @@ namespace Elixir.Menu
 
         public static class TextPool
         {
-            private static List<GameObject> textPool = new List<GameObject>();
+            private static readonly List<GameObject> textPool = new List<GameObject>();
             private static int currentIndex = 0;
 
             public static GameObject GetTextObject()
@@ -93,7 +93,7 @@ namespace Elixir.Menu
                 currentIndex = 0;
                 foreach (GameObject textObj in textPool)
                 {
-                    if (textObj != null)
+                    if (!textObj)
                     {
                         textObj.SetActive(false);
                     }
@@ -116,7 +116,7 @@ namespace Elixir.Menu
         public static class ResourceLoader
         {
             // Fonts
-            public static Font ArialFont { get; private set; }
+            public static Font? ArialFont { get; private set; }
 
             public static void LoadResources()
             {
@@ -124,7 +124,7 @@ namespace Elixir.Menu
             }
         }
 
-        public static void DestroyObject<T>(ref T obj, float delay = 0f) where T : UnityEngine.Object
+        public static void DestroyObject<T>(ref T? obj, float delay = 0f) where T : UnityEngine.Object
         {
             if (obj != null)
             {
@@ -150,6 +150,7 @@ namespace Elixir.Menu
 
         public static void ClearMenuObjects()
         {
+
             DestroyObject(ref menuObj);
             DestroyObject(ref background);
             DestroyObject(ref canvasObj);

@@ -43,13 +43,13 @@ namespace Elixir.Utilities
         }
         public static PhotonView GetPhotonViewFromVRRig(VRRig p)
         {
-            NetworkView view = Traverse.Create(p).Field("netView").GetValue() as NetworkView;
+            NetworkView? view = Traverse.Create(p).Field("netView").GetValue() as NetworkView;
             return RigManager.NetView2PhotonView(view);
         }
-        public static PhotonView NetView2PhotonView(NetworkView view)
+        public static PhotonView NetView2PhotonView(NetworkView? view)
         {
             bool flag = view == null;
-            PhotonView result;
+            PhotonView? result;
             if (flag)
             {
                 Debug.Log("null netview passed to converter");
@@ -57,9 +57,9 @@ namespace Elixir.Utilities
             }
             else
             {
-                result = view.GetView;
+                result = view?.GetView;
             }
-            return result;
+            return result!;
 
         }
         public static VRRig GetOwnVRRig()
@@ -80,12 +80,12 @@ namespace Elixir.Utilities
                     return netPlayer;
                 }
             }
-            return null;
+            return null!;
         }
         public static VRRig GetClosestVRRig()
         {
             float num = float.MaxValue;
-            VRRig outRig = null;
+            VRRig? outRig = null;
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
                 if (Vector3.Distance(GorillaTagger.Instance.bodyCollider.transform.position, vrrig.transform.position) < num)
@@ -94,7 +94,7 @@ namespace Elixir.Utilities
                     outRig = vrrig;
                 }
             }
-            return outRig;
+            return outRig!;
         }
 
 
@@ -118,7 +118,7 @@ namespace Elixir.Utilities
 
         public static Photon.Realtime.Player GetPlayerFromID(string id)
         {
-            Photon.Realtime.Player found = null;
+            Photon.Realtime.Player? found = null;
             foreach (Photon.Realtime.Player target in PhotonNetwork.PlayerList)
             {
                 if (target.UserId == id)
@@ -127,7 +127,7 @@ namespace Elixir.Utilities
                     break;
                 }
             }
-            return found;
+            return found!;
         }
     }
 }

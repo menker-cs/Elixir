@@ -87,7 +87,7 @@ namespace Elixir.Utilities.Patches
         [HarmonyPatch(typeof(PlayFabClientInstanceAPI), "ReportPlayer", MethodType.Normal)]
         public class NoReportPlayer
         {
-            static bool Prefix(ReportPlayerClientRequest request, Action<ReportPlayerClientResult> resultCallback, Action<PlayFabError> errorCallback, object customData = null, Dictionary<string, string> extraHeaders = null)
+            static bool Prefix(ReportPlayerClientRequest request, Action<ReportPlayerClientResult> resultCallback, Action<PlayFabError> errorCallback, object? customData = null, Dictionary<string, string>? extraHeaders = null)
             {
                 return false;
             }
@@ -96,7 +96,7 @@ namespace Elixir.Utilities.Patches
         [HarmonyPatch(typeof(PlayFabClientAPI), "ReportPlayer", MethodType.Normal)]
         public class PlayFabReportPatch2
         {
-            private static bool Prefix(ReportPlayerClientRequest request, Action<ReportPlayerClientResult> resultCallback, Action<PlayFabError> errorCallback, object customData = null, Dictionary<string, string> extraHeaders = null)
+            private static bool Prefix(ReportPlayerClientRequest request, Action<ReportPlayerClientResult> resultCallback, Action<PlayFabError> errorCallback, object? customData = null, Dictionary<string, string>? extraHeaders = null)
             {
                 return false;
             }

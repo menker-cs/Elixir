@@ -20,6 +20,6 @@ namespace Elixir.Utilities.Notifs
             }
         }
 
-        private static Player oldnewplayer;
+        private static Player? oldnewplayer;
     }
 }

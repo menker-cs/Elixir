@@ -28,7 +28,6 @@ namespace Elixir.Mods.Categories
             GorillaNetworkJoinTrigger trigger = PhotonNetworkController.Instance.currentJoinTrigger ?? GorillaComputer.instance.GetJoinTriggerForZone("forest");
             PhotonNetworkController.Instance.AttemptToJoinPublicRoom(trigger, GorillaNetworking.JoinType.Solo);
         }
-        static string roomCode;
         public static void PrimaryDisconnect()
         {
             if (ControllerInputPoller.instance.rightControllerPrimaryButton | UnityInput.Current.GetKey(KeyCode.F))
@@ -83,7 +82,7 @@ namespace Elixir.Mods.Categories
                 GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
                 foreach (GorillaPlayerScoreboardLine mute in Board)
                 {
-                    if (mute.linePlayer == GunTemplate.LockedPlayer.OwningNetPlayer)
+                    if (mute.linePlayer == GunTemplate.LockedPlayer!.OwningNetPlayer)
                     {
                         mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
                         mute.muteButton.isOn = true;
@@ -99,7 +98,7 @@ namespace Elixir.Mods.Categories
                 GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
                 foreach (GorillaPlayerScoreboardLine report in Board)
                 {
-                    if (report.linePlayer == GunTemplate.LockedPlayer.OwningNetPlayer)
+                    if (report.linePlayer == GunTemplate.LockedPlayer!.OwningNetPlayer)
                     {
                         report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
                     }

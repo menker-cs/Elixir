@@ -9,7 +9,7 @@ namespace Elixir.Initialization
     [HarmonyPatch(typeof(GorillaLocomotion.GTPlayer), "LateUpdate")]
     internal class MenuInitializer
     {
-        private static GameObject menuObject = null;
+        private static GameObject? menuObject = null;
 
         static void Postfix()
         {

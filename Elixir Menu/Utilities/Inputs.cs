@@ -6,7 +6,7 @@ using UnityEngine;
 using Valve.VR;
 
 namespace Elixir.Utilities
-{
+{//
     public class Inputs
     {
         public static bool leftGrip()

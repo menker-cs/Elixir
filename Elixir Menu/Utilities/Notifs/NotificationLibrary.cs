@@ -12,17 +12,17 @@ namespace Elixir.Utilities.Notifs
 {
     internal class NotificationLib : MonoBehaviour
     {
-        private GameObject HUDObj, HUDObj2, MainCamera;
-        private Text notificationText;
+        private GameObject? HUDObj, HUDObj2, MainCamera;
+        private Text? notificationText;
         private static readonly Dictionary<string, float> notificationTimestamps = new Dictionary<string, float>();
-        private static NotificationLib instance;
+        private static NotificationLib? instance;
         private const float NotificationDelay = 1f;
         private bool hasInitialized;
 
         private readonly List<GameObject> trackedObjects = new List<GameObject>();
-        private Material notificationMaterial;
+        private Material? notificationMaterial;
 
-        public static string PreviousNotification { get; private set; }
+        public static string? PreviousNotification { get; private set; }
         public static bool IsEnabled { get; set; } = true;
 
         public static NotificationLib Instance
@@ -77,7 +77,7 @@ namespace Elixir.Utilities.Notifs
             hasInitialized = true;
         }
 
-        private GameObject CreateAndTrackHUDObject(string name, Transform parent = null)
+        private GameObject CreateAndTrackHUDObject(string name, Transform? parent = null)
         {
             var obj = new GameObject(name);
             if (parent != null)

@@ -11,7 +11,7 @@ namespace Elixir.Menu
 {
     internal class Intro : MonoBehaviour
     {
-        private Texture2D logoTexture;
+        private Texture2D? logoTexture;
         private float alpha = 0f;
         private bool showLogo = false;
 

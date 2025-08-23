@@ -370,11 +370,11 @@ namespace Elixir.Mods.Categories
             ESP.GetComponent<Renderer>().material.color = color;
             UnityEngine.Object.Destroy(ESP, Time.deltaTime);
         }
-        public static void Ignore(bool All)
+        public static void Ignore()
         {
             GunTemplate.StartBothGuns(() =>
             {
-                if (GunTemplate.LockedPlayer.bodyRenderer.gameModeBodyType == GorillaBodyType.Default)
+                if (GunTemplate.LockedPlayer!.bodyRenderer.gameModeBodyType == GorillaBodyType.Default)
                 {
                     GunTemplate.LockedPlayer.bodyRenderer.SetGameModeBodyType(GorillaBodyType.Invisible);
                     GunTemplate.LockedPlayer.bodyRenderer.bodySkeleton.material.shader = Shader.Find("GUI/Text Shader");
@@ -421,35 +421,25 @@ namespace Elixir.Mods.Categories
         }
         static Color GetESPColor(VRRig vrrig)
         {
-            switch (espSetting)
+            return espSetting switch
             {
-                case 1:
-                    return vrrig.mainSkin.material.name.Contains("fected") ? Color.red : Color.green;
-                case 2:
-                    return vrrig.playerColor;
-                case 3:
-                    return RGB.color;
-                case 4:
-                    return ColorLib.MenuMat[Theme - 1].color;
-                default:
-                    return vrrig.mainSkin.material.name.Contains("fected") ? Color.red : Color.green;
-            }
+                1 => vrrig.mainSkin.material.name.Contains("fected") ? Color.red : Color.green,
+                2 => vrrig.playerColor,
+                3 => RGB.color,
+                4 => ColorLib.MenuMat[Theme - 1].color,
+                _ => vrrig.mainSkin.material.name.Contains("fected") ? Color.red : Color.green,
+            };
         }
         static Vector3 GetTracerPosition()
         {
-            switch (tracePos)
+            return tracePos switch
             {
-                case 1:
-                    return GorillaTagger.Instance.rightHandTransform.position;
-                case 2:
-                    return GorillaTagger.Instance.leftHandTransform.position;
-                case 3:
-                    return GorillaTagger.Instance.bodyCollider.transform.position;
-                case 4:
-                    return GorillaTagger.Instance.headCollider.transform.position;
-                default:
-                    return GorillaTagger.Instance.rightHandTransform.position;
-            }
+                1 => GorillaTagger.Instance.rightHandTransform.position,
+                2 => GorillaTagger.Instance.leftHandTransform.position,
+                3 => GorillaTagger.Instance.bodyCollider.transform.position,
+                4 => GorillaTagger.Instance.headCollider.transform.position,
+                _ => GorillaTagger.Instance.rightHandTransform.position,
+            };
         }
     }
 }

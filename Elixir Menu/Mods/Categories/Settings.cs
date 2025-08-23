@@ -54,7 +54,7 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Fly Speed:"))
+                if (btn.ButtonText.Contains("Change Fly Speed:"))
                 {
                     switch (flyspeedchanger)
                     {
@@ -91,7 +91,7 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Speed Boost:"))
+                if (btn.ButtonText.Contains("Change Speed Boost:"))
                 {
                     switch (speedboostchanger)
                     {
@@ -128,7 +128,7 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change ESP Color:"))
+                if (btn.ButtonText.Contains("Change ESP Color:"))
                 {
                     switch (espSetting)
                     {
@@ -161,7 +161,7 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Tracer Position:"))
+                if (btn.ButtonText.Contains("Change Tracer Position:"))
                 {
                     switch (tracePos)
                     {
@@ -194,7 +194,7 @@ namespace Elixir.Mods.Categories
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Gun Type:"))
+                if (btn.ButtonText.Contains("Change Gun Type:"))
                 {
                     switch (gunSetting)
                     {

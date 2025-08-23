@@ -37,21 +37,21 @@ namespace Elixir.Menu
             try
             {
                 GameObject goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
-                if (goop != null)
+                if (goop != null && computer != null && wallMonitor !=null)
                 {
-                    Material goopy = goop.GetComponent<Renderer>().material;
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen").GetComponent<Renderer>().material = goopy;
-                    GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>().material = goopy;
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goopy, ref originalMat1);
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, goopy, ref originalMat2);
+                    computer.material = goop.GetComponent<Renderer>().material;
+                    wallMonitor.material = goop.GetComponent<Renderer>().material;
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goop.GetComponent<Renderer>().material, ref originalMat1!);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
-                //GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
+                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
                 //hi
                 #region MOTD
-                motdHeading.GetComponent<TextMeshPro>().text = $"Elixir | V{Elixir.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>";
-                motdHeading.GetComponent<TextMeshPro>().color = Pink;
-                motdBody.GetComponent<TextMeshPro>().color = Pink;
-                motdBody.GetComponent<TextMeshPro>().text = $"" +
+                if (motdHeading == null || motdBody == null) return;
+                motdHeading.SetText($"Elixir | V{Elixir.Initialization.PluginInfo.menuVersion}<color={hexColor1}>\n--------------------------------------------</color>");
+                motdHeading.color = Pink;
+                motdBody.color = Pink;
+                motdBody.SetText($"" +
                     $"\nThank You For Using Elixir!\n\n" +
                     $"Status: <color={hexColor1}>{status}</color>\n" +
                     $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
@@ -59,22 +59,24 @@ namespace Elixir.Menu
                     $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
                     $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
                     $"<color={hexColor1}>I Hope You Enjoy The Menu</color> \n" +
-                    $"Made by <color={hexColor1}>Menker</color>";
+                    $"Made by <color={hexColor1}>Menker</color>");
 
-                motdBody.GetComponent<TextMeshPro>().alignment = TextAlignmentOptions.Top;
+                motdBody.alignment = TextAlignmentOptions.Top;
                 #endregion
 
                 #region COC
-                cocHeading.GetComponent<TextMeshPro>().text = $"Menu Meanings<color={hexColor1}>\n-----------------------------</color>";
-                cocHeading.GetComponent<TextMeshPro>().color = Pink;
-                TextMeshPro textMeshPro2 = cocBody.GetComponent<TextMeshPro>();
-                textMeshPro2.GetComponent<TextMeshPro>().color = Pink;
-                textMeshPro2.text = $"\n[D?] - Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One";
-                textMeshPro2.alignment = TextAlignmentOptions.Top;
+                if (cocHeading == null || cocBody == null) return;
+                cocHeading.SetText($"Menu Meanings<color={hexColor1}>\n-----------------------------</color>");
+                cocHeading.color = Pink;
+
+                cocBody.color = Pink;
+                cocBody.SetText($"\n[D?] - Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One");
+                cocBody.alignment = TextAlignmentOptions.Top;
                 #endregion
 
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().text = "Elixir";
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>().color = RGB.color;
+                if (gameModeText == null) return;
+                gameModeText.SetText("Elixir");
+                gameModeText.color = RGB.color;
             }
             catch
             {
@@ -91,14 +93,14 @@ namespace Elixir.Menu
                 {
                     try
                     {
-                        if (bt.Enabled && bt.onEnable != null)
+                        if (bt.Enabled && bt.OnEnable != null)
                         {
-                            bt.onEnable.Invoke();
+                            bt.OnEnable.Invoke();
                         }
                     }
                     catch (Exception ex)
                     {
-                        UnityEngine.Debug.LogError($"Error invoking button action: {bt.buttonText}. Exception: {ex}");
+                        UnityEngine.Debug.LogError($"Error invoking button action: {bt.ButtonText}. Exception: {ex}");
                     }
                 }
 
@@ -131,8 +133,8 @@ namespace Elixir.Menu
                 UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
         }
-        public static Material originalMat1;
-        public static Material originalMat2;
+        public static Material? originalMat1;
+        public static Material? originalMat2;
         public static void ChangeBoardMaterial(string parentPath, string boardID, int targetIndex, Material newMaterial, ref Material originalMat)
         {
             GameObject parent = GameObject.Find(parentPath);
@@ -164,18 +166,21 @@ namespace Elixir.Menu
             trailObject.transform.position = obj.transform.position;
             trailObject.transform.SetParent(obj.transform);
             TrailRenderer trailRenderer = trailObject.AddComponent<TrailRenderer>();
-            trailRenderer.material = new Material(Shader.Find("Unlit/Color"));
-            trailRenderer.material.color = clr;
+            trailRenderer.material = new Material(Shader.Find("Unlit/Color")) { color = clr};
             trailRenderer.time = 0.5f;
             trailRenderer.startWidth = 0.025f;
             trailRenderer.endWidth = 0f;
             trailRenderer.startColor = clr;
             trailRenderer.endColor = clr2;
         }
-        static GameObject motdHeading;
-        static GameObject motdBody;
-        static GameObject cocHeading;
-        static GameObject cocBody;
+        static TextMeshPro? motdHeading;
+        static TextMeshPro? motdBody;
+        static TextMeshPro? cocHeading;
+        static TextMeshPro? cocBody;
+        static TextMeshPro? gameModeText;
+
+        static Renderer? computer;
+        static Renderer? wallMonitor;
         public void Awake()
         {
             ResourceLoader.LoadResources();
@@ -184,10 +189,14 @@ namespace Elixir.Menu
             pollerInstance = ControllerInputPoller.instance;
             thirdPersonCamera = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera");
             cm = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera/CM vcam1");
-            motdHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
-            motdBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText");
-            cocHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText");
-            cocBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData");
+
+            motdHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText").GetComponent<TextMeshPro>();
+            motdBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>();
+            cocHeading = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText").GetComponent<TextMeshPro>();
+            cocBody = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData").GetComponent<TextMeshPro>();
+            gameModeText = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text").GetComponent<TextMeshPro>();
+            computer = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen").GetComponent<Renderer>();
+            wallMonitor = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>();
 
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("ElixirMenu", true);
@@ -213,11 +222,13 @@ namespace Elixir.Menu
             }
         }
 
-        static string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
+        static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try
             {
+                if (playerInstance == null || pollerInstance == null || thirdPersonCamera == null) { return; }
+
                 if (PCMenuOpen && !InMenuCondition && !pollerInstance.leftControllerPrimaryButton && !pollerInstance.rightControllerPrimaryButton && !menuOpen)
                 {
                     InPcCondition = true;
@@ -226,11 +237,11 @@ namespace Elixir.Menu
                     if (menuObj == null)
                     {
                         Draw();
-                        AddButtonClicker(thirdPersonCamera?.transform);
+                        AddButtonClicker(thirdPersonCamera.transform);
                     }
                     else
                     {
-                        AddButtonClicker(thirdPersonCamera?.transform);
+                        AddButtonClicker(thirdPersonCamera.transform);
 
                         if (thirdPersonCamera != null)
                         {
@@ -243,7 +254,7 @@ namespace Elixir.Menu
                                     Ray ray = thirdPersonCamera.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue());
                                     if (Physics.Raycast(ray, out RaycastHit hit))
                                     {
-                                        BtnCollider btnCollider = hit.collider?.GetComponent<BtnCollider>();
+                                        BtnCollider? btnCollider = hit.collider.GetComponent<BtnCollider>();
                                         if (btnCollider != null && clickerObj != null)
                                         {
                                             btnCollider.OnTriggerEnter(clickerObj.GetComponent<Collider>());
@@ -285,7 +296,7 @@ namespace Elixir.Menu
                         PositionMenuForHand();
                     }
                 }
-                else if (menuObj != null && InMenuCondition)
+                else if (menuObj != null && InMenuCondition && currentMenuRigidbody != null)
                 {
                     InMenuCondition = false;
                     AddRigidbodyToMenu();
@@ -356,7 +367,8 @@ namespace Elixir.Menu
         }
         private static void CreateBackground()
         {
-            // Background
+            if (menuObj == null) return;
+
             background = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Destroy(background.GetComponent<Rigidbody>());
             Destroy(background.GetComponent<BoxCollider>());
@@ -382,7 +394,7 @@ namespace Elixir.Menu
 
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Theme:"))
+                if (btn.ButtonText.Contains("Change Theme:"))
                 {
                     switch (Theme)
                     {
@@ -480,7 +492,7 @@ namespace Elixir.Menu
             }
             foreach (ButtonHandler.Button btn in ModButtons.buttons)
             {
-                if (btn.buttonText.Contains("Change Layout:"))
+                if (btn.ButtonText.Contains("Change Layout:"))
                 {
                     switch (Laytou)
                     {
@@ -504,7 +516,7 @@ namespace Elixir.Menu
         #endregion
         public static void AddDisconnectButton()
         {
-            if (toggledisconnectButton)
+            if (toggledisconnectButton && menuObj != null && canvasObj != null)
             {
                 // Disconnect Button
                 disconnectButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -571,7 +583,8 @@ namespace Elixir.Menu
         }
         private static void CreateMenuCanvasAndTitle()
         {
-            // Menu Canvas
+            if (menuObj == null) return;
+            
             canvasObj = new GameObject();
             canvasObj.transform.parent = menuObj.transform;
             canvasObj.name = "canvas";
@@ -601,7 +614,8 @@ namespace Elixir.Menu
         }
         public static void AddTitleAndFPSCounter()
         {
-            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1.0f / Time.deltaTime) : 0;
+            if (title == null) return;
+
             title.fontStyle = FontStyle.Bold;
             title.font = font;
 
@@ -610,7 +624,8 @@ namespace Elixir.Menu
         }
         public static void AddModButtons(float offset, ButtonHandler.Button button)
         {
-            // Mod Buttons
+            if (menuObj == null || canvasObj == null) return;
+
             ModButton = ButtonPool.GetButton();
             Rigidbody btnRigidbody = ModButton.GetComponent<Rigidbody>();
             if (btnRigidbody != null) { Destroy(btnRigidbody); }
@@ -627,7 +642,7 @@ namespace Elixir.Menu
             titleObj.transform.SetParent(canvasObj.transform, false);
             titleObj.transform.localScale = new Vector3(0.95f, 0.95f, 1f);
             Text title = titleObj.GetComponent<Text>();
-            title.text = button.buttonText;
+            title.text = button.ButtonText;
             title.font = font;
             title.fontStyle = FontStyle.Bold;
             title.color = textclr;
@@ -661,6 +676,8 @@ namespace Elixir.Menu
         }
         public static void AddPageButton(string button)
         {
+            if (menuObj == null || canvasObj == null) return;
+
             if (Laytou == 1)
             {
                 PageButtons = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -789,7 +806,7 @@ namespace Elixir.Menu
         }
         public static void AddReturnButton()
         {
-            if (currentPage != Category.Home)
+            if (currentPage != Category.Home && menuObj != null && canvasObj != null)
             {
                 if (Laytou == 2)
                 {
@@ -953,45 +970,52 @@ namespace Elixir.Menu
         public static bool bark = false;
         private static void PositionMenuForHand()
         {
-            if (bark)
+            if (menuObj == null) return;
+            if (playerInstance != null)
             {
-                menuObj.transform.position = GorillaTagger.Instance.headCollider.transform.position + GorillaTagger.Instance.headCollider.transform.forward * 0.5f + GorillaTagger.Instance.headCollider.transform.up * -0.1f;
-                menuObj.transform.LookAt(GorillaTagger.Instance.headCollider.transform);
-                Vector3 rotModify = menuObj.transform.rotation.eulerAngles;
-                rotModify += new Vector3(-90f, 0f, -90f);
-                menuObj.transform.rotation = Quaternion.Euler(rotModify);
-            }
-            else if (rightHandedMenu)
-            {
-                menuObj.transform.position = playerInstance.rightControllerTransform.position;
-                Vector3 rotation = playerInstance.rightControllerTransform.rotation.eulerAngles;
-                rotation += new Vector3(0f, 0f, 180f);
-                menuObj.transform.rotation = Quaternion.Euler(rotation);
-            }
-            else
-            {
-                menuObj.transform.position = playerInstance.leftControllerTransform.position;
-                menuObj.transform.rotation = playerInstance.leftControllerTransform.rotation;
+                if (bark)
+                {
+                    menuObj.transform.position = GorillaTagger.Instance.headCollider.transform.position + GorillaTagger.Instance.headCollider.transform.forward * 0.5f + GorillaTagger.Instance.headCollider.transform.up * -0.1f;
+                    menuObj.transform.LookAt(GorillaTagger.Instance.headCollider.transform);
+                    Vector3 rotModify = menuObj.transform.rotation.eulerAngles;
+                    rotModify += new Vector3(-90f, 0f, -90f);
+                    menuObj.transform.rotation = Quaternion.Euler(rotModify);
+                }
+                else if (rightHandedMenu)
+                {
+                    menuObj.transform.position = playerInstance.rightControllerTransform.position;
+                    Vector3 rotation = playerInstance.rightControllerTransform.rotation.eulerAngles;
+                    rotation += new Vector3(0f, 0f, 180f);
+                    menuObj.transform.rotation = Quaternion.Euler(rotation);
+                }
+                else
+                {
+                    menuObj.transform.position = playerInstance.leftControllerTransform.position;
+                    menuObj.transform.rotation = playerInstance.leftControllerTransform.rotation;
+                }
             }
         }
         private static void PositionMenuForKeyboard()
         {
-            if (thirdPersonCamera != null)
+            if (thirdPersonCamera != null && menuObj != null)
             {
-                thirdPersonCamera.transform.position = new Vector3(-65.3f, 12.5f, -82.5692f);
-                thirdPersonCamera.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                menuObj.transform.SetParent(thirdPersonCamera.transform, true);
+                if (thirdPersonCamera != null)
+                {
+                    thirdPersonCamera.transform.position = new Vector3(-65.3f, 12.5f, -82.5692f);
+                    thirdPersonCamera.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    menuObj.transform.SetParent(thirdPersonCamera.transform, true);
 
-                Vector3 headPosition = thirdPersonCamera.transform.position;
-                Quaternion headRotation = thirdPersonCamera.transform.rotation;
-                float offsetDistance = 0.65f;
-                Vector3 offsetPosition = headPosition + headRotation * Vector3.forward * offsetDistance;
-                menuObj.transform.position = offsetPosition;
+                    Vector3 headPosition = thirdPersonCamera.transform.position;
+                    Quaternion headRotation = thirdPersonCamera.transform.rotation;
+                    float offsetDistance = 0.65f;
+                    Vector3 offsetPosition = headPosition + headRotation * Vector3.forward * offsetDistance;
+                    menuObj.transform.position = offsetPosition;
 
-                Vector3 directionToHead = headPosition - menuObj.transform.position;
-                menuObj.transform.rotation = Quaternion.LookRotation(directionToHead, Vector3.up);
-                menuObj.transform.Rotate(Vector3.up, -90.0f);
-                menuObj.transform.Rotate(Vector3.right, -90.0f);
+                    Vector3 directionToHead = headPosition - menuObj.transform.position;
+                    menuObj.transform.rotation = Quaternion.LookRotation(directionToHead, Vector3.up);
+                    menuObj.transform.Rotate(Vector3.up, -90.0f);
+                    menuObj.transform.Rotate(Vector3.right, -90.0f);
+                }
             }
         }
 

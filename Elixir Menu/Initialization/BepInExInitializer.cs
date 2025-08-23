@@ -7,7 +7,7 @@ namespace Elixir.Initialization
     [BepInPlugin(menuGUID, menuName, menuVersion)]
     public class BepInExInitializer : BaseUnityPlugin
     {
-        public static BepInEx.Logging.ManualLogSource LoggerInstance;
+        public static BepInEx.Logging.ManualLogSource? LoggerInstance;
 
         void Awake()
         {
