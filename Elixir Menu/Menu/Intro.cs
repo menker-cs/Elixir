@@ -18,7 +18,7 @@ namespace Elixir.Menu
         void Start()
         {
             StartCoroutine(LoadAndPlay(
-                "https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/goop.png"
+                "https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/goop.png"
             ));
         }
 

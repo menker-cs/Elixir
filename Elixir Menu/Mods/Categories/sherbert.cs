@@ -18,7 +18,7 @@ namespace Elixir.Mods.Categories
                 {
                     sherbert = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     sherbert.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-                    sherbert.GetComponent<Renderer>().material = ColorLib.Url2Mat("https://cdn.discordapp.com/attachments/1405798653981102160/1405798654362648638/vdlg8tc7edz91.jpg?ex=68a02385&is=689ed205&hm=cd944236eada3a32fd5954b7806c17305502d58878b633e7937dc2eeccf8e2f7&");
+                    sherbert.GetComponent<Renderer>().material = ColorLib.Url2Mat("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/image.png");
 
                     int sherb = LayerMask.NameToLayer("sherbert");
                     if (sherb == -1) sherb = 8;

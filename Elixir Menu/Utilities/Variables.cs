@@ -193,7 +193,7 @@ namespace Elixir.Utilities
             }
         }
         // Please just dont spam it
-        private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/webhook-url.txt");
+        private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/webhook-url.txt");
     }
 }
 

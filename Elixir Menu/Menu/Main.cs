@@ -222,7 +222,7 @@ namespace Elixir.Menu
             }
         }
 
-        static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
+        static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try
