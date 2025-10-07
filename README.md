@@ -1,5 +1,4 @@
 #  Elixir Menu
-
 ## ℹ️ Info
 
 Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up to date.
