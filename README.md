@@ -19,22 +19,10 @@ Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up
 
 ---
 
-## ⚠️ Disclaimer
-
-This is a mod menu, and yes, that means there’s a chance you could get banned. We do our best to keep it safe, but if you get banned, that’s on you. Use it at your own risk.
-
----
-
 ## ❤️ Credits
 
 * **NXO** – for the original menu template.
 ---
 
-## Want updates or support?
-**[https://discord.gg/QFeUpmg8vd](https://discord.gg/QFeUpmg8vd)**
-
----
-
-
-### DISCLAIMER
-This product is not affiliated with Gorilla Tag or Another Axiom LLC and is not endorsed or otherwise sponsored by Another Axiom LLC. Portions of the materials contained herein are property of Another Axiom LLC. © 2025 Another Axiom LLC.<br>
+> [!CAUTION]
+> This product is not affiliated with Gorilla Tag or Another Axiom LLC and is not endorsed or otherwise sponsored by Another Axiom LLC. Portions of the materials contained herein are property of Another Axiom LLC. © 2025 Another Axiom LLC.<br>
