@@ -24,4 +24,4 @@ Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up
 ---
 
 > [!CAUTION]
-> This product is not affiliated with Gorilla Tag or Another Axiom LLC and is not endorsed or otherwise sponsored by Another Axiom LLC. Portions of the materials contained herein are property of Another Axiom LLC. © 2025 Another Axiom LLC.<br>
+> This is a mod menu, and yes, that means there’s a chance you could get banned. We do our best to keep it safe, but if you get banned, that’s on you. Use it at your own risk.
