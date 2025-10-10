@@ -6,7 +6,7 @@
 
 [![Version](https://img.shields.io/github/v/release/menker-cs/Elixir?display_name=release&style=for-the-badge&label=Version&color=%23983DFF)](https://github.com/menker-cs/Elixir/releases)
 ![Downloads](https://img.shields.io/github/downloads/menker-cs/Elixir/total?style=for-the-badge&color=%23983DFF&cacheBust=1)
-
+[![Discord](https://img.shields.io/discord/1363396224547553444?style=for-the-badge&color=%23983DFF)](https://discord.gg/QFeUpmg8vd)
 ---
 
 ## About Elixir
