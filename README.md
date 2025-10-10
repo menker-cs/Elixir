@@ -61,4 +61,4 @@ Once loaded in-game:
 > [!CAUTION]
 > This project is not affiliated with Another Axiom or Gorilla Tag.
 > All trademarks and copyrights belong to their respective owners.
-> Use responsibly.
+> Any bans that may occure are not are fault as it was your decision to use the menu and by doing that took the risk of any potential bans.
