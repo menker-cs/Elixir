@@ -24,17 +24,13 @@ Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up
 
 * **💬 Join the Community:**
   Got questions or need help? Hop into our Discord and chat with the team or other users.
-
-* 👉 **[Join Here](https://discord.gg/QFeUpmg8vd)**
-
+> [!TIP]
+> If you have any questions about the menu feel free to join our Discord server and ask us as that's where we are most active.
+> **[Join Here](https://discord.gg/QFeUpmg8vd)**
 
 ---
 
 ## 🛠️ Installation
-
-### Prerequisites
-- Gorilla Tag installed
-- BepInEx Correctly Setup
 
 ### Instructions
 
@@ -42,6 +38,11 @@ Welcome to **Elixir Menu** – a mod menu made to be simple, free, and always up
 2. Download the `.dll` file from the most recent release 
 3. Place the file into your BepInEx `plugins` folder (e.g., `C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\BepInEx\plugins`).  
 4. Launch the game.
+   
+> [!NOTE]
+> To use the menu you must have the following installed:
+> * Gorilla Tag Installed
+> * BepInEx Correctly Setup
 
 ---
 
@@ -53,7 +54,9 @@ Once loaded in-game:
 - Navigate using the page buttons and the category system
 - Enable the mod you want to use
 - Have Fun!
-
+  
+> [!WARNING]
+> We highly recommend that you do not use mods like Utilla, Extenject, or Bepinject because they can interfere with the menu which could potentially lead to being banned.
 ---
 > [!CAUTION]
 > This project is not affiliated with Another Axiom or Gorilla Tag.
