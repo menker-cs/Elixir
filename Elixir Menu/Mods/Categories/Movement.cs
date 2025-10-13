@@ -21,7 +21,7 @@ namespace Elixir.Mods.Categories
             float currentSpeed = 5;
             Transform bodyTransform = Camera.main.transform;
             GorillaTagger.Instance.rigidbody.useGravity = false;
-            GorillaTagger.Instance.rigidbody.velocity = Vector3.zero;
+            GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
             if (UnityInput.Current.GetKey(KeyCode.LeftShift))
             {
                 currentSpeed *= 2.5f;
@@ -76,7 +76,7 @@ namespace Elixir.Mods.Categories
             finalMovement *= instance.scale * flyspeedchangerspeed;
 
             Rigidbody rigidbody = instance.bodyCollider.attachedRigidbody;
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, finalMovement, 0.1287f);
+            rigidbody.linearVelocity = Vector3.Lerp(rigidbody.linearVelocity, finalMovement, 0.1287f);
 
             float gravityCompensation = 9.81f;
             rigidbody.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
@@ -86,7 +86,7 @@ namespace Elixir.Mods.Categories
             if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
         public static void TriggerFly()
@@ -94,7 +94,7 @@ namespace Elixir.Mods.Categories
             if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
         public static void NoclipFly()
@@ -105,7 +105,7 @@ namespace Elixir.Mods.Categories
                 {
                     collider.enabled = false;
                     GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
-                    GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
                 }
                 else
                 {
@@ -122,17 +122,13 @@ namespace Elixir.Mods.Categories
             if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position += forward * Time.deltaTime * 25;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
             if (ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.Y))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position -= forward * Time.deltaTime * 25;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
-        }
-        public static void Gravity(float g)
-        {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (g / Time.deltaTime)), ForceMode.Acceleration);
         }
         public static void JupiterWalk()
         {
@@ -140,22 +136,20 @@ namespace Elixir.Mods.Categories
         }
         public static void Noclip()
         {
-            foreach (MeshCollider collider in Resources.FindObjectsOfTypeAll<MeshCollider>())
-            {
-                if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
-                {
-                    collider.enabled = false;
-                }
-                else
-                {
-                    collider.enabled = true;
-                }
-            }
+            DoNoclip(rightTrigger() || UnityInput.Current.GetKey(KeyCode.T));
         }
         public static void Speedboost()
         {
             GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
-            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed + .5f;
+            GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed - .5f;
+        }
+        public static void GSpeedboost()
+        { 
+            if (rightGrip())
+            {
+                GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = speedboostchangerspeed;
+                GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = speedboostchangerspeed - .5f;
+            }
         }
         public static void Platforms(ref GameObject? platform, bool grabbing, Transform hand, bool invis, bool loong)
         {
@@ -167,6 +161,7 @@ namespace Elixir.Mods.Categories
                     platform.transform.localScale = loong ? new Vector3(0.80f, 0.015f, 0.28f) : new Vector3(0.28f, 0.015f, 0.28f);
                     platform.transform.position = hand.position + new Vector3(0f, -0.02f, 0f);
                     platform.transform.rotation = hand.rotation * Quaternion.Euler(0f, 0f, -90f);
+
                     platform.GetComponent<Renderer>().material.shader = Shader.Find("UI/Default");
                     platform.GetComponent<Renderer>().material = background?.GetComponent<Renderer>().material;
                     if (invis) { platform.GetComponent<Renderer>().enabled = false; }
@@ -221,24 +216,32 @@ namespace Elixir.Mods.Categories
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position = GunTemplate.spherepointer!.transform.position;
                 GorillaTagger.Instance.transform.position = GunTemplate.spherepointer.transform.position;
-                GameObject.Destroy(spherepointer, Time.deltaTime);
+
+                DoNoclip(true);
             }, false);
+            { DoNoclip(false); }
         }
 
-        public static void NoTagFreeze()
+        public static void TagFreeze(bool b)
         {
-            GorillaLocomotion.GTPlayer.Instance.disableMovement = false;
+            GorillaLocomotion.GTPlayer.Instance.disableMovement = b;
         }
-        public static void TagFreeze()
+        public static void TagFreeze1()
+        {
+            ButtonHandler.Button button = FindBtn("No Tag Freeze");
+            button.Enabled = false;
+            TagFreeze(true);
+        }
+        public static ButtonHandler.Button FindBtn(string text)
         {
             foreach (ButtonHandler.Button button in ModButtons.buttons)
             {
-                if (button.ButtonText == "No Tag Freeze")
+                if (button.ButtonText.Contains(text))
                 {
-                    button.Enabled = false;
-                    GorillaLocomotion.GTPlayer.Instance.disableMovement = true;
+                    return button;
                 }
             }
+            return null;
         }
         public static void CarMonkey()
         {
@@ -249,12 +252,12 @@ namespace Elixir.Mods.Categories
             if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position += forward * Time.deltaTime * 25;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
             if (ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.Y))
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position -= forward * Time.deltaTime * 25;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
         public static void UpAndDown()
@@ -273,7 +276,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position = LockedPlayer!.transform.position;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }, true);
         }
         public static void HoverGun()
@@ -287,12 +290,12 @@ namespace Elixir.Mods.Categories
         {
             if(rightGrip())
             {
-                GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.rightHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
+                GorillaTagger.Instance.rigidbody.linearVelocity += GorillaTagger.Instance.rightHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
                 GorillaTagger.Instance.StartVibration(false, 1f, 1f);
             }
             if (leftGrip())
             {
-                GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.leftHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
+                GorillaTagger.Instance.rigidbody.linearVelocity += GorillaTagger.Instance.leftHandTransform.gameObject.transform.forward * 8.5f * Time.deltaTime;
                 GorillaTagger.Instance.StartVibration(true, 1f, 1f);
             }
         }
@@ -300,7 +303,7 @@ namespace Elixir.Mods.Categories
         {
             if (rightTrigger())
             {
-                GorillaTagger.Instance.rigidbody.velocity += GorillaTagger.Instance.headCollider.gameObject.transform.forward * 40 * Time.deltaTime;
+                GorillaTagger.Instance.rigidbody.linearVelocity += GorillaTagger.Instance.headCollider.gameObject.transform.forward * 40 * Time.deltaTime;
             }
         }
         public static void HandFly()
@@ -308,7 +311,7 @@ namespace Elixir.Mods.Categories
             if (rightPrimary())
             {
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.transform.forward * Time.deltaTime * flyspeedchangerspeed;
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
         public static void Hertz(int hz)
@@ -326,28 +329,28 @@ namespace Elixir.Mods.Categories
 
                     if (dis1 < 0.2f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.rightHandTransform.forward * 10f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.rightHandTransform.forward * 10f;
                     }
                     if (dis2 < 0.2f)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += vrrig.leftHandTransform.forward * 10f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.leftHandTransform.forward * 10f;
                     }
                 }
             }
         }
         public static void Velocity(float d)
         {
-            GorillaTagger.Instance.rigidbody.drag = d;
+            GorillaTagger.Instance.rigidbody.linearDamping = d;
         }
         public static void SuperMonke()
         {
+            Gravity(9.81f);
+
             if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
             {
-                Gravity(9.81f);
-                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
                 GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
             }
-            else { GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = true; }
         }
         public static void DashJump(bool Dash)
         {
@@ -358,13 +361,13 @@ namespace Elixir.Mods.Categories
                     dashDelay = Time.time + 2.5f;
                     if (Dash)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * 12f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * 12f;
                     }
                     else
                     {
                         Vector3 flinger = Random.onUnitSphere;
                         flinger.y = Mathf.Clamp(flinger.y, 0.5f, 1.5f);
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().velocity += flinger.normalized * 12f;
+                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += flinger.normalized * 12f;
                     }
                 }
             }

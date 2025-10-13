@@ -44,7 +44,6 @@ namespace Elixir.Menu
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goop.GetComponent<Renderer>().material, ref originalMat1!);
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 13, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/ModIOFeaturedMapPoster/CanvasScheduler/ModIOPosterCanvas (1)").GetComponent<Renderer>().material = fmby;
                 //hi
                 #region MOTD
                 if (motdHeading == null || motdBody == null) return;
@@ -53,7 +52,7 @@ namespace Elixir.Menu
                 motdBody.color = Pink;
                 motdBody.SetText($"" +
                     $"\nThank You For Using Elixir!\n\n" +
-                    $"Status: <color={hexColor1}>{status}</color>\n" +
+                    $"Status: <color={hexColor1}>Undetected</color>\n" +
                     $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
                     $"Current Ping: <color={hexColor1}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
                     $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
@@ -78,8 +77,13 @@ namespace Elixir.Menu
                 gameModeText.SetText("Elixir");
                 gameModeText.color = RGB.color;
             }
-            catch
+            catch (NullReferenceException ex)
             {
+                UnityEngine.Debug.LogError($"NullReferenceException: {ex.Message}\nStack Trace: {ex.StackTrace}");
+            }
+            catch (Exception ex)
+            {
+                UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
             try
             {
@@ -199,30 +203,12 @@ namespace Elixir.Menu
             wallMonitor = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg").GetComponent<Renderer>();
 
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
-            table.Add("ElixirMenu", true);
+            table.Add("Elixir", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
-            SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Elixir**!");
-        }
-        static int i = 0;
-        [HarmonyPrefix]
-        public static void Update()
-        {
-            if (tracker)
-            {
-                if (PhotonNetwork.InRoom && i < 1)
-                {
-                    i++;
-                    SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has joined code: **{PhotonNetwork.CurrentRoom.Name}**, Players In Lobby: " + PhotonNetwork.CurrentRoom.PlayerCount + "/10");
-                }
-                if (!PhotonNetwork.InRoom && i >= 1)
-                {
-                    i = 0;
-                    SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has left the previous code");
-                }
-            }
+            //SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Elixir**!");
         }
 
-        static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/status.txt");
+        //static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try
@@ -288,7 +274,6 @@ namespace Elixir.Menu
                     if (menuObj == null)
                     {
                         Draw();
-                        AddRigidbodyToMenu();
                         AddButtonClicker(rightHandedMenu ? playerInstance.leftControllerTransform : playerInstance.rightControllerTransform);
                     }
                     else
@@ -296,19 +281,10 @@ namespace Elixir.Menu
                         PositionMenuForHand();
                     }
                 }
-                else if (menuObj != null && InMenuCondition && currentMenuRigidbody != null)
+                else if (menuObj != null && InMenuCondition)
                 {
                     InMenuCondition = false;
-                    AddRigidbodyToMenu();
-
-                    Vector3 currentVelocity = rightHandedMenu ? playerInstance.rightHandCenterVelocityTracker.GetAverageVelocity(true, 0f, false) : playerInstance.leftHandCenterVelocityTracker.GetAverageVelocity(true, 0f, false);
-                    if (Vector3.Distance(currentVelocity, previousVelocity) > velocityThreshold)
-                    {
-                        currentMenuRigidbody.velocity = currentVelocity;
-                        previousVelocity = currentVelocity;
-                    }
-
-                    CleanupMenu(1);
+                    CleanupMenu(0);
                 }
             }
             catch (Exception ex)
@@ -568,7 +544,7 @@ namespace Elixir.Menu
 
             tmp.text =
                 $"<color={hexColor}>Elixir Menu</color>\n" +
-                $"<size=2>Status: <color={hexColor}>{status}</color>\n" +
+                $"<size=2>Status: <color={hexColor}>Undetected</color>\n" +
                 $"VERSION: <color={hexColor}>{menuVersion}</color></size>\n" +
                 $"<size=1.5>Made By <color={hexColor}>Menker</color>";
 
@@ -1016,19 +992,6 @@ namespace Elixir.Menu
                     menuObj.transform.Rotate(Vector3.up, -90.0f);
                     menuObj.transform.Rotate(Vector3.right, -90.0f);
                 }
-            }
-        }
-
-        public static void AddRigidbodyToMenu()
-        {
-            if (currentMenuRigidbody == null && menuObj != null)
-            {
-                currentMenuRigidbody = menuObj.GetComponent<Rigidbody>();
-                if (currentMenuRigidbody == null)
-                {
-                    currentMenuRigidbody = menuObj.AddComponent<Rigidbody>();
-                }
-                currentMenuRigidbody.useGravity = grav;
             }
         }
     }

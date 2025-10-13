@@ -272,6 +272,7 @@ namespace Elixir.Mods.Categories
                         $"<color={hexColor}>{vrrig.OwningNetPlayer.NickName}</color>\n" +
                         $"ID: <color={hexColor}>{vrrig.Creator.UserId}</color>\n" +
                         $"Is Master: <color={hexColor}>{IsUserMaster(vrrig)}</color>\n" +
+                        $"Platform: <color={hexColor}>{VrrigPlatform(vrrig)}</color>\n" +
                         $"Actor Number: <color={hexColor}>{vrrig.Creator.ActorNumber}</color>\n" +
                         $"Tagged: <color={hexColor}>{RigIsInfected(vrrig)}</color>\n" +
                         $"FPS: <color={fpsColor}>{fpps}</color>";
@@ -302,7 +303,6 @@ namespace Elixir.Mods.Categories
             textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
             textMeshPro.fontSize = 6.5f;
             textMeshPro.alignment = TextAlignmentOptions.Right;
-            textMeshPro.enableWordWrapping = false;
             textMeshPro.richText = true;
 
             Transform head = GTPlayer.Instance.headCollider.transform;

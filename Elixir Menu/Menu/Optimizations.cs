@@ -95,7 +95,7 @@ namespace Elixir.Menu
                 {
                     if (!textObj)
                     {
-                        textObj.SetActive(false);
+                        textObj!.SetActive(false);
                     }
                 }
             }
@@ -145,7 +145,6 @@ namespace Elixir.Menu
         {
             DestroyObject(ref menuObj, delay);
             DestroyObject(ref clickerObj);
-            currentMenuRigidbody = null;
         }
 
         public static void ClearMenuObjects()
@@ -154,7 +153,6 @@ namespace Elixir.Menu
             DestroyObject(ref menuObj);
             DestroyObject(ref background);
             DestroyObject(ref canvasObj);
-            currentMenuRigidbody = null;
         }
 
         public static void RefreshMenu()

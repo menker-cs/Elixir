@@ -9,14 +9,15 @@
     ".NETStandard,Version=v2.1/": {
       "Elixir/1.0.0": {
         "dependencies": {
-          "AssemblyPublicizer": "1.0.2",
           "BepInEx.AssemblyPublicizer.MSBuild": "0.4.3",
+          "DiscordRichPresence": "1.6.1.70",
           "0Harmony": "2.9.0.0",
           "Assembly-CSharp-firstpass": "0.0.0.0",
           "BepInEx": "5.4.23.3",
           "BepInEx.Harmony": "2.0.0.0",
           "BepInEx.Preloader": "5.4.23.3",
-          "Cinemachine": "0.0.0.0",
+          "Fusion.Realtime": "2.0.6.0",
+          "Fusion.Runtime": "2.0.6.0",
           "HarmonyXInterop": "1.0.0.0",
           "Mono.Cecil": "0.10.4.0",
           "Mono.Cecil.Mdb": "0.10.4.0",
@@ -24,15 +25,24 @@
           "Mono.Cecil.Rocks": "0.10.4.0",
           "MonoMod.RuntimeDetour": "22.1.29.1",
           "MonoMod.Utils": "22.1.29.1",
-          "Newtonsoft.Json": "13.0.0.0",
-          "Oculus.AudioManager": "0.0.0.0",
+          "Oculus.Haptics": "0.0.0.0",
           "Oculus.Interaction": "0.0.0.0",
           "Oculus.Interaction.OVR": "0.0.0.0",
           "Oculus.Interaction.OVR.Samples": "0.0.0.0",
-          "Oculus.LipSync": "0.0.0.0",
+          "Oculus.Interaction.Samples": "0.0.0.0",
+          "Oculus.Interaction.UnityXR": "0.0.0.0",
           "Oculus.Platform": "0.0.0.0",
-          "Oculus.Spatializer": "0.0.0.0",
           "Oculus.VR": "0.0.0.0",
+          "Photon3Unity3D": "4.1.8.15",
+          "PhotonRealtime": "0.0.0.0",
+          "PhotonUnityNetworking": "0.0.0.0",
+          "PhotonUnityNetworking.Utilities": "0.0.0.0",
+          "PhotonVoice.API": "0.0.0.0",
+          "PhotonVoice": "0.0.0.0",
+          "PhotonVoice.Fusion": "0.0.0.0",
+          "PhotonVoice.PUN": "0.0.0.0",
+          "PlayFab": "0.0.0.0",
+          "SteamVR": "0.0.0.0",
           "SteamVR_Actions": "0.0.0.0",
           "TechniePhysicsCreator": "0.0.0.0",
           "Unity.Addressables": "0.0.0.0",
@@ -41,23 +51,30 @@
           "Unity.Animation.Rigging.DocCodeExamples": "0.0.0.0",
           "Unity.Burst": "0.0.0.0",
           "Unity.Burst.Unsafe": "4.0.5.0",
+          "Unity.Cinemachine": "0.0.0.0",
           "Unity.Collections": "0.0.0.0",
           "Unity.Collections.LowLevel.ILSupport": "0.0.0.0",
           "Unity.Formats.Fbx.Runtime": "0.0.0.0",
-          "Unity.InputSystem": "1.6.1.0",
+          "Unity.InputSystem": "1.14.0.0",
           "Unity.InputSystem.ForUI": "0.0.0.0",
-          "Unity.Mathematics": "1.0.0.0",
+          "Unity.Mathematics": "0.0.0.0",
           "Unity.MemoryProfiler": "0.0.0.0",
+          "Unity.Multiplayer.Center.Common": "0.0.0.0",
           "Unity.ProBuilder.Csg": "0.0.0.0",
           "Unity.ProBuilder": "0.0.0.0",
           "Unity.ProBuilder.KdTree": "0.0.0.0",
           "Unity.ProBuilder.Poly2Tri": "0.0.0.0",
           "Unity.ProBuilder.Stl": "0.0.0.0",
           "Unity.Profiling.Core": "0.0.0.0",
+          "Unity.Rendering.LightTransport.Runtime": "0.0.0.0",
           "Unity.RenderPipeline.Universal.ShaderLibrary": "0.0.0.0",
           "Unity.RenderPipelines.Core.Runtime": "0.0.0.0",
+          "Unity.RenderPipelines.Core.Runtime.Shared": "0.0.0.0",
           "Unity.RenderPipelines.Core.ShaderLibrary": "0.0.0.0",
+          "Unity.RenderPipelines.GPUDriven.Runtime": "0.0.0.0",
           "Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary": "0.0.0.0",
+          "Unity.RenderPipelines.Universal.2D.Runtime": "0.0.0.0",
+          "Unity.RenderPipelines.Universal.Config.Runtime": "0.0.0.0",
           "Unity.RenderPipelines.Universal.Runtime": "0.0.0.0",
           "Unity.RenderPipelines.Universal.Shaders": "0.0.0.0",
           "Unity.ResourceManager": "0.0.0.0",
@@ -65,13 +82,20 @@
           "Unity.Splines": "0.0.0.0",
           "Unity.TextMeshPro": "0.0.0.0",
           "Unity.Timeline": "1.0.0.0",
+          "Unity.VisualEffectGraph.Runtime": "0.0.0.0",
           "Unity.XR.CoreUtils": "0.0.0.0",
           "Unity.XR.Interaction.Toolkit": "0.0.0.0",
           "Unity.XR.Management": "0.0.0.0",
-          "Unity.XR.Oculus": "0.0.0.0",
           "Unity.XR.OpenVR": "0.0.0.0",
+          "Unity.XR.OpenXR": "0.0.0.0",
+          "Unity.XR.OpenXR.Features.ConformanceAutomation": "0.0.0.0",
+          "Unity.XR.OpenXR.Features.MetaQuestSupport": "0.0.0.0",
+          "Unity.XR.OpenXR.Features.MockRuntime": "0.0.0.0",
+          "Unity.XR.OpenXR.Features.OculusQuestSupport": "0.0.0.0",
+          "Unity.XR.OpenXR.Features.RuntimeDebugger": "0.0.0.0",
           "UnityEngine.AccessibilityModule": "0.0.0.0",
           "UnityEngine.AIModule": "0.0.0.0",
+          "UnityEngine.AMDModule": "0.0.0.0",
           "UnityEngine.AndroidJNIModule": "0.0.0.0",
           "UnityEngine.AnimationModule": "0.0.0.0",
           "UnityEngine.ARModule": "0.0.0.0",
@@ -88,23 +112,28 @@
           "UnityEngine.DSPGraphModule": "0.0.0.0",
           "UnityEngine.GameCenterModule": "0.0.0.0",
           "UnityEngine.GIModule": "0.0.0.0",
+          "UnityEngine.GraphicsStateCollectionSerializerModule": "0.0.0.0",
           "UnityEngine.GridModule": "0.0.0.0",
+          "UnityEngine.HierarchyCoreModule": "0.0.0.0",
           "UnityEngine.HotReloadModule": "0.0.0.0",
           "UnityEngine.ImageConversionModule": "0.0.0.0",
           "UnityEngine.IMGUIModule": "0.0.0.0",
+          "UnityEngine.InputForUIModule": "0.0.0.0",
           "UnityEngine.InputLegacyModule": "0.0.0.0",
           "UnityEngine.InputModule": "0.0.0.0",
           "UnityEngine.JSONSerializeModule": "0.0.0.0",
           "UnityEngine.LocalizationModule": "0.0.0.0",
+          "UnityEngine.MarshallingModule": "0.0.0.0",
+          "UnityEngine.MultiplayerModule": "0.0.0.0",
           "UnityEngine.NVIDIAModule": "0.0.0.0",
           "UnityEngine.ParticleSystemModule": "0.0.0.0",
           "UnityEngine.PerformanceReportingModule": "0.0.0.0",
           "UnityEngine.Physics2DModule": "0.0.0.0",
           "UnityEngine.PhysicsModule": "0.0.0.0",
-          "UnityEngine.ProfilerModule": "0.0.0.0",
           "UnityEngine.PropertiesModule": "0.0.0.0",
           "UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule": "0.0.0.0",
           "UnityEngine.ScreenCaptureModule": "0.0.0.0",
+          "UnityEngine.ShaderVariantAnalyticsModule": "0.0.0.0",
           "UnityEngine.SharedInternalsModule": "0.0.0.0",
           "UnityEngine.SpatialTracking": "0.0.0.0",
           "UnityEngine.SpriteMaskModule": "0.0.0.0",
@@ -142,27 +171,18 @@
           "UnityEngine.XR.LegacyInputHelpers": "0.0.0.0",
           "UnityEngine.XRModule": "0.0.0.0",
           "Valve.Newtonsoft.Json": "9.0.0.0",
+          "VoiceSDK.Dictation.Runtime": "0.0.0.0",
+          "VoiceSDK.Runtime.Composer": "0.0.0.0",
+          "VoiceSDK.Runtime": "0.0.0.0",
+          "VoiceSDK.Telemetry.Runtime": "0.0.0.0",
+          "VYaml.Core": "0.0.0.0",
           "websocket-sharp": "1.0.2.0",
-          "ZString": "0.0.0.0",
-          "Assembly-CSharp": "0.0.0.0",
-          "Fusion.Realtime": "2.0.0.0",
-          "Fusion.Runtime": "2.0.0.0",
-          "Photon3Unity3D": "4.1.7.2",
-          "PhotonRealtime": "0.0.0.0",
-          "PhotonUnityNetworking": "0.0.0.0",
-          "PhotonUnityNetworking.Utilities": "0.0.0.0",
-          "PhotonVoice.API": "0.0.0.0",
-          "PhotonVoice": "0.0.0.0",
-          "PhotonVoice.Fusion": "0.0.0.0",
-          "PhotonVoice.PUN": "0.0.0.0",
-          "PlayFab": "0.0.0.0",
-          "SteamVR": "0.0.0.0"
+          "Assembly-CSharp": "0.0.0.0"
         },
         "runtime": {
           "Elixir.dll": {}
         }
       },
-      "AssemblyPublicizer/1.0.2": {},
       "BepInEx.AssemblyPublicizer.MSBuild/0.4.3": {
         "runtime": {
           "lib/netstandard2.1/AsmResolver.DotNet.dll": {
@@ -188,6 +208,96 @@
           "lib/netstandard2.1/BepInEx.AssemblyPublicizer.dll": {
             "assemblyVersion": "0.4.3.0",
             "fileVersion": "0.4.3.0"
+          }
+        }
+      },
+      "DiscordRichPresence/1.6.1.70": {
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.5.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DiscordRPC.dll": {
+            "assemblyVersion": "1.6.1.70",
+            "fileVersion": "1.6.1.70"
+          }
+        }
+      },
+      "Microsoft.Win32.Registry/4.5.0": {
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Memory": "4.5.0",
+          "System.Security.AccessControl": "4.5.0",
+          "System.Security.Principal.Windows": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
+      "System.Buffers/4.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Buffers.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
+      "System.Memory/4.5.0": {
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Memory.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "assemblyVersion": "4.1.3.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "4.0.4.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "System.Security.AccessControl/4.5.0": {
+        "dependencies": {
+          "System.Security.Principal.Windows": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.6.26515.6"
           }
         }
       },
@@ -231,11 +341,19 @@
           }
         }
       },
-      "Cinemachine/0.0.0.0": {
+      "Fusion.Realtime/2.0.6.0": {
         "runtime": {
-          "Cinemachine.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
+          "Fusion.Realtime.dll": {
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "2.0.6.1034"
+          }
+        }
+      },
+      "Fusion.Runtime/2.0.6.0": {
+        "runtime": {
+          "Fusion.Runtime.dll": {
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "2.0.6.1034"
           }
         }
       },
@@ -295,17 +413,9 @@
           }
         }
       },
-      "Newtonsoft.Json/13.0.0.0": {
+      "Oculus.Haptics/0.0.0.0": {
         "runtime": {
-          "Newtonsoft.Json.dll": {
-            "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.2.0"
-          }
-        }
-      },
-      "Oculus.AudioManager/0.0.0.0": {
-        "runtime": {
-          "Oculus.AudioManager.dll": {
+          "Oculus.Haptics.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -335,9 +445,17 @@
           }
         }
       },
-      "Oculus.LipSync/0.0.0.0": {
+      "Oculus.Interaction.Samples/0.0.0.0": {
         "runtime": {
-          "Oculus.LipSync.dll": {
+          "Oculus.Interaction.Samples.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Oculus.Interaction.UnityXR/0.0.0.0": {
+        "runtime": {
+          "Oculus.Interaction.UnityXR.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -351,17 +469,89 @@
           }
         }
       },
-      "Oculus.Spatializer/0.0.0.0": {
+      "Oculus.VR/0.0.0.0": {
         "runtime": {
-          "Oculus.Spatializer.dll": {
+          "Oculus.VR.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
         }
       },
-      "Oculus.VR/0.0.0.0": {
+      "Photon3Unity3D/4.1.8.15": {
         "runtime": {
-          "Oculus.VR.dll": {
+          "Photon3Unity3D.dll": {
+            "assemblyVersion": "4.1.8.15",
+            "fileVersion": "4.1.8.15"
+          }
+        }
+      },
+      "PhotonRealtime/0.0.0.0": {
+        "runtime": {
+          "PhotonRealtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonUnityNetworking/0.0.0.0": {
+        "runtime": {
+          "PhotonUnityNetworking.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonUnityNetworking.Utilities/0.0.0.0": {
+        "runtime": {
+          "PhotonUnityNetworking.Utilities.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonVoice.API/0.0.0.0": {
+        "runtime": {
+          "PhotonVoice.API.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonVoice/0.0.0.0": {
+        "runtime": {
+          "PhotonVoice.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonVoice.Fusion/0.0.0.0": {
+        "runtime": {
+          "PhotonVoice.Fusion.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PhotonVoice.PUN/0.0.0.0": {
+        "runtime": {
+          "PhotonVoice.PUN.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "PlayFab/0.0.0.0": {
+        "runtime": {
+          "PlayFab.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SteamVR/0.0.0.0": {
+        "runtime": {
+          "SteamVR.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -431,6 +621,14 @@
           }
         }
       },
+      "Unity.Cinemachine/0.0.0.0": {
+        "runtime": {
+          "Unity.Cinemachine.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.Collections/0.0.0.0": {
         "runtime": {
           "Unity.Collections.dll": {
@@ -455,11 +653,11 @@
           }
         }
       },
-      "Unity.InputSystem/1.6.1.0": {
+      "Unity.InputSystem/1.14.0.0": {
         "runtime": {
           "Unity.InputSystem.dll": {
-            "assemblyVersion": "1.6.1.0",
-            "fileVersion": "1.6.1.0"
+            "assemblyVersion": "1.14.0.0",
+            "fileVersion": "1.14.0.0"
           }
         }
       },
@@ -471,17 +669,25 @@
           }
         }
       },
-      "Unity.Mathematics/1.0.0.0": {
+      "Unity.Mathematics/0.0.0.0": {
         "runtime": {
           "Unity.Mathematics.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
       "Unity.MemoryProfiler/0.0.0.0": {
         "runtime": {
           "Unity.MemoryProfiler.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.Multiplayer.Center.Common/0.0.0.0": {
+        "runtime": {
+          "Unity.Multiplayer.Center.Common.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -535,6 +741,14 @@
           }
         }
       },
+      "Unity.Rendering.LightTransport.Runtime/0.0.0.0": {
+        "runtime": {
+          "Unity.Rendering.LightTransport.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.RenderPipeline.Universal.ShaderLibrary/0.0.0.0": {
         "runtime": {
           "Unity.RenderPipeline.Universal.ShaderLibrary.dll": {
@@ -551,6 +765,14 @@
           }
         }
       },
+      "Unity.RenderPipelines.Core.Runtime.Shared/0.0.0.0": {
+        "runtime": {
+          "Unity.RenderPipelines.Core.Runtime.Shared.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.RenderPipelines.Core.ShaderLibrary/0.0.0.0": {
         "runtime": {
           "Unity.RenderPipelines.Core.ShaderLibrary.dll": {
@@ -559,9 +781,33 @@
           }
         }
       },
+      "Unity.RenderPipelines.GPUDriven.Runtime/0.0.0.0": {
+        "runtime": {
+          "Unity.RenderPipelines.GPUDriven.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary/0.0.0.0": {
         "runtime": {
           "Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.RenderPipelines.Universal.2D.Runtime/0.0.0.0": {
+        "runtime": {
+          "Unity.RenderPipelines.Universal.2D.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.RenderPipelines.Universal.Config.Runtime/0.0.0.0": {
+        "runtime": {
+          "Unity.RenderPipelines.Universal.Config.Runtime.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -623,6 +869,14 @@
           }
         }
       },
+      "Unity.VisualEffectGraph.Runtime/0.0.0.0": {
+        "runtime": {
+          "Unity.VisualEffectGraph.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Unity.XR.CoreUtils/0.0.0.0": {
         "runtime": {
           "Unity.XR.CoreUtils.dll": {
@@ -647,17 +901,57 @@
           }
         }
       },
-      "Unity.XR.Oculus/0.0.0.0": {
+      "Unity.XR.OpenVR/0.0.0.0": {
         "runtime": {
-          "Unity.XR.Oculus.dll": {
+          "Unity.XR.OpenVR.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
         }
       },
-      "Unity.XR.OpenVR/0.0.0.0": {
+      "Unity.XR.OpenXR/0.0.0.0": {
         "runtime": {
-          "Unity.XR.OpenVR.dll": {
+          "Unity.XR.OpenXR.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.XR.OpenXR.Features.ConformanceAutomation/0.0.0.0": {
+        "runtime": {
+          "Unity.XR.OpenXR.Features.ConformanceAutomation.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.XR.OpenXR.Features.MetaQuestSupport/0.0.0.0": {
+        "runtime": {
+          "Unity.XR.OpenXR.Features.MetaQuestSupport.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.XR.OpenXR.Features.MockRuntime/0.0.0.0": {
+        "runtime": {
+          "Unity.XR.OpenXR.Features.MockRuntime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.XR.OpenXR.Features.OculusQuestSupport/0.0.0.0": {
+        "runtime": {
+          "Unity.XR.OpenXR.Features.OculusQuestSupport.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.XR.OpenXR.Features.RuntimeDebugger/0.0.0.0": {
+        "runtime": {
+          "Unity.XR.OpenXR.Features.RuntimeDebugger.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -674,6 +968,14 @@
       "UnityEngine.AIModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.AIModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.AMDModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.AMDModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -807,9 +1109,25 @@
           }
         }
       },
+      "UnityEngine.GraphicsStateCollectionSerializerModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.GraphicsStateCollectionSerializerModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "UnityEngine.GridModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.GridModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.HierarchyCoreModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.HierarchyCoreModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -834,6 +1152,14 @@
       "UnityEngine.IMGUIModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.IMGUIModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.InputForUIModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.InputForUIModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -866,6 +1192,22 @@
       "UnityEngine.LocalizationModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.LocalizationModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.MarshallingModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.MarshallingModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.MultiplayerModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.MultiplayerModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -911,14 +1253,6 @@
           }
         }
       },
-      "UnityEngine.ProfilerModule/0.0.0.0": {
-        "runtime": {
-          "UnityEngine.ProfilerModule.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "UnityEngine.PropertiesModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.PropertiesModule.dll": {
@@ -938,6 +1272,14 @@
       "UnityEngine.ScreenCaptureModule/0.0.0.0": {
         "runtime": {
           "UnityEngine.ScreenCaptureModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.ShaderVariantAnalyticsModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.ShaderVariantAnalyticsModule.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -1239,19 +1581,51 @@
           }
         }
       },
+      "VoiceSDK.Dictation.Runtime/0.0.0.0": {
+        "runtime": {
+          "VoiceSDK.Dictation.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "VoiceSDK.Runtime.Composer/0.0.0.0": {
+        "runtime": {
+          "VoiceSDK.Runtime.Composer.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "VoiceSDK.Runtime/0.0.0.0": {
+        "runtime": {
+          "VoiceSDK.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "VoiceSDK.Telemetry.Runtime/0.0.0.0": {
+        "runtime": {
+          "VoiceSDK.Telemetry.Runtime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "VYaml.Core/0.0.0.0": {
+        "runtime": {
+          "VYaml.Core.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "websocket-sharp/1.0.2.0": {
         "runtime": {
           "websocket-sharp.dll": {
             "assemblyVersion": "1.0.2.0",
             "fileVersion": "1.0.2.0"
-          }
-        }
-      },
-      "ZString/0.0.0.0": {
-        "runtime": {
-          "ZString.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1263,107 +1637,11 @@
           }
         }
       },
-      "Fusion.Realtime/2.0.0.0": {
-        "runtime": {
-          "Fusion.Realtime.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.807"
-          }
-        }
-      },
-      "Fusion.Runtime/2.0.0.0": {
-        "runtime": {
-          "Fusion.Runtime.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.807"
-          }
-        }
-      },
-      "Photon3Unity3D/4.1.7.2": {
-        "runtime": {
-          "Photon3Unity3D.dll": {
-            "assemblyVersion": "4.1.7.2",
-            "fileVersion": "4.1.7.2"
-          }
-        }
-      },
-      "PhotonRealtime/0.0.0.0": {
-        "runtime": {
-          "PhotonRealtime.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonUnityNetworking/0.0.0.0": {
-        "runtime": {
-          "PhotonUnityNetworking.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonUnityNetworking.Utilities/0.0.0.0": {
-        "runtime": {
-          "PhotonUnityNetworking.Utilities.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonVoice.API/0.0.0.0": {
-        "runtime": {
-          "PhotonVoice.API.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonVoice/0.0.0.0": {
-        "runtime": {
-          "PhotonVoice.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonVoice.Fusion/0.0.0.0": {
-        "runtime": {
-          "PhotonVoice.Fusion.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PhotonVoice.PUN/0.0.0.0": {
-        "runtime": {
-          "PhotonVoice.PUN.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "PlayFab/0.0.0.0": {
-        "runtime": {
-          "PlayFab.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "SteamVR/0.0.0.0": {
-        "runtime": {
-          "SteamVR.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Fusion.Common/2.0.0.0": {
+      "Fusion.Common/2.0.6.0": {
         "runtime": {
           "Fusion.Common.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.807"
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "2.0.6.1034"
           }
         }
       },
@@ -1372,6 +1650,14 @@
           "Sirenix.OdinInspector.Attributes.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ZString/0.0.0.0": {
+        "runtime": {
+          "ZString.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1391,11 +1677,11 @@
           }
         }
       },
-      "Fusion.Sockets/2.0.0.0": {
+      "Fusion.Sockets/2.0.6.0": {
         "runtime": {
           "Fusion.Sockets.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.807"
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "2.0.6.1034"
           }
         }
       },
@@ -1455,19 +1741,19 @@
           }
         }
       },
-      "modio.UnityPlugin/1.4.3.0": {
-        "runtime": {
-          "modio.UnityPlugin.dll": {
-            "assemblyVersion": "1.4.3.0",
-            "fileVersion": "1.4.3.0"
-          }
-        }
-      },
       "GT_CustomMapSupportRuntime/1.0.0.0": {
         "runtime": {
           "GT_CustomMapSupportRuntime.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Modio/0.0.0.0": {
+        "runtime": {
+          "Modio.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1479,15 +1765,7 @@
           }
         }
       },
-      "VoiceSDK.Runtime/0.0.0.0": {
-        "runtime": {
-          "VoiceSDK.Runtime.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0.0": {
+      "System.Runtime.CompilerServices.Unsafe.Reference/6.0.0.0": {
         "runtime": {
           "System.Runtime.CompilerServices.Unsafe.dll": {
             "assemblyVersion": "6.0.0.0",
@@ -1511,11 +1789,67 @@
           }
         }
       },
-      "Fusion.Log/2.0.0.0": {
+      "Modio.Unity/0.0.0.0": {
+        "runtime": {
+          "Modio.Unity.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Fusion.Log/2.0.6.0": {
         "runtime": {
           "Fusion.Log.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "2.0.6.1034"
+          }
+        }
+      },
+      "Meta.WitAi/0.0.0.0": {
+        "runtime": {
+          "Meta.WitAi.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.Wit.Dictation/0.0.0.0": {
+        "runtime": {
+          "Meta.Wit.Dictation.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "AssistantCoreSDKRuntime/0.0.0.0": {
+        "runtime": {
+          "AssistantCoreSDKRuntime.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.WitAi.Lib/0.0.0.0": {
+        "runtime": {
+          "Meta.WitAi.Lib.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.WitAi.TTS/0.0.0.0": {
+        "runtime": {
+          "Meta.WitAi.TTS.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.Wit.Composer/0.0.0.0": {
+        "runtime": {
+          "Meta.Wit.Composer.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1567,38 +1901,6 @@
           }
         }
       },
-      "Meta.WitAi/0.0.0.0": {
-        "runtime": {
-          "Meta.WitAi.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "AssistantCoreSDKRuntime/0.0.0.0": {
-        "runtime": {
-          "AssistantCoreSDKRuntime.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Meta.WitAi.Lib/0.0.0.0": {
-        "runtime": {
-          "Meta.WitAi.Lib.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Meta.WitAi.TTS/0.0.0.0": {
-        "runtime": {
-          "Meta.WitAi.TTS.dll": {
-            "assemblyVersion": "0.0.0.0",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Meta.VoiceSDK.Mic.Common/0.0.0.0": {
         "runtime": {
           "Meta.VoiceSDK.Mic.Common.dll": {
@@ -1607,9 +1909,25 @@
           }
         }
       },
-      "Meta.WitAi.Conduit/0.0.0.0": {
+      "Meta.Net.endel.nativewebsocket/0.0.0.0": {
         "runtime": {
-          "Meta.WitAi.Conduit.dll": {
+          "Meta.Net.endel.nativewebsocket.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.Voice.NLayer/0.0.0.0": {
+        "runtime": {
+          "Meta.Voice.NLayer.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Meta.Voice.Opus/0.0.0.0": {
+        "runtime": {
+          "Meta.Voice.Opus.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -1631,19 +1949,75 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AssemblyPublicizer/1.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PrswO/TWBYxdjuqKfJ89sTi4+fUAzQpwo3tHawVskYUQOr20BTQEm8+6bCzJ3aF0ABVFhPcnaZ1IAYAl2+FHAQ==",
-      "path": "assemblypublicizer/1.0.2",
-      "hashPath": "assemblypublicizer.1.0.2.nupkg.sha512"
-    },
     "BepInEx.AssemblyPublicizer.MSBuild/0.4.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Z8Qs3JTTHZG1q0DCqY+HFJ8xp92tkEXWyQ7roeWgUvn20tjv0ZNfAdyy13XrRS1jeEoN/weJc81747TbvvwaDg==",
       "path": "bepinex.assemblypublicizer.msbuild/0.4.3",
       "hashPath": "bepinex.assemblypublicizer.msbuild.0.4.3.nupkg.sha512"
+    },
+    "DiscordRichPresence/1.6.1.70": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yho1fdhbsedICHdfHe/Tu3IX6a5oj4fiPFL0keZStlsh7T/FrdjcwZZ7C1uC2HUvcXbFh+VEJvcbo1W66QtkUg==",
+      "path": "discordrichpresence/1.6.1.70",
+      "hashPath": "discordrichpresence.1.6.1.70.nupkg.sha512"
+    },
+    "Microsoft.Win32.Registry/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+FWlwd//+Tt56316p00hVePBCouXyEzT86Jb3+AuRotTND0IYn0OO3obs1gnQEs/txEnt+rF2JBGLItTG+Be6A==",
+      "path": "microsoft.win32.registry/4.5.0",
+      "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "System.Buffers/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+      "path": "system.buffers/4.4.0",
+      "hashPath": "system.buffers.4.4.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m0psCSpUxTGfvwyO0i03ajXVhgBqyXlibXz0Mo1dtKGjaHrXFLnuQ8rNBTmWRqbfRjr4eC6Wah4X5FfuFDu5og==",
+      "path": "system.memory/4.5.0",
+      "hashPath": "system.memory.4.5.0.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
+      "path": "system.numerics.vectors/4.4.0",
+      "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YrzNWduCDHhUaSRBxHxL11UkM2fD6y8hITHis4/LbQZ6vj3vdRjoH3IoPWWC9uDXK2wHIqn+b5gv1Np/VKyM1g==",
+      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
+      "path": "system.security.accesscontrol/4.5.0",
+      "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
+      "path": "system.security.principal.windows/4.5.0",
+      "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
     },
     "0Harmony/2.9.0.0": {
       "type": "reference",
@@ -1670,7 +2044,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Cinemachine/0.0.0.0": {
+    "Fusion.Realtime/2.0.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fusion.Runtime/2.0.6.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1710,12 +2089,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Newtonsoft.Json/13.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Oculus.AudioManager/0.0.0.0": {
+    "Oculus.Haptics/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1735,7 +2109,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Oculus.LipSync/0.0.0.0": {
+    "Oculus.Interaction.Samples/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Oculus.Interaction.UnityXR/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1745,12 +2124,57 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Oculus.Spatializer/0.0.0.0": {
+    "Oculus.VR/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Oculus.VR/0.0.0.0": {
+    "Photon3Unity3D/4.1.8.15": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonRealtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonUnityNetworking/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonUnityNetworking.Utilities/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonVoice.API/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonVoice/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonVoice.Fusion/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonVoice.PUN/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PlayFab/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SteamVR/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1795,6 +2219,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.Cinemachine/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.Collections/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1810,7 +2239,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.InputSystem/1.6.1.0": {
+    "Unity.InputSystem/1.14.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1820,12 +2249,17 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.Mathematics/1.0.0.0": {
+    "Unity.Mathematics/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "Unity.MemoryProfiler/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.Multiplayer.Center.Common/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1860,6 +2294,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.Rendering.LightTransport.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.RenderPipeline.Universal.ShaderLibrary/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1870,12 +2309,32 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.RenderPipelines.Core.Runtime.Shared/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.RenderPipelines.Core.ShaderLibrary/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.RenderPipelines.GPUDriven.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.RenderPipelines.Universal.2D.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.RenderPipelines.Universal.Config.Runtime/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1915,6 +2374,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.VisualEffectGraph.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.XR.CoreUtils/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1930,12 +2394,37 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.XR.Oculus/0.0.0.0": {
+    "Unity.XR.OpenVR/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.XR.OpenVR/0.0.0.0": {
+    "Unity.XR.OpenXR/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.XR.OpenXR.Features.ConformanceAutomation/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.XR.OpenXR.Features.MetaQuestSupport/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.XR.OpenXR.Features.MockRuntime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.XR.OpenXR.Features.OculusQuestSupport/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.XR.OpenXR.Features.RuntimeDebugger/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1946,6 +2435,11 @@
       "sha512": ""
     },
     "UnityEngine.AIModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.AMDModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2030,7 +2524,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "UnityEngine.GraphicsStateCollectionSerializerModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "UnityEngine.GridModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.HierarchyCoreModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2046,6 +2550,11 @@
       "sha512": ""
     },
     "UnityEngine.IMGUIModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.InputForUIModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2066,6 +2575,16 @@
       "sha512": ""
     },
     "UnityEngine.LocalizationModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.MarshallingModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.MultiplayerModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2095,11 +2614,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "UnityEngine.ProfilerModule/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "UnityEngine.PropertiesModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -2111,6 +2625,11 @@
       "sha512": ""
     },
     "UnityEngine.ScreenCaptureModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.ShaderVariantAnalyticsModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2300,12 +2819,32 @@
       "serviceable": false,
       "sha512": ""
     },
-    "websocket-sharp/1.0.2.0": {
+    "VoiceSDK.Dictation.Runtime/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "ZString/0.0.0.0": {
+    "VoiceSDK.Runtime.Composer/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VoiceSDK.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VoiceSDK.Telemetry.Runtime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VYaml.Core/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "websocket-sharp/1.0.2.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2315,72 +2854,17 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fusion.Realtime/2.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Fusion.Runtime/2.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Photon3Unity3D/4.1.7.2": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonRealtime/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonUnityNetworking/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonUnityNetworking.Utilities/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonVoice.API/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonVoice/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonVoice.Fusion/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PhotonVoice.PUN/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PlayFab/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SteamVR/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Fusion.Common/2.0.0.0": {
+    "Fusion.Common/2.0.6.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "Sirenix.OdinInspector.Attributes/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ZString/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2395,7 +2879,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fusion.Sockets/2.0.0.0": {
+    "Fusion.Sockets/2.0.6.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2435,12 +2919,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "modio.UnityPlugin/1.4.3.0": {
+    "GT_CustomMapSupportRuntime/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "GT_CustomMapSupportRuntime/1.0.0.0": {
+    "Modio/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2450,12 +2934,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "VoiceSDK.Runtime/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Runtime.CompilerServices.Unsafe/6.0.0.0": {
+    "System.Runtime.CompilerServices.Unsafe.Reference/6.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2470,7 +2949,42 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Fusion.Log/2.0.0.0": {
+    "Modio.Unity/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Fusion.Log/2.0.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.WitAi/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.Wit.Dictation/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AssistantCoreSDKRuntime/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.WitAi.Lib/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.WitAi.TTS/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.Wit.Composer/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2505,32 +3019,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Meta.WitAi/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "AssistantCoreSDKRuntime/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Meta.WitAi.Lib/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Meta.WitAi.TTS/0.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Meta.VoiceSDK.Mic.Common/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Meta.WitAi.Conduit/0.0.0.0": {
+    "Meta.Net.endel.nativewebsocket/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.Voice.NLayer/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Meta.Voice.Opus/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

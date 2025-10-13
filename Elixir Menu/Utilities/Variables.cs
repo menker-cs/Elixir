@@ -77,7 +77,6 @@ namespace Elixir.Utilities
         public static GameObject? cm;
 
         // --- Physics Variables ---
-        public static Rigidbody? currentMenuRigidbody = null;
         public static Vector3 previousVelocity = Vector3.zero;
 
         public const float velocityThreshold = 0.05f;
@@ -140,7 +139,17 @@ namespace Elixir.Utilities
             string materialName = vrrig.mainSkin.material.name;
             return materialName.Contains("fected") || materialName.Contains("It");
         }
+        public static string VrrigPlatform(VRRig rig)
+        {
+            string concatStringOfCosmeticsAllowed = rig.concatStringOfCosmeticsAllowed;
 
+            if (concatStringOfCosmeticsAllowed.Contains("S. FIRST LOGIN"))
+                return "STEAM";
+            else if (concatStringOfCosmeticsAllowed.Contains("FIRST LOGIN") || rig.Creator.GetPlayerRef().CustomProperties.Count >= 2)
+                return "PC";
+
+            return "QUEST";
+        }
         public static void IsMasterCheck()
         {
             if (!PhotonNetwork.IsConnected)
@@ -155,6 +164,24 @@ namespace Elixir.Utilities
         {
             GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = useGravity;
         }
+        public static void Gravity(float g)
+        {
+            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (g / Time.deltaTime)), ForceMode.Acceleration);
+        }
+        public static void DoNoclip(bool b)
+        {
+            foreach (MeshCollider collider in Resources.FindObjectsOfTypeAll<MeshCollider>())
+            {
+                if (b)
+                {
+                    collider.enabled = false;
+                }
+                else
+                {
+                    collider.enabled = true;
+                }
+            }
+        }
         public static bool InLobby() => PhotonNetwork.InLobby;
         public static bool IsMaster() => PhotonNetwork.IsMasterClient;
         public static bool IsUserMaster(VRRig rig)
@@ -168,7 +195,7 @@ namespace Elixir.Utilities
         public static Vector3 Annoy(Transform transform, float range)
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
-        }
+        }/*
         public static void SendWeb(string str)
         {
             string jsonPayload = $"{{\"content\": \"{str}\"}}";
@@ -192,8 +219,9 @@ namespace Elixir.Utilities
             {
             }
         }
+        */
         // Please just dont spam it
-        private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/webhook-url.txt");
+        //private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/webhook-url.txt");
     }
 }
 

@@ -18,7 +18,7 @@ namespace Elixir.Mods.Categories
                 {
                     sherbert = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     sherbert.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-                    sherbert.GetComponent<Renderer>().material = ColorLib.Url2Mat("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/image.png");
+                    sherbert.GetComponent<Renderer>().material = ColorLib.Url2Mat("https://raw.githubusercontent.com/Cha554/Stone-Networking/main/Stone/Sherbert.jpg");
 
                     int sherb = LayerMask.NameToLayer("sherbert");
                     if (sherb == -1) sherb = 8;
@@ -45,7 +45,7 @@ namespace Elixir.Mods.Categories
                 rb.isKinematic = false;
 
                 Vector3 handVelocity = (GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position - lastPosition) / Time.deltaTime;
-                rb.velocity = handVelocity;
+                rb.linearVelocity = handVelocity;
 
                 hold = false;
             }

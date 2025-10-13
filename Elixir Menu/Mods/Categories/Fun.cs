@@ -131,10 +131,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -148,10 +147,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -171,10 +169,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -189,10 +186,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -213,7 +209,7 @@ namespace Elixir.Mods.Categories
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -229,7 +225,7 @@ namespace Elixir.Mods.Categories
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
+                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.leftControllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -271,7 +267,6 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
@@ -287,7 +282,6 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
@@ -307,10 +301,9 @@ namespace Elixir.Mods.Categories
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -324,10 +317,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -344,10 +336,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }, false);
@@ -364,10 +355,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }, false);
@@ -386,11 +376,10 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.rotation = new Quaternion(UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360));
-                body.velocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
+                body.linearVelocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -404,11 +393,10 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.rotation = new Quaternion(UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360));
-                body.velocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
+                body.linearVelocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
 
                 GameObject.Destroy(orb, 5f);
 
@@ -428,10 +416,9 @@ namespace Elixir.Mods.Categories
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
                 GameObject.Destroy(orb, 5f);
             }
             if (pollerInstance.leftGrab)
@@ -444,10 +431,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
                 GameObject.Destroy(orb, 5f);
             }
         }
@@ -464,10 +450,9 @@ namespace Elixir.Mods.Categories
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }
@@ -481,10 +466,9 @@ namespace Elixir.Mods.Categories
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
-                body.drag = 0f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.velocity = body.velocity;
+                body.linearVelocity = body.linearVelocity;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }
