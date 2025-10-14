@@ -20,6 +20,8 @@ namespace Elixir.Mods
     public enum Category
     {
         Home,
+        Enabled,
+
         Settings,
         Room,
         Player,
@@ -45,7 +47,7 @@ namespace Elixir.Mods
             new Button("Player", Category.Home, false, false, ()=>ChangePage(Category.Player), null),
             new Button("Visuals", Category.Home, false, false, ()=>ChangePage(Category.Visuals), null),
             new Button("Fun", Category.Home, false, false, ()=>ChangePage(Category.Fun), null),
-            new Button("World", Category.Home, false, false, ()=>ChangePage(Category.World), null),
+            new Button("Enabled Mods", Category.Home, false, false, ()=>ChangePage(Category.Enabled), null),
             new Button("Credits", Category.Home, false, false, ()=>ChangePage(Category.Creds), null),
             #endregion
 
@@ -58,6 +60,7 @@ namespace Elixir.Mods
             new Button("Toggle Tool Tips", Category.Settings, true, true, ()=>ToggleTip(true), ()=>ToggleTip(false)),
             new Button("Clear Notifications", Category.Settings, false, false, ()=>ClearNotifications(), null),
             new Button("Bark Positioning", Category.Settings, true, false, ()=>Bark(true), ()=>Bark(false)),
+            new Button("Order Buttons By Alphabet", Category.Settings, true, false, ()=>ToggleAlphabet(true), ()=>ToggleAlphabet(false)),
             new Button("Menu Outline", Category.Settings, true, true, ()=>OLine(true), ()=>OLine(false)),
             new Button("Menu Gravity", Category.Settings, true, true, ()=>Grav(true), ()=>Grav(false)),
             new Button("Change Layout: Sides", Category.Settings, false, false, ()=> ChangeLayout(), null),
@@ -207,6 +210,7 @@ namespace Elixir.Mods
             #region Fun
             new Button("Random CS Mods", Category.Fun, false, false, ()=>ChangePage(Category.CS), null),
             new Button("Splash Mods", Category.Fun, false, false, ()=>ChangePage(Category.Splash), null),
+            new Button("World", Category.Fun, false, false, ()=>ChangePage(Category.World), null),
 
                 #region Splash Mods
             new Button("Back", Category.Splash, false, false, ()=>ChangePage(Category.Fun), null),

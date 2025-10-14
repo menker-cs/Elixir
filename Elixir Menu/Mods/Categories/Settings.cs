@@ -1,7 +1,10 @@
-﻿using static Elixir.Utilities.Variables;
-using static Elixir.Menu.Main;
+﻿using BepInEx;
 using Elixir.Menu;
 using Elixir.Utilities.Notifs;
+using System.Collections.Generic;
+using System.IO;
+using static Elixir.Menu.Main;
+using static Elixir.Utilities.Variables;
 
 namespace Elixir.Mods.Categories
 {
@@ -44,6 +47,10 @@ namespace Elixir.Mods.Categories
         public static void ToggleDisconnectButton(bool setActive)
         {
             toggledisconnectButton = setActive;
+        }
+        public static void ToggleAlphabet(bool setActive)
+        {
+            alphabet = setActive;
         }
         public static void FlySpeed()
         {
@@ -218,6 +225,8 @@ namespace Elixir.Mods.Categories
         {
             UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
         }
+
+        public static List<string> enabledBtns = new List<string>();
 
         public static int espSetting = 1;
 

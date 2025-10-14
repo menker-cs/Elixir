@@ -121,7 +121,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -158,7 +158,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -197,7 +197,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -234,7 +234,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 draw = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 draw.transform.position = GorillaTagger.Instance.rightHandTransform.position;
@@ -257,7 +257,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -292,7 +292,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -366,7 +366,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -407,7 +407,7 @@ namespace Elixir.Mods.Categories
         {
             if (pollerInstance == null) return;
 
-            if (pollerInstance.rightGrab)
+            if (pollerInstance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
@@ -421,7 +421,7 @@ namespace Elixir.Mods.Categories
                 body.linearVelocity = body.linearVelocity;
                 GameObject.Destroy(orb, 5f);
             }
-            if (pollerInstance.leftGrab)
+            if (pollerInstance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);

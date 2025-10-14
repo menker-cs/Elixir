@@ -208,7 +208,6 @@ namespace Elixir.Menu
             //SendWeb($"**{PhotonNetwork.LocalPlayer.NickName}** has loaded into the game with **Elixir**!");
         }
 
-        //static readonly string status = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/status.txt");
         public static void HandleMenuInteraction()
         {
             try
@@ -311,13 +310,50 @@ namespace Elixir.Menu
             AddPageButton("<");
 
             ButtonPool.ResetPool();
-            var PageToDraw = GetButtonInfoByPage(currentPage).Skip(currentCategoryPage * ButtonsPerPage).Take(ButtonsPerPage).ToArray();
-            for (int i = 0; i < PageToDraw.Length; i++)
+
+            switch (alphabet)
             {
-                AddModButtons(i * 0.09f, PageToDraw[i]);
+                case true:
+                    {
+                        if (currentPage != Category.Home)
+                        {
+                            var PageToDraw = GetButtonInfoByPage(currentPage)
+                            .OrderBy(b => b.ButtonText)
+                            .Skip(currentCategoryPage * ButtonsPerPage)
+                            .Take(ButtonsPerPage)
+                            .ToArray();
+                            for (int i = 0; i < PageToDraw.Length; i++)
+                            {
+                                AddModButtons(i * 0.09f, PageToDraw[i]);
+                            }
+                        }
+                        else
+                        {
+                            var PageToDraw = GetButtonInfoByPage(currentPage)
+                            .Skip(currentCategoryPage * ButtonsPerPage)
+                            .Take(ButtonsPerPage)
+                            .ToArray();
+                            for (int i = 0; i < PageToDraw.Length; i++)
+                            {
+                                AddModButtons(i * 0.09f, PageToDraw[i]);
+                            }
+                        }
+                        break;
+                    }
+                case false:
+                    {
+                        var PageToDraw = GetButtonInfoByPage(currentPage)
+                            .Skip(currentCategoryPage * ButtonsPerPage)
+                            .Take(ButtonsPerPage)
+                            .ToArray();
+                        for (int i = 0; i < PageToDraw.Length; i++)
+                        {
+                            AddModButtons(i * 0.09f, PageToDraw[i]);
+                        }
+                        break;
+                    }
             }
         }
-        static Vector3 pos = new Vector3(0.56f, 0.54f, 0.23f);
         private static void CreateMenuObject()
         {
             // Menu Object
@@ -654,262 +690,151 @@ namespace Elixir.Menu
         {
             if (menuObj == null || canvasObj == null) return;
 
-            if (Laytou == 1)
+            // Define layout-dependent transforms
+            Vector3 buttonScale;
+            Vector3 buttonPosition;
+            Vector3 textPosition;
+            Vector2 textSize;
+
+            switch (Laytou)
             {
-                PageButtons = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(PageButtons.GetComponent<Rigidbody>());
-                PageButtons.GetComponent<BoxCollider>().isTrigger = true;
-                //RoundObj(PageButtons);
-                Outline(PageButtons, OutlineClr[Theme-1]);
-                PageButtons.transform.parent = menuObj.transform;
-                PageButtons.transform.rotation = Quaternion.identity;
-                PageButtons.transform.localScale = new Vector3(0.09f, 0.15f, 0.9f);
-                PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.65f : -0.65f, -0);
-                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
-
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, OutlineClr[Theme-1]);
-                gameObject.transform.parent = menuObj.transform;
-                gameObject.transform.position = PageButtons.transform.position;
-                gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
-
-                // Page Buttons Text
-                GameObject titleObj = new GameObject();
-                titleObj.transform.parent = canvasObj.transform;
-                titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                Text title = titleObj.AddComponent<Text>();
-                title.font = font;
-                title.color = textclr;
-                title.fontSize = 5;
-                title.fontStyle = FontStyle.Bold;
-                title.alignment = TextAnchor.MiddleCenter;
-                title.resizeTextForBestFit = true;
-                title.resizeTextMinSize = 0;
-                RectTransform titleTransform = title.GetComponent<RectTransform>();
-                titleTransform.localPosition = Vector3.zero;
-                titleTransform.sizeDelta = new Vector2(0.5f, 0.06f);
-                title.text = button.Contains("<") ? "⋘" : "⋙";
-                titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.1955f : -0.1955f, 0f);
+                case 1:
+                    buttonScale = new Vector3(0.09f, 0.15f, 0.9f);
+                    buttonPosition = new Vector3(0.56f, button.Contains("<") ? 0.65f : -0.65f, 0f);
+                    textPosition = new Vector3(0.064f, button.Contains("<") ? 0.1955f : -0.1955f, 0f);
+                    textSize = new Vector2(0.5f, 0.06f);
+                    break;
+                case 2:
+                    buttonScale = new Vector3(0.09f, 0.25f, 0.079f);
+                    buttonPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, -0.435f);
+                    textPosition = new Vector3(0.064f, button.Contains("<") ? 0.087f : -0.087f, -0.163f);
+                    textSize = new Vector2(0.5f, 0.05f);
+                    break;
+                case 3:
+                    buttonScale = new Vector3(0.09f, 0.25f, 0.079f);
+                    buttonPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, 0.3223f);
+                    textPosition = new Vector3(0.064f, button.Contains("<") ? 0.087f : -0.087f, 0.124f);
+                    textSize = new Vector2(0.5f, 0.05f);
+                    break;
+                default:
+                    buttonScale = new Vector3(0.09f, 0.15f, 0.9f);
+                    buttonPosition = new Vector3(0.56f, button.Contains("<") ? 0.65f : -0.65f, 0f);
+                    textPosition = new Vector3(0.064f, button.Contains("<") ? 0.1955f : -0.1955f, 0f);
+                    textSize = new Vector2(0.5f, 0.06f);
+                    break;
             }
-            if (Laytou == 2)
-            {
-                // Page Buttons
-                PageButtons = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(PageButtons.GetComponent<Rigidbody>());
-                PageButtons.GetComponent<BoxCollider>().isTrigger = true; ;
-                PageButtons.transform.parent = menuObj.transform;
-                PageButtons.transform.rotation = Quaternion.identity;
-                PageButtons.transform.localScale = new Vector3(0.09f, 0.25f, 0.079f);
-                PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, -0.435f);
-                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
 
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, OutlineClr[Theme-1]);
-                gameObject.transform.parent = menuObj.transform;
-                gameObject.transform.position = PageButtons.transform.position;
-                gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
+            PageButtons = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Destroy(PageButtons.GetComponent<Rigidbody>());
+            PageButtons.GetComponent<BoxCollider>().isTrigger = true;
+            //RoundObj(PageButtons);
+            Outline(PageButtons, OutlineClr[Theme-1]);
+            PageButtons.transform.parent = menuObj.transform;
+            PageButtons.transform.rotation = Quaternion.identity;
+            PageButtons.transform.localScale = buttonScale;
+            PageButtons.transform.localPosition = buttonPosition;
+            PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
+            PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
 
-                // Page Buttons Text
-                GameObject titleObj = new GameObject();
-                titleObj.transform.parent = canvasObj.transform;
-                titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                Text title = titleObj.AddComponent<Text>();
-                title.font = font;
-                title.color = textclr;
-                title.fontSize = 5;
-                title.fontStyle = FontStyle.Bold;
-                title.alignment = TextAnchor.MiddleCenter;
-                title.resizeTextForBestFit = true;
-                title.resizeTextMinSize = 0;
-                RectTransform titleTransform = title.GetComponent<RectTransform>();
-                titleTransform.localPosition = Vector3.zero;
-                titleTransform.sizeDelta = new Vector2(0.5f, 0.05f);
-                title.text = button.Contains("<") ? "⋘" : "⋙";
-                titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.087f : -.087f, -0.163f);
-            }
-            if (Laytou == 3)
-            {
-                // Page Buttons
-                PageButtons = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(PageButtons.GetComponent<Rigidbody>());
-                PageButtons.GetComponent<BoxCollider>().isTrigger = true; ;
-                PageButtons.transform.parent = menuObj.transform;
-                PageButtons.transform.rotation = Quaternion.identity;
-                PageButtons.transform.localScale = new Vector3(0.09f, 0.25f, 0.079f);
-                PageButtons.transform.localPosition = new Vector3(0.56f, button.Contains("<") ? 0.2925f : -0.2925f, 0.3223f);
-                PageButtons.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                PageButtons.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button(button, Category.Home, false, false, null, null);
+            GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Destroy(gameObject.GetComponent<Collider>());
+            Outline(gameObject, OutlineClr[Theme-1]);
+            gameObject.transform.parent = menuObj.transform;
+            gameObject.transform.position = PageButtons.transform.position;
+            gameObject.transform.rotation = PageButtons.transform.rotation;
+            gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
+            gameObject.transform.localScale = new Vector3(buttonScale.x - 0.006f, buttonScale.y + 0.005f, buttonScale.z + 0.005f);
 
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(gameObject.GetComponent<Collider>());
-                Outline(gameObject, OutlineClr[Theme-1]);
-                gameObject.transform.parent = menuObj.transform;
-                gameObject.transform.position = PageButtons.transform.position;
-                gameObject.transform.rotation = PageButtons.transform.rotation;
-                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                gameObject.transform.localScale = new Vector3(PageButtons.transform.localScale.x - 0.006f, PageButtons.transform.localScale.y + 0.005f, PageButtons.transform.localScale.z + 0.005f);
-
-                // Page Buttons Text
-                // Page Buttons Text
-                GameObject titleObj = new GameObject();
-                titleObj.transform.parent = canvasObj.transform;
-                titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                Text title = titleObj.AddComponent<Text>();
-                title.font = font;
-                title.color = textclr;
-                title.fontSize = 5;
-                title.fontStyle = FontStyle.Bold;
-                title.alignment = TextAnchor.MiddleCenter;
-                title.resizeTextForBestFit = true;
-                title.resizeTextMinSize = 0;
-                RectTransform titleTransform = title.GetComponent<RectTransform>();
-                titleTransform.localPosition = Vector3.zero;
-                titleTransform.sizeDelta = new Vector2(0.5f, 0.05f);
-                title.text = button.Contains("<") ? "⋘" : "⋙";
-                titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                titleTransform.position = new Vector3(0.064f, button.Contains("<") ? 0.087f : -.087f, 0.124f);
-            }
+            // Page Buttons Text
+            GameObject titleObj = new GameObject();
+            titleObj.transform.parent = canvasObj.transform;
+            titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+            Text title = titleObj.AddComponent<Text>();
+            title.font = font;
+            title.color = textclr;
+            title.fontSize = 5;
+            title.fontStyle = FontStyle.Bold;
+            title.alignment = TextAnchor.MiddleCenter;
+            title.resizeTextForBestFit = true;
+            title.resizeTextMinSize = 0;
+            RectTransform titleTransform = title.GetComponent<RectTransform>();
+            titleTransform.localPosition = Vector3.zero;
+            titleTransform.sizeDelta = textSize;
+            title.text = button.Contains("<") ? "⋘" : "⋙";
+            titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+            titleTransform.position = textPosition;
         }
         public static void AddReturnButton()
         {
             if (currentPage != Category.Home && menuObj != null && canvasObj != null)
             {
-                if (Laytou == 2)
+                Vector3 buttonScale;
+                Vector3 buttonPosition;
+                Vector3 textPosition;
+
+                switch (Laytou)
                 {
-                    // Return Button
-                    GameObject BackToStartButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(BackToStartButton.GetComponent<Rigidbody>());
-                    BackToStartButton.GetComponent<BoxCollider>().isTrigger = true;
-                    BackToStartButton.transform.parent = menuObj.transform;
-                    BackToStartButton.transform.rotation = Quaternion.identity;
-                    BackToStartButton.transform.localScale = new Vector3(0.09f, 0.30625f, 0.08f);
-                    BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, -0.435f);
-                    BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-
-                    GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, OutlineClr[Theme-1]);
-                    gameObject.transform.parent = menuObj.transform;
-                    gameObject.transform.position = BackToStartButton.transform.position;
-                    gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                    gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
-
-                    // Return Button Text
-                    GameObject titleObj = new GameObject();
-                    titleObj.transform.parent = canvasObj.transform;
-                    titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                    titleObj.transform.localPosition = new Vector3(0.85f, 0.85f, 0.85f);
-                    Text title = titleObj.AddComponent<Text>();
-                    title.font = font;
-                    title.fontStyle = FontStyle.Bold;
-                    title.text = "Return";
-                    title.color = textclr;
-                    title.fontSize = 3;
-                    title.alignment = TextAnchor.MiddleCenter;
-                    title.resizeTextForBestFit = true;
-                    title.resizeTextMinSize = 0;
-                    RectTransform titleTransform = title.GetComponent<RectTransform>();
-                    titleTransform.localPosition = Vector3.zero;
-                    titleTransform.sizeDelta = new Vector2(0.25f, 0.025f);
-                    titleTransform.localPosition = new Vector3(.064f, 0f, -0.165f);
-                    titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+                    case 2:
+                        buttonScale = new Vector3(0.09f, 0.30625f, 0.08f);
+                        buttonPosition = new Vector3(0.56f, 0f, -0.435f);
+                        textPosition = new Vector3(.064f, 0f, -0.165f);
+                        break;
+                    case 3:
+                        buttonScale = new Vector3(0.09f, 0.30625f, 0.08f);
+                        buttonPosition = new Vector3(0.56f, 0f, 0.3223f);
+                        textPosition = new Vector3(.064f, 0f, 0.1235f);
+                        break;
+                    default:
+                        buttonScale = new Vector3(0.09f, 0.82f, 0.08f);
+                        buttonPosition = new Vector3(0.56f, 0f, -0.435f);
+                        textPosition = new Vector3(.064f, 0f, -0.165f);
+                        break;
                 }
-                else if (Laytou == 3)
-                {
-                    // Return Button
-                    GameObject BackToStartButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(BackToStartButton.GetComponent<Rigidbody>());
-                    BackToStartButton.GetComponent<BoxCollider>().isTrigger = true;
-                    BackToStartButton.transform.parent = menuObj.transform;
-                    BackToStartButton.transform.rotation = Quaternion.identity;
-                    BackToStartButton.transform.localScale = new Vector3(0.09f, 0.30625f, 0.08f);
-                    BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, 0.3223f);
-                    BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
-                    GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, OutlineClr[Theme-1]);
-                    gameObject.transform.parent = menuObj.transform;
-                    gameObject.transform.position = BackToStartButton.transform.position;
-                    gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                    gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
+                // Return Button
+                GameObject BackToStartButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                Destroy(BackToStartButton.GetComponent<Rigidbody>());
+                BackToStartButton.GetComponent<BoxCollider>().isTrigger = true;
+                BackToStartButton.transform.parent = menuObj.transform;
+                BackToStartButton.transform.rotation = Quaternion.identity;
+                BackToStartButton.transform.localScale = buttonScale;
+                BackToStartButton.transform.localPosition = buttonPosition;
+                BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
+                BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
-                    // Return Button Text
-                    GameObject titleObj = new GameObject();
-                    titleObj.transform.parent = canvasObj.transform;
-                    titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                    titleObj.transform.localPosition = new Vector3(0.85f, 0.85f, 0.85f);
-                    Text title = titleObj.AddComponent<Text>();
-                    title.font = font;
-                    title.fontStyle = FontStyle.Bold;
-                    title.text = "Return";
-                    title.color = textclr;
-                    title.fontSize = 3;
-                    title.alignment = TextAnchor.MiddleCenter;
-                    title.resizeTextForBestFit = true;
-                    title.resizeTextMinSize = 0;
-                    RectTransform titleTransform = title.GetComponent<RectTransform>();
-                    titleTransform.localPosition = Vector3.zero;
-                    titleTransform.sizeDelta = new Vector2(0.25f, 0.025f);
-                    titleTransform.localPosition = new Vector3(.064f, 0f, 0.1235f);
-                    titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                }
-                else
-                {
-                    // Return Button
-                    GameObject BackToStartButton = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(BackToStartButton.GetComponent<Rigidbody>());
-                    BackToStartButton.GetComponent<BoxCollider>().isTrigger = true;
-                    BackToStartButton.transform.parent = menuObj.transform;
-                    BackToStartButton.transform.rotation = Quaternion.identity;
-                    BackToStartButton.transform.localScale = new Vector3(0.09f, 0.82f, 0.08f);
-                    BackToStartButton.transform.localPosition = new Vector3(0.56f, 0f, -0.435f);
-                    BackToStartButton.AddComponent<BtnCollider>().clickedButton = new ButtonHandler.Button("ReturnButton", Category.Home, false, false, null, null);
-                    BackToStartButton.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
+                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                Destroy(gameObject.GetComponent<Collider>());
+                Outline(gameObject, OutlineClr[Theme-1]);
+                gameObject.transform.parent = menuObj.transform;
+                gameObject.transform.position = BackToStartButton.transform.position;
+                gameObject.transform.rotation = BackToStartButton.transform.rotation;
+                gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
 
-                    GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    Destroy(gameObject.GetComponent<Collider>());
-                    Outline(gameObject, OutlineClr[Theme-1]);
-                    gameObject.transform.parent = menuObj.transform;
-                    gameObject.transform.position = BackToStartButton.transform.position;
-                    gameObject.transform.rotation = BackToStartButton.transform.rotation;
-                    gameObject.GetComponent<Renderer>().material.color = BtnClrOff[Theme-1];
-                    gameObject.transform.localScale = new Vector3(BackToStartButton.transform.localScale.x - 0.006f, BackToStartButton.transform.localScale.y + 0.005f, BackToStartButton.transform.localScale.z + 0.005f);
+                gameObject.transform.localScale = new Vector3(
+                    BackToStartButton.transform.localScale.x - 0.006f,
+                    BackToStartButton.transform.localScale.y + 0.005f,
+                    BackToStartButton.transform.localScale.z + 0.005f
+                );
 
-                    // Return Button Text
-                    GameObject titleObj = new GameObject();
-                    titleObj.transform.parent = canvasObj.transform;
-                    titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                    titleObj.transform.localPosition = new Vector3(0.85f, 0.85f, 0.85f);
-                    Text title = titleObj.AddComponent<Text>();
-                    title.font = font;
-                    title.fontStyle = FontStyle.Bold;
-                    title.text = "Return";
-                    title.color = textclr;
-                    title.fontSize = 3;
-                    title.alignment = TextAnchor.MiddleCenter;
-                    title.resizeTextForBestFit = true;
-                    title.resizeTextMinSize = 0;
-                    RectTransform titleTransform = title.GetComponent<RectTransform>();
-                    titleTransform.localPosition = Vector3.zero;
-                    titleTransform.sizeDelta = new Vector2(0.25f, 0.025f);
-                    titleTransform.localPosition = new Vector3(.064f, 0f, -0.165f);
-                    titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                }
+                // Return Button Text
+                GameObject titleObj = new GameObject();
+                titleObj.transform.parent = canvasObj.transform;
+                titleObj.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                titleObj.transform.localPosition = new Vector3(0.85f, 0.85f, 0.85f);
+                Text title = titleObj.AddComponent<Text>();
+                title.font = font;
+                title.fontStyle = FontStyle.Bold;
+                title.text = "Return";
+                title.color = textclr;
+                title.fontSize = 3;
+                title.alignment = TextAnchor.MiddleCenter;
+                title.resizeTextForBestFit = true;
+                title.resizeTextMinSize = 0;
+                RectTransform titleTransform = title.GetComponent<RectTransform>();
+                titleTransform.localPosition = Vector3.zero;
+                titleTransform.sizeDelta = new Vector2(0.25f, 0.025f);
+                titleTransform.localPosition = textPosition;
+                titleTransform.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             }
         }
 

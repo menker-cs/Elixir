@@ -171,7 +171,14 @@ namespace Elixir.Menu
 
         public static List<Button> GetButtonInfoByPage(Category page)
         {
-            return ModButtons.buttons.Where(button => button.Page == page).ToList();
+            if (page == Category.Enabled)
+            {
+                return Enumerable.ToList<ButtonHandler.Button>(Enumerable.Where<ButtonHandler.Button>(ModButtons.buttons, (ButtonHandler.Button button) => button.Enabled));
+            }
+            else
+            {
+                return ModButtons.buttons.Where(button => button.Page == page).ToList();
+            }
         }
 
         public static void DisableAllMods()
