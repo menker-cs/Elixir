@@ -1,0 +1,513 @@
+C:\Users\asher\source\repos\Volt\Volt\obj\Debug\Volt.csproj.AssemblyReference.cache
+C:\Users\asher\source\repos\Volt\Volt\obj\Debug\Volt.csproj.CoreCompileInputs.cache
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Volt.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Volt.pdb
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\0Harmony.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Assembly-CSharp.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\AssistantCoreSDKRuntime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\AstarPathfindingProject.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Autodesk.Fbx.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Backtrace.Unity.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BakeryRuntimeAssembly.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.Harmony.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.Preloader.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Cinemachine.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\com.rlabrecque.steamworks.net.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\endel.nativewebsocket.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Facebook.Wit.Dictation.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\FbxBuildTestAssets.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Common.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Log.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Realtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Sockets.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Fusion.Unity.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\geometry3Sharp.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\GT_CustomMapSupportRuntime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\HarmonyXInterop.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\KID.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\LIV.LCK.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\LIV.LCK_GorillaTag.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\LIV.NativeAudioBridge.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MeshBakerCore.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MeshBakerExamples.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Hub.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.BuiltInTimer.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.Chess.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.Dictation.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.LightTraits.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.LiveUnderstanding.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.Shapes.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.ShapesConduit.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.Voice.Samples.TTSVoices.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Common.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Other.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.WitAi.Conduit.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.WitAi.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.WitAi.Lib.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.WitAi.TTS.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Meta.XR.BuildingBlocks.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Modio.Platform.Steam.Facepunch.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Modio.Platform.Steam.Steamworks.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\modio.UI.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Modio.UI.Examples.Steam.Facepunch.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Modio.UI.Examples.Steam.Steamworks.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\modio.UnityPlugin.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Mono.Cecil.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Mono.Cecil.Rocks.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Mono.Security.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MonoMod.Utils.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\NanoSockets.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\NativeGallery.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\NavMeshComponents.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Newtonsoft.Json.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Newtonsoft.Json.UnityConverters.Addressables.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Newtonsoft.Json.UnityConverters.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\nexus.nexussdk.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Nobi.UiRoundedCorners.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.AudioManager.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.Interaction.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.Interaction.OVR.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.Interaction.OVR.Samples.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.LipSync.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.Platform.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.Spatializer.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Oculus.VR.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Pathfinding.ClipperLib.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Pathfinding.Ionic.Zip.Reduced.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Pathfinding.Poly2Tri.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Photon3Unity3D.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonRealtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonUnityNetworking.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonUnityNetworking.Utilities.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonVoice.API.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonVoice.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonVoice.Fusion.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PhotonVoice.PUN.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\PlayFab.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\SteamVR.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\SteamVR_Actions.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\TechniePhysicsCreator.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Addressables.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.AI.Navigation.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Animation.Rigging.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Animation.Rigging.DocCodeExamples.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Burst.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Burst.Unsafe.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Collections.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Collections.LowLevel.ILSupport.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Formats.Fbx.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.InputSystem.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.InputSystem.ForUI.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Mathematics.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.MemoryProfiler.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ProBuilder.Csg.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ProBuilder.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ProBuilder.KdTree.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ProBuilder.Poly2Tri.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ProBuilder.Stl.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Profiling.Core.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipelines.Core.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipelines.Core.ShaderLibrary.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.Shaders.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ResourceManager.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.ScriptableBuildPipeline.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Splines.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.Timeline.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.XR.CoreUtils.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.XR.Interaction.Toolkit.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.XR.Management.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.XR.Oculus.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Unity.XR.OpenVR.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AccessibilityModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AIModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AndroidJNIModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AnimationModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ARModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.AudioModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ClothModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ClusterInputModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ClusterRendererModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ContentLoadModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.CrashReportingModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.DirectorModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.DSPGraphModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.GameCenterModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.GIModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.GridModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.HotReloadModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.InputModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.NVIDIAModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ParticleSystemModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.Physics2DModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.PhysicsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ProfilerModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.PropertiesModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SpatialTracking.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SpriteMaskModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SpriteShapeModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.StreamingModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SubstanceModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.SubsystemsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TerrainModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TerrainPhysicsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TextCoreFontEngineModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TextCoreTextEngineModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TextRenderingModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TilemapModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.TLSModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UI.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UIElementsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UIModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UmbraModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityAnalyticsCommonModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityAnalyticsModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityConnectModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityCurlModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityTestProtocolModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.VehiclesModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.VFXModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.VideoModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.VirtualTexturingModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.VRModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.WindModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\UnityEngine.XRModule.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Valve.Newtonsoft.Json.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\VoiceSDK.Dictation.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\VoiceSDK.Runtime.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\VYaml.Core.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\websocket-sharp.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\ZString.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\netstandard.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\Sirenix.OdinInspector.Attributes.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\ALINE.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\AA.Mothership.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\andywiecko.BurstTriangulator.dll
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\0Harmony.xml
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.xml
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.Harmony.xml
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\BepInEx.Preloader.xml
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.xml
+C:\Users\asher\source\repos\Volt\Volt\bin\Debug\MonoMod.Utils.xml
+C:\Users\asher\source\repos\Volt\Volt\obj\Debug\Volt.csproj.Up2Date
+C:\Users\asher\source\repos\Volt\Volt\obj\Debug\Volt.dll
+C:\Users\asher\source\repos\Volt\Volt\obj\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.AssemblyReference.cache
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.CoreCompileInputs.cache
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\Sirenix.OdinInspector.Attributes.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\ALINE.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\AA.Mothership.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\andywiecko.BurstTriangulator.dll
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\0Harmony.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Harmony.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Preloader.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.Utils.xml
+C:\Users\Tommy\Downloads\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.Up2Date
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.AssemblyReference.cache
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.CoreCompileInputs.cache
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Sirenix.OdinInspector.Attributes.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\ALINE.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AA.Mothership.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\0Harmony.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Harmony.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Preloader.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.Utils.xml
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.Up2Date
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\0Harmony.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Assembly-CSharp.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Harmony.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Preloader.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Realtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\HarmonyXInterop.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Mono.Cecil.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Mono.Cecil.Rocks.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.Utils.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Haptics.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Interaction.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Interaction.OVR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Interaction.OVR.Samples.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Interaction.Samples.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Interaction.UnityXR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.Platform.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Oculus.VR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Photon3Unity3D.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonRealtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonUnityNetworking.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonUnityNetworking.Utilities.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonVoice.API.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonVoice.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonVoice.Fusion.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PhotonVoice.PUN.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\PlayFab.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\SteamVR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\SteamVR_Actions.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\TechniePhysicsCreator.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Addressables.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.AI.Navigation.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Animation.Rigging.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Animation.Rigging.DocCodeExamples.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Burst.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Burst.Unsafe.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Cinemachine.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Collections.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Collections.LowLevel.ILSupport.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Formats.Fbx.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.InputSystem.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.InputSystem.ForUI.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Mathematics.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.MemoryProfiler.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Multiplayer.Center.Common.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ProBuilder.Csg.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ProBuilder.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ProBuilder.KdTree.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ProBuilder.Poly2Tri.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ProBuilder.Stl.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Profiling.Core.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Rendering.LightTransport.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Core.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Core.Runtime.Shared.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Core.ShaderLibrary.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.GPUDriven.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.2D.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.Config.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.RenderPipelines.Universal.Shaders.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ResourceManager.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.ScriptableBuildPipeline.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Splines.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.Timeline.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.VisualEffectGraph.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.CoreUtils.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.Interaction.Toolkit.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.Management.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenVR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.Features.ConformanceAutomation.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.Features.MetaQuestSupport.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.Features.MockRuntime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.Features.OculusQuestSupport.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Unity.XR.OpenXR.Features.RuntimeDebugger.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AccessibilityModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AMDModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AndroidJNIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AnimationModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ARModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.AudioModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ClothModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ClusterInputModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ClusterRendererModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ContentLoadModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.CrashReportingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.DirectorModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.DSPGraphModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.GameCenterModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.GIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.GraphicsStateCollectionSerializerModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.GridModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.HierarchyCoreModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.HotReloadModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.InputForUIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.InputModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.MarshallingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.MultiplayerModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.NVIDIAModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ParticleSystemModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.Physics2DModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.PhysicsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.PropertiesModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.ShaderVariantAnalyticsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SpatialTracking.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SpriteMaskModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SpriteShapeModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.StreamingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SubstanceModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.SubsystemsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TerrainModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TerrainPhysicsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TextCoreFontEngineModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TextCoreTextEngineModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TextRenderingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TilemapModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.TLSModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UI.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UIElementsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UIModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UmbraModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityAnalyticsCommonModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityAnalyticsModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityConnectModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityCurlModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityTestProtocolModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.VehiclesModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.VFXModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.VideoModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.VirtualTexturingModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.VRModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.WindModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\UnityEngine.XRModule.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Valve.Newtonsoft.Json.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\VoiceSDK.Dictation.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\VoiceSDK.Runtime.Composer.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\VoiceSDK.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\VoiceSDK.Telemetry.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\VYaml.Core.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\websocket-sharp.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Common.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\ZString.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AstarPathfindingProject.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Sockets.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.LCK_GorillaTag.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.LCK.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Unity.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\com.rlabrecque.steamworks.net.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\KID.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\nexus.nexussdk.Runtime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\GT_CustomMapSupportRuntime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Modio.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Backtrace.Unity.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BakeryRuntimeAssembly.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\endel.nativewebsocket.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Modio.Unity.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Log.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Wit.Dictation.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AssistantCoreSDKRuntime.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.Lib.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.TTS.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Wit.Composer.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.Ionic.Zip.Reduced.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.ClipperLib.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.Poly2Tri.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\NanoSockets.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.NativeAudioBridge.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\NativeGallery.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Common.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Net.endel.nativewebsocket.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Voice.NLayer.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Voice.Opus.dll
+C:\Users\Tommy\Downloads\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Other.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Volt.pdb
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Common.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Sirenix.OdinInspector.Attributes.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\ZString.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AstarPathfindingProject.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\ALINE.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Sockets.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.LCK_GorillaTag.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.LCK.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Unity.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\com.rlabrecque.steamworks.net.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AA.Mothership.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\KID.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\nexus.nexussdk.Runtime.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\GT_CustomMapSupportRuntime.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Modio.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Backtrace.Unity.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BakeryRuntimeAssembly.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\endel.nativewebsocket.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Modio.Unity.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Fusion.Log.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Wit.Dictation.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\AssistantCoreSDKRuntime.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.Lib.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.WitAi.TTS.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Wit.Composer.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.Ionic.Zip.Reduced.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.ClipperLib.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Pathfinding.Poly2Tri.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\NanoSockets.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\LIV.NativeAudioBridge.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\NativeGallery.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Common.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Net.endel.nativewebsocket.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Voice.NLayer.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.Voice.Opus.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\Meta.VoiceSDK.Mic.Other.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\0Harmony.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Harmony.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\BepInEx.Preloader.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.RuntimeDetour.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\MonoMod.Utils.xml
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.AssemblyReference.cache
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.CoreCompileInputs.cache
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.csproj.Up2Date
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.dll
+C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\obj\Debug\Volt.pdb
