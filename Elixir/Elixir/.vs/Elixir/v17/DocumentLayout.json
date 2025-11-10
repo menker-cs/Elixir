@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\categiry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\categiry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Buttons.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Buttons.cs",
-              "RelativeDocumentMoniker": "Management\\Buttons.cs",
-              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Buttons.cs",
-              "RelativeToolTip": "Management\\Buttons.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAiAAAAAAAAAA==",
+              "Title": "Categiry.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Categiry.cs",
+              "RelativeDocumentMoniker": "Management\\Categiry.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Categiry.cs",
+              "RelativeToolTip": "Management\\Categiry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:00:17.771Z",
+              "WhenOpened": "2025-11-10T21:20:18.026Z",
               "EditorCaption": ""
             }
           ]
