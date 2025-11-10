@@ -1,0 +1,10 @@
+# Visual Studio
+.vs/
+
+# Build results
+bin/
+obj/
+
+# Rider
+.idea/
+.idea_modules/
