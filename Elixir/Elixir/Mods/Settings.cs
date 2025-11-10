@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using Elixir.Management;
 using Elixir.Utilities;
 using Elixir.Utilities.Notifs;
 using System.Collections.Generic;
@@ -9,15 +10,25 @@ namespace Elixir.Mods.Categories
 {
     public class Settings
     { 
-        public static void ClearNotifications()
+        public static void ToggleDisconnect(bool setActive)
         {
-            //NotificationLib.ClearAllNotifications();
+            disconnect = setActive;
+
+            var visual = Menu.menu.transform.Find("Canvas/Visual")?.gameObject;
+            visual.transform.Find("Home (1)").gameObject.SetActive(Variables.disconnect);
         }
         public static void ToggleVCounter(bool setActive)
         {
             vCounter = setActive;
+
+            var visual = Menu.menu.transform.Find("Canvas/Visual")?.gameObject;
+            visual.transform.Find("Title/Version").gameObject.SetActive(Variables.vCounter);
         }
-        public static void ToggleAlphabet(bool setActive)
+        public static void ToggleTips(bool setActive)
+        {
+            tips = setActive;
+        }
+        public static void Alphabet(bool setActive)
         {
             alphabet = setActive;
         }

@@ -19,8 +19,9 @@ namespace Elixir.Utilities
     public class Variables : MonoBehaviourPunCallbacks
     {
         public static bool vCounter = true;
+        public static bool disconnect = true;
         public static bool alphabet = false;
-        public static bool tracker = true;
+        public static bool tips = true;
         public static float lastFPSTime = 0f;
         public static int fps;
         public static int Mat;

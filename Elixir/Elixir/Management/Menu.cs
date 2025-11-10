@@ -2,6 +2,7 @@ using BepInEx;
 using Elixir.Components;
 using Elixir.Mods;
 using Elixir.Mods.Categories;
+using Elixir.Utilities;
 using Photon.Pun;
 using System;
 using System.Collections;
@@ -20,7 +21,6 @@ using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ColorLib;
 using static GorillaLocomotion.GTPlayer;
-using Elixir.Components; // For CoroutineHandler
 
 namespace Elixir.Management
 {
@@ -73,10 +73,8 @@ namespace Elixir.Management
 
         public static void Start()
         {
-            // Start the coroutine to find MOTD objects
             CoroutineHandler.StartCoroutine1(FindMotdObjectsCoroutine());
 
-            // Load the asset bundle first
             var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");
             var asset = bundle.LoadAsset<GameObject>("Elixir");
             menu = GameObject.Instantiate(asset);
@@ -127,7 +125,6 @@ namespace Elixir.Management
             menu.SetActive(true);
         }
 
-        // Add this coroutine method to the class
         private static IEnumerator FindMotdObjectsCoroutine()
         {
             while (motdHeading == null || motdBody == null || cocHeading == null || cocBody == null || gameModeText == null || computer == null || wallMonitor == null)
@@ -210,6 +207,8 @@ namespace Elixir.Management
                     module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
                     module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
 
+                    module.transform.Find("ButtonDescription").gameObject.SetActive(Variables.tips);
+
                     module.transform.Find("enabled")?.gameObject.SetActive(false);
                     module.transform.Find("disabled")?.gameObject.SetActive(false);
                     module.transform.Find("nontoggle")?.gameObject.SetActive(false);
@@ -260,10 +259,22 @@ namespace Elixir.Management
             if (currentPage < 0) currentPage = 0;
             if (currentPage > maxPage) currentPage = maxPage;
 
-            for (int i = currentPage * btnPerPage; i < Mathf.Min(currentPage * btnPerPage + btnPerPage, mods); i++)
+            Module[] sorted;
+            if (Variables.alphabet)
+            {
+                sorted = categories[pageIndex].buttons
+                    .OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+            }
+            else
+            {
+                sorted = categories[pageIndex].buttons;
+            }
+
+            for (int i = currentPage * btnPerPage; i < Mathf.Min(currentPage * btnPerPage + btnPerPage, sorted.Length); i++)
             {
                 int index = i;
-                var mod = categories[pageIndex].buttons[index];
+                var mod = sorted[index];
 
                 var module = GameObject.Instantiate(templateButton, modules.transform);
                 buttons.Add(module);
@@ -274,6 +285,8 @@ namespace Elixir.Management
 
                 module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
                 module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+
+                module.transform.Find("ButtonDescription").gameObject.SetActive(Variables.tips);
 
                 var enabledObj = module.transform.Find("enabled")?.gameObject;
                 var disabledObj = module.transform.Find("disabled")?.gameObject;
@@ -510,6 +523,5 @@ namespace Elixir.Management
         public static float delay;
         public static bool contBool = false;
         public static bool prevLPrimaryState = false;
-
     }
 }

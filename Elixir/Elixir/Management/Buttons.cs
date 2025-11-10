@@ -9,6 +9,7 @@ using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Utilities.Variables;
+using Elixir.Mods.Categories;
 
 namespace Elixir.Management
 {
@@ -17,16 +18,12 @@ namespace Elixir.Management
         public static void CreateButtons()
         {
             categories.Add(new Category("Settings", Category.IconType.Setting, new Module[] {
-            //new Module() { title = "Right Handed Menu", tooltip = "Switches the menuf to the right-hand side for right-handed users.", isToggleable = true, action = () => SwitchHands(true), disableAction = () => SwitchHands(false) },
-            //new Module() { title = "Disconnect Button", tooltip = "Toggles the presence of the Disconnect button in the UI.", isToggleable = true, action = () => ToggleDisconnectButton(true), disableAction = () => ToggleDisconnectButton(false) },
-            //new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
-            //new Module() { title = "Toggle Notifications", tooltip = "Enables or disables in-game notifications.", isToggleable = true, action = () => ToggleNotifications(true), disableAction = () => ToggleNotifications(false) },
-            //new Module() { title = "Clear Notifications", tooltip = "Clears all current notification messages.", isToggleable = false, action = () => ClearNotifications() },
-            //new Module() { title = "Bark Positioning", tooltip = "Adjusts where 'bark' messages appear on-screen.", isToggleable = true, action = () => Bark(true), disableAction = () => Bark(false) },
-            //new Module() { title = "Order Buttons By Alphabet", tooltip = "Sorts menu buttons alphabetically.", isToggleable = true, action = () => ToggleAlphabet(true), disableAction = () => ToggleAlphabet(false) },
-            //new Module() { title = "Menu Outline", tooltip = "Toggles a visual outline around the menu panels.", isToggleable = true, action = () => OLine(true), disableAction = () => OLine(false) },
             //new Module() { title = "Change Sound", tooltip = "Cycles through available menu sound profiles.", isToggleable = false, action = () => ChangeSound() },
-            new Module() { title = "Visualize Antireport", tooltip = "Displays a visual indicator for anti-report features.", isToggleable = true, action = () => VisReport(true), disableAction = () => VisReport(false) },
+            new Module() { title = "Toggle Tooltips", tooltip = "Toggles when tooltips should show.", isToggleable = true, toggled = true, action = () => Settings.ToggleTips(true), disableAction = () => ToggleTips(false) },
+            new Module() { title = "Toggle Disconnect Button", tooltip = "Shows or hides the disconnect button.", isToggleable = true, toggled = true, action = () => ToggleDisconnect(true), disableAction = () => ToggleDisconnect(false) },
+            new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, toggled = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
+            new Module() { title = "Sort Buttons Alphabetically", tooltip = "Sorts buttons in alphabetical order when enabled.", isToggleable = true, toggled = false, action = () => Alphabet(true), disableAction = () => Alphabet(false) },
+            new Module() { title = "Visualize Antireport", tooltip = "Displays a visual indicator for anti-report features.", isToggleable = true, toggled = false, action = () => VisReport(true), disableAction = () => VisReport(false) },
             new Module() { title = "Change ESP Color", tooltip = "Opens color selector for 'Infection' ESP elements.", isToggleable = false, action = () => ESPChange() },
             new Module() { title = "Change Tracer Position", tooltip = "Switches tracer visuals to the right-side attachment.", isToggleable = false, action = () => TracerPos() },
             new Module() { title = "Change Fly Speed", tooltip = "Cycles through fly speed presets (current: Normal).", isToggleable = false, action = () => FlySpeed() },
