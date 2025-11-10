@@ -222,3 +222,12 @@ C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\V
 C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard2.1\VoiceSDK.Runtime.Composer.dll
 C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard2.1\Meta.Wit.Dictation.dll
 C:\Users\Tommy\Downloads\elixir is better than volt yes nigga\Volt-main-edited\Volt-main\Volt-main\Volt\Volt\bin\Debug\netstandard2.1\Meta.Wit.Composer.dll
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.csproj.AssemblyReference.cache
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.IgnoresAccessChecksTo.cs
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.AssemblyInfoInputs.cache
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.AssemblyInfo.cs
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.csproj.CoreCompileInputs.cache
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.sourcelink.json
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.dll
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.pdb

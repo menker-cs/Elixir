@@ -74,7 +74,7 @@ namespace Elixir.Management
         public static void Start()
         {
             // Start the coroutine to find MOTD objects
-            CoroutineHandler.StartStaticCoroutine(FindMotdObjectsCoroutine());
+            CoroutineHandler.StartCoroutine1(FindMotdObjectsCoroutine());
 
             // Load the asset bundle first
             var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");

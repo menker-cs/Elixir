@@ -21,10 +21,7 @@ namespace Elixir.Components
             }
         }
 
-        /// <summary>
-        /// Start a coroutine from a static context.
-        /// </summary>
-        public static Coroutine StartStaticCoroutine(IEnumerator routine)
+        public static Coroutine StartCoroutine1(IEnumerator routine)
         {
             return Instance.StartCoroutine(routine);
         }
