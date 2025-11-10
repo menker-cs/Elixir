@@ -17,7 +17,7 @@ namespace Elixir.Management
         public static void CreateButtons()
         {
             categories.Add(new Category("Settings", Category.IconType.Setting, new Module[] {
-            //new Module() { title = "Right Handed Menu", tooltip = "Switches the menu to the right-hand side for right-handed users.", isToggleable = true, action = () => SwitchHands(true), disableAction = () => SwitchHands(false) },
+            //new Module() { title = "Right Handed Menu", tooltip = "Switches the menuf to the right-hand side for right-handed users.", isToggleable = true, action = () => SwitchHands(true), disableAction = () => SwitchHands(false) },
             //new Module() { title = "Disconnect Button", tooltip = "Toggles the presence of the Disconnect button in the UI.", isToggleable = true, action = () => ToggleDisconnectButton(true), disableAction = () => ToggleDisconnectButton(false) },
             //new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
             //new Module() { title = "Toggle Notifications", tooltip = "Enables or disables in-game notifications.", isToggleable = true, action = () => ToggleNotifications(true), disableAction = () => ToggleNotifications(false) },
