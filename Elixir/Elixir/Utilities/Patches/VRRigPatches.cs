@@ -25,10 +25,4 @@ namespace Volt.Patches
             return !(__instance == GorillaTagger.Instance.offlineVRRig);
         }
     }
-    [HarmonyPatch(typeof(VRRig), "PostTick")]
-    public class RigPatch2
-    {
-        public static bool Prefix(VRRig __instance) =>
-            !__instance.isLocal || __instance.enabled;
-    }
 }

@@ -48,20 +48,13 @@ namespace Elixir.Management
             return bundle;
         }
 
-        public static AudioSource audioSource
-        {
-            get
-            {
-                return GorillaTagger.Instance.offlineVRRig.rightHandPlayer;
-            }
-        }
-
         private static void OnButtonClick()
         {
             GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 2f, GorillaTagger.Instance.tagHapticDuration / 2f);
             if (defaultClickSound != null)
-                audioSource.PlayOneShot(defaultClickSound);
+                GorillaTagger.Instance.offlineVRRig.rightHandPlayer.PlayOneShot(defaultClickSound);
         }
+
         static TextMeshPro? motdHeading;
         static TextMeshPro? motdBody;
         static TextMeshPro? cocHeading;

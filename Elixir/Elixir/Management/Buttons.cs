@@ -10,6 +10,7 @@ using static Elixir.Mods.Categories.World;
 using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Utilities.Variables;
 using Elixir.Mods.Categories;
+using Elixir.Notifications;
 
 namespace Elixir.Management
 {
@@ -32,6 +33,7 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Room", Category.IconType.Room, new Module[] {
+            new Module() { title = "Test Notif", tooltip = "Exits the current game and returns to the main menu.", isToggleable = false, action = () => Elixir.Notifications.NotificationLib.SendNotification("Hi") },
             new Module() { title = "Quit Game", tooltip = "Exits the current game and returns to the main menu.", isToggleable = true, action = () => QuitGTAG() },
             new Module() { title = "Join Random", tooltip = "Attempts to join a random public room.", isToggleable = false, action = () => JoinRandomPublic() },
             new Module() { title = "Disconnect", tooltip = "Disconnects you from the current server session.", isToggleable = false, action = () => Disconnect() },

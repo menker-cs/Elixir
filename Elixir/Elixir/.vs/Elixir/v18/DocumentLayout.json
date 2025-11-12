@@ -3,20 +3,64 @@
   "WorkspaceRootPath": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\notifs\\library.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\notifs\\library.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\notifs\\leave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\notifs\\leave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\mods\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:mods\\playerr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\mods\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:mods\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\buttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\variables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\patches\\vrrigpatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\patches\\vrrigpatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\notifs\\join.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\notifs\\join.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\management\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:management\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\plugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:plugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\harmonypatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:harmonypatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\rigmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\rigmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\colorlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\utilities\\patches\\miscpatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|solutionrelative:utilities\\patches\\miscpatches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{780E545F-F66E-65AB-8AE6-3160D676DAF3}|Elixir.csproj|c:\\users\\tommy\\onedrive\\documents\\github\\elixir\\elixir\\elixir\\mods\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,60 +82,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Menu.cs",
               "RelativeDocumentMoniker": "Management\\Menu.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Menu.cs",
               "RelativeToolTip": "Management\\Menu.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAASwGEAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAHMBAAAAAAAAAAAlwIgBAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T21:24:08.69Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Buttons.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Buttons.cs",
               "RelativeDocumentMoniker": "Management\\Buttons.cs",
               "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Buttons.cs",
               "RelativeToolTip": "Management\\Buttons.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAACiAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAUwIgAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T21:24:12.566Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Variables.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Variables.cs",
-              "RelativeDocumentMoniker": "Utilities\\Variables.cs",
-              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Variables.cs",
-              "RelativeToolTip": "Utilities\\Variables.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAlwBUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:26:01.471Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Settings.cs",
-              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Settings.cs",
-              "RelativeDocumentMoniker": "Mods\\Settings.cs",
-              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Settings.cs",
-              "RelativeToolTip": "Mods\\Settings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:25:51.505Z",
               "EditorCaption": ""
             },
             {
@@ -116,7 +133,167 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
+              "Title": "Plugin.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Plugin.cs",
+              "RelativeDocumentMoniker": "Plugin.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Plugin.cs",
+              "RelativeToolTip": "Plugin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:52:08.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Playerr.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Playerr.cs",
+              "RelativeDocumentMoniker": "Mods\\Playerr.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Playerr.cs",
+              "RelativeToolTip": "Mods\\Playerr.cs",
+              "ViewState": "AgIAANYAAAAAZmZmZmYEwOMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:43:36.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MiscPatches.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Patches\\MiscPatches.cs",
+              "RelativeDocumentMoniker": "Utilities\\Patches\\MiscPatches.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Patches\\MiscPatches.cs",
+              "RelativeToolTip": "Utilities\\Patches\\MiscPatches.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:43:30.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Join.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Join.cs",
+              "RelativeDocumentMoniker": "Utilities\\Notifs\\Join.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Join.cs",
+              "RelativeToolTip": "Utilities\\Notifs\\Join.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:41:38.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Library.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Library.cs",
+              "RelativeDocumentMoniker": "Utilities\\Notifs\\Library.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Library.cs",
+              "RelativeToolTip": "Utilities\\Notifs\\Library.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAkwJIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:40:48.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HarmonyPatches.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\HarmonyPatches.cs",
+              "RelativeDocumentMoniker": "HarmonyPatches.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\HarmonyPatches.cs",
+              "RelativeToolTip": "HarmonyPatches.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:53:18.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Variables.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Variables.cs",
+              "RelativeDocumentMoniker": "Utilities\\Variables.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Variables.cs",
+              "RelativeToolTip": "Utilities\\Variables.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAswIkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T21:26:01.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Settings.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Settings.cs",
+              "RelativeDocumentMoniker": "Mods\\Settings.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Settings.cs",
+              "RelativeToolTip": "Mods\\Settings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T21:25:51.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Leave.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Leave.cs",
+              "RelativeDocumentMoniker": "Utilities\\Notifs\\Leave.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Notifs\\Leave.cs",
+              "RelativeToolTip": "Utilities\\Notifs\\Leave.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:41:17.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VRRigPatches.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Patches\\VRRigPatches.cs",
+              "RelativeDocumentMoniker": "Utilities\\Patches\\VRRigPatches.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\Patches\\VRRigPatches.cs",
+              "RelativeToolTip": "Utilities\\Patches\\VRRigPatches.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T21:28:37.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ColorLib.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\ColorLib.cs",
+              "RelativeDocumentMoniker": "Utilities\\ColorLib.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\ColorLib.cs",
+              "RelativeToolTip": "Utilities\\ColorLib.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAlwEkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:51:33.654Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PluginInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\PluginInfo.cs",
+              "RelativeDocumentMoniker": "PluginInfo.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\PluginInfo.cs",
+              "RelativeToolTip": "PluginInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:53:13.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RigManager.cs",
+              "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\RigManager.cs",
+              "RelativeDocumentMoniker": "Utilities\\RigManager.cs",
+              "ToolTip": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Utilities\\RigManager.cs",
+              "RelativeToolTip": "Utilities\\RigManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:53:17.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Movement.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\Movement.cs",
               "RelativeDocumentMoniker": "Mods\\Movement.cs",
@@ -124,12 +301,11 @@
               "RelativeToolTip": "Mods\\Movement.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:24:11.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T21:24:11.478Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "sherbert.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Mods\\sherbert.cs",
               "RelativeDocumentMoniker": "Mods\\sherbert.cs",
@@ -137,12 +313,11 @@
               "RelativeToolTip": "Mods\\sherbert.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:24:10.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T21:24:10.653Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "Categiry.cs",
               "DocumentMoniker": "C:\\Users\\Tommy\\OneDrive\\Documents\\GitHub\\Elixir\\Elixir\\Elixir\\Management\\Categiry.cs",
               "RelativeDocumentMoniker": "Management\\Categiry.cs",
@@ -150,8 +325,7 @@
               "RelativeToolTip": "Management\\Categiry.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:20:18.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T21:20:18.026Z"
             }
           ]
         }

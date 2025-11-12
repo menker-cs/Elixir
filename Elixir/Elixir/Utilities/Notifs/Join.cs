@@ -1,5 +1,6 @@
-﻿using HarmonyLib;
+﻿using Elixir.Notifications;
 using Elixir.Utilities.Notifs;
+using HarmonyLib;
 using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
@@ -14,7 +15,7 @@ namespace Elixir.Utilities.Notifs
         {
             if (newPlayer != oldnewplayer)
             {
-                //NotificationLib.SendNotification("<color=white>[</color><color=green>Player Joined</color><color=white>] </color><color=white>Name: " + newPlayer.NickName + "</color>");
+                NotificationLib.SendNotification("[<color=red>Player Left</color>]Name: " + oldnewplayer.NickName);
                 oldnewplayer = newPlayer;
             }
         }

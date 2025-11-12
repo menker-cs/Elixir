@@ -4,6 +4,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
 using UnityEngine;
+using Elixir.Notifications;
 
 namespace Elixir.Utilities.Notifs
 {
@@ -14,7 +15,7 @@ namespace Elixir.Utilities.Notifs
         {
             if (otherPlayer != PhotonNetwork.LocalPlayer && otherPlayer != a)
             {
-                //NotificationLib.SendNotification("<color=white>[</color><color=red>Player Left</color><color=white>]</color> <color=white>Name: " + otherPlayer.NickName + "</color>");
+                NotificationLib.SendNotification("[<color=red>Player Left</color>] Name: " + otherPlayer.NickName);
                 a = otherPlayer;
             }
         }

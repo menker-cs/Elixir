@@ -11,10 +11,12 @@
 
   <ItemGroup>
     <None Remove="Resources\ElixirBundle" />
+    <None Remove="Resources\notifbundle" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ElixirBundle" />
+    <EmbeddedResource Include="Resources\notifbundle" />
   </ItemGroup>
 
   <ItemGroup>

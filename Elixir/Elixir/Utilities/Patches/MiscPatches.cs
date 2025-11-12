@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Elixir.Utilities;
 using UnityEngine;
+using Elixir.Notifications;
 
 namespace Volt.Patches
 {
@@ -115,7 +116,7 @@ namespace Volt.Patches
                 if (susId == PhotonNetwork.LocalPlayer.UserId)
                 {
                     Debug.Log("Reported By Anti Cheat : " + susReason);
-                    //NotificationLib.SendNotification("<color=blue>Anti-Cheat</color> : Reason: " + susReason);
+                    NotificationLib.SendNotification("<color=blue>Anti-Cheat</color> : Reason: " + susReason);
                 }
 
                 return false;

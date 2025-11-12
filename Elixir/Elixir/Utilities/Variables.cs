@@ -12,7 +12,7 @@ using System.Text;
 using UnityEngine.Networking;
 using System;
 using System.Net;
-using Elixir.Utilities.Notifs;
+using Elixir.Notifications;
 
 namespace Elixir.Utilities
 {
@@ -61,12 +61,12 @@ namespace Elixir.Utilities
         {
             if (!PhotonNetwork.IsConnected)
             {
-                //NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
+                NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
                 return;
             }
 
             string message = GetHTMode().Contains("MODDED") ? "<color=blue>Room</color> : You are in a modded lobby." : "<color=blue>Room</color> : You are not in a modded lobby.";
-            //NotificationLib.SendNotification(message);
+            NotificationLib.SendNotification(message);
         }
 
         public static string GetHTMode()
@@ -126,11 +126,11 @@ namespace Elixir.Utilities
         {
             if (!PhotonNetwork.IsConnected)
             {
-                //NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
+                NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
                 return;
             }
 
-            //NotificationLib.SendNotification(PhotonNetwork.IsMasterClient ? "<color=blue>Room</color> : You are master." : "<color=blue>Room</color> : " + PhotonNetwork.MasterClient + "is master client");
+            NotificationLib.SendNotification(PhotonNetwork.IsMasterClient ? "<color=blue>Room</color> : You are master." : "<color=blue>Room</color> : " + PhotonNetwork.MasterClient + "is master client");
         }
         public static void UseGravity(bool useGravity)
         {
@@ -167,33 +167,7 @@ namespace Elixir.Utilities
         public static Vector3 Annoy(Transform transform, float range)
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
-        }/*
-        public static void SendWeb(string str)
-        {
-            string jsonPayload = $"{{\"content\": \"{str}\"}}";
-
-            GorillaTagger.Instance.StartCoroutine(SendWebhook(jsonPayload));
         }
-        private static IEnumerator SendWebhook(string jsonPayload)
-        {
-            using UnityWebRequest request = new UnityWebRequest(webhookUrl, "POST");
-            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonPayload);
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
-            request.SetRequestHeader("Content-Type", "application/json");
-
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-            }
-            else
-            {
-            }
-        }
-        */
-        // Please just dont spam it
-        //private static readonly string webhookUrl = new WebClient().DownloadString("https://raw.githubusercontent.com/menker-cs/Elixir-Stuff/refs/heads/main/webhook-url.txt");
     }
 }
 

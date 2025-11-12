@@ -5,6 +5,7 @@ using Elixir.Utilities.Notifs;
 using System.Collections.Generic;
 using System.IO;
 using static Elixir.Utilities.Variables;
+using Elixir.Notifications;
 
 namespace Elixir.Mods.Categories
 {
@@ -43,19 +44,19 @@ namespace Elixir.Mods.Categories
             {
                 case 1:
                     speedboostchangerspeed = 15f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
                     break;
                 case 2:
                     speedboostchangerspeed = 7f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
                     break;
                 case 3:
                     speedboostchangerspeed = 30f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
                     break;
                 case 4:
                     speedboostchangerspeed = 60f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
                     break;
             }
         }
@@ -70,19 +71,19 @@ namespace Elixir.Mods.Categories
             {
                 case 1:
                     speedboostchangerspeed = 8f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
                     break;
                 case 2:
                     speedboostchangerspeed = 7.3f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
                     break;
                 case 3:
                     speedboostchangerspeed = 15f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
                     break;
                 case 4:
                     speedboostchangerspeed = 50f;
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
                     break;
             }
         }
@@ -96,16 +97,16 @@ namespace Elixir.Mods.Categories
             switch (espSetting)
             {
                 case 1:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
                     break;
                 case 2:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
                     break;
                 case 3:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
                     break;
                 case 4:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
                     break;
             }
         }
@@ -119,16 +120,16 @@ namespace Elixir.Mods.Categories
             switch (tracePos)
             {
                 case 1:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Right Hand</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Right Hand</color>");
                     break;
                 case 2:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Left Hand</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Left Hand</color>");
                     break;
                 case 3:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Body</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Body</color>");
                     break;
                 case 4:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Head</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Head</color>");
                     break;
             }
         }
@@ -142,10 +143,10 @@ namespace Elixir.Mods.Categories
             switch (gunSetting)
             {
                 case 1:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
                     break;
                 case 2:
-                    //NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
                     break;
             }
         }

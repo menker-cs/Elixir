@@ -23,7 +23,10 @@ namespace Elixir
 
         public void Start() => Menu.Start();
 
-        public void Update() => Menu.Update();
+        public void Update()
+        {
+            Menu.Update();
+        }
         
         //public void Awake() => Menu.Awake();
     }
