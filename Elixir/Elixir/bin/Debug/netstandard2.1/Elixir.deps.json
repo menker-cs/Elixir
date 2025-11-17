@@ -57,7 +57,7 @@
           "Unity.Collections": "0.0.0.0",
           "Unity.Collections.LowLevel.ILSupport": "0.0.0.0",
           "Unity.Formats.Fbx.Runtime": "0.0.0.0",
-          "Unity.InputSystem": "1.14.0.0",
+          "Unity.InputSystem": "1.14.2.0",
           "Unity.InputSystem.ForUI": "0.0.0.0",
           "Unity.InternalAPIEngineBridge.013": "0.0.0.0",
           "Unity.Localization": "0.0.0.0",
@@ -766,11 +766,11 @@
           }
         }
       },
-      "Unity.InputSystem/1.14.0.0": {
+      "Unity.InputSystem/1.14.2.0": {
         "runtime": {
           "Unity.InputSystem.dll": {
-            "assemblyVersion": "1.14.0.0",
-            "fileVersion": "1.14.0.0"
+            "assemblyVersion": "1.14.2.0",
+            "fileVersion": "1.14.2.0"
           }
         }
       },
@@ -1814,6 +1814,14 @@
           }
         }
       },
+      "LIV.LCK/0.0.0.0": {
+        "runtime": {
+          "LIV.LCK.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "LIV.LCK_GorillaTag/0.0.0.0": {
         "runtime": {
           "LIV.LCK_GorillaTag.dll": {
@@ -1822,9 +1830,9 @@
           }
         }
       },
-      "LIV.LCK/0.0.0.0": {
+      "LIV.LCKCore/0.0.0.0": {
         "runtime": {
-          "LIV.LCK.dll": {
+          "LIV.LCKCore.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -1915,6 +1923,22 @@
           "Fusion.Log.dll": {
             "assemblyVersion": "2.0.6.0",
             "fileVersion": "2.0.6.1034"
+          }
+        }
+      },
+      "UnityEngine.IdentifiersModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.IdentifiersModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.UnityConsentModule/0.0.0.0": {
+        "runtime": {
+          "UnityEngine.UnityConsentModule.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -2009,6 +2033,14 @@
       "NativeGallery/0.0.0.0": {
         "runtime": {
           "NativeGallery.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "LIV.LCKCore.ThirdParty.MessagePack/0.0.0.0": {
+        "runtime": {
+          "LIV.LCKCore.ThirdParty.MessagePack.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -2420,7 +2452,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Unity.InputSystem/1.14.0.0": {
+    "Unity.InputSystem/1.14.2.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -3075,12 +3107,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "LIV.LCK/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "LIV.LCK_GorillaTag/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "LIV.LCK/0.0.0.0": {
+    "LIV.LCKCore/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -3136,6 +3173,16 @@
       "sha512": ""
     },
     "Fusion.Log/2.0.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.IdentifiersModule/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.UnityConsentModule/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -3196,6 +3243,11 @@
       "sha512": ""
     },
     "NativeGallery/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LIV.LCKCore.ThirdParty.MessagePack/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

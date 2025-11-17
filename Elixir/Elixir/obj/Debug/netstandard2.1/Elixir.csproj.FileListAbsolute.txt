@@ -223,3 +223,7 @@ C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstand
 C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.csproj.Up2Date
 C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.dll
 C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\obj\Debug\netstandard2.1\Elixir.pdb
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\bin\Debug\netstandard2.1\LIV.LCKCore.dll
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\bin\Debug\netstandard2.1\UnityEngine.IdentifiersModule.dll
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\bin\Debug\netstandard2.1\UnityEngine.UnityConsentModule.dll
+C:\Users\Tommy\OneDrive\Documents\GitHub\Elixir\Elixir\Elixir\bin\Debug\netstandard2.1\LIV.LCKCore.ThirdParty.MessagePack.dll

@@ -7,7 +7,7 @@ using static Elixir.Utilities.Variables;
 
 namespace Elixir.Utilities
 {
-    public class RigManager : BaseUnityPlugin
+    public class RigManager
     {
         public static VRRig GetVRRigFromPlayer(NetPlayer p)
         {

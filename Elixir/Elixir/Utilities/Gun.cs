@@ -22,14 +22,6 @@ namespace Elixir.Utilities
     }
     public class GunTemplate : MonoBehaviour
     {
-        public static int LineCurve = 150;
-        private const float PointerScale = 0.15f;
-        private const float LineWidth = 0.025f;
-        private const float LineSmoothFactor = 6f;
-        private const float DestroyDelay = 0.02f;
-        private const float PulseSpeed = 2f;
-        private const float PulseAmplitude = 0.03f;
-
         public static GameObject? spherepointer;
         public static VRRig? LockedPlayer;
         public static Vector3 lr;
@@ -104,10 +96,13 @@ namespace Elixir.Utilities
                         action();
                         return;
                     }
-                    else if (LockedPlayer != null)
+                    else
                     {
-                        LockedPlayer = null;
-                        return;
+                        trigger = false;
+                        if (LockedPlayer != null)
+                        {
+                            LockedPlayer = null;
+                        }
                     }
                 }
             }
@@ -116,6 +111,7 @@ namespace Elixir.Utilities
                 GameObject.Destroy(spherepointer);
                 spherepointer = null;
                 LockedPlayer = null;
+                trigger = false;
             }
         }
 
@@ -187,10 +183,13 @@ namespace Elixir.Utilities
                     action();
                     return;
                 }
-                else if (LockedPlayer != null)
+                else
                 {
-                    LockedPlayer = null;
-                    return;
+                    trigger = false;
+                    if (LockedPlayer != null)
+                    {
+                        LockedPlayer = null;
+                    }
                 }
             }
             else if (spherepointer != null)
@@ -198,6 +197,7 @@ namespace Elixir.Utilities
                 GameObject.Destroy(spherepointer);
                 spherepointer = null;
                 LockedPlayer = null;
+                trigger = false;
             }
         }
 
@@ -213,7 +213,7 @@ namespace Elixir.Utilities
             }
         }
         public static bool trigger = false;
-        
+
     }
 
 }

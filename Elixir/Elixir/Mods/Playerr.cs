@@ -22,9 +22,10 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-
                 GorillaTagger.Instance.offlineVRRig.transform.position = GunTemplate.spherepointer!.transform.position + new Vector3(0f, 1f, 0f);
             }, false);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -324,6 +325,8 @@ namespace Elixir.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(LockedPlayer!.transform, 1.25f);
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -405,6 +408,8 @@ namespace Elixir.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(LockedPlayer!.transform, 15);
                 GorillaTagger.Instance.offlineVRRig.transform.LookAt(LockedPlayer.transform);
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
@@ -420,6 +425,8 @@ namespace Elixir.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.transform.position = Orbit(spherepointer!.transform, 15);
                 GorillaTagger.Instance.offlineVRRig.transform.LookAt(spherepointer.transform);
             }, false);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.identity;
@@ -435,6 +442,8 @@ namespace Elixir.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.rightHandTransform.position;
                 GorillaTagger.Instance.offlineVRRig.transform.rotation = LockedPlayer.rightHandTransform.rotation;
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -477,8 +486,9 @@ namespace Elixir.Mods.Categories
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.StartCoroutine(Chase());
-
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -520,6 +530,8 @@ namespace Elixir.Mods.Categories
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * 0.15f) + LockedPlayer.transform.up * -0.3f;
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -540,8 +552,9 @@ namespace Elixir.Mods.Categories
 
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * -0.3f;
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -562,8 +575,9 @@ namespace Elixir.Mods.Categories
 
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = (LockedPlayer.transform.position + LockedPlayer.transform.right * -0.15f) + LockedPlayer.transform.up * 0.15f;
                 GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-
             }, true);
+
+            if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
@@ -634,7 +648,7 @@ namespace Elixir.Mods.Categories
 
         private static float lvlDelay;
 
-        private static float nigTime =  0f;
+        private static float nigTime = 0f;
         private static readonly float delay = 0.37f;
         private static bool lag = false;
     }

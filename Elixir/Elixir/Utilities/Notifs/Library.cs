@@ -39,49 +39,23 @@ namespace Elixir.Notifications
 
         private IEnumerator InitializeAsync()
         {
-            // Load asset bundle first
-            Logger.LogInfo("[NFLib] Loading asset bundle...");
             var bundle = LoadAssetBundle("Elixir.Resources.notifbundle");
-            if (bundle == null)
-            {
-                Logger.LogError("[NFLib] Failed to load asset bundle!");
-                yield break;
-            }
-
             notifObj = bundle.LoadAsset<GameObject>("notif");
-            if (notifObj == null)
-            {
-                Logger.LogError("[NFLib] Failed to load notif prefab from bundle!");
-                yield break;
-            }
 
-            Logger.LogInfo("[NFLib] Asset bundle loaded successfully!");
-
-            // Wait for camera with retries
-            Logger.LogInfo("[NFLib] Waiting for camera...");
             yield return StartCoroutine(WaitForCamera());
         }
 
         private IEnumerator WaitForCamera()
         {
             int attempts = 0;
-            while (Camera.main == null && attempts < 200) // Increased timeout for VR
+            while (Camera.main == null && attempts < 200)
             {
                 attempts++;
                 yield return new WaitForSeconds(0.1f);
             }
 
-            if (Camera.main == null)
-            {
-                Logger.LogError("[NFLib] Camera not found after waiting!");
-                yield break;
-            }
-
             mainCamera = Camera.main;
-            Logger.LogInfo("[NFLib] Camera found!");
 
-            // Wait for GorillaTagger instance (VR-specific)
-            Logger.LogInfo("[NFLib] Waiting for GorillaTagger...");
             attempts = 0;
             while (GorillaTagger.Instance == null && attempts < 100)
             {
@@ -89,58 +63,29 @@ namespace Elixir.Notifications
                 yield return new WaitForSeconds(0.1f);
             }
 
-            if (GorillaTagger.Instance == null)
-            {
-                Logger.LogWarning("[NFLib] GorillaTagger not found, continuing anyway...");
-            }
-            else
-            {
-                Logger.LogInfo("[NFLib] GorillaTagger found!");
-            }
-
             CreateHUD();
-
-            // Mark as initialized BEFORE processing queue
             initialized = true;
-            Logger.LogInfo("[NFLib] Initialization complete!");
 
-            // Process any queued notifications
             if (pendingNotifications.Count > 0)
             {
-                Logger.LogInfo($"[NFLib] Processing {pendingNotifications.Count} queued notifications...");
+                Logger.LogInfo($"Processing {pendingNotifications.Count} queued notifications...");
                 while (pendingNotifications.Count > 0)
                 {
                     string message = pendingNotifications.Dequeue();
                     CoroutineHandler.StartCoroutine1(SpawnNotif(message));
-                    yield return new WaitForSeconds(0.2f); // Small delay between queued notifications
+                    yield return new WaitForSeconds(0.2f);
                 }
             }
 
-            // Auto-test notification on startup
             yield return new WaitForSeconds(0.5f);
-            SendNotification("Notification System Ready!");
         }
 
-        private AssetBundle LoadAssetBundle(string path)
+        public static AssetBundle LoadAssetBundle(string path)
         {
-            try
-            {
-                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
-                if (stream == null)
-                {
-                    Logger.LogError($"[NFLib] Could not find embedded resource: {path}");
-                    return null;
-                }
-
-                AssetBundle bundle = AssetBundle.LoadFromStream(stream);
-                stream.Close();
-                return bundle;
-            }
-            catch (Exception e)
-            {
-                Logger.LogError($"[NFLib] Error loading asset bundle: {e.Message}");
-                return null;
-            }
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+            AssetBundle bundle = AssetBundle.LoadFromStream(stream);
+            stream.Close();
+            return bundle;
         }
 
         private void CreateHUD()
@@ -158,14 +103,12 @@ namespace Elixir.Notifications
 
             HUD.transform.SetParent(GorillaTagger.Instance.bodyCollider.transform, false);
             HUD.transform.localPosition = new Vector3(0f, -0.3f, 0.5f);
-            Logger.LogInfo("[NFLib] HUD created successfully!");
         }
 
         private void FixedUpdate()
         {
             if (!initialized || mainCamera == null || HUD == null) return;
 
-            // Additional null check for VR
             if (GorillaTagger.Instance == null || GorillaTagger.Instance.headCollider == null) return;
 
             Transform headTransform = GorillaTagger.Instance.headCollider.transform;
@@ -181,17 +124,7 @@ namespace Elixir.Notifications
                 if (pendingNotifications.Count < maxQueueSize)
                 {
                     pendingNotifications.Enqueue(message);
-                    Instance.Logger.LogInfo($"[NFLib] Queued notification (queue size: {pendingNotifications.Count}): {message}");
                 }
-                else
-                {
-                    Instance.Logger.LogWarning($"[NFLib] Notification queue full, dropping message: {message}");
-                }
-                return;
-            }
-
-            if (disableNotifications)
-            {
                 return;
             }
 
@@ -229,7 +162,6 @@ namespace Elixir.Notifications
             activeNotifications.Add(notif);
             UpdateNotificationPositions();
 
-            // Fade in animation
             float fadeTime = 0.15f;
             float elapsed = 0f;
             Vector3 startScale = Vector3.zero;
@@ -250,7 +182,6 @@ namespace Elixir.Notifications
 
             yield return new WaitForSeconds(2.5f);
 
-            // Fade out animation
             fadeTime = 0.25f;
             elapsed = 0f;
             startScale = Vector3.one * 2.5f;
@@ -300,14 +231,12 @@ namespace Elixir.Notifications
 
             while (elapsed < duration)
             {
-                if (rect == null) yield break;
                 rect.localPosition = Vector3.Lerp(start, target, elapsed / duration);
                 elapsed += Time.deltaTime;
                 yield return null;
             }
 
-            if (rect != null)
-                rect.localPosition = target;
+            rect.localPosition = target;
         }
 
         public static void ClearAllNotifications()
@@ -318,6 +247,7 @@ namespace Elixir.Notifications
             {
                 if (notif != null) Destroy(notif);
             }
+
             activeNotifications.Clear();
             pendingNotifications.Clear();
         }

@@ -64,9 +64,11 @@ namespace Elixir.Management
         static Renderer? computer;
         static Renderer? wallMonitor;
 
+        static GameObject? ThirdCam;
+
         public static void Start()
         {
-            CoroutineHandler.StartCoroutine1(FindMotdObjectsCoroutine());
+            CoroutineHandler.StartCoroutine1(GetObjects());
 
             var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");
             var asset = bundle.LoadAsset<GameObject>("Elixir");
@@ -118,48 +120,26 @@ namespace Elixir.Management
             menu.SetActive(true);
         }
 
-        private static IEnumerator FindMotdObjectsCoroutine()
+        private static IEnumerator GetObjects()
         {
-            while (motdHeading == null || motdBody == null || cocHeading == null || cocBody == null || gameModeText == null || computer == null || wallMonitor == null)
-            {
-                if (motdHeading == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
-                    if (obj != null) motdHeading = obj.GetComponent<TextMeshPro>();
-                }
-                if (motdBody == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText");
-                    if (obj != null) motdBody = obj.GetComponent<TextMeshPro>();
-                }
-                if (cocHeading == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText");
-                    if (obj != null) cocHeading = obj.GetComponent<TextMeshPro>();
-                }
-                if (cocBody == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData");
-                    if (obj != null) cocBody = obj.GetComponent<TextMeshPro>();
-                }
-                if (gameModeText == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text");
-                    if (obj != null) gameModeText = obj.GetComponent<TextMeshPro>();
-                }
-                if (computer == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
-                    if (obj != null) computer = obj.GetComponent<Renderer>();
-                }
-                if (wallMonitor == null)
-                {
-                    var obj = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
-                    if (obj != null) wallMonitor = obj.GetComponent<Renderer>();
-                }
-                yield return null; // Wait one frame before trying again
-            }
-            Debug.LogWarning("MOTD objects found and assigned.");
+            var obj1 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
+                    if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
+            var obj2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText");
+                    if (obj2 != null) motdBody = obj2.GetComponent<TextMeshPro>();
+            var obj3 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText");
+                    if (obj3 != null) cocHeading = obj3.GetComponent<TextMeshPro>();
+            var obj4 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData");
+                    if (obj4 != null) cocBody = obj4.GetComponent<TextMeshPro>();
+            var obj5 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text");
+                    if (obj5 != null) gameModeText = obj5.GetComponent<TextMeshPro>();
+            var obj6 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
+                    if (obj6 != null) computer = obj6.GetComponent<Renderer>();
+            var obj7 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
+                    if (obj7 != null) wallMonitor = obj7.GetComponent<Renderer>();
+
+            ThirdCam = GameObject.Find("Player Objects/Third Person Camera/");
+
+            yield return null;
         }
 
 
@@ -368,6 +348,7 @@ namespace Elixir.Management
             #endregion
         }
         static int fps;
+        private static bool prevState = false;
         public static void Update()
         {
             if (menu == null || GorillaTagger.Instance == null) return;
@@ -416,6 +397,11 @@ namespace Elixir.Management
                     GameObject.Destroy(clickerObj);
                 }
             }
+            if (UnityInput.Current.GetKey(KeyCode.Q) != prevState)
+            {
+                ThirdCam?.SetActive(!UnityInput.Current.GetKey(KeyCode.Q));
+            }
+            prevState = UnityInput.Current.GetKey(KeyCode.Q);
 
             if (categories != null)
             {
@@ -444,10 +430,10 @@ namespace Elixir.Management
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goop.GetComponent<Renderer>().material, ref originalMat1!);
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 10, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
-                //hi
+
                 #region MOTD
                 if (motdHeading == null || motdBody == null) return;
-                motdHeading.SetText($"Elixir | V{Elixir.PluginInfo.Version}<color={hexColor1}>\n--------------------------------------------</color>");   motdHeading.color = Pink;
+                motdHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"Elixir | V{Elixir.PluginInfo.Version}", Time.time) + $"<color={hexColor1}>\n--------------------------------------------</color>");   motdHeading.color = Pink;
                 motdBody.color = Pink;
                 motdBody.SetText($"" +
                     $"\nThank You For Using Elixir!\n\n" +
@@ -464,7 +450,7 @@ namespace Elixir.Management
 
                 #region COC
                 if (cocHeading == null || cocBody == null) return;
-                cocHeading.SetText($"Menu Meanings<color={hexColor1}>\n-----------------------------</color>");
+                cocHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Menu Meanings", Time.time) + $"<color={hexColor1}>\n-----------------------------</color>");
                 cocHeading.color = Pink;
 
                 cocBody.color = Pink;
@@ -488,6 +474,8 @@ namespace Elixir.Management
             #endregion
             UpdateClr();
         }
+
+        // Thx GLXY for this
         public static Material? originalMat1;
         public static Material? originalMat2;
         public static void ChangeBoardMaterial(string parentPath, string boardID, int targetIndex, Material newMaterial, ref Material originalMat)

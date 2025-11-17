@@ -9,6 +9,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using TMPro;
+using static Elixir.Patches.HarmonyPatches;
 using UnityEngine;
 using static Elixir.Utilities.ColorLib;
 
@@ -17,9 +18,9 @@ namespace Elixir
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
-        public void OnEnable() => HarmonyPatches.Patch(true);
+        public void OnEnable() => ApplyHarmonyPatches();
 
-        public void OnDisable() => HarmonyPatches.Patch(false);
+        public void OnDisable() => RemoveHarmonyPatches();
 
         public void Start() => Menu.Start();
 

@@ -225,6 +225,7 @@ namespace Elixir.Utilities
         #region Changing Color
         public static Material RGB = new Material(uberShader);
         public static Material DFade = new Material(uberShader);
+        public static Material DFade1 = new Material(uberShader);
         public static Material DBreath = new Material(uberShader);
         public static Material BlueFade = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
@@ -274,8 +275,55 @@ namespace Elixir.Utilities
 
             return material;
         }
-
+        public static string ClrToHex(Color c)
+        {
+            Color32 c32 = c;
+            return $"{c32.r:X2}{c32.g:X2}{c32.b:X2}";
+        }
         #endregion
+
+        public static class GradientText
+        {
+            public static string MakeGradient(string hexStart, string hexEnd, string text)
+            {
+                Color start = HexToColor(hexStart);
+                Color end = HexToColor(hexEnd);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                int len = text.Length;
+                for (int i = 0; i < len; i++)
+                {
+                    float t = (float)i / Mathf.Max(len - 1, 1);
+                    Color c = Color.Lerp(start, end, t);
+                    sb.Append($"<color=#{ClrToHex(c)}>{text[i]}</color>");
+                }
+                return sb.ToString();
+            }
+            public static string MakeAnimatedGradient(string hexStart, string hexEnd, string text, float time, float speed = 1f)
+            {
+                Color start = HexToColor(hexStart);
+                Color end = HexToColor(hexEnd);
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                int len = text.Length;
+                float offset = (time * speed) % 1f;
+
+                for (int i = 0; i < len; i++)
+                {
+                    float t = ((float)i / Mathf.Max(len - 1, 1) - offset) % 1f;
+                    if (t < 0) t += 1f;
+                    Color c = Color.Lerp(start, end, t);
+                    sb.Append($"<color=#{ClrToHex(c)}>{text[i]}</color>");
+                }
+                return sb.ToString();
+            }
+            static Color HexToColor(string hex)
+            {
+                if (hex.StartsWith("#")) hex = hex.Substring(1);
+                byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                return new Color32(r, g, b, 255);
+            }
+        }
 
         public static Material fmby = Url2Mat("https://i.ebayimg.com/images/g/XI8AAOSwwvRlMHkz/s-l1200.jpg");
 
