@@ -4,3 +4,5 @@
 # Ignore binary output folders
 bin/
 obj/
+*.sln
+*.csproj
