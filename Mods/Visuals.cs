@@ -207,8 +207,6 @@ namespace Elixir.Mods.Categories
 
                 textMeshPro.fontSize = 3.5f;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
-                textMeshPro.color = RGB.color;
-
                 textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
                 distance.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.65f, 0f);
@@ -216,7 +214,7 @@ namespace Elixir.Mods.Categories
                 distance.transform.Rotate(0, 180, 0);
 
                 float distanceTovrrig = Vector3.Distance(GorillaLocomotion.GTPlayer.Instance.headCollider.transform.position, vrrig.transform.position);
-                textMeshPro.text = $"{Mathf.RoundToInt(distanceTovrrig)}m";
+                textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"{Mathf.RoundToInt(distanceTovrrig)}M", Time.time);
 
                 GameObject.Destroy(distance, Time.deltaTime);
             }
@@ -230,12 +228,11 @@ namespace Elixir.Mods.Categories
                 GameObject name = new GameObject($"{vrrig.name}'s Nametag");
                 TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
 
-                textMeshPro.color = RGB.color;
                 textMeshPro.material.shader = Shader.Find("GUI/Text Shader");
                 textMeshPro.fontSize = 3.5f;
                 textMeshPro.fontStyle = FontStyles.Normal;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
-                textMeshPro.text = RigManager.GetPlayerFromVRRig(vrrig).NickName;
+                textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), RigManager.GetPlayerFromVRRig(vrrig).NickName, Time.time);
                 textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
                 name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
@@ -268,12 +265,12 @@ namespace Elixir.Mods.Categories
                     string fpsColor = fpps < 45 ? "red" : (fpps > 80 ? "green" : "orange");
 
                     textMeshPro.text =
-                        $"<color={hexColor}>{vrrig.OwningNetPlayer.NickName}</color>\n" +
-                        $"ID: <color={hexColor}>{vrrig.Creator.UserId}</color>\n" +
-                        $"Is Master: <color={hexColor}>{IsUserMaster(vrrig)}</color>\n" +
-                        $"Platform: <color={hexColor}>{VrrigPlatform(vrrig)}</color>\n" +
-                        $"Actor Number: <color={hexColor}>{vrrig.Creator.ActorNumber}</color>\n" +
-                        $"Tagged: <color={hexColor}>{RigIsInfected(vrrig)}</color>\n" +
+                        $"{GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), vrrig.OwningNetPlayer.NickName, Time.time)}\n" +
+                        $"ID: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), vrrig.Creator.UserId, Time.time)}\n" +
+                        $"Is Master: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), IsUserMaster(vrrig).ToString(), Time.time)}\n" +
+                        $"Platform: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), VrrigPlatform(vrrig), Time.time)}\n" +
+                        $"Actor Number: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), vrrig.Creator.ActorNumber.ToString(), Time.time)}\n" +
+                        $"Tagged: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), RigIsInfected(vrrig).ToString(), Time.time)}\n" +
                         $"FPS: <color={fpsColor}>{fpps}</color>";
 
                     GameObject.Destroy(advName, Time.deltaTime);
@@ -291,11 +288,11 @@ namespace Elixir.Mods.Categories
             string fpsColor2 = fps < 45 ? "red" : fpsColor;
 
             textMeshPro.text =
-                $"Name: <color={hexColor}>{PhotonNetwork.LocalPlayer.NickName}</color>\n" +
-                $"ID: <color={hexColor}>{PhotonNetwork.LocalPlayer.UserId}</color>\n" +
-                $"Master Client: <color={hexColor}>{PhotonNetwork.MasterClient}</color>\n" +
-                $"Actor Number: <color={hexColor}>{PhotonNetwork.LocalPlayer.ActorNumber}</color>\n" +
-                $"Tagged: <color={hexColor}>{IAmInfected}</color>\n" +
+                $"Name: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PhotonNetwork.LocalPlayer.NickName, Time.time)}\n" +
+                $"ID: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PhotonNetwork.LocalPlayer.UserId, Time.time)}\n" +
+                $"Master Client: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PhotonNetwork.MasterClient.ToString(), Time.time)}\n" +
+                $"Actor Number: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PhotonNetwork.LocalPlayer.ActorNumber.ToString(), Time.time)}\n" +
+                $"Tagged: {GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), IAmInfected.ToString(), Time.time)}\n" +
                 $"FPS: <color={fpsColor2}>{fps}</color>";
 
             textMeshPro.color = Color.white;

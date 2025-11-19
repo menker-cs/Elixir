@@ -13,6 +13,7 @@ namespace Elixir.Utilities
         #region Non-Transparent Colors
         public static Color32 Elixir = new Color32(25, 25, 25, 255);
         public static Color32 Menker = new Color32(111, 252, 243, 255);
+        public static Color32 Menker2 = new Color32(40, 137, 130, 255);
 
         // Reds
         public static Color32 Red = new Color32(255, 0, 0, 255);

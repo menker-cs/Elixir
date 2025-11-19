@@ -102,10 +102,10 @@ namespace Elixir.Mods.Categories
             }
 
             tmp.text =
-                $"<color={hexColor1}>Elixir Menu</color>\n" +
-                $"<size=2>Status: <color={hexColor1}>Undetected</color>\n" +
-                $"VERSION: <color={hexColor1}>{PluginInfo.Version}</color></size>\n" +
-                $"<size=1.5>Made By <color={hexColor1}>Menker</color>";
+                GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir Menu", Time.time) + "\n" +
+                $"<size=2>Status: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Undected", Time.time) + "\n" +
+                $"VERSION: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PluginInfo.Version, Time.time) + "</size>\n" +
+                $"<size=1.5>Made By " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Menker2), ColorLib.ClrToHex(Menker), "Menker", Time.time);
 
             StumpText.transform.position = new Vector3(-66.8087f, 12.1808f, -82.5265f);
             StumpText.transform.LookAt(Camera.main.transform);
