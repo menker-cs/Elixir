@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Elixir.Notifications
 {
-    [BepInPlugin("org.gorillatag.cha.mistontop", "NFLibrary", "1.0.0")]
+    [BepInPlugin("org.ekixir.menu.notiflib", "Elixir NotifLib", "1.0.0")]
     public class NotificationLib : BaseUnityPlugin
     {
         private static NotificationLib Instance;
@@ -22,7 +22,6 @@ namespace Elixir.Notifications
         private static readonly List<GameObject> activeNotifications = new List<GameObject>();
         private bool initialized;
 
-        // Queue for notifications that arrive before initialization
         private static readonly Queue<string> pendingNotifications = new Queue<string>();
         private static readonly int maxQueueSize = 10;
 
@@ -33,7 +32,6 @@ namespace Elixir.Notifications
         private void Awake()
         {
             Instance = this;
-            Logger.LogInfo("[NFLib] Ready For Battle!");
             StartCoroutine(InitializeAsync());
         }
 
@@ -68,7 +66,6 @@ namespace Elixir.Notifications
 
             if (pendingNotifications.Count > 0)
             {
-                Logger.LogInfo($"Processing {pendingNotifications.Count} queued notifications...");
                 while (pendingNotifications.Count > 0)
                 {
                     string message = pendingNotifications.Dequeue();
