@@ -1,16 +1,18 @@
+using Elixir.Mods.Categories;
+using Elixir.Notifications;
 using GorillaGameModes;
+using System.Collections.Generic;
+using System.Linq;
 using static Elixir.Management.Menu;
 using static Elixir.Mods.Categories.Fun;
 using static Elixir.Mods.Categories.Move;
 using static Elixir.Mods.Categories.Playerr;
 using static Elixir.Mods.Categories.Room;
 using static Elixir.Mods.Categories.Settings;
+using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
-using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Utilities.Variables;
-using Elixir.Mods.Categories;
-using Elixir.Notifications;
 
 namespace Elixir.Management
 {
@@ -18,7 +20,7 @@ namespace Elixir.Management
     {
         public static void CreateButtons()
         {
-            categories.Add(new Category("Settings", Category.IconType.Setting, new Module[] {
+            categories.Add(new Category("Settings", new Module[] {
             //new Module() { title = "Change Sound", tooltip = "Cycles through available menu sound profiles.", isToggleable = false, action = () => ChangeSound() },
             new Module() { title = "Toggle Tooltips", tooltip = "Toggles when tooltips should show.", isToggleable = true, toggled = true, action = () => Settings.ToggleTips(true), disableAction = () => ToggleTips(false) },
             new Module() { title = "Toggle Disconnect Button", tooltip = "Shows or hides the disconnect button.", isToggleable = true, toggled = true, action = () => ToggleDisconnect(true), disableAction = () => ToggleDisconnect(false) },
@@ -32,7 +34,9 @@ namespace Elixir.Management
             new Module() { title = "Change Gun Type", tooltip = "Cycles gun visualization type to 'Ball + Line'.", isToggleable = false, action = () => GunChange() },
             }));
 
-            categories.Add(new Category("Room", Category.IconType.Room, new Module[] {
+            categories.Insert(1, new Category("Enabled Mods", new Module[] { }));
+
+            categories.Add(new Category("Room", new Module[] {
             new Module() { title = "Test Notif", tooltip = "Exits the current game and returns to the main menu.", isToggleable = false, action = () => Elixir.Notifications.NotificationLib.SendNotification("Hi") },
             new Module() { title = "Quit Game", tooltip = "Exits the current game and returns to the main menu.", isToggleable = true, action = () => QuitGTAG() },
             new Module() { title = "Join Random", tooltip = "Attempts to join a random public room.", isToggleable = false, action = () => JoinRandomPublic() },
@@ -62,7 +66,7 @@ namespace Elixir.Management
             new Module() { title = "Strict Anti Report", tooltip = "Enables stricter anti-report behavior.", isToggleable = true, action = () => StrictAntiReport() },
             }));
 
-            categories.Add(new Category("Movement", Category.IconType.Moving, new Module[] {
+            categories.Add(new Category("Movement", new Module[] {
             new Module() { title = "Platforms [G]", tooltip = "Creates solid platforms beneath your hands while gripping.", isToggleable = true, action = () => Platforms(false, false) },
             new Module() { title = "Invis Platforms [G]", tooltip = "Creates invisible grip platforms for stealth movement.", isToggleable = true, action = () => Platforms(true, false) },
             new Module() { title = "Plank Platforms", tooltip = "Spawns wide plank-like platforms to stand or walk on.", isToggleable = true, action = () => Platforms(false, true) },
@@ -94,7 +98,7 @@ namespace Elixir.Management
             new Module() { title = "Check Point [RG, RT, A]", tooltip = "Sets or returns to a saved checkpoint position.", isToggleable = true, action = () => Checkpoint() },
             }));
 
-            categories.Add(new Category("Player", Category.IconType.Person, new Module[] {
+            categories.Add(new Category("Player", new Module[] {
             new Module() { title = "Long Arms", tooltip = "Extends your arms slightly for extra reach.", isToggleable = true, action = () => LongArms(1.2f), disableAction = () => FixArms() },
             new Module() { title = "Very Long Arms", tooltip = "Greatly extends arm length for exaggerated reach.", isToggleable = true, action = () => LongArms(2f), disableAction = () => FixArms() },
             new Module() { title = "[EXTREME] Long Arms", tooltip = "Extremely long arms for extreme reach visuals.", isToggleable = true, action = () => LongArms(6f), disableAction = () => FixArms() },
@@ -137,7 +141,7 @@ namespace Elixir.Management
             new Module() { title = "69420 Quest Score", tooltip = "Sets your quest score to a funny custom value.", isToggleable = false, action = () => QuestScore(69420) },
             }));
 
-            categories.Add(new Category("Visuals", Category.IconType.Visual, new Module[] {
+            categories.Add(new Category("Visuals", new Module[] {
             new Module() { title = "Chams", tooltip = "Highlights players and objects with colored materials.", isToggleable = true, action = () => ESP(), disableAction = () => DisableESP() },
             new Module() { title = "Tracers", tooltip = "Draws visible lines between you and other players.", isToggleable = true, action = () => Tracers() },
             new Module() { title = "Beacons", tooltip = "Displays beacon markers over key targets.", isToggleable = true, action = () => Beacons() },
@@ -158,7 +162,7 @@ namespace Elixir.Management
             new Module() { title = "Ignore Gun [CS]", tooltip = "Prevents ESP from highlighting held guns.", isToggleable = true, action = () => Ignore() },
             }));
 
-            categories.Add(new Category("Fun", Category.IconType.Fun, new Module[] {
+            categories.Add(new Category("Fun", new Module[] {
             new Module() { title = "Vibrator", tooltip = "Applies continuous vibration to your hands.", isToggleable = true, action = () => Vibrator() },
             new Module() { title = "Sherbert", tooltip = "Summons or dismisses the Sherbert companion.", isToggleable = true, action = () => Sherbert(), disableAction = () => KillSherbert() },
             new Module() { title = "Grab Bug [G]", tooltip = "Allows grabbing and tossing bug entities.", isToggleable = true, action = () => GrabBug() },
@@ -171,20 +175,18 @@ namespace Elixir.Management
             new Module() { title = "Bat Halo", tooltip = "Creates a halo of bats orbiting your player.", isToggleable = true, action = () => BatHalo() },
             new Module() { title = "Grab Soccer Ball [G]", tooltip = "Lets you grab and kick a soccer ball in the world.", isToggleable = true, action = () => GrabSBall() },
             new Module() { title = "Soccer Ball Gun", tooltip = "Shoots soccer balls from your gun.", isToggleable = true, action = () => SBallGun() },
-        }));
+            }));
 
-            // --- SPLASH MODS ---
-            categories.Add(new Category("Splash Mods", Category.IconType.Splash, new Module[] {
+            categories.Add(new Category("Splash Mods", new Module[] {
             new Module() { title = "Splash Hands [G]", tooltip = "Creates water splash effects from your hands.", isToggleable = true, action = () => SplashHands() },
             new Module() { title = "Splash Gun", tooltip = "Spawns a gun that shoots splash effects.", isToggleable = true, action = () => SplashGun() },
             new Module() { title = "Splash Aura [G]", tooltip = "Creates a watery aura effect around you.", isToggleable = true, action = () => SplashAura() },
             new Module() { title = "Give Splash Gun", tooltip = "Gives you a splash gun to use.", isToggleable = true, action = () => GiveSplash() },
             new Module() { title = "Schitzo Gun V1", tooltip = "Activates Schitzo Gun variant 1 with chaotic visuals.", isToggleable = true, action = () => SchitzoV1() },
             new Module() { title = "Schitzo Gun V2", tooltip = "Activates Schitzo Gun variant 2 (enhanced version).", isToggleable = true, action = () => SchitzoV2() },
-        }));
+            }));
 
-            // --- CS MODS ---
-            categories.Add(new Category("CS Mods", Category.IconType.Person, new Module[] {
+            categories.Add(new Category("CS Mods", new Module[] {
             new Module() { title = "Draw (CS)", tooltip = "Draws orb patterns around you.", isToggleable = true, action = () => Draw() },
             new Module() { title = "Orb Spam", tooltip = "Rapidly spawns multiple orbs in the air.", isToggleable = true, action = () => GravDraw() },
             new Module() { title = "Orb Launcher", tooltip = "Launches orbs repeatedly from your gun.", isToggleable = true, action = () => Spam1() },
@@ -198,7 +200,7 @@ namespace Elixir.Management
             new Module() { title = "Orb Rain Trace", tooltip = "Creates tracer lines for raining orbs.", isToggleable = true, action = () => OrbRain1() },
             }));
 
-            categories.Add(new Category("World", Category.IconType.World, new Module[] {
+            categories.Add(new Category("World", new Module[] {
             new Module() { title = "Stump Text", tooltip = "Toggles special 'stump' text in the world.", isToggleable = true, toggled = true, action = () => Stumpy(), disableAction = () => STUMPY() },
             new Module() { title = "Unlock Comp", tooltip = "Unlocks world-based components or content.", isToggleable = true, action = () => UnlockComp() },
             new Module() { title = "Enable I Lava You Update", tooltip = "Enables the 'I Lava You' world update.", isToggleable = true, action = () => EnableILavaYou(), disableAction = () => DisableILavaYou() },
@@ -209,13 +211,72 @@ namespace Elixir.Management
             new Module() { title = "Enable Shadows", tooltip = "Enables or disables world shadow rendering.", isToggleable = true, action = () => Shadows(true), disableAction = () => Shadows(false) },
             }));
 
-            categories.Add(new Category("Credits", Category.IconType.Info, new Module[] {
+            categories.Add(new Category("Credits", new Module[] {
             new Module() { title = "Menu Owners", tooltip = "", isToggleable = false, action = () => Placeholder() },
             new Module() { title = "Cha554", tooltip = "", isToggleable = false, action = () => Placeholder() },
             new Module() { title = "GLXY", tooltip = "", isToggleable = false, action = () => Placeholder() },
             new Module() { title = "Fwog", tooltip = "", isToggleable = false, action = () => Placeholder() },
             new Module() { title = "Discord Link", tooltip = "", isToggleable = false, action = () => Discord() },
             }));
+        }
+
+        private static Module[] GetEnabledMods()
+        {
+            var mods = new List<Module>();
+            var modsHash = new HashSet<string>();
+
+            foreach (var category in categories)
+            {
+                if (category == null || category.buttons == null || category.name == "Enabled Mods") continue;
+
+                foreach (var mod in category.buttons)
+                {
+                    if (mod == null || !mod.isToggleable || !mod.toggled) continue;
+
+                    string modName = mod.title;
+
+                    if (!modsHash.Contains(modName))
+                    {
+                        modsHash.Add(modName);
+
+                        var ogMod = mod;
+                        var ogCategory = category.name;
+
+                        mods.Add(new Module()
+                        {
+                            title = mod.title,
+                            tooltip = $"Located in [{ogCategory}]",
+                            isToggleable = true,
+                            toggled = true,
+                            action = () => { ogMod.toggled = true; ogMod.action?.Invoke(); },
+                            disableAction = () => { ogMod.toggled = false; ogMod.disableAction?.Invoke(); }
+                        });
+                    }
+                }
+            }
+
+            if (mods.Count == 0)
+            {
+                mods.Add(new Module()
+                {
+                    title = "No Mods Enabled",
+                    tooltip = "",
+                    isToggleable = false,
+                    action = () => { }
+                });
+            }
+
+            return mods.ToArray();
+        }
+
+        public static void RefreshCategory()
+        {
+            var enabledMods = categories.Find(c => c.name == "Enabled Mods");
+
+            if (enabledMods != null)
+            {
+                enabledMods.buttons = GetEnabledMods();
+            }
         }
     }
 }

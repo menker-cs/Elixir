@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -29,8 +30,6 @@ namespace Elixir.Management
         public static GameObject menu = null;
         private static GameObject nextPage;
         private static GameObject lastPage;
-        public static bool isSearching = false;
-        public static string searchQuery = "";
         private static List<Module> searchResults = new List<Module>();
         private static int currentPage = 0;
         private const int btnPerPage =6;
@@ -147,6 +146,8 @@ namespace Elixir.Management
 
         public static void Buttons()
         {
+            RefreshCategory();
+
             var modules = menu.transform.Find("Canvas/Visual/Buttons").gameObject;
             var templateButton = modules.transform.Find("Button").gameObject;
             foreach (GameObject btn in buttons) GameObject.Destroy(btn);
@@ -367,6 +368,7 @@ namespace Elixir.Management
                     menu.transform.position = leftHand.position + leftHand.right * 0.045f;
                     menu.transform.rotation = leftHand.rotation * Quaternion.Euler(0f, -90f, -90f);
                 }
+
             }
             else if (pc)
             {
@@ -433,7 +435,7 @@ namespace Elixir.Management
 
                 #region MOTD
                 if (motdHeading == null || motdBody == null) return;
-                motdHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"Elixir | V{Elixir.PluginInfo.Version}", Time.time) + $"<color={hexColor1}>\n--------------------------------------------</color>");   motdHeading.color = Pink;
+                motdHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"Elixir | V{Elixir.PluginInfo.Version}", Time.time) + $"<color={hexColor1}>\n--------------------------------------------</color>"); motdHeading.color = Pink;
                 motdBody.color = Pink;
                 motdBody.SetText($"" +
                     $"\nThank You For Using Elixir!\n\n" +
@@ -470,9 +472,11 @@ namespace Elixir.Management
             {
                 UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
             }
-             
+
             #endregion
             UpdateClr();
+
+
         }
 
         // Thx GLXY for this

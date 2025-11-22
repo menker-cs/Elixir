@@ -10,7 +10,7 @@ namespace Elixir
     {
         public const string GUID = "com.elixir.menu.gtag";
         public const string Name = "Elixir";
-        public const string Version = "1.0";
-        public const bool MenuBeta = true;
+        public const string Version = "3.0";
+        public const bool MenuBeta = false;
     }
 }

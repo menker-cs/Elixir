@@ -9,16 +9,13 @@ namespace Elixir.Management
     public class Category
     {
         public string name { get; set; }
-        public enum IconType { Setting, Person, Moving, Visual, World, Room, Info, Fun, Splash }
-        public IconType Icon { get; set; }
 
         public Module[] buttons { get; set; }
 
-        public Category(string name, IconType iconType, Module[] buttons)
+        public Category(string name, Module[] buttons)
         {
             this.name = name;
             this.buttons = buttons;
-            this.Icon = iconType;
         }
     }
 }
