@@ -394,7 +394,7 @@ namespace Elixir.Management
                 if (!menu.activeSelf)
                 {
                     menu.SetActive(true);
-                    ButtonInteractor.AddButtonClicker(menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
+                    ButtonInteractor.AddButtonClicker(!menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
                 }
             }
             else
