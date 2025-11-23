@@ -1,14 +1,15 @@
-﻿using UnityEngine;
-using static Elixir.Utilities.Variables;
-using static Elixir.Utilities.ColorLib;
-using static Elixir.Mods.Categories.Settings;
-using Photon.Pun;
-using Object = UnityEngine.Object;
-using Photon.Realtime;
-using HarmonyLib;
-using Elixir.Utilities;
+﻿using Elixir.Utilities;
 using GorillaLocomotion;
+using HarmonyLib;
+using Photon.Pun;
+using Photon.Realtime;
+using System;
 using TMPro;
+using UnityEngine;
+using static Elixir.Mods.Categories.Settings;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Utilities.Variables;
+using Object = UnityEngine.Object;
 //using System.Drawing;
 
 namespace Elixir.Mods.Categories
@@ -228,7 +229,6 @@ namespace Elixir.Mods.Categories
                 GameObject name = new GameObject($"{vrrig.name}'s Nametag");
                 TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
 
-                textMeshPro.material.shader = Shader.Find("GUI/Text Shader");
                 textMeshPro.fontSize = 3.5f;
                 textMeshPro.fontStyle = FontStyles.Normal;
                 textMeshPro.alignment = TextAlignmentOptions.Center;
@@ -240,6 +240,32 @@ namespace Elixir.Mods.Categories
                 name.transform.Rotate(0, 180, 0);
 
                 GameObject.Destroy(name, Time.deltaTime);
+            }
+        }
+        public static void MenuNametags()
+        {
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
+                Photon.Realtime.Player player = RigManager.GetPlayerFromVRRig(vrrig);
+
+                if (player.CustomProperties.ContainsKey("Elixir"))
+                {
+                    GameObject name = new GameObject($"{vrrig.name}'s Nametag");
+                    TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
+
+                    textMeshPro.fontSize = 3.5f;
+                    textMeshPro.fontStyle = FontStyles.Normal;
+                    textMeshPro.alignment = TextAlignmentOptions.Center;
+                    textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir User", Time.time);
+                    textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
+
+                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.15f, 0f);
+                    name.transform.LookAt(Camera.main.transform);
+                    name.transform.Rotate(0, 180, 0);
+
+                    GameObject.Destroy(name, Time.deltaTime);
+                }
             }
         }
         public static void AdvNametags()

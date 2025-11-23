@@ -1,12 +1,14 @@
-﻿using GorillaNetworking;
+﻿using BepInEx;
+using Elixir.Notifications;
+using Elixir.Utilities;
+using Elixir.Utilities.Notifs;
+using GorillaGameModes;
+using GorillaNetworking;
 using Photon.Pun;
+using Photon.Realtime;
+using System.Threading.Tasks;
 using UnityEngine;
 using static Elixir.Utilities.Variables;
-using Photon.Realtime;
-using BepInEx;
-using Elixir.Utilities.Notifs;
-using Elixir.Utilities;
-using GorillaGameModes;
 
 namespace Elixir.Mods.Categories
 {
@@ -40,6 +42,19 @@ namespace Elixir.Mods.Categories
         public static void JoinRoom(string RoomCode)
         {
             PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(RoomCode, GorillaNetworking.JoinType.Solo);
+        }
+        public static string roomCode;
+        public static void Reconnect()
+        {
+            roomCode = PhotonNetwork.CurrentRoom.Name;
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.Disconnect();
+            }
+            Task.Delay(1500).ContinueWith(delegate (Task _)
+            {
+                PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(roomCode, 0);
+            });
         }
         public static void DisableNetworkTriggers()
         {
@@ -110,15 +125,14 @@ namespace Elixir.Mods.Categories
             {
                 PhotonNetwork.Disconnect();
                 GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
-                //NotificationLib.SendNotification("Successfuly Set the gamemode in your queue to be " + GorillaComputer.instance.currentGameMode.ToString() + " Now join a private lobby for it to take effect!");
             }
             else
             {
                 GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
-                //NotificationLib.SendNotification("Successfuly Set the gamemode in your queue to be " + GorillaComputer.instance.currentGameMode.ToString() + " Now join a private lobby for it to take effect!");
             }
         }
         #region nigport
+        public static bool reconnectReport = false;
         public static void AntiReport()
         {
             if (Settings.VisReportBool)
@@ -142,13 +156,19 @@ namespace Elixir.Mods.Categories
                                     VisualizeAntiReport(reportButton, range);
                                     if (Vector3.Distance(reportButton, lHand) < range)
                                     {
-                                        //NotificationLib.SendNotification("<color=blue>Anti-Report:</color> : " + vrrig.playerText1.text + " Attempted to Report You!");
-                                        Disconnect();
+                                        NotificationLib.SendNotification("<color=blue>Anti-Report:</color> : " + vrrig.playerText1.text + " Attempted to Report You!");
+                                        if (reconnectReport)
+                                            Reconnect();
+                                        else
+                                            Disconnect();
                                     }
                                     if (Vector3.Distance(reportButton, rHand) < range)
                                     {
-                                        //NotificationLib.SendNotification("<color=blue>Anti-Report</color> : " + vrrig.playerText1.text + " Attempted to <color=red>Report</color> You!");
-                                        Disconnect();
+                                        NotificationLib.SendNotification("<color=blue>Anti-Report</color> : " + vrrig.playerText1.text + " Attempted to <color=red>Report</color> You!");
+                                        if (reconnectReport)
+                                            Reconnect();
+                                        else
+                                            Disconnect();
                                     }
                                 }
                             }
@@ -176,13 +196,17 @@ namespace Elixir.Mods.Categories
                                     Vector3 reportButton = gorillaPlayerScoreboardLine.reportButton.gameObject.transform.position + new Vector3(0f, 0.001f, 0.0004f);
                                     if (Vector3.Distance(reportButton, lHand) < range)
                                     {
-                                        //NotificationLib.SendNotification("<color=blue>Anti-Report:</color> : " + vrrig.playerText1.text + " Attempted to Report You!");
-                                        Disconnect();
+                                        if (reconnectReport)
+                                            Reconnect();
+                                        else
+                                            Disconnect();
                                     }
                                     if (Vector3.Distance(reportButton, rHand) < range)
                                     {
-                                        //NotificationLib.SendNotification("<color=blue>Anti-Report</color> : " + vrrig.playerText1.text + " Attempted to <color=red>Report</color> You!");
-                                        Disconnect();
+                                        if (reconnectReport)
+                                            Reconnect();
+                                        else
+                                            Disconnect();
                                     }
                                 }
                             }

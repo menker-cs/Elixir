@@ -1,13 +1,14 @@
 ﻿using BepInEx;
-using GorillaLocomotion;
 using Elixir.Utilities;
 using Elixir.Utilities.Notifs;
+using GorillaLocomotion;
 using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Variables;
 
@@ -259,6 +260,29 @@ namespace Elixir.Mods.Categories
 
             GorillaTagger.Instance.transform.localScale = new Vector3(length, length, length);
         }
+
+        public static float customLength = 1f;
+        public static void CustomArms()
+        {
+            if (GorillaTagger.Instance == null) return;
+
+            if (Inputs.rightTrigger() || UnityInput.Current.GetKey(KeyCode.T))
+            {
+                customLength += 0.005f;
+                if (customLength > 3f)
+                    customLength = 3f;
+            }
+
+            if (Inputs.leftTrigger() || UnityInput.Current.GetKey(KeyCode.Y))
+            {
+                customLength -= 0.005f;
+                if (customLength < 0.2f)
+                    customLength = 0.2f;
+            }
+
+            GorillaTagger.Instance.transform.localScale = new Vector3(customLength, customLength, customLength);
+        }
+
         public static void FixArms()
         {
             if (GorillaTagger.Instance == null) return;

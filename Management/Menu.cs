@@ -37,6 +37,7 @@ namespace Elixir.Management
         public static List<Category> categories = new List<Category>();
         private static List<GameObject> buttons = new List<GameObject>();
         private static AudioClip defaultClickSound = null;
+        public static bool menuRHand = false;
 
 
         public static AssetBundle LoadAssetBundle(string path)
@@ -68,6 +69,10 @@ namespace Elixir.Management
         public static void Start()
         {
             CoroutineHandler.StartCoroutine1(GetObjects());
+
+            ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
+            table.Add("Elixir", true);
+            Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
 
             var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");
             var asset = bundle.LoadAsset<GameObject>("Elixir");
@@ -357,9 +362,10 @@ namespace Elixir.Management
             var input = UnityInput.Current;
             bool pc = input.GetKey(KeyCode.Q),
                  leftSeocon = ControllerInputPoller.instance.leftControllerSecondaryButton,
+                 rightSeocon = ControllerInputPoller.instance.rightControllerSecondaryButton,
                  shouldShow = false;
 
-            if (leftSeocon)
+            if (menuRHand ? rightSeocon : leftSeocon)
             {
                 shouldShow = !shouldShow;
                 var leftHand = GorillaTagger.Instance.leftHandTransform;
@@ -388,7 +394,7 @@ namespace Elixir.Management
                 if (!menu.activeSelf)
                 {
                     menu.SetActive(true);
-                    ButtonInteractor.AddButtonClicker(GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
+                    ButtonInteractor.AddButtonClicker(menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
                 }
             }
             else
@@ -456,7 +462,7 @@ namespace Elixir.Management
                 cocHeading.color = Pink;
 
                 cocBody.color = Pink;
-                cocBody.SetText($"\n[D?] - Maybe Detected \n[D] - Detected\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One");
+                cocBody.SetText($"\n[D?] - Maybe Detected \n[NW] - Not Working\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One");
                 cocBody.alignment = TextAlignmentOptions.Top;
                 #endregion
 

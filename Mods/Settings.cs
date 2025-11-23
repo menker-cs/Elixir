@@ -33,6 +33,10 @@ namespace Elixir.Mods.Categories
         {
             alphabet = setActive;
         }
+        public static void MenuHand(bool setActive)
+        {
+            Menu.menuRHand = setActive;
+        }
         public static void FlySpeed()
         {
             flyspeedchanger++;
@@ -147,6 +151,25 @@ namespace Elixir.Mods.Categories
                     break;
                 case 2:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                    break;
+            }
+        }
+        public static void ReportChange()
+        {
+            gunSetting++;
+            if (gunSetting > 2)
+            {
+                gunSetting = 1;
+            }
+            switch (gunSetting)
+            {
+                case 1:
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Anti Report:</color><color=white>] Disconnect</color>");
+                    Room.reconnectReport = false;
+                    break;
+                case 2:
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Anti Report:</color><color=white>] Reconnect</color>");
+                    Room.reconnectReport = true;
                     break;
             }
         }

@@ -43,7 +43,6 @@ namespace Elixir.Components
         }
         public static void AddButtonClicker(Transform parentTransform)
         {
-            // Button Clicker
             if (clickerObj == null)
             {
                 clickerObj = new GameObject("buttonclicker");
