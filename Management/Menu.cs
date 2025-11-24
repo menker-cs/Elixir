@@ -365,7 +365,7 @@ namespace Elixir.Management
                  rightSeocon = ControllerInputPoller.instance.rightControllerSecondaryButton,
                  shouldShow = false;
 
-            if (menuRHand ? rightSeocon : leftSeocon)
+            if (leftSeocon && !menuRHand)
             {
                 shouldShow = !shouldShow;
                 var leftHand = GorillaTagger.Instance.leftHandTransform;
@@ -374,7 +374,16 @@ namespace Elixir.Management
                     menu.transform.position = leftHand.position + leftHand.right * 0.045f;
                     menu.transform.rotation = leftHand.rotation * Quaternion.Euler(0f, -90f, -90f);
                 }
-
+            }
+            else if (rightSeocon && menuRHand)
+            {
+                shouldShow = !shouldShow;
+                var rightHand = GorillaTagger.Instance.rightHandTransform;
+                if (rightHand != null)
+                {
+                    menu.transform.position = rightHand.position - rightHand.right * 0.045f;
+                    menu.transform.rotation = rightHand.rotation * Quaternion.Euler(0f, 90f, 90f);
+                }
             }
             else if (pc)
             {
@@ -394,7 +403,7 @@ namespace Elixir.Management
                 if (!menu.activeSelf)
                 {
                     menu.SetActive(true);
-                    ButtonInteractor.AddButtonClicker(!menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
+                    ButtonInteractor.AddButtonClicker(menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
                 }
             }
             else

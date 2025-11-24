@@ -21,7 +21,7 @@ namespace Elixir.Management
         public static void CreateButtons()
         {
             categories.Add(new Category("Settings", new Module[] {
-            new Module() { title = "Right Handed Menu", tooltip = "Toggles what hand the menu is on.", isToggleable = true, toggled = true, action = () => Settings.MenuHand(true), disableAction = () => MenuHand(false) },
+            new Module() { title = "Right Handed Menu", tooltip = "Toggles what hand the menu is on.", isToggleable = true, toggled = false, action = () => Settings.MenuHand(true), disableAction = () => MenuHand(false) },
             new Module() { title = "Toggle Tooltips", tooltip = "Toggles when tooltips should show.", isToggleable = true, toggled = true, action = () => Settings.ToggleTips(true), disableAction = () => ToggleTips(false) },
             new Module() { title = "Toggle Disconnect Button", tooltip = "Shows or hides the disconnect button.", isToggleable = true, toggled = true, action = () => ToggleDisconnect(true), disableAction = () => ToggleDisconnect(false) },
             new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, toggled = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
