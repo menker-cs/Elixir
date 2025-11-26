@@ -1,8 +1,4 @@
-# Ignore Visual Studio folder
 .vs/
 
-# Ignore binary output folders
 bin/
 obj/
-*.sln
-*.csproj
