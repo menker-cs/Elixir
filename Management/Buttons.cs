@@ -157,7 +157,7 @@ namespace Elixir.Management
             new Module() { title = "Bat ESP", tooltip = "Shows ESP outlines for bat entities.", isToggleable = true, action = () => EntityESP(true) },
             new Module() { title = "Distance ESP", tooltip = "Displays distance information beside each tracked target.", isToggleable = true, action = () => DistanceESP() },
             new Module() { title = "Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => Nametags() },
-            new Module() { title = "Elixr User Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, toggled = true, action = () => MenuNametags() },
+            new Module() { title = "Elixr User Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => MenuNametags() },
             new Module() { title = "Advanced Nametags", tooltip = "Adds extra information (like ping) to nametags.", isToggleable = true, action = () => AdvNametags() },
             new Module() { title = "VR Info Display", tooltip = "Displays VR performance or device info overlay.", isToggleable = true, action = () => InfoDisplay() },
             new Module() { title = "Snake ESP", tooltip = "Renders a moving snake trail behind players.", isToggleable = true, action = () => SnakeESP() },
