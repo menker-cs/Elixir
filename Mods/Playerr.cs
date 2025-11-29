@@ -347,7 +347,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(LockedPlayer!.transform, 1.25f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = RandomPos(LockedPlayer!.transform, 1.25f);
             }, true);
 
             if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
@@ -479,7 +479,7 @@ namespace Elixir.Mods.Categories
             if (Inputs.rightGrip() || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = Annoy(GorillaTagger.Instance.headCollider.transform, 1.25f);
+                GorillaTagger.Instance.offlineVRRig.transform.position = RandomPos(GorillaTagger.Instance.headCollider.transform, 1.25f);
             }
             else
             {

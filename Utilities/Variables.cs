@@ -164,7 +164,7 @@ namespace Elixir.Utilities
         {
             return transform.position + new Vector3(MathF.Cos((float)Time.frameCount / speed), 1f, MathF.Sin((float)Time.frameCount / speed));
         }
-        public static Vector3 Annoy(Transform transform, float range)
+        public static Vector3 RandomPos(Transform transform, float range)
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }

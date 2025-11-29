@@ -139,7 +139,7 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
@@ -199,7 +199,7 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
                 GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
@@ -245,7 +245,7 @@ namespace Elixir.Mods.Categories
             {
                 draw = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 draw.transform.position = GorillaTagger.Instance.leftHandTransform.position;
-                UnityEngine.Object.Destroy(draw.GetComponent<BoxCollider>());
+                UnityEngine.Object.Destroy(draw.GetComponent<SphereCollider>());
                 draw.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 draw.GetComponent<Renderer>().material.color = ColorLib.MenuMat[0].color;
                 GameObject.Destroy(draw, 5f);
@@ -531,7 +531,7 @@ namespace Elixir.Mods.Categories
         {
             if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
-                Splash(Annoy(GorillaTagger.Instance.bodyCollider.transform, 1f), GorillaTagger.Instance.headCollider.transform.rotation, 4f);
+                Splash(RandomPos(GorillaTagger.Instance.bodyCollider.transform, 1f), GorillaTagger.Instance.headCollider.transform.rotation, 4f);
             }
         }
         public static void GiveSplash()
@@ -560,7 +560,7 @@ namespace Elixir.Mods.Categories
 
                     GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer!), new object[]
                     {
-                        Annoy(LockedPlayer!.transform, 0.5f),
+                        RandomPos(LockedPlayer!.transform, 0.5f),
                         GunTemplate.spherepointer.transform.rotation,
                         4f,
                         4f,

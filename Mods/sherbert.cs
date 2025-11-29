@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using System.Collections;
-using System.Net.Http;
+using static Elixir.Utilities.ColorLib;
+using static Elixir.Utilities.Variables;
 using UnityEngine;
 
 namespace Elixir.Mods.Categories
@@ -11,14 +12,14 @@ namespace Elixir.Mods.Categories
         static bool hold = false;
         static Vector3 lastPosition;
         private static Coroutine chaseCoroutine;
-        public static void SpawnSherbert(bool collide)
+        public static void SpawnSherbert(bool collide, bool isLaunching = false, bool isChasing = false)
         {
-            if (sherbert == null)
+            if (sherbert == null || isLaunching)
             {
                 sherbert = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 sherbert.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
                 sherbert.transform.position = RandomPos(GorillaLocomotion.GTPlayer.Instance.transform, 10f);
-                sherbert.GetComponent<Renderer>().material = Url2Mat("https://raw.githubusercontent.com/Cha554/Stone-Networking/main/Stone/Sherbert.jpg");
+                sherbert.GetComponent<Renderer>().material = isChasing ? AngrySherbMat : SherbMat;
 
                 if (!collide)
                 {
@@ -63,12 +64,49 @@ namespace Elixir.Mods.Categories
 
             lastPosition = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
         }
+        public static void LaunchSherbert()
+        {
+            if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
+            {
+                if (sherbert != null)
+                {
+                    Object.Destroy(sherbert);
+                    sherbert = null;
+                }
+
+                SpawnSherbert(true, true);
+                sherbert.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
+                sherbert.transform.rotation = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.rotation;
+
+                Rigidbody rb = sherbert.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                rb.linearVelocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
+            }
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                if (sherbert != null)
+                {
+                    Object.Destroy(sherbert);
+                    sherbert = null;
+                }
+
+                SpawnSherbert(true, true);
+                sherbert.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
+                sherbert.transform.rotation = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.rotation;
+
+                Rigidbody rb = sherbert.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                rb.linearVelocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
+            }
+        }
         public static void SherbertFollow()
         {
             SpawnSherbert(false);
             if (chaseCoroutine == null)
             {
-                chaseCoroutine = GorillaLocomotion.GTPlayer.Instance.StartCoroutine(Chase());
+                chaseCoroutine = GorillaLocomotion.GTPlayer.Instance.StartCoroutine(Follow(1f));
             }
         }
         public static void StopSherbertFollow()
@@ -77,13 +115,22 @@ namespace Elixir.Mods.Categories
             {
                 GorillaLocomotion.GTPlayer.Instance.StopCoroutine(chaseCoroutine);
                 chaseCoroutine = null;
+                sherbert.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
-
-        private static IEnumerator Chase()
+        public static void SherbertKiller()
+        {
+            SpawnSherbert(false, false, true);
+            if (chaseCoroutine == null)
+            {
+                chaseCoroutine = GorillaLocomotion.GTPlayer.Instance.StartCoroutine(Follow(0.35f, true));
+            }
+        }
+        private static IEnumerator Follow(float followDistance, bool isKiller = false)
         {
             Transform sherber = sherbert.transform;
             sherber.LookAt(GorillaLocomotion.GTPlayer.Instance.headCollider.transform);
+
             Rigidbody rb = sherbert.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             rb.useGravity = false;
@@ -93,7 +140,12 @@ namespace Elixir.Mods.Categories
                 Vector3 targetPosition = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform.position;
                 float distance = Vector3.Distance(sherber.position, targetPosition);
 
-                if (distance > 1f)
+                if (isKiller && distance <= followDistance)
+                {
+                    Application.Quit();
+                }
+
+                if (distance > followDistance)
                 {
                     Vector3 direction = (targetPosition - sherber.position).normalized;
                     rb.linearVelocity = direction * 5f;
@@ -116,33 +168,6 @@ namespace Elixir.Mods.Categories
                 Object.Destroy(sherbert);
                 sherbert = null;
             }
-        }
-        public static Material Url2Mat(string url)
-        {
-            byte[] imageData;
-            using (var httpClient = new HttpClient())
-            {
-                var response = httpClient.GetAsync(url).Result;
-                response.EnsureSuccessStatusCode();
-                imageData = response.Content.ReadAsByteArrayAsync().Result;
-            }
-
-            var material = new Material(Shader.Find("GorillaTag/UberShader"))
-            {
-                shaderKeywords = new[] { "_USE_TEXTURE" }
-            };
-
-            var texture = new Texture2D(2, 2);
-            ImageConversion.LoadImage(texture, imageData);
-            texture.Apply();
-
-            material.mainTexture = texture;
-
-            return material;
-        }
-        public static Vector3 RandomPos(Transform transform, float range)
-        {
-            return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
     }
 }

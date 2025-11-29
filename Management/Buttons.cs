@@ -167,7 +167,6 @@ namespace Elixir.Management
 
             categories.Add(new Category("Fun", new Module[] {
             new Module() { title = "Vibrator", tooltip = "Applies continuous vibration to your hands.", isToggleable = true, action = () => Vibrator() },
-            new Module() { title = "Sherbert", tooltip = "Summons or dismisses the Sherbert companion.", isToggleable = true, action = () => Sherbert(), disableAction = () => KillSherbert() },
             new Module() { title = "Grab Bug [G]", tooltip = "Allows grabbing and tossing bug entities.", isToggleable = true, action = () => GrabBug() },
             new Module() { title = "Bug Gun", tooltip = "Spawns a gun that fires bug projectiles.", isToggleable = true, action = () => BugGun() },
             new Module() { title = "Snipe Bug [G]", tooltip = "Lets you aim and shoot long-range bug attacks.", isToggleable = true, action = () => SnipeBug() },
@@ -179,6 +178,14 @@ namespace Elixir.Management
             //new Module() { title = "Grab Soccer Ball [G]", tooltip = "Lets you grab and kick a soccer ball in the world.", isToggleable = true, action = () => GrabSBall() },
             //new Module() { title = "Soccer Ball Gun", tooltip = "Shoots soccer balls from your gun.", isToggleable = true, action = () => SBallGun() },
             }));
+
+            categories.Add(new Category("Sherbert Mods", new Module[] {
+                new Module() { title = "Sherbert", tooltip = "Summons or dismisses the Sherbert companion.", isToggleable = true, action = SherbertFollow, disableAction = StopSherbertFollow },
+                new Module() { title = "Throwable Sherbert [G]", tooltip = "Spawns a Sherbert which you can throw around.", isToggleable = true, action = () => Sherbert() },
+                new Module() { title = "Sherbert Launcher [G]", tooltip = "Launches Sherbert out of your hand.", isToggleable = true, action = () => LaunchSherbert() },
+                new Module() { title = "Killer Sherbert", tooltip = "If Sherbert touches you, you die.", isToggleable = true, action = () => SherbertKiller(), disableAction = StopSherbertFollow },
+                new Module() { title = "Kill Sherbert", tooltip = "Kills Sherbert.", isToggleable = false, action = () => KillSherbert() },
+            })); 
 
             categories.Add(new Category("Splash Mods", new Module[] {
             new Module() { title = "Splash Hands [G]", tooltip = "Creates water splash effects from your hands.", isToggleable = true, action = () => SplashHands() },
