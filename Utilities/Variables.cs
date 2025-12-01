@@ -136,10 +136,6 @@ namespace Elixir.Utilities
         {
             GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = useGravity;
         }
-        public static void Gravity(float g)
-        {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.up * (Time.deltaTime * (g / Time.deltaTime)), ForceMode.Acceleration);
-        }
         public static void DoNoclip(bool b)
         {
             foreach (MeshCollider collider in Resources.FindObjectsOfTypeAll<MeshCollider>())

@@ -8,6 +8,7 @@ using static Elixir.Mods.Categories.Settings;
 using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Inputs;
 using static Elixir.Utilities.Variables;
+using static Oculus.Interaction.Context;
 
 namespace Elixir.Mods.Categories
 {
@@ -128,9 +129,19 @@ namespace Elixir.Mods.Categories
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
+        public static void MoonWalk()
+        {
+            GorillaTagger.Instance.rigidbody.AddForce(Vector3.up * 6.66f, ForceMode.Acceleration);
+        }
+
+        public static void NoGravity()
+        {
+            GorillaTagger.Instance.rigidbody.AddForce(-Physics.gravity, ForceMode.Acceleration);
+        }
+
         public static void JupiterWalk()
         {
-            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(Vector3.down * (Time.deltaTime * (8f / Time.deltaTime)), ForceMode.Acceleration);
+            GorillaTagger.Instance.rigidbody.AddForce(Vector3.down * 7.77f, ForceMode.Acceleration);
         }
         public static void Noclip()
         {
@@ -308,11 +319,11 @@ namespace Elixir.Mods.Categories
                     float dis1 = Vector3.Distance(vrrig.rightHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
                     float dis2 = Vector3.Distance(vrrig.leftHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
 
-                    if (dis1 < 0.2f)
+                    if (dis1 < 0.5f)
                     {
                         GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.rightHandTransform.forward * 10f;
                     }
-                    if (dis2 < 0.2f)
+                    if (dis2 < 0.5f)
                     {
                         GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.leftHandTransform.forward * 10f;
                     }
@@ -325,7 +336,10 @@ namespace Elixir.Mods.Categories
         }
         public static void SuperMonke()
         {
-            Gravity(9.81f);
+            Vector3 right = GTPlayer.Instance.bodyCollider.transform.right;
+            right.y = 0f;
+            Vector3 forward = GTPlayer.Instance.bodyCollider.transform.forward;
+            forward.y = 0f;
 
             if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
             {
