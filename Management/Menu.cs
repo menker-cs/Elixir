@@ -96,6 +96,7 @@ namespace Elixir.Management
 
             var leaveButton = visual.transform.Find("Home (1)")?.GetComponent<UnityEngine.UI.Button>();
             var backButton = visual.transform.Find("Home")?.GetComponent<UnityEngine.UI.Button>();
+            var backButton2 = visual.transform.Find("BigHome")?.GetComponent<UnityEngine.UI.Button>();
 
             if (leaveButton != null)
             {
@@ -109,6 +110,16 @@ namespace Elixir.Management
             if (backButton != null)
             {
                 backButton.onClick.AddListener(() =>
+                {
+                    showingCategories = true;
+                    Buttons();
+                    OnButtonClick();
+                });
+            }
+
+            if (backButton2 != null)
+            {
+                backButton2.onClick.AddListener(() =>
                 {
                     showingCategories = true;
                     Buttons();
@@ -328,6 +339,16 @@ namespace Elixir.Management
             #region Page Navigation Logic
             if (lastPage != null) lastPage.SetActive(currentPage > 0);
             if (nextPage != null) nextPage.SetActive(currentPage < maxPage);
+            if (lastPage.active == false && nextPage.active == false)
+            {
+                visual.Find("Home").gameObject.SetActive(false);
+                visual.Find("BigHome").gameObject.SetActive(true);
+            }
+            else
+            {
+                visual.Find("Home").gameObject.SetActive(true);
+                visual.Find("BigHome").gameObject.SetActive(false);
+            }
 
             if (currentPage > 0 && lastPage != null)
             {
@@ -419,6 +440,18 @@ namespace Elixir.Management
                 ThirdCam?.SetActive(!UnityInput.Current.GetKey(KeyCode.Q));
             }
             prevState = UnityInput.Current.GetKey(KeyCode.Q);
+
+
+            if (lastPage.active == false && nextPage.active == false)
+            {
+                menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(false);
+                menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(true);
+            }
+            else
+            {
+                menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(true);
+                menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(false);
+            }
 
             if (categories != null)
             {

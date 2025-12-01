@@ -21,18 +21,19 @@ namespace Elixir.Management
         public static void CreateButtons()
         {
             categories.Add(new Category("Settings", new Module[] {
+            new Module() { title = "Disable All Mods", tooltip = "Disables All The Mods On The Menu.", isToggleable = false, action = () => DisableAllMods() },
             new Module() { title = "Right Handed Menu", tooltip = "Toggles what hand the menu is on.", isToggleable = true, toggled = false, action = () => Settings.MenuHand(true), disableAction = () => MenuHand(false) },
             new Module() { title = "Toggle Tooltips", tooltip = "Toggles when tooltips should show.", isToggleable = true, toggled = true, action = () => Settings.ToggleTips(true), disableAction = () => ToggleTips(false) },
             new Module() { title = "Toggle Disconnect Button", tooltip = "Shows or hides the disconnect button.", isToggleable = true, toggled = true, action = () => ToggleDisconnect(true), disableAction = () => ToggleDisconnect(false) },
             new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, toggled = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
             new Module() { title = "Sort Buttons Alphabetically", tooltip = "Sorts buttons in alphabetical order when enabled.", isToggleable = true, toggled = false, action = () => Alphabet(true), disableAction = () => Alphabet(false) },
             new Module() { title = "Visualize Antireport", tooltip = "Displays a visual indicator for anti-report features.", isToggleable = true, toggled = false, action = () => VisReport(true), disableAction = () => VisReport(false) },
-            new Module() { title = "Change Anti Report Mode", tooltip = "Changes mode of anti report.", isToggleable = false, toggled = false, action = () => ReportChange() },
-            new Module() { title = "Change ESP Color", tooltip = "Changes the color of visual mods.", isToggleable = false, action = () => ESPChange() },
-            new Module() { title = "Change Tracer Position", tooltip = "Switches tracer positions.", isToggleable = false, action = () => TracerPos() },
-            new Module() { title = "Change Fly Speed", tooltip = "Cycles through fly speed presets.", isToggleable = false, action = () => FlySpeed() },
-            new Module() { title = "Change Speed Boost", tooltip = "Cycles speed boost presets.", isToggleable = false, action = () => SpeedSpeed() },
-            new Module() { title = "Change Gun Type", tooltip = "Cycles gun visualization type to.", isToggleable = false, action = () => GunChange() },
+            new Module() { title = "Change Anti Report Mode", tooltip = "Current Setting: Disconnect", isToggleable = false, toggled = false, action = () => ReportChange() },
+            new Module() { title = "Change ESP Color", tooltip = "Current Setting: Infection", isToggleable = false, action = () => ESPChange() },
+            new Module() { title = "Change Tracer Position", tooltip = "Current Setting: Right Hand", isToggleable = false, action = () => TracerPos() },
+            new Module() { title = "Change Fly Speed", tooltip = "Current Setting: Normal", isToggleable = false, action = () => FlySpeed() },
+            new Module() { title = "Change Speed Boost", tooltip = "Current Setting: Normal", isToggleable = false, action = () => SpeedSpeed() },
+            new Module() { title = "Change Gun Type", tooltip = "Current Setting: Ball + Line", isToggleable = false, action = () => GunChange() },
             }));
 
             categories.Insert(1, new Category("Enabled Mods", new Module[] { }));
@@ -277,6 +278,33 @@ namespace Elixir.Management
             }
 
             return mods.ToArray();
+        }
+        public static Module GetButton(string title)
+        {
+            foreach (var category in categories)
+            {
+                foreach (var button in category.buttons)
+                {
+                    if (button.title.Contains(title))
+                    {
+                        return button;
+                    }
+                }
+            }
+            return null;
+        }
+        public static void DisableAllMods()
+        {
+            foreach (var category in categories)
+            {
+                foreach (var mod in category.buttons)
+                {
+                    if (mod == null || !mod.isToggleable || !mod.toggled) continue;
+
+                    mod.toggled = false;
+                    mod.disableAction?.Invoke();
+                }
+            }
         }
         public static void RefreshCategory()
         {

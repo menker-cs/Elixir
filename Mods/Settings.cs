@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using Elixir.Management;
 using Elixir.Utilities;
-using Elixir.Utilities.Notifs;
+using static Elixir.Management.Buttons;
 using System.Collections.Generic;
 using System.IO;
 using static Elixir.Utilities.Variables;
@@ -49,18 +49,22 @@ namespace Elixir.Mods.Categories
                 case 1:
                     speedboostchangerspeed = 15f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    GetButton("Fly Speed").tooltip = "Current Setting: Normal";
                     break;
                 case 2:
                     speedboostchangerspeed = 7f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    GetButton("Fly Speed").tooltip = "Current Setting: Slow";
                     break;
                 case 3:
                     speedboostchangerspeed = 30f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    GetButton("Fly Speed").tooltip = "Current Setting: Fast";
                     break;
                 case 4:
                     speedboostchangerspeed = 60f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    GetButton("Fly Speed").tooltip = "Current Setting: Very Fast";
                     break;
             }
         }
@@ -76,18 +80,22 @@ namespace Elixir.Mods.Categories
                 case 1:
                     speedboostchangerspeed = 8f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Normal</color>");
+                    GetButton("Change Speed Boost").tooltip = "Current Setting: Normal";
                     break;
                 case 2:
                     speedboostchangerspeed = 7.3f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Slow</color>");
+                    GetButton("Change Speed Boost").tooltip = "Current Setting: Slow";
                     break;
                 case 3:
                     speedboostchangerspeed = 15f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Fast</color>");
+                    GetButton("Change Speed Boost").tooltip = "Current Setting: Fast";
                     break;
                 case 4:
                     speedboostchangerspeed = 50f;
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Speed:</color><color=white>] Very Fast</color>");
+                    GetButton("Change Speed Boost").tooltip = "Current Setting: Very Fast";
                     break;
             }
         }
@@ -102,15 +110,19 @@ namespace Elixir.Mods.Categories
             {
                 case 1:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Infection</color>");
+                    GetButton("Change ESP Color").tooltip = "Current Setting: Infection";
                     break;
                 case 2:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Casual</color>");
+                    GetButton("Change ESP Color").tooltip = "Current Setting: Casual";
                     break;
                 case 3:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] RGB</color>");
+                    GetButton("Change ESP Color").tooltip = "Current Setting: RGB";
                     break;
                 case 4:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Menu Color</color>");
+                    GetButton("Change ESP Color").tooltip = "Current Setting: Menu Color";
                     break;
             }
         }
@@ -125,15 +137,19 @@ namespace Elixir.Mods.Categories
             {
                 case 1:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Right Hand</color>");
+                    GetButton("Change Tracer").tooltip = "Current Setting: Right Hand";
                     break;
                 case 2:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Left Hand</color>");
+                    GetButton("Change Tracer").tooltip = "Current Setting: Left Hand";
                     break;
                 case 3:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Body</color>");
+                    GetButton("Change Tracer").tooltip = "Current Setting: Body";
                     break;
                 case 4:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Tracer Position:</color><color=white>] Head</color>");
+                    GetButton("Change Tracer").tooltip = "Current Setting: Head";
                     break;
             }
         }
@@ -147,10 +163,12 @@ namespace Elixir.Mods.Categories
             switch (gunSetting)
             {
                 case 1:
-                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball + Line</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Gun Setting:</color><color=white>] Ball + Line</color>");
+                    GetButton("Change Gun Type").tooltip = "Current Setting: Ball + Line";
                     break;
                 case 2:
-                    NotificationLib.SendNotification("<color=white>[</color><color=blue>ESP Color:</color><color=white>] Ball</color>");
+                    NotificationLib.SendNotification("<color=white>[</color><color=blue>Gun Setting:</color><color=white>] Ball</color>");
+                    GetButton("Change Gun Type").tooltip = "Current Setting: Ball";
                     break;
             }
         }
@@ -166,10 +184,12 @@ namespace Elixir.Mods.Categories
                 case 1:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Anti Report:</color><color=white>] Disconnect</color>");
                     Room.reconnectReport = false;
+                    GetButton("Change Anti Report Mode").tooltip = "Current Setting: Disconnect";
                     break;
                 case 2:
                     NotificationLib.SendNotification("<color=white>[</color><color=blue>Anti Report:</color><color=white>] Reconnect</color>");
                     Room.reconnectReport = true;
+                    GetButton("Change Anti Report Mode").tooltip = "Current Setting: Reconnect";
                     break;
             }
         }
@@ -191,7 +211,7 @@ namespace Elixir.Mods.Categories
         public static int gunSetting = 1;
 
         static int speedboostchanger = 1;
-        public static float speedboostchangerspeed = 15;
+        public static float speedboostchangerspeed = 8;
 
         static int flyspeedchanger = 1;
         public static float flyspeedchangerspeed = 15;
