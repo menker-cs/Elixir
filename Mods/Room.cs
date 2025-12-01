@@ -118,20 +118,8 @@ namespace Elixir.Mods.Categories
                 }
             }, true);
         }
-        public static void SetGamemode(GameModeType gameModeType)
-        {
-            // creds to @meep670 for this!
-            if (PhotonNetwork.InRoom)
-            {
-                PhotonNetwork.Disconnect();
-                GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
-            }
-            else
-            {
-                GorillaComputer.instance.SetGameModeWithoutButton(gameModeType.ToString());
-            }
-        }
-        #region nigport
+
+        #region report
         public static bool reconnectReport = false;
         public static void AntiReport()
         {
