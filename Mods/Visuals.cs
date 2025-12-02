@@ -439,7 +439,7 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
-        static Color GetESPColor(VRRig vrrig)
+        public static Color GetESPColor(VRRig vrrig)
         {
             return espSetting switch
             {

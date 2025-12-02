@@ -1,7 +1,5 @@
 using BepInEx;
 using Elixir.Components;
-using Elixir.Mods;
-using Elixir.Mods.Categories;
 using Elixir.Utilities;
 using Photon.Pun;
 using System;
@@ -9,19 +7,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ColorLib;
-using static GorillaLocomotion.GTPlayer;
+using static Elixir.Management.ButtonMethods;
 
 namespace Elixir.Management
 {

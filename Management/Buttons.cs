@@ -1,9 +1,6 @@
 using Elixir.Mods.Categories;
-using Elixir.Notifications;
-using GorillaGameModes;
-using System.Collections.Generic;
-using System.Linq;
 using static Elixir.Management.Menu;
+using static Elixir.Management.ButtonMethods;
 using static Elixir.Mods.Categories.Fun;
 using static Elixir.Mods.Categories.Move;
 using static Elixir.Mods.Categories.Playerr;
@@ -37,6 +34,7 @@ namespace Elixir.Management
             }));
 
             categories.Insert(1, new Category("Enabled Mods", new Module[] { }));
+            categories.Insert(2, new Category("Players", new Module[] { }));
 
             categories.Add(new Category("Room", new Module[] {
                 new Module() { title = "Quit Game", tooltip = "Exits the current game and returns to the main menu.", isToggleable = true, action = () => QuitGTAG() },
@@ -222,91 +220,6 @@ namespace Elixir.Management
                 new Module() { title = "Fwog - Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Discord Link", tooltip = "", isToggleable = false, action = () => Discord() },
             }));
-        }
-
-        private static Module[] GetEnabledMods()
-        {
-            var mods = new List<Module>();
-            var modsHash = new HashSet<string>();
-
-            foreach (var category in categories)
-            {
-                if (category == null || category.buttons == null || category.name == "Enabled Mods") continue;
-
-                foreach (var mod in category.buttons)
-                {
-                    if (mod == null || !mod.isToggleable || !mod.toggled) continue;
-
-                    string modName = mod.title;
-
-                    if (!modsHash.Contains(modName))
-                    {
-                        modsHash.Add(modName);
-
-                        var ogMod = mod;
-                        var ogCategory = category.name;
-
-                        mods.Add(new Module()
-                        {
-                            title = mod.title,
-                            tooltip = $"Located in [{ogCategory}]",
-                            isToggleable = true,
-                            toggled = true,
-                            action = () => { ogMod.toggled = true; ogMod.action?.Invoke(); },
-                            disableAction = () => { ogMod.toggled = false; ogMod.disableAction?.Invoke(); }
-                        });
-                    }
-                }
-            }
-
-            if (mods.Count == 0)
-            {
-                mods.Add(new Module()
-                {
-                    title = "No Mods Enabled",
-                    tooltip = "",
-                    isToggleable = false,
-                    action = () => { }
-                });
-            }
-
-            return mods.ToArray();
-        }
-        public static Module GetButton(string title)
-        {
-            foreach (var category in categories)
-            {
-                foreach (var button in category.buttons)
-                {
-                    if (button.title.Contains(title))
-                    {
-                        return button;
-                    }
-                }
-            }
-            return null;
-        }
-        public static void DisableAllMods()
-        {
-            foreach (var category in categories)
-            {
-                foreach (var mod in category.buttons)
-                {
-                    if (mod == null || !mod.isToggleable || !mod.toggled) continue;
-
-                    mod.toggled = false;
-                    mod.disableAction?.Invoke();
-                }
-            }
-        }
-        public static void RefreshCategory()
-        {
-            var enabledMods = categories.Find(c => c.name == "Enabled Mods");
-
-            if (enabledMods != null)
-            {
-                enabledMods.buttons = GetEnabledMods();
-            }
         }
     }
 }

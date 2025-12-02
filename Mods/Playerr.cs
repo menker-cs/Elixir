@@ -509,23 +509,13 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.StartCoroutine(Chase());
+                GorillaTagger.Instance.StartCoroutine(Chase(LockedPlayer));
             }, true);
 
             if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
             }
-        }
-        private static IEnumerator Chase()
-        {
-            Transform myRig = GorillaTagger.Instance!.offlineVRRig.transform;
-            while (Vector3.Distance(myRig.position, LockedPlayer!.transform.position) > 0.1f)
-            {
-                myRig.position = Vector3.MoveTowards(myRig.position, LockedPlayer.transform.position, Time.deltaTime * 1f);
-                yield return null;
-            }
-            GorillaTagger.Instance.offlineVRRig.enabled = true;
         }
         public static void QuestScore(int score)
         {

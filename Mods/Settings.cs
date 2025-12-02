@@ -1,9 +1,7 @@
-﻿using BepInEx;
-using Elixir.Management;
+﻿using Elixir.Management;
 using Elixir.Utilities;
-using static Elixir.Management.Buttons;
+using static Elixir.Management.ButtonMethods;
 using System.Collections.Generic;
-using System.IO;
 using static Elixir.Utilities.Variables;
 using Elixir.Notifications;
 

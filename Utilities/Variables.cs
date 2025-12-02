@@ -136,6 +136,16 @@ namespace Elixir.Utilities
         {
             GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = useGravity;
         }
+        public static IEnumerator Chase(VRRig target)
+        {
+            Transform myRig = GorillaTagger.Instance!.offlineVRRig.transform;
+            while (Vector3.Distance(myRig.position, target!.transform.position) > 0.1f)
+            {
+                myRig.position = Vector3.MoveTowards(myRig.position, target.transform.position, Time.deltaTime * 1f);
+                yield return null;
+            }
+            GorillaTagger.Instance.offlineVRRig.enabled = true;
+        }
         public static void DoNoclip(bool b)
         {
             foreach (MeshCollider collider in Resources.FindObjectsOfTypeAll<MeshCollider>())

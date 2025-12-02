@@ -88,34 +88,42 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
+        public static void ReportPlayer(VRRig plr)
+        {
+            GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+            foreach (GorillaPlayerScoreboardLine report in Board)
+            {
+                if (report.linePlayer == plr.OwningNetPlayer)
+                {
+                    report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
+                }
+            }
+        }
+        public static void MutePlayer(VRRig plr)
+        {
+            GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
+            foreach (GorillaPlayerScoreboardLine mute in Board)
+            {
+                if (mute.linePlayer == plr.OwningNetPlayer)
+                {
+                    mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
+                    mute.muteButton.isOn = true;
+                    mute.muteButton.UpdateColor();
+                }
+            }
+        }
         public static void MuteGun()
         {
             GunTemplate.StartBothGuns(() =>
             {
-                GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
-                foreach (GorillaPlayerScoreboardLine mute in Board)
-                {
-                    if (mute.linePlayer == GunTemplate.LockedPlayer!.OwningNetPlayer)
-                    {
-                        mute.PressButton(true, GorillaPlayerLineButton.ButtonType.Mute);
-                        mute.muteButton.isOn = true;
-                        mute.muteButton.UpdateColor();
-                    }
-                }
+                MutePlayer(GunTemplate.LockedPlayer!);
             }, true);
         }
         public static void ReportGun()
         {
             GunTemplate.StartBothGuns(() =>
             {
-                GorillaPlayerScoreboardLine[] Board = UnityEngine.Object.FindObjectsOfType<GorillaPlayerScoreboardLine>();
-                foreach (GorillaPlayerScoreboardLine report in Board)
-                {
-                    if (report.linePlayer == GunTemplate.LockedPlayer!.OwningNetPlayer)
-                    {
-                        report.PressButton(true, GorillaPlayerLineButton.ButtonType.HateSpeech);
-                    }
-                }
+                ReportPlayer(GunTemplate.LockedPlayer!);
             }, true);
         }
 
