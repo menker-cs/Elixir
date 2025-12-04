@@ -47,8 +47,8 @@ namespace Elixir.Management
                 new Module() { title = "Connect To US Servers", tooltip = "Forces connection to the US server cluster.", isToggleable = false, action = () => Servers("us") },
                 new Module() { title = "Connect To USW Servers", tooltip = "Forces connection to the US West server cluster.", isToggleable = false, action = () => Servers("usw") },
                 new Module() { title = "Connect To EU Servers", tooltip = "Forces connection to the EU server cluster.", isToggleable = false, action = () => Servers("eu") },
-                new Module() { title = "Join Menu Code", tooltip = "Joins the room with the menu's preset code ($Elixir$).", isToggleable = false, action = () => JoinRoom("$ELIXIR$") },
-                new Module() { title = "Join Code MOD", tooltip = "Joins the room using code 'MOD'.", isToggleable = false, action = () => JoinRoom("MOD") },
+                new Module() { title = "Join Menu Code", tooltip = "Joins the room with the menu's custom code.", isToggleable = false, action = () => JoinRoom("$ELIXIR$") },
+                new Module() { title = "Join Code MODS", tooltip = "Joins the room using code 'MODS'.", isToggleable = false, action = () => JoinRoom("MODS") },
                 new Module() { title = "Join Code PBBV", tooltip = "Joins the room using code 'PBBV'.", isToggleable = false, action = () => JoinRoom("PBBV") },
                 new Module() { title = "Join Code DAISY09", tooltip = "Joins the room using code 'DAISY09'.", isToggleable = false, action = () => JoinRoom("DAISY09") },
                 new Module() { title = "Mute Gun", tooltip = "Mutes sounds originating from guns.", isToggleable = true, action = () => MuteGun() },
@@ -159,8 +159,7 @@ namespace Elixir.Management
                 new Module() { title = "Ignore Gun [CS]", tooltip = "Prevents ESP from highlighting held guns.", isToggleable = true, action = () => Ignore() },
             }));
 
-            categories.Add(new Category("Fun", new Module[] {
-                new Module() { title = "Vibrator", tooltip = "Applies continuous vibration to your hands.", isToggleable = true, action = () => Vibrator() },
+            categories.Add(new Category("Entity Mods", new Module[] {
                 new Module() { title = "Grab Bug [G]", tooltip = "Allows grabbing and tossing bug entities.", isToggleable = true, action = () => GrabBug() },
                 new Module() { title = "Bug Gun", tooltip = "Spawns a gun that fires bug projectiles.", isToggleable = true, action = () => BugGun() },
                 new Module() { title = "Snipe Bug [G]", tooltip = "Lets you aim and shoot long-range bug attacks.", isToggleable = true, action = () => SnipeBug() },
@@ -214,11 +213,12 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Credits", new Module[] {
-                new Module() { title = "Menker - Owner", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Cha554 - Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "GLXY - Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Fwog - Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Discord Link", tooltip = "", isToggleable = false, action = () => Discord() },
+                new Module() { title = "Menker - Owner/Main Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Cha554 - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Cheemz - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "GLXY - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Fwog - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Join The Discord", tooltip = "", isToggleable = false, action = () => Discord() },
             }));
         }
     }
