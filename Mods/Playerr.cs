@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using Elixir.Utilities;
 using Elixir.Utilities.Notifs;
 using GorillaLocomotion;
@@ -657,6 +657,22 @@ namespace Elixir.Mods.Categories
             else
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+        }
+        public static void FlingOnGrab()
+        {
+            VRRig.LocalRig.enabled = true;
+            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            {
+                bool leftgrab = !vrrig.isLocal && (vrrig.leftHandLink.grabbedPlayer == NetworkSystem.Instance.LocalPlayer || vrrig.rightHandLink.grabbedPlayer == NetworkSystem.Instance.LocalPlayer);
+                
+                if (leftgrab)
+                {
+                    VRRig.LocalRig.enabled = false;
+                    VRRig.LocalRig.transform.position = GorillaTagger.Instance.bodyCollider.transform.position - Vector3.down * UnityEngine.Random.Range(99999f, 99f);
+                    VRRig.LocalRig.leftHand.rigTarget.transform.position = VRRig.LocalRig.transform.position;
+                    VRRig.LocalRig.rightHand.rigTarget.transform.position = VRRig.LocalRig.transform.position;
+                }
             }
         }
 
