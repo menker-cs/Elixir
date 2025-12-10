@@ -32,17 +32,14 @@ namespace Elixir.Utilities
         // --- Utility Methods ---
         public static void Outline(GameObject obj, Color clr)
         {
-            if (true)
-            {
-                GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(gameObject.GetComponent<BoxCollider>());
-                gameObject.transform.parent = obj.transform;
-                gameObject.transform.rotation = Quaternion.identity;
-                gameObject.transform.localPosition = obj.transform.localPosition;
-                gameObject.transform.localScale = obj.transform.localScale + new Vector3(-0.01f, 0.0145f, 0.0145f);
-                gameObject.GetComponent<Renderer>().material.color = clr;
-            }
+            GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
+            UnityEngine.Object.Destroy(gameObject.GetComponent<BoxCollider>());
+            gameObject.transform.parent = obj.transform;
+            gameObject.transform.rotation = Quaternion.identity;
+            gameObject.transform.localPosition = obj.transform.localPosition;
+            gameObject.transform.localScale = obj.transform.localScale + new Vector3(-0.01f, 0.0145f, 0.0145f);
+            gameObject.GetComponent<Renderer>().material.color = clr;
         }
         public static void Trail(GameObject obj, Color clr, Color clr2)
         {
