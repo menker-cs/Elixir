@@ -22,7 +22,7 @@ namespace Elixir.Management
         public static GameObject menu = null;
         private static GameObject nextPage;
         private static GameObject lastPage;
-        private static List<Module> searchResults = new List<Module>();
+        private static List<Components.Module> searchResults = new List<Components.Module>();
         private static int currentPage = 0;
         private const int btnPerPage =6;
         private static int pageIndex = 0;
@@ -241,7 +241,7 @@ namespace Elixir.Management
             if (currentPage < 0) currentPage = 0;
             if (currentPage > maxPage) currentPage = maxPage;
 
-            Module[] sorted;
+            Components.Module[] sorted;
             if (Variables.alphabet)
             {
                 sorted = categories[pageIndex].buttons

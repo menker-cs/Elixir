@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elixir.Management
+namespace Elixir.Components
 {
     public class Category
     {

@@ -6,6 +6,7 @@ using static Elixir.Mods.Categories.Room;
 using static Elixir.Mods.Categories.Playerr;
 using UnityEngine;
 using System.Linq;
+using Elixir.Components;
 
 namespace Elixir.Management
 {

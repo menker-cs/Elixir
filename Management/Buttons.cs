@@ -10,6 +10,7 @@ using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
+using Elixir.Components;
 
 namespace Elixir.Management
 {
@@ -18,8 +19,8 @@ namespace Elixir.Management
         public static void CreateButtons()
         {
             categories.Add(new Category("Settings", new Module[] {
-                new Module() { title = "Save Preferences", tooltip = "Saves your current settings.", isToggleable = false, action = () => Save() },
-                new Module() { title = "Loads Preferences", tooltip = "Loads your preferences.", isToggleable = false, action = () => Load() },
+                new Module() { title = "Save Preferences", tooltip = "Saves your current settings.", isToggleable = false, action = () => SavePrefs() },
+                new Module() { title = "Loads Preferences", tooltip = "Loads your preferences.", isToggleable = false, action = () => LoadPrefs() },
                 new Module() { title = "Disable All Mods", tooltip = "Disables All The Mods On The Menu.", isToggleable = false, action = () => DisableAllMods() },
                 new Module() { title = "Right Handed Menu", tooltip = "Toggles what hand the menu is on.", isToggleable = true, toggled = false, action = () => Settings.MenuHand(true), disableAction = () => MenuHand(false) },
                 new Module() { title = "Toggle Tooltips", tooltip = "Toggles when tooltips should show.", isToggleable = true, toggled = true, action = () => Settings.ToggleTips(true), disableAction = () => ToggleTips(false) },
