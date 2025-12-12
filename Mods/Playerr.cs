@@ -1,14 +1,13 @@
 ﻿using BepInEx;
+using Elixir.Notifications;
 using Elixir.Utilities;
-using Elixir.Utilities.Notifs;
 using GorillaLocomotion;
+using static GorillaLocomotion.GTPlayer;
 using Photon.Pun;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine.UIElements;
 using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Variables;
 
@@ -77,7 +76,7 @@ namespace Elixir.Mods.Categories
 
             foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig && (Vector3.Distance(GorillaTagger.Instance.leftHandTransform.position, vrrig.headMesh.transform.position) < 4f || Vector3.Distance(GorillaTagger.Instance.rightHandTransform.position, vrrig.headMesh.transform.position) < 4f))
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && (Vector3.Distance(GorillaTagger.Instance.leftHandTransform.position, vrrig.headMesh.transform.position) < 4f || Vector3.Distance(GorillaTagger.Instance.rightHandTransform.position, vrrig.headMesh.transform.position) < 4f) && Inputs.rightGrip() || Inputs.leftGrip() || UnityInput.Current.GetKey(KeyCode.G))
                 {
                     PhotonView photonView = GameObject.Find("Player Objects/RigCache/Network Parent/GameMode(Clone)").GetPhotonView();
                     if (photonView)
@@ -132,30 +131,23 @@ namespace Elixir.Mods.Categories
         {
             if (GorillaTagger.Instance == null) return;
 
-            if (!IAmInfected)
+            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T) && !IAmInfected)
             {
-                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T))
+                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    if (RigIsInfected(vrrig))
                     {
-                        if (RigIsInfected(vrrig))
-                        {
-                            GorillaTagger.Instance.offlineVRRig.enabled = false;
-                            GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.rightHandTransform.position;
-                            GorillaTagger.Instance.myVRRig.transform.position = vrrig.rightHandTransform.position;
-                            break;
-                        }
+                        GorillaTagger.Instance.offlineVRRig.enabled = false;
+                        GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.rightHandTransform.position;
+                        GorillaTagger.Instance.myVRRig.transform.position = vrrig.rightHandTransform.position;
+                        break;
                     }
-                }
-                else
-                {
-                    GorillaTagger.Instance.offlineVRRig.enabled = true;
                 }
             }
             else
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = true;
-                //NotificationLib.SendNotification("<color=white>[</color><color=blue>Tag Self:</color><color=white>] You are already tagged</color>");
+                NotificationLib.SendNotification("<color=white>[</color>Tag Self:<color=white>]</color> You are already tagged");
             }
         }
         #endregion
@@ -261,7 +253,7 @@ namespace Elixir.Mods.Categories
             GorillaTagger.Instance.transform.localScale = new Vector3(length, length, length);
         }
 
-        public static float customLength = 1f;
+        static float customLength = 1f;
         public static void CustomArms()
         {
             if (GorillaTagger.Instance == null) return;
@@ -282,12 +274,36 @@ namespace Elixir.Mods.Categories
 
             GorillaTagger.Instance.transform.localScale = new Vector3(customLength, customLength, customLength);
         }
+        static float customSize = 1f;
+        public static void SizeChanger()
+        {
+            if (GorillaTagger.Instance == null) return;
 
-        public static void FixArms()
+            if (Inputs.rightTrigger() || UnityInput.Current.GetKey(KeyCode.T))
+            {
+                customSize += 0.005f;
+                if (customSize > 3f)
+                    customSize = 3f;
+            }
+
+            if (Inputs.leftTrigger() || UnityInput.Current.GetKey(KeyCode.Y))
+            {
+                customSize -= 0.005f;
+                if (customSize < 0.2f)
+                    customSize = 0.2f;
+            }
+
+            GorillaTagger.Instance.offlineVRRig.NativeScale = customSize;
+            GorillaTagger.Instance.transform.localScale = new Vector3(customLength, customLength, customLength);
+        }
+        public static void FixBody()
         {
             if (GorillaTagger.Instance == null) return;
 
             GorillaTagger.Instance.transform.localScale = Vector3.one;
+            GorillaTagger.Instance.offlineVRRig.NativeScale = 1f;
+            customLength = 1f;
+            customSize = 1f;
         }
         public static void GrabRig()
         {

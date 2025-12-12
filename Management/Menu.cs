@@ -470,7 +470,7 @@ namespace Elixir.Management
                     computer.material = goop.GetComponent<Renderer>().material;
                     wallMonitor.material = goop.GetComponent<Renderer>().material;
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goop.GetComponent<Renderer>().material, ref originalMat1!);
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 10, goop.GetComponent<Renderer>().material, ref originalMat2!);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 11, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
 
                 #region MOTD

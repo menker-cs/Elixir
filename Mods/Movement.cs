@@ -306,26 +306,48 @@ namespace Elixir.Mods.Categories
                 GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
         }
+        public static void VelocityFly()
+        {
+            if (rightPrimary() | UnityInput.Current.GetKey(KeyCode.P))
+            {
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.forward * Time.deltaTime * flyspeedchangerspeed;
+            }
+        }
         public static void Hertz(int hz)
         {
             Application.targetFrameRate = hz;
         }
         public static void PunchMod()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
-            {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
-                {
-                    float dis1 = Vector3.Distance(vrrig.rightHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
-                    float dis2 = Vector3.Distance(vrrig.leftHandTransform.position, GorillaTagger.Instance.offlineVRRig.bodyTransform.position);
+            var parent = GorillaParent.instance;
+            var myrig = GorillaTagger.Instance?.offlineVRRig;
+            var body = myrig?.bodyTransform;
+            var rb = GorillaLocomotion.GTPlayer.Instance?.GetComponent<Rigidbody>();
 
-                    if (dis1 < 0.5f)
+            if (parent?.vrrigs == null || body == null || rb == null) return;
+
+            float thresholdSqr = 0.5f * 0.5f;
+
+            foreach (VRRig vrrig in parent.vrrigs)
+            {
+                if (vrrig == null || vrrig == myrig) continue;
+
+                Transform rightHand = vrrig.rightHandTransform;
+                Transform leftHand = vrrig.leftHandTransform;
+
+                if (rightHand != null)
+                {
+                    if ((rightHand.position - body.position).sqrMagnitude < thresholdSqr)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.rightHandTransform.forward * 10f;
+                        rb.linearVelocity += rightHand.forward * 10f;
                     }
-                    if (dis2 < 0.5f)
+                }
+
+                if (leftHand != null)
+                {
+                    if ((leftHand.position - body.position).sqrMagnitude < thresholdSqr)
                     {
-                        GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().linearVelocity += vrrig.leftHandTransform.forward * 10f;
+                        rb.linearVelocity += leftHand.forward * 10f;
                     }
                 }
             }

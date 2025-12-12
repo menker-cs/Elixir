@@ -81,6 +81,7 @@ namespace Elixir.Management
                 new Module() { title = "Super Monke [P]", tooltip = "Enables powerful super-jump and enhanced agility.", isToggleable = true, action = () => SuperMonke() },
                 new Module() { title = "Hand Fly [P]", tooltip = "Control flight by moving your hands through the air.", isToggleable = true, action = () => HandFly() },
                 new Module() { title = "Slingshot Fly [T]", tooltip = "Fly with slingshot-style physics using trigger.", isToggleable = true, action = () => SlingshotFly() },
+                new Module() { title = "Velocity Fly [P]", tooltip = "Fly with slingshot-style physics using trigger.", isToggleable = true, action = () => VelocityFly() },
                 new Module() { title = "Iron Monke [G]", tooltip = "Gain extra weight and strong gravity when gripping.", isToggleable = true, action = () => IronMonkey() },
                 new Module() { title = "Punch Mod [BUGGY]", tooltip = "Enables experimental punch interactions.", isToggleable = true, action = () => PunchMod() },
                 new Module() { title = "Forward & Backward [T]", tooltip = "Allows directional control forward/backward with trigger.", isToggleable = true, action = () => Carmonkey() },
@@ -97,11 +98,11 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Player", new Module[] {
-                new Module() { title = "Long Arms", tooltip = "Extends your arms slightly for extra reach.", isToggleable = true, action = () => LongArms(1.15f), disableAction = () => FixArms() },
-                new Module() { title = "Very Long Arms", tooltip = "Greatly extends arm length for exaggerated reach.", isToggleable = true, action = () => LongArms(1.6f), disableAction = () => FixArms() },
-                new Module() { title = "EXTREME Long Arms", tooltip = "Extremely long arms for extreme reach visuals.", isToggleable = true, action = () => LongArms(2.2f), disableAction = () => FixArms() },
-                new Module() { title = "Short Arms", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => LongArms(0.75f), disableAction = () => FixArms() },
-                new Module() { title = "Custom Arms [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => CustomArms(), disableAction = () => FixArms() },
+                new Module() { title = "Long Arms", tooltip = "Extends your arms slightly for extra reach.", isToggleable = true, action = () => LongArms(1.15f), disableAction = () => FixBody() },
+                new Module() { title = "Very Long Arms", tooltip = "Greatly extends arm length for exaggerated reach.", isToggleable = true, action = () => LongArms(1.6f), disableAction = () => FixBody() },
+                new Module() { title = "EXTREME Long Arms", tooltip = "Extremely long arms for extreme reach visuals.", isToggleable = true, action = () => LongArms(2.2f), disableAction = () => FixBody() },
+                new Module() { title = "Short Arms", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => LongArms(0.75f), disableAction = () => FixBody() },
+                new Module() { title = "Custom Arms [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => CustomArms(), disableAction = () => FixBody() },
                 new Module() { title = "Upsidedown Head", tooltip = "Flips your head model upside down.", isToggleable = true, action = () => UpsidedownHead(), disableAction = () => FixHead() },
                 new Module() { title = "Backwards Head", tooltip = "Rotates your head to face behind you.", isToggleable = true, action = () => BackwardsHead(), disableAction = () => FixHead() },
                 new Module() { title = "Snap Neck", tooltip = "Applies a neck-snapping animation effect.", isToggleable = true, action = () => SnapNeck(), disableAction = () => FixHead() },
