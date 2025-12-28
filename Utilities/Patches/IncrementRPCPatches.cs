@@ -1,7 +1,7 @@
 using HarmonyLib;
 using Photon.Pun;
 
-namespace MistMenu.Patches.Internal
+namespace Elixir.Patches
 {
     public class IncrementRPCPatches
     {

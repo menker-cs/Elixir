@@ -10,7 +10,6 @@ using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
-using Elixir.Components;
 
 namespace Elixir.Management
 {
@@ -103,6 +102,7 @@ namespace Elixir.Management
                 new Module() { title = "EXTREME Long Arms", tooltip = "Extremely long arms for extreme reach visuals.", isToggleable = true, action = () => LongArms(2.2f), disableAction = () => FixBody() },
                 new Module() { title = "Short Arms", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => LongArms(0.75f), disableAction = () => FixBody() },
                 new Module() { title = "Custom Arms [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => CustomArms(), disableAction = () => FixBody() },
+                new Module() { title = "Size Changer [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => SizeChanger(), disableAction = () => FixBody() },
                 new Module() { title = "Upsidedown Head", tooltip = "Flips your head model upside down.", isToggleable = true, action = () => UpsidedownHead(), disableAction = () => FixHead() },
                 new Module() { title = "Backwards Head", tooltip = "Rotates your head to face behind you.", isToggleable = true, action = () => BackwardsHead(), disableAction = () => FixHead() },
                 new Module() { title = "Snap Neck", tooltip = "Applies a neck-snapping animation effect.", isToggleable = true, action = () => SnapNeck(), disableAction = () => FixHead() },

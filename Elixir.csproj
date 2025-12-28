@@ -48,6 +48,9 @@
     <Reference Include="BepInEx.Preloader">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\BepInEx\core\BepInEx.Preloader.dll</HintPath>
     </Reference>
+    <Reference Include="Console">
+      <HintPath>..\..\..\..\Downloads\Console.dll</HintPath>
+    </Reference>
     <Reference Include="Fusion.Realtime">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\Gorilla Tag_Data\Managed\Fusion.Realtime.dll</HintPath>
     </Reference>

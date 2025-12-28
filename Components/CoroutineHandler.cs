@@ -5,19 +5,19 @@ namespace Elixir.Components
 {
     public class CoroutineHandler : MonoBehaviour
     {
-        private static CoroutineHandler _instance;
+        private static CoroutineHandler instance;
 
         public static CoroutineHandler Instance
         {
             get
             {
-                if (_instance == null)
+                if (instance == null)
                 {
-                    var go = new GameObject("CoroutineHandler");
-                    DontDestroyOnLoad(go);
-                    _instance = go.AddComponent<CoroutineHandler>();
+                    var ch = new GameObject("CoroutineHandler");
+                    DontDestroyOnLoad(ch);
+                    instance = ch.AddComponent<CoroutineHandler>();
                 }
-                return _instance;
+                return instance;
             }
         }
 

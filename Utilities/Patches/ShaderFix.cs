@@ -1,8 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
-using static Oculus.Interaction.Context;
 
-namespace MistMenu.Patches.Internal
+namespace Elixir.Patches
 {
     [HarmonyPatch(typeof(GameObject), "CreatePrimitive")]
     public class ShaderFix : MonoBehaviour

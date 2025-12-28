@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace MistMenu.Patches.Internal
+namespace Elixir.Patches
 {
     [HarmonyPatch(typeof(VRRig), "OnDisable")]
     public class RigPatch

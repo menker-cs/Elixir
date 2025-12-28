@@ -125,13 +125,12 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -141,17 +140,17 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void Spam2()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -162,14 +161,13 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -179,18 +177,18 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void Spam3()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -201,13 +199,12 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -217,17 +214,17 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
                 Trail(orb, SkyBlue, DarkDodgerBlue);
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.useGravity = false;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
+                body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void Draw()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -251,6 +248,7 @@ namespace Elixir.Mods.Categories
                 GameObject.Destroy(draw, 5f);
             }
         }
+
         public static void GravDraw()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -261,7 +259,6 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -276,7 +273,6 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
@@ -286,6 +282,7 @@ namespace Elixir.Mods.Categories
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void BigSpam()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -296,12 +293,11 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
+
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -311,17 +307,16 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void OrbGun()
         {
             GunTemplate.StartBothGuns(() =>
@@ -330,17 +325,16 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = spherepointer!.transform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }, false);
         }
+
         public static void OrbGun1()
         {
             GunTemplate.StartBothGuns(() =>
@@ -349,17 +343,16 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 orb.transform.position = spherepointer!.transform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
 
                 GameObject.Destroy(orb, 5f);
             }, false);
         }
+
         public static void SpazOrb()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -370,14 +363,13 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.rotation = new Quaternion(UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360));
-                body.linearVelocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
+                body.rotation = UnityEngine.Random.rotation;
+                body.velocity = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f)) * 25f;
 
                 GameObject.Destroy(orb, 5f);
             }
@@ -387,20 +379,18 @@ namespace Elixir.Mods.Categories
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position;
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.rotation = new Quaternion(UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360), UnityEngine.Random.Range(-360, 360));
-                body.linearVelocity = new Vector3(UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3), UnityEngine.Random.Range(-3, 3)) * 25f;
+                body.rotation = UnityEngine.Random.rotation;
+                body.velocity = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f)) * 25f;
 
                 GameObject.Destroy(orb, 5f);
-
-
             }
         }
+
         public static void OrbRain()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -409,32 +399,32 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20f, 20f), 10f, UnityEngine.Random.Range(-20f, 20f));
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
+
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
+
                 GameObject.Destroy(orb, 5f);
             }
             if (ControllerInputPoller.instance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20f, 20f), 10f, UnityEngine.Random.Range(-20f, 20f));
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
+
                 GameObject.Destroy(orb, 5f);
             }
         }
+
         public static void OrbRain1()
         {
             if (ControllerInputPoller.instance == null) return;
@@ -443,14 +433,14 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20f, 20f), 10f, UnityEngine.Random.Range(-20f, 20f));
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
+
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
+
                 Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }
@@ -458,15 +448,14 @@ namespace Elixir.Mods.Categories
             {
                 GameObject orb = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 orb.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
-                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20, 20), 10, UnityEngine.Random.Range(-20, 20));
+                orb.transform.position = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.position + new Vector3(UnityEngine.Random.Range(-20f, 20f), 10f, UnityEngine.Random.Range(-20f, 20f));
                 orb.GetComponent<Renderer>().material.color = SkyBlue;
-                GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Terrain/pitgeo/pit ground").layer = orb.layer;
 
                 Rigidbody body = orb.AddComponent<Rigidbody>();
                 body.mass = 0.5f;
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
-                body.linearVelocity = body.linearVelocity;
+
                 Trail(orb, SkyBlue, DarkDodgerBlue);
                 GameObject.Destroy(orb, 5f);
             }

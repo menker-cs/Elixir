@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-namespace MistMenu.Patches.Internal
+namespace Elixir.Patches
 {
     public class PlayFabTelemetryPatches
     {

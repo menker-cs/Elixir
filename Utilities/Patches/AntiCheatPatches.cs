@@ -1,7 +1,7 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace MistMenu.Patches.Internal
+namespace Elixir.Patches
 {
     public class AntiCheatPatches
     {

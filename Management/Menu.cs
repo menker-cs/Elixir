@@ -22,7 +22,6 @@ namespace Elixir.Management
         public static GameObject menu = null;
         private static GameObject nextPage;
         private static GameObject lastPage;
-        private static List<Components.Module> searchResults = new List<Components.Module>();
         private static int currentPage = 0;
         private const int btnPerPage =6;
         private static int pageIndex = 0;
@@ -60,8 +59,6 @@ namespace Elixir.Management
 
         public static void Start()
         {
-            CoroutineHandler.StartCoroutine1(GetObjects());
-
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("Elixir", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
@@ -125,9 +122,10 @@ namespace Elixir.Management
             CreateButtons();
             Buttons();
             menu.SetActive(true);
+            CoroutineHandler.StartCoroutine1(GetObjects());
         }
 
-        private static IEnumerator GetObjects()
+        public static IEnumerator GetObjects()
         {
             var obj1 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
                     if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
@@ -241,7 +239,7 @@ namespace Elixir.Management
             if (currentPage < 0) currentPage = 0;
             if (currentPage > maxPage) currentPage = maxPage;
 
-            Components.Module[] sorted;
+            Module[] sorted;
             if (Variables.alphabet)
             {
                 sorted = categories[pageIndex].buttons
@@ -469,8 +467,8 @@ namespace Elixir.Management
                 {
                     computer.material = goop.GetComponent<Renderer>().material;
                     wallMonitor.material = goop.GetComponent<Renderer>().material;
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 5, goop.GetComponent<Renderer>().material, ref originalMat1!);
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 11, goop.GetComponent<Renderer>().material, ref originalMat2!);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goop.GetComponent<Renderer>().material, ref originalMat1!);
+                    //ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 7, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
 
                 #region MOTD
@@ -515,8 +513,6 @@ namespace Elixir.Management
 
             #endregion
             UpdateClr();
-
-
         }
 
         // Thx GLXY for this
