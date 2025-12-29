@@ -243,7 +243,7 @@ namespace Elixir.Mods.Categories
             File.WriteAllLines(Path.Combine(menuFolder, "EnabledMods.txt"), enabledMods);
             File.WriteAllLines(Path.Combine(menuFolder, "Settings.txt"), settings);
 
-            NotificationLib.SendNotification("<color=white>[</color>Preferences<color=white>]</color> Saved Preferences");
+            NotificationLib.SendNotification("<color=white>[</color>Save<color=white>]</color> Saved Preferences");
         }
         public static void LoadPrefs()
         {
@@ -253,7 +253,7 @@ namespace Elixir.Mods.Categories
 
             if (!File.Exists(enabledPath) || !File.Exists(settingPath))
             {
-                NotificationLib.SendNotification("\"<color=white>[</color>Preferences<color=white>]</color> Loaded Preferences\"");
+                NotificationLib.SendNotification("<color=white>[</color>Load<color=white>]</color> No Save Found");
                 return;
             }
 
@@ -294,7 +294,7 @@ namespace Elixir.Mods.Categories
             UpdateButtonDisplays();
             Menu.Buttons();
 
-            NotificationLib.SendNotification("<color=white>[</color>LOAD</color><color=white>]</color> <color=white>Loaded settings successfully!</color>");
+            NotificationLib.SendNotification("<color=white>[</color>Load<color=white>]</color> Loaded Preferences");
         }
         static void UpdateButtonDisplays()
         {

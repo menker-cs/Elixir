@@ -23,8 +23,8 @@ namespace Elixir.Management
         private static GameObject nextPage;
         private static GameObject lastPage;
         private static int currentPage = 0;
-        private const int btnPerPage =6;
-        private static int pageIndex = 0;
+        private const int btnPerPage = 6;
+        public static int pageIndex = 0;
         public static List<Category> categories = new List<Category>();
         private static List<GameObject> buttons = new List<GameObject>();
         private static AudioClip defaultClickSound = null;
@@ -239,12 +239,10 @@ namespace Elixir.Management
             if (currentPage < 0) currentPage = 0;
             if (currentPage > maxPage) currentPage = maxPage;
 
-            Module[] sorted;
+            Components.Module[] sorted;
             if (Variables.alphabet)
             {
-                sorted = categories[pageIndex].buttons
-                    .OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase)
-                    .ToArray();
+                sorted = categories[pageIndex].buttons.OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase).ToArray();
             }
             else
             {
@@ -468,7 +466,7 @@ namespace Elixir.Management
                     computer.material = goop.GetComponent<Renderer>().material;
                     wallMonitor.material = goop.GetComponent<Renderer>().material;
                     ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goop.GetComponent<Renderer>().material, ref originalMat1!);
-                    //ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 7, goop.GetComponent<Renderer>().material, ref originalMat2!);
+                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 6, goop.GetComponent<Renderer>().material, ref originalMat2!);
                 }
 
                 #region MOTD

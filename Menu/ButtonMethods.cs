@@ -4,6 +4,7 @@ using static Elixir.Utilities.Variables;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.Room;
 using static Elixir.Mods.Categories.Playerr;
+using Elixir.Components;
 using UnityEngine;
 using System.Linq;
 
@@ -178,6 +179,18 @@ namespace Elixir.Management
                     {
                         return button;
                     }
+                }
+            }
+            return null;
+        }
+
+        public static Module GetAllButtons()
+        {
+            foreach (var category in categories)
+            {
+                foreach (var button in category.buttons)
+                {
+                    return button;
                 }
             }
             return null;

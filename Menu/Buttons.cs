@@ -1,4 +1,5 @@
 using Elixir.Mods.Categories;
+using Elixir.Components;
 using static Elixir.Management.Menu;
 using static Elixir.Management.ButtonMethods;
 using static Elixir.Mods.Categories.Fun;

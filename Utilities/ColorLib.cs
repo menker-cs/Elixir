@@ -316,7 +316,7 @@ namespace Elixir.Utilities
                 }
                 return sb.ToString();
             }
-            static Color HexToColor(string hex)
+            public static Color HexToColor(string hex)
             {
                 if (hex.StartsWith("#")) hex = hex.Substring(1);
                 byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
