@@ -43,7 +43,7 @@ namespace Elixir.Mods.Categories
         {
             PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(RoomCode, GorillaNetworking.JoinType.Solo);
         }
-        public static string roomCode;
+        public static string? roomCode;
         public static void Reconnect()
         {
             roomCode = PhotonNetwork.CurrentRoom.Name;

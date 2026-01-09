@@ -1,18 +1,10 @@
-﻿using HarmonyLib;
-using Elixir.Mods;
+﻿using Elixir.Notifications;
+using HarmonyLib;
 using Photon.Pun;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Photon.Realtime;
-using static Elixir.Utilities.ColorLib;
-using UnityEngine.Animations.Rigging;
-using System.Collections;
-using System.Text;
-using UnityEngine.Networking;
 using System;
-using System.Net;
-using Elixir.Notifications;
+using System.Collections;
+using System.Net.Http;
+using UnityEngine;
 
 namespace Elixir.Utilities
 {
@@ -110,16 +102,14 @@ namespace Elixir.Utilities
         }
         public static string VrrigPlatform(VRRig rig)
         {
-            string concatStringOfCosmeticsAllowed = rig.concatStringOfCosmeticsAllowed;
-
-            if (concatStringOfCosmeticsAllowed.Contains("S. FIRST LOGIN"))
+            if ((rig.cosmeticSet?.ToString() ?? "").Contains("S. FIRST LOGIN"))
                 return "STEAM";
-            else if (concatStringOfCosmeticsAllowed.Contains("FIRST LOGIN") || rig.Creator.GetPlayerRef().CustomProperties.Count >= 2)
+            else if ((rig.cosmeticSet?.ToString() ?? "").Contains("FIRST LOGIN") || rig.Creator.GetPlayerRef().CustomProperties.Count >= 2)
                 return "PC";
 
             return "QUEST";
         }
-        public static void IsMasterCheck()
+                public static void IsMasterCheck()
         {
             if (!PhotonNetwork.IsConnected)
             {
@@ -171,6 +161,13 @@ namespace Elixir.Utilities
         {
             return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
         }
+        public static string GetStatus(string url) 
+        {
+            HttpClient client = new HttpClient();
+            string stringg = client.GetStringAsync(url).Result;
+            return stringg;
+        }
+        public static string Status = GetStatus("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
     }
 }
 

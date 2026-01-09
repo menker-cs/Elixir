@@ -31,6 +31,6 @@ namespace Elixir.Patches
             }
         }
 
-        private static Harmony instance;
+        private static Harmony? instance;
     }
 }

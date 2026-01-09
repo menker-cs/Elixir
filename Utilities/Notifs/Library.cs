@@ -11,21 +11,19 @@ using UnityEngine.UI;
 
 namespace Elixir.Notifications
 {
-    [BepInPlugin("org.ekixir.menu.notiflib", "Elixir NotifLib", "1.0.0")]
+    [BepInPlugin("org.elixir.notiflib", "Elixir NotifLib", "1.0.0")]
     public class NotificationLib : BaseUnityPlugin
     {
-        private static NotificationLib Instance;
+        private static NotificationLib? Instance;
 
-        private static Camera mainCamera;
-        private static GameObject notifObj;
-        private static GameObject HUD;
+        private static Camera? mainCamera;
+        private static GameObject? notifObj;
+        private static GameObject? HUD;
         private static readonly List<GameObject> activeNotifications = new List<GameObject>();
         private bool initialized;
 
         private static readonly Queue<string> pendingNotifications = new Queue<string>();
         private static readonly int maxQueueSize = 10;
-
-        private static AssetBundle cachedBundle;
 
         public static bool disableNotifications = false;
 
@@ -192,8 +190,8 @@ namespace Elixir.Notifications
                 yield return null;
             }
 
-            if (activeNotifications.Contains(notif))
-                activeNotifications.Remove(notif);
+            if (activeNotifications.Contains(notif!))
+                activeNotifications.Remove(notif!);
 
             if (notif != null)
                 Destroy(notif);

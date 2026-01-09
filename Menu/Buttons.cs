@@ -1,7 +1,7 @@
 using Elixir.Mods.Categories;
 using Elixir.Components;
 using static Elixir.Management.Menu;
-using static Elixir.Management.ButtonMethods;
+using static Elixir.Utilities.ButtonManager;
 using static Elixir.Mods.Categories.Fun;
 using static Elixir.Mods.Categories.Move;
 using static Elixir.Mods.Categories.Playerr;
@@ -11,6 +11,7 @@ using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
+using PlayFab.ClientModels;
 
 namespace Elixir.Management
 {
@@ -70,6 +71,8 @@ namespace Elixir.Management
                 new Module() { title = "Plank Platforms", tooltip = "Spawns wide plank-like platforms to stand or walk on.", isToggleable = true, action = () => Platforms(false, true) },
                 new Module() { title = "Force Tag Freeze", tooltip = "Forces tag freeze effects on nearby targets.", isToggleable = false, action = () => TagFreeze(true) },
                 new Module() { title = "No Tag Freeze", tooltip = "Prevents your character from being frozen when tagged.", isToggleable = true, action = () => TagFreeze(false) },
+                new Module() { title = "Slippery Walk", tooltip = "Makes everything slippery.", isToggleable = true, action = () => Slippyyyyyyy(1), disableAction = () => Slippyyyyyyy(-1) },
+                new Module() { title = "No Slip", tooltip = "Makes everything slippery.", isToggleable = true, action = () => Slippyyyyyyy(-1) },
                 new Module() { title = "NoClip [T]", tooltip = "Lets you move through objects freely while active.", isToggleable = true, action = () => Noclip() },
                 new Module() { title = "Speed Boost", tooltip = "Boosts your movement speed for faster traversal.", isToggleable = true, action = () => Speedboost() },
                 new Module() { title = "Grip Speed Boost [G]", tooltip = "Hold grip to activate a short speed boost.", isToggleable = true, action = () => GSpeedboost() },
@@ -83,7 +86,6 @@ namespace Elixir.Management
                 new Module() { title = "Slingshot Fly [T]", tooltip = "Fly with slingshot-style physics using trigger.", isToggleable = true, action = () => SlingshotFly() },
                 new Module() { title = "Velocity Fly [P]", tooltip = "Fly with slingshot-style physics using trigger.", isToggleable = true, action = () => VelocityFly() },
                 new Module() { title = "Iron Monke [G]", tooltip = "Gain extra weight and strong gravity when gripping.", isToggleable = true, action = () => IronMonkey() },
-                new Module() { title = "Punch Mod [BUGGY]", tooltip = "Enables experimental punch interactions.", isToggleable = true, action = () => PunchMod() },
                 new Module() { title = "Forward & Backward [T]", tooltip = "Allows directional control forward/backward with trigger.", isToggleable = true, action = () => Carmonkey() },
                 new Module() { title = "Up & Down [T]", tooltip = "Move vertically using trigger input.", isToggleable = true, action = () => UpAndDown() },
                 new Module() { title = "WASD [PC]", tooltip = "Move your character using keyboard WASD controls.", isToggleable = true, action = () => WASDFly() },
@@ -95,6 +97,7 @@ namespace Elixir.Management
                 new Module() { title = "TP To Player Gun", tooltip = "Teleports you directly to another player using gun aim.", isToggleable = true, action = () => TPPlayerGun() },
                 new Module() { title = "Hover Gun", tooltip = "Allows your gun to hover in midair.", isToggleable = true, action = () => HoverGun() },
                 new Module() { title = "Check Point [RG, RT, A]", tooltip = "Sets or returns to a saved checkpoint position.", isToggleable = true, action = () => Checkpoint() },
+                new Module() { title = "Swim Everywhere", tooltip = "Swim anywhere you go.", isToggleable = true, action = () => Swimminger(true), disableAction = () => Swimminger(false) },
             }));
 
             categories.Add(new Category("Player", new Module[] {
@@ -103,7 +106,7 @@ namespace Elixir.Management
                 new Module() { title = "EXTREME Long Arms", tooltip = "Extremely long arms for extreme reach visuals.", isToggleable = true, action = () => LongArms(2.2f), disableAction = () => FixBody() },
                 new Module() { title = "Short Arms", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => LongArms(0.75f), disableAction = () => FixBody() },
                 new Module() { title = "Custom Arms [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => CustomArms(), disableAction = () => FixBody() },
-                new Module() { title = "Size Changer [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => SizeChanger(), disableAction = () => FixBody() },
+                //new Module() { title = "Size Changer [T]", tooltip = "Shrinks your arms to a smaller size.", isToggleable = true, action = () => SizeChanger(), disableAction = () => FixBody() },
                 new Module() { title = "Upsidedown Head", tooltip = "Flips your head model upside down.", isToggleable = true, action = () => UpsidedownHead(), disableAction = () => FixHead() },
                 new Module() { title = "Backwards Head", tooltip = "Rotates your head to face behind you.", isToggleable = true, action = () => BackwardsHead(), disableAction = () => FixHead() },
                 new Module() { title = "Snap Neck", tooltip = "Applies a neck-snapping animation effect.", isToggleable = true, action = () => SnapNeck(), disableAction = () => FixHead() },
@@ -209,7 +212,7 @@ namespace Elixir.Management
             categories.Add(new Category("World", new Module[] {
                 new Module() { title = "Stump Text", tooltip = "Toggles special 'stump' text in the world.", isToggleable = true, toggled = true, action = () => Stumpy(), disableAction = () => STUMPY() },
                 new Module() { title = "Unlock Comp", tooltip = "Unlocks world-based components or content.", isToggleable = true, action = () => UnlockComp() },
-                new Module() { title = "Enable I Lava You Update", tooltip = "Enables the 'I Lava You' world update.", isToggleable = true, action = () => EnableILavaYou(), disableAction = () => DisableILavaYou() },
+                new Module() { title = "Enable I Lava You Update", tooltip = "Enables the 'I Lava You' world update.", isToggleable = true, action = () => ToggleILavaYou(true), disableAction = () => ToggleILavaYou(true) },
                 new Module() { title = "Enable Rain", tooltip = "Toggles rain weather effects in the world.", isToggleable = true, action = () => Rain(), disableAction = () => Rain1() },
                 new Module() { title = "Enable Snow", tooltip = "Toggles snow weather effects in forest.", isToggleable = true, action = () => ToggleSnow(true), disableAction = () => ToggleSnow(false) },
                 new Module() { title = "Change Time Night", tooltip = "Sets world time to night.", isToggleable = false, action = () => NightTimeMod() },

@@ -11,7 +11,7 @@ namespace Elixir.Mods.Categories
         static GameObject? sherbert = null;
         static bool hold = false;
         static Vector3 lastPosition;
-        private static Coroutine chaseCoroutine;
+        private static Coroutine? chaseCoroutine;
         public static void SpawnSherbert(bool collide, bool isLaunching = false, bool isChasing = false)
         {
             if (sherbert == null || isLaunching)

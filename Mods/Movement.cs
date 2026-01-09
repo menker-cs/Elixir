@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using Elixir.Utilities;
 using GorillaLocomotion;
+using GorillaLocomotion.Swimming;
 using Oculus.Interaction;
 using UnityEngine;
 using Valve.VR;
@@ -62,6 +63,9 @@ namespace Elixir.Mods.Categories
         {
             GTPlayer instance = GTPlayer.Instance;
 
+            GorillaTagger.Instance.rigidbody.useGravity = false;
+            GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
+
             Vector2 leftJoystickAxis = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
             float rightJoystickY = SteamVR_Actions.gorillaTag_RightJoystick2DAxis.axis.y;
 
@@ -72,13 +76,10 @@ namespace Elixir.Mods.Categories
 
             Vector3 movement = new Vector3(leftJoystickAxis.x, rightJoystickY, leftJoystickAxis.y);
             Vector3 finalMovement = movement.x * right + movement.z * forward + rightJoystickY * Vector3.up;
-            finalMovement *= instance.scale * flyspeedchangerspeed;
+            finalMovement *= instance.scale * flyspeedchangerspeed * 3f;
 
             Rigidbody rigidbody = instance.bodyCollider.attachedRigidbody;
             rigidbody.linearVelocity = Vector3.Lerp(rigidbody.linearVelocity, finalMovement, 0.1287f);
-
-            float gravityCompensation = 9.81f;
-            rigidbody.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
         }
         public static void Fly()
         {
@@ -317,44 +318,34 @@ namespace Elixir.Mods.Categories
         {
             Application.targetFrameRate = hz;
         }
-        public static void PunchMod()
-        {
-            var parent = GorillaParent.instance;
-            var myrig = GorillaTagger.Instance?.offlineVRRig;
-            var body = myrig?.bodyTransform;
-            var rb = GorillaLocomotion.GTPlayer.Instance?.GetComponent<Rigidbody>();
-
-            if (parent?.vrrigs == null || body == null || rb == null) return;
-
-            float thresholdSqr = 0.5f * 0.5f;
-
-            foreach (VRRig vrrig in parent.vrrigs)
-            {
-                if (vrrig == null || vrrig == myrig) continue;
-
-                Transform rightHand = vrrig.rightHandTransform;
-                Transform leftHand = vrrig.leftHandTransform;
-
-                if (rightHand != null)
-                {
-                    if ((rightHand.position - body.position).sqrMagnitude < thresholdSqr)
-                    {
-                        rb.linearVelocity += rightHand.forward * 10f;
-                    }
-                }
-
-                if (leftHand != null)
-                {
-                    if ((leftHand.position - body.position).sqrMagnitude < thresholdSqr)
-                    {
-                        rb.linearVelocity += leftHand.forward * 10f;
-                    }
-                }
-            }
-        }
         public static void Velocity(float d)
         {
             GorillaTagger.Instance.rigidbody.linearDamping = d;
+        }
+        public static void Swimminger(bool swim)
+        {
+            if (!swim)
+            {
+                if (swimmer)
+                {
+                    GameObject.Destroy(swimmer);
+                    swimmer = null;
+                    return;
+                }
+            }
+            if (swimmer == null)
+            {
+                GameObject WhenBritishPeopleSayBottleOfWaterItSoundsFunny = GameObject.Find("Environment Objects/LocalObjects_Prefab/ForestToBeach/ForestToBeach_Prefab_V4/ForestToBeach_Geo/CaveWaterVolume/");
+
+                if (WhenBritishPeopleSayBottleOfWaterItSoundsFunny != null)
+                {
+                    WhenBritishPeopleSayBottleOfWaterItSoundsFunny.SetActive(true);
+
+                    swimmer = GameObject.Instantiate(WhenBritishPeopleSayBottleOfWaterItSoundsFunny);
+                    swimmer.transform.localScale = new Vector3(.5f, 1f, .5f);
+                }
+            }
+            swimmer!.transform.position = GorillaTagger.Instance.offlineVRRig.transform.position + new Vector3(0f, 2.5f, 0f);
         }
         public static void SuperMonke()
         {
@@ -389,6 +380,10 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
+        public static void Slippyyyyyyy(int slippery)
+        {
+            GTPlayer.Instance.currentOverride.slidePercentageOverride = slippery;
+        }
 
         static float dashDelay;
 
@@ -396,6 +391,8 @@ namespace Elixir.Mods.Categories
 
         static GameObject? RP;
         static GameObject? LP;
+
+        static GameObject? swimmer;
 
         static GameObject? Pointy;
         static bool Ir = false;

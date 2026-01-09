@@ -13,21 +13,20 @@ using UnityEngine;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ColorLib;
-using static Elixir.Management.ButtonMethods;
+using static Elixir.Utilities.ButtonManager;
 
 namespace Elixir.Management
 {
     public class Menu : MonoBehaviour
     {
-        public static GameObject menu = null;
-        private static GameObject nextPage;
-        private static GameObject lastPage;
+        public static GameObject? menu = null;
+        private static GameObject? nextPage = null;
+        private static GameObject? lastPage = null;
         private static int currentPage = 0;
         private const int btnPerPage = 6;
         public static int pageIndex = 0;
         public static List<Category> categories = new List<Category>();
         private static List<GameObject> buttons = new List<GameObject>();
-        private static AudioClip defaultClickSound = null;
         public static bool menuRHand = false;
 
 
@@ -42,18 +41,17 @@ namespace Elixir.Management
         private static void OnButtonClick()
         {
             GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 2f, GorillaTagger.Instance.tagHapticDuration / 2f);
-            if (defaultClickSound != null)
-                GorillaTagger.Instance.offlineVRRig.rightHandPlayer.PlayOneShot(defaultClickSound);
+            GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(114, false, 1);
         }
 
-        static TextMeshPro? motdHeading;
-        static TextMeshPro? motdBody;
-        static TextMeshPro? cocHeading;
-        static TextMeshPro? cocBody;
-        static TextMeshPro? gameModeText;
+        public static TextMeshPro? motdHeading;
+        public static TextMeshPro? motdBody;
+        public static TextMeshPro? cocHeading;
+        public static TextMeshPro? cocBody;
+        public static TextMeshPro? gameModeText;
 
-        static Renderer? computer;
-        static Renderer? wallMonitor;
+        public static Renderer? computer;
+        public static Renderer? wallMonitor;
 
         static GameObject? ThirdCam;
 
@@ -74,14 +72,14 @@ namespace Elixir.Management
 
             var canvas = menu.transform.Find("Canvas");
             var visual = menu.transform.Find("Canvas/Visual")?.gameObject;
-            var modules = visual.transform.Find("Buttons")?.gameObject;
-            var buttonTemplate = modules.transform.Find("Button");
+            var modules = visual!.transform.Find("Buttons")?.gameObject;
+            var buttonTemplate = modules!.transform.Find("Button");
 
             var tempButton = modules.transform.Find("Button")?.gameObject;
-            tempButton.SetActive(false);
+            tempButton!.SetActive(false);
 
             var version = visual.transform.Find("Title/Version")?.GetComponent<TextMeshProUGUI>();
-            version.text = $"V{Elixir.PluginInfo.Version} {(PluginInfo.MenuBeta ? "Beta" : "")}";
+            version!.text = $"V{Elixir.PluginInfo.Version} {(PluginInfo.MenuBeta ? "Beta" : "")}";
 
             var leaveButton = visual.transform.Find("Home (1)")?.GetComponent<UnityEngine.UI.Button>();
             var backButton = visual.transform.Find("Home")?.GetComponent<UnityEngine.UI.Button>();
@@ -116,8 +114,8 @@ namespace Elixir.Management
                 });
             }
 
-            nextPage = visual.transform.Find("NextPage")?.gameObject;
-            lastPage = visual.transform.Find("LastPage")?.gameObject;
+            nextPage = visual.transform.Find("NextPage").gameObject;
+            lastPage = visual.transform.Find("LastPage").gameObject;
 
             CreateButtons();
             Buttons();
@@ -154,7 +152,7 @@ namespace Elixir.Management
         {
             RefreshCategory();
 
-            var modules = menu.transform.Find("Canvas/Visual/Buttons").gameObject;
+            var modules = menu!.transform.Find("Canvas/Visual/Buttons").gameObject;
             var templateButton = modules.transform.Find("Button").gameObject;
             foreach (GameObject btn in buttons) GameObject.Destroy(btn);
             buttons.Clear();
@@ -194,7 +192,7 @@ namespace Elixir.Management
                     module.transform.Find("nontoggle")?.gameObject.SetActive(false);
 
                     var btn = module.transform.Find("enabled (1)")?.GetComponent<UnityEngine.UI.Button>();
-                    btn.onClick.AddListener(() =>
+                    btn!.onClick.AddListener(() =>
                     {
                         pageIndex = catIndex;
                         currentPage = 0; 
@@ -293,7 +291,7 @@ namespace Elixir.Management
                 }
 
                 var btn = module.transform.Find("enabled (1)")?.GetComponent<UnityEngine.UI.Button>();
-                btn.onClick.AddListener(() =>
+                btn!.onClick.AddListener(() =>
                 {
                     if (mod.isToggleable)
                     {
@@ -456,61 +454,6 @@ namespace Elixir.Management
                     }
                 }
             }
-            #region MOTD
-            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
-            try
-            {
-                GameObject goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
-                if (goop != null && computer != null && wallMonitor != null)
-                {
-                    computer.material = goop.GetComponent<Renderer>().material;
-                    wallMonitor.material = goop.GetComponent<Renderer>().material;
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goop.GetComponent<Renderer>().material, ref originalMat1!);
-                    ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/Forest", "UnityTempFile", 6, goop.GetComponent<Renderer>().material, ref originalMat2!);
-                }
-
-                #region MOTD
-                if (motdHeading == null || motdBody == null) return;
-                motdHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"Elixir | V{Elixir.PluginInfo.Version}", Time.time) + $"<color={hexColor1}>\n--------------------------------------------</color>"); motdHeading.color = Pink;
-                motdBody.color = Pink;
-                motdBody.SetText($"" +
-                    $"\nThank You For Using Elixir!\n\n" +
-                    $"Status: <color={hexColor1}>Undetected</color>\n" +
-                    $"Current User: <color={hexColor1}>{PhotonNetwork.LocalPlayer.NickName.ToUpper()}</color> \n" +
-                    $"Current Ping: <color={hexColor1}>{PhotonNetwork.GetPing().ToString().ToUpper()}</color>\n" +
-                    $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
-                    $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
-                    $"<color={hexColor1}>I Hope You Enjoy The Menu</color> \n" +
-                    $"Made by <color={hexColor1}>Menker</color>");
-
-                motdBody.alignment = TextAlignmentOptions.Top;
-                #endregion
-
-                #region COC
-                if (cocHeading == null || cocBody == null) return;
-                cocHeading.SetText(GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Menu Meanings", Time.time) + $"<color={hexColor1}>\n-----------------------------</color>");
-                cocHeading.color = Pink;
-
-                cocBody.color = Pink;
-                cocBody.SetText($"\n[D?] - Maybe Detected \n[NW] - Not Working\n[U] - Use\n[P] - Primary\n[S] - Secondary\n[G] - Grip\n[T] - Trigger\n[W?] - Maybe Working\n[B] - Buggy\n\nIf A Mod Has No Symbol It Is Probably Because I Forgot To Put One");
-                cocBody.alignment = TextAlignmentOptions.Top;
-                #endregion
-
-                if (gameModeText == null) return;
-                gameModeText.SetText("Elixir");
-                gameModeText.color = RGB.color;
-            }
-            catch (NullReferenceException ex)
-            {
-                UnityEngine.Debug.LogError($"NullReferenceException: {ex.Message}\nStack Trace: {ex.StackTrace}");
-            }
-            catch (Exception ex)
-            {
-                UnityEngine.Debug.LogError($"Unexpected error: {ex.Message}\nStack Trace: {ex.StackTrace}");
-            }
-
-            #endregion
-            UpdateClr();
         }
 
         // Thx GLXY for this

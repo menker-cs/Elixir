@@ -39,21 +39,16 @@ namespace Elixir.Mods.Categories
         {
             GorillaComputer.instance.CompQueueUnlockButtonPress();
         }
-        public static void EnableILavaYou()
+        public static void ToggleILavaYou(bool t)
         {
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_ForestArt_Prefab/").SetActive(true);
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_PrefabV/").SetActive(true);
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_ForestArt_Prefab/").SetActive(t);
+            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_PrefabV/").SetActive(t);
         }
         public static void ToggleSnow(bool t)
         {
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Environment/WeatherDayNight/snow").SetActive(t);
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Environment/WeatherDayNight/snow").transform.position = new Vector3(-55.2344f, 58.7391f, -56.9323f);
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Environment/WeatherDayNight/snow/snow partic").SetActive(t);
-        }
-        public static void DisableILavaYou()
-        {
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_ForestArt_Prefab/").SetActive(false);
-            GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/ILavaYou_PrefabV/").SetActive(false);
         }
         public static void Rain()
         {
@@ -103,7 +98,7 @@ namespace Elixir.Mods.Categories
 
             tmp.text =
                 GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir Menu", Time.time) + "\n" +
-                $"<size=2>Status: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Undected", Time.time) + "\n" +
+                $"<size=2>Status: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), Variables.Status, Time.time) + "\n" +
                 $"VERSION: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PluginInfo.Version, Time.time) + "</size>\n" +
                 $"<size=1.5>Made By " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Menker2), ColorLib.ClrToHex(Menker), "Menker", Time.time);
 

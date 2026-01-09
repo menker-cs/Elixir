@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 using static Elixir.Management.Menu;
 using static Elixir.Utilities.Variables;
-using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.Room;
 using static Elixir.Mods.Categories.Playerr;
 using Elixir.Components;
-using UnityEngine;
-using System.Linq;
 
-namespace Elixir.Management
+namespace Elixir.Utilities
 {
-    internal class ButtonMethods
+    internal class ButtonManager
     {
         private static VRRig targetedPlayer = null;
         static Module[] GetPlayers()

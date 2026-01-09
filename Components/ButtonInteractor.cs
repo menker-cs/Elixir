@@ -23,7 +23,7 @@ namespace Elixir.Components
         {
             if (Time.frameCount >= cooldown + 25)
             {
-                foreach (Transform child in Menu.menu.transform)
+                foreach (Transform child in Menu.menu!.transform)
                 {
                     Button[] buttons = child.GetComponentsInChildren<Button>();
                     foreach (Button button in buttons)

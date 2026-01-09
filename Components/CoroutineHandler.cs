@@ -5,7 +5,7 @@ namespace Elixir.Components
 {
     public class CoroutineHandler : MonoBehaviour
     {
-        private static CoroutineHandler instance;
+        private static CoroutineHandler? instance;
 
         public static CoroutineHandler Instance
         {

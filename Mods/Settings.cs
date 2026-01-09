@@ -1,6 +1,6 @@
 ﻿using Elixir.Management;
 using Elixir.Utilities;
-using static Elixir.Management.ButtonMethods;
+using static Elixir.Utilities.ButtonManager;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;

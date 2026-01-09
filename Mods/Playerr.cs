@@ -525,7 +525,7 @@ namespace Elixir.Mods.Categories
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.StartCoroutine(Chase(LockedPlayer));
+                GorillaTagger.Instance.StartCoroutine(Chase(LockedPlayer!));
             }, true);
 
             if (GunTemplate.spherepointer == null || !GunTemplate.trigger)
