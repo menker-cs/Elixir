@@ -12,7 +12,6 @@ using TMPro;
 using UnityEngine;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
-using static Elixir.Utilities.ColorLib;
 using static Elixir.Utilities.ButtonManager;
 
 namespace Elixir.Management
@@ -28,7 +27,16 @@ namespace Elixir.Management
         public static List<Category> categories = new List<Category>();
         private static List<GameObject> buttons = new List<GameObject>();
         public static bool menuRHand = false;
+        public static bool triggerMenu = false;
+        public static bool gripMenu = false;
+        public static float cooldownTime = 0f;
+        private const float cooldownDelay = 0.25f;
 
+        private static int GetMaxCategoryPage()
+        {
+            int count = categories.Count;
+            return (count > 0) ? (count - 1) / btnPerPage : 0;
+        }
 
         public static AssetBundle LoadAssetBundle(string path)
         {
@@ -126,19 +134,19 @@ namespace Elixir.Management
         public static IEnumerator GetObjects()
         {
             var obj1 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
-                    if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
+            if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
             var obj2 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText");
-                    if (obj2 != null) motdBody = obj2.GetComponent<TextMeshPro>();
+            if (obj2 != null) motdBody = obj2.GetComponent<TextMeshPro>();
             var obj3 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/CodeOfConductHeadingText");
-                    if (obj3 != null) cocHeading = obj3.GetComponent<TextMeshPro>();
+            if (obj3 != null) cocHeading = obj3.GetComponent<TextMeshPro>();
             var obj4 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COCBodyText_TitleData");
-                    if (obj4 != null) cocBody = obj4.GetComponent<TextMeshPro>();
+            if (obj4 != null) cocBody = obj4.GetComponent<TextMeshPro>();
             var obj5 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text");
-                    if (obj5 != null) gameModeText = obj5.GetComponent<TextMeshPro>();
+            if (obj5 != null) gameModeText = obj5.GetComponent<TextMeshPro>();
             var obj6 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
-                    if (obj6 != null) computer = obj6.GetComponent<Renderer>();
+            if (obj6 != null) computer = obj6.GetComponent<Renderer>();
             var obj7 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
-                    if (obj7 != null) wallMonitor = obj7.GetComponent<Renderer>();
+            if (obj7 != null) wallMonitor = obj7.GetComponent<Renderer>();
 
             ThirdCam = GameObject.Find("Player Objects/Third Person Camera/");
 
@@ -166,8 +174,8 @@ namespace Elixir.Management
             #region Categories Logic
             if (showingCategories)
             {
+                int maxCategoryPage = GetMaxCategoryPage();
                 int catCount = categories.Count;
-                int maxCategoryPage = (catCount > 0) ? (catCount - 1) / btnPerPage : 0;
 
                 if (currentPage < 0) currentPage = 0;
                 if (currentPage > maxCategoryPage) currentPage = maxCategoryPage;
@@ -195,7 +203,7 @@ namespace Elixir.Management
                     btn!.onClick.AddListener(() =>
                     {
                         pageIndex = catIndex;
-                        currentPage = 0; 
+                        currentPage = 0;
                         showingCategories = false;
                         Buttons();
                         OnButtonClick();
@@ -323,9 +331,9 @@ namespace Elixir.Management
             }
             #endregion
             #region Page Navigation Logic
-            if (lastPage != null) lastPage.SetActive(currentPage > 0);
-            if (nextPage != null) nextPage.SetActive(currentPage < maxPage);
-            if (lastPage.active == false && nextPage.active == false)
+            bool last = lastPage?.active ?? false;
+            bool next = nextPage?.active ?? false;
+            if (!last && !next)
             {
                 visual.Find("Home").gameObject.SetActive(false);
                 visual.Find("BigHome").gameObject.SetActive(true);
@@ -360,7 +368,7 @@ namespace Elixir.Management
             }
             #endregion
         }
-        static int fps;
+
         private static bool prevState = false;
         public static void Update()
         {
@@ -427,8 +435,7 @@ namespace Elixir.Management
             }
             prevState = UnityInput.Current.GetKey(KeyCode.Q);
 
-
-            if (lastPage.active == false && nextPage.active == false)
+            if (!lastPage.active && !nextPage.active)
             {
                 menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(false);
                 menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(true);
@@ -437,6 +444,53 @@ namespace Elixir.Management
             {
                 menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(true);
                 menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(false);
+            }
+
+            if ((triggerMenu || gripMenu) && menu != null)
+            {
+                lastPage.SetActive(false);
+                nextPage.SetActive(false);
+
+                int mods = categories[pageIndex].buttons.Length;
+                int maxPage = (mods > 0) ? (mods - 1) / btnPerPage : 0;
+
+                bool coooldown = Time.time >= cooldownTime;
+
+                if (coooldown && currentPage < maxPage)
+                {
+                    bool inputR = triggerMenu ? ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f : ControllerInputPoller.instance.rightGrab;
+                    bool arrowR = UnityInput.Current.GetKeyDown(KeyCode.RightArrow);
+
+                    if (inputR || arrowR)
+                    {
+                        currentPage++;
+                        Buttons();
+                        OnButtonClick();
+                        cooldownTime = Time.time + cooldownDelay;
+                    }
+                }
+
+                if (coooldown && currentPage > 0)
+                {
+                    bool inputL = triggerMenu ? ControllerInputPoller.instance.leftControllerIndexFloat > 0.5f : ControllerInputPoller.instance.leftGrab;
+                    bool arrowL = UnityInput.Current.GetKeyDown(KeyCode.LeftArrow);
+
+                    if (inputL || arrowL)
+                    {
+                        currentPage--;
+                        Buttons();
+                        OnButtonClick();
+                        cooldownTime = Time.time + cooldownDelay;
+                    }
+                }
+            }
+            else
+            {
+                int mods = categories[pageIndex].buttons.Length;
+                int maxPage = (mods > 0) ? (mods - 1) / btnPerPage : 0;
+
+                if (lastPage != null) lastPage.SetActive(currentPage > 0);
+                if (nextPage != null) nextPage.SetActive(currentPage < maxPage);
             }
 
             if (categories != null)
@@ -456,7 +510,6 @@ namespace Elixir.Management
             }
         }
 
-        // Thx GLXY for this
         public static Material? originalMat1;
         public static Material? originalMat2;
         public static void ChangeBoardMaterial(string parentPath, string boardID, int targetIndex, Material newMaterial, ref Material originalMat)

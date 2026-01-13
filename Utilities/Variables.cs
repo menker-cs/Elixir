@@ -109,7 +109,7 @@ namespace Elixir.Utilities
 
             return "QUEST";
         }
-                public static void IsMasterCheck()
+        public static void IsMasterCheck()
         {
             if (!PhotonNetwork.IsConnected)
             {

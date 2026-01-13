@@ -1,14 +1,10 @@
 ﻿using BepInEx;
 using Elixir.Notifications;
 using Elixir.Utilities;
-using Elixir.Utilities.Notifs;
-using GorillaGameModes;
 using GorillaNetworking;
 using Photon.Pun;
-using Photon.Realtime;
 using System.Threading.Tasks;
 using UnityEngine;
-using static Elixir.Utilities.Variables;
 
 namespace Elixir.Mods.Categories
 {
