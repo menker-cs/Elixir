@@ -12,6 +12,7 @@ using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
 using PlayFab.ClientModels;
+using Elixir.Mods;
 
 namespace Elixir.Management
 {
@@ -220,6 +221,17 @@ namespace Elixir.Management
                 new Module() { title = "Change Time Night", tooltip = "Sets world time to night.", isToggleable = false, action = () => NightTimeMod() },
                 new Module() { title = "Change Time Day", tooltip = "Sets world time to day.", isToggleable = false, action = () => idkTimeMod() },
                 new Module() { title = "Enable Shadows", tooltip = "Enables or disables world shadow rendering.", isToggleable = true, action = () => Shadows(true), disableAction = () => Shadows(false) },
+            }));
+
+            categories.Add(new Category("Paintbrawl Mods", new Module[] {
+                new Module() { title = "PB Kill All", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBKillAll() },
+                new Module() { title = "PB Kill Gun", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBKillGun() },
+                new Module() { title = "PB Revive All", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRevAll() },
+                new Module() { title = "PB Revive Gun", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBRevGun() },
+                new Module() { title = "PB Infinite Lives", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBInfLives(true), disableAction = () => Potentially_OP.PBInfLives(false) },
+                new Module() { title = "PB Give Infinite Lives", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBGiveInfLives() },
+                new Module() { title = "PB Balloon Spam All", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBSpamBalloons() },
+                new Module() { title = "PB Restart Game", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRestart() },
             }));
 
             categories.Add(new Category("Credits", new Module[] {

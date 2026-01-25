@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using Elixir.Components;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -30,10 +29,10 @@ namespace Elixir.Notifications
         private void Awake()
         {
             Instance = this;
-            StartCoroutine(InitializeAsync());
+            StartCoroutine(Initialize());
         }
 
-        private IEnumerator InitializeAsync()
+        private IEnumerator Initialize()
         {
             var bundle = LoadAssetBundle("Elixir.Resources.notifbundle");
             notifObj = bundle.LoadAsset<GameObject>("notif");
@@ -146,6 +145,10 @@ namespace Elixir.Notifications
                     notifCanvas.worldCamera = mainCamera;
                 }
             }
+
+            //canvas.transform.Find("Visual").gameObject.GetComponent<Image>().color = color;
+            //canvas.transform.Find("Visual").gameObject.GetComponent<Outline>().effectColor = color;
+            //canvas.transform.Find("Divider").gameObject.GetComponent<Image>().color = color;
 
             Transform textTransform = notif.transform.Find("Canvas/Text");
             if (textTransform != null)

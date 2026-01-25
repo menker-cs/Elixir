@@ -61,7 +61,7 @@ namespace Elixir.Management
         public static Renderer? computer;
         public static Renderer? wallMonitor;
 
-        static GameObject? ThirdCam;
+        public static GameObject? ThirdCam;
 
         public static void Start()
         {
@@ -148,7 +148,7 @@ namespace Elixir.Management
             var obj7 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
             if (obj7 != null) wallMonitor = obj7.GetComponent<Renderer>();
 
-            ThirdCam = GameObject.Find("Player Objects/Third Person Camera/");
+            ThirdCam = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera");
 
             yield return null;
         }

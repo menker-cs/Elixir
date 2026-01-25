@@ -377,12 +377,12 @@ namespace Elixir.Mods.Categories
 
             if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
-                if (Time.time - nigTime >= delay)
+                if (Time.time - times >= delay)
                 {
                     lag = !lag;
                     GorillaTagger.Instance.offlineVRRig.enabled = !lag;
 
-                    nigTime = Time.time;
+                    times = Time.time;
                 }
             }
             else
@@ -399,12 +399,12 @@ namespace Elixir.Mods.Categories
             {
                 if (ControllerInputPoller.instance.rightGrab || UnityInput.Current.GetKey(KeyCode.G))
                 {
-                    if (Time.time - nigTime >= delay)
+                    if (Time.time - times >= delay)
                     {
                         GorillaTagger.Instance.offlineVRRig.enabled = false;
                         GorillaTagger.Instance.offlineVRRig.transform.position = RigManager.GetRandomVRRig(false).transform.position + new Vector3(0f, 2f, 0f);
 
-                        nigTime = Time.time;
+                        times = Time.time;
                     }
                 }
                 else
@@ -678,7 +678,7 @@ namespace Elixir.Mods.Categories
 
         private static float lvlDelay;
 
-        private static float nigTime = 0f;
+        private static float times = 0f;
         private static readonly float delay = 0.37f;
         private static bool lag = false;
     }
