@@ -1,6 +1,8 @@
 ﻿using Elixir.Notifications;
+using ExitGames.Client.Photon;
 using HarmonyLib;
 using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Net.Http;
@@ -168,6 +170,30 @@ namespace Elixir.Utilities
             return stringg;
         }
         public static string Status = GetStatus("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
+
+        public static void RPCFlush()
+        {
+            PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
+            GorillaNot.instance.rpcCallLimit = int.MaxValue;
+            PhotonNetwork.RemoveBufferedRPCs(GorillaTagger.Instance.myVRRig.ViewID, null, null);
+            PhotonNetwork.OpCleanActorRpcBuffer(PhotonNetwork.LocalPlayer.ActorNumber);
+            PhotonNetwork.OpCleanRpcBuffer(GorillaTagger.Instance.myVRRig.GetView);
+        }
+        public static void RPC2()
+        {
+            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable
+            {
+                [0] = GorillaTagger.Instance.myVRRig.ViewID
+            };
+            PhotonNetwork.NetworkingClient.OpRaiseEvent(200, hashtable, new RaiseEventOptions
+            {
+                CachingOption = (EventCaching)6,
+                TargetActors = new int[]
+                {
+            PhotonNetwork.LocalPlayer.ActorNumber
+                }
+            }, SendOptions.SendReliable);
+        }
     }
 }
 

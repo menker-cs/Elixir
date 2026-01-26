@@ -224,14 +224,22 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Paintbrawl Mods", new Module[] {
-                new Module() { title = "PB Kill All", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBKillAll() },
-                new Module() { title = "PB Kill Gun", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBKillGun() },
-                new Module() { title = "PB Revive All", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRevAll() },
-                new Module() { title = "PB Revive Gun", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBRevGun() },
-                new Module() { title = "PB Infinite Lives", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBInfLives(true), disableAction = () => Potentially_OP.PBInfLives(false) },
-                new Module() { title = "PB Give Infinite Lives", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBGiveInfLives() },
-                new Module() { title = "PB Balloon Spam All", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBSpamBalloons() },
-                new Module() { title = "PB Restart Game", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRestart() },
+                new Module() { title = "PB Kill All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBKillAll() },
+                new Module() { title = "PB Kill Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBKillGun() },
+                new Module() { title = "PB Revive All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRevAll() },
+                new Module() { title = "PB Revive Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBRevGun() },
+                new Module() { title = "PB Infinite Lives [M]", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.PBInfLives(true), disableAction = () => Potentially_OP.PBInfLives(false) },
+                new Module() { title = "PB Give Infinite Lives [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBGiveInfLives() },
+                new Module() { title = "PB Balloon Spam All [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBSpamBalloons() },
+                new Module() { title = "PB Restart Game [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRestart() },
+            }));
+
+            categories.Add(new Category("Guardian Mods", new Module[] {
+                new Module() { title = "Always Guradian", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.AlwaysGuardian() },
+                new Module() { title = "Grab All", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.GrabAll() },
+                new Module() { title = "Grab Gun", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.GunAll() },
+                new Module() { title = "Un Guardian All [M]", tooltip = "", isToggleable = false,  toggled = false, action = () => Potentially_OP.UnGudian() },
+                new Module() { title = "Guardian Self [M]", tooltip = "", isToggleable = false,  toggled = false, action = () => Potentially_OP.Gudian() },
             }));
 
             categories.Add(new Category("Credits", new Module[] {

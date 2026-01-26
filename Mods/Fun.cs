@@ -492,6 +492,7 @@ namespace Elixir.Mods.Categories
                     true,
                 });
             }
+            RPCFlush();
             RPC2();
         }
         public static void SplashHands()
@@ -547,7 +548,7 @@ namespace Elixir.Mods.Categories
                 {
                     splashDelay = Time.time + 0.4f;
 
-                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_PlaySplashEffect", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer!), new object[]
+                    GorillaTagger.Instance.myVRRig.SendRPC("RPC_ReportSlingshotHit", RigManager.GetPlayerFromVRRig(GunTemplate.LockedPlayer!), new object[]
                     {
                         RandomPos(LockedPlayer!.transform, 0.5f),
                         GunTemplate.spherepointer.transform.rotation,
@@ -557,6 +558,7 @@ namespace Elixir.Mods.Categories
                         true,
                     });
                 }
+                RPCFlush();
                 RPC2();
             }, true);
             { GorillaTagger.Instance.offlineVRRig.enabled = true; }
@@ -582,24 +584,10 @@ namespace Elixir.Mods.Categories
                         true,
                     });
                 }
+                RPCFlush();
                 RPC2();
             }, true);
             { GorillaTagger.Instance.offlineVRRig.enabled = true; }
-        }
-        public static void RPC2()
-        {
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable
-            {
-                [0] = GorillaTagger.Instance.myVRRig.ViewID
-            };
-            PhotonNetwork.NetworkingClient.OpRaiseEvent(200, hashtable, new RaiseEventOptions
-            {
-                CachingOption = (EventCaching)6,
-                TargetActors = new int[]
-                {
-            PhotonNetwork.LocalPlayer.ActorNumber
-                }
-            }, SendOptions.SendReliable);
         }
     }
 }
