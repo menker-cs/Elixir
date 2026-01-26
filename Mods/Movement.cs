@@ -257,11 +257,11 @@ namespace Elixir.Mods.Categories
         {
             if (rightTrigger() | UnityInput.Current.GetKey(KeyCode.T))
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.headCollider.transform.up * Time.deltaTime * 15f;
+                GorillaLocomotion.GTPlayer.Instance.transform.position += GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform.up * Time.deltaTime * 15f;
             }
             if (ControllerInputPoller.instance.leftControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.Y))
             {
-                GorillaLocomotion.GTPlayer.Instance.transform.position -= GorillaLocomotion.GTPlayer.Instance.headCollider.transform.up * Time.deltaTime * 15f;
+                GorillaLocomotion.GTPlayer.Instance.transform.position -= GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform.up * Time.deltaTime * 15f;
             }
         }
         public static void TPPlayerGun()
