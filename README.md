@@ -62,3 +62,5 @@ Once loaded in-game:
 > This project is not affiliated with Another Axiom or Gorilla Tag.
 > All trademarks and copyrights belong to their respective owners.
 > Any bans that may occure are not are fault as it was your decision to use the menu and by doing that took the risk of any potential bans.
+
+<Sub>Although it says Leanie and Lerpy were contributers everything that they added has been removed and neither are able to furthur contribute.</Sub>
