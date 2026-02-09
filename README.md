@@ -56,7 +56,7 @@ Once loaded in-game:
 - Have Fun!
   
 > [!WARNING]
-> We highly recommend that you do not use mods like Utilla, Extenject, or Bepinject because they can interfere with the menu which could potentially lead to being banned.
+> We highly recommend that you do not use other mods with Elixir unless you know they are safe, because they may interfere with the menu or increase your chance of being banned.
 ---
 > [!CAUTION]
 > This project is not affiliated with Another Axiom or Gorilla Tag.
