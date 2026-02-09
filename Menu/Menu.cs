@@ -1,6 +1,7 @@
 using BepInEx;
 using Elixir.Components;
 using Elixir.Utilities;
+using Oculus.Interaction.Body.Input;
 using Photon.Pun;
 using System;
 using System.Collections;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ButtonManager;
@@ -63,6 +65,29 @@ namespace Elixir.Management
 
         public static GameObject? ThirdCam;
 
+        private static void Home()
+        {
+            showingCategories = true;
+            pageIndex = 0;
+            currentPage = 0;
+
+            if (lastPage != null)
+            {
+                var l = lastPage.GetComponent<UnityEngine.UI.Button>();
+                l.onClick.RemoveAllListeners();
+                lastPage.SetActive(false);
+            }
+
+            if (nextPage != null)
+            {
+                var n = nextPage.GetComponent<UnityEngine.UI.Button>();
+                n.onClick.RemoveAllListeners();
+                nextPage.SetActive(false);
+            }
+
+            Buttons();
+        }
+
         public static void Start()
         {
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
@@ -104,20 +129,20 @@ namespace Elixir.Management
 
             if (backButton != null)
             {
+                backButton.onClick.RemoveAllListeners();
                 backButton.onClick.AddListener(() =>
                 {
-                    showingCategories = true;
-                    Buttons();
+                    Home();
                     OnButtonClick();
                 });
             }
 
             if (backButton2 != null)
             {
+                backButton2.onClick.RemoveAllListeners();
                 backButton2.onClick.AddListener(() =>
                 {
-                    showingCategories = true;
-                    Buttons();
+                    Home();
                     OnButtonClick();
                 });
             }
@@ -210,31 +235,44 @@ namespace Elixir.Management
                     });
                 }
 
-                if (lastPage != null) lastPage.SetActive(currentPage > 0);
-                if (nextPage != null) nextPage.SetActive(currentPage < maxCategoryPage);
+                if (visual != null)
+                {
+                    var bigHome = visual.Find("BigHome");
+                    if (bigHome != null) bigHome.gameObject.SetActive(false);
+                }
 
-                if (currentPage > 0 && lastPage != null)
+                if (lastPage != null)
                 {
                     var lastBtn = lastPage.GetComponent<UnityEngine.UI.Button>();
                     lastBtn.onClick.RemoveAllListeners();
-                    lastBtn.onClick.AddListener(() =>
+                    if (currentPage > 0)
                     {
-                        currentPage--;
-                        Buttons();
-                        OnButtonClick();
-                    });
+                        lastBtn.onClick.AddListener(() =>
+                        {
+                            currentPage--;
+                            Buttons();
+                            OnButtonClick();
+                        });
+                    }
+                    lastPage.SetActive(currentPage > 0);
                 }
-                if (currentPage < maxCategoryPage && nextPage != null)
+
+                if (nextPage != null)
                 {
                     var nextBtn = nextPage.GetComponent<UnityEngine.UI.Button>();
                     nextBtn.onClick.RemoveAllListeners();
-                    nextBtn.onClick.AddListener(() =>
+                    if (currentPage < maxCategoryPage)
                     {
-                        currentPage++;
-                        Buttons();
-                        OnButtonClick();
-                    });
+                        nextBtn.onClick.AddListener(() =>
+                        {
+                            currentPage++;
+                            Buttons();
+                            OnButtonClick();
+                        });
+                    }
+                    nextPage.SetActive(currentPage < maxCategoryPage);
                 }
+
                 return;
             }
             #endregion
@@ -344,27 +382,36 @@ namespace Elixir.Management
                 visual.Find("BigHome").gameObject.SetActive(false);
             }
 
-            if (currentPage > 0 && lastPage != null)
+            if (lastPage != null)
             {
                 var lastBtn = lastPage.GetComponent<UnityEngine.UI.Button>();
                 lastBtn.onClick.RemoveAllListeners();
-                lastBtn.onClick.AddListener(() =>
+                if (currentPage > 0)
                 {
-                    currentPage--;
-                    Buttons();
-                    OnButtonClick();
-                });
+                    lastBtn.onClick.AddListener(() =>
+                    {
+                        currentPage--;
+                        Buttons();
+                        OnButtonClick();
+                    });
+                }
+                lastPage.SetActive(currentPage > 0);
             }
-            if (currentPage < maxPage && nextPage != null)
+
+            if (nextPage != null)
             {
                 var nextBtn = nextPage.GetComponent<UnityEngine.UI.Button>();
                 nextBtn.onClick.RemoveAllListeners();
-                nextBtn.onClick.AddListener(() =>
+                if (currentPage < maxPage)
                 {
-                    currentPage++;
-                    Buttons();
-                    OnButtonClick();
-                });
+                    nextBtn.onClick.AddListener(() =>
+                    {
+                        currentPage++;
+                        Buttons();
+                        OnButtonClick();
+                    });
+                }
+                nextPage.SetActive(currentPage < maxPage);
             }
             #endregion
         }
@@ -403,12 +450,11 @@ namespace Elixir.Management
             else if (pc)
             {
                 shouldShow = !shouldShow;
-                Camera cam = Camera.current;
-                if (cam == null || !cam.isActiveAndEnabled) cam = Camera.main;
-                if (cam != null)
+                Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
+                if (body != null)
                 {
-                    menu.transform.position = cam.transform.position + cam.transform.forward * 0.4f;
-                    menu.transform.rotation = Quaternion.LookRotation(cam.transform.forward, cam.transform.up);
+                    menu.transform.position = body.position + (body.forward * 0.4f) + (body.up * 0.3f);
+                    menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
                     menu.transform.localScale = Vector3.one * 0.01f;
                 }
             }
@@ -435,7 +481,7 @@ namespace Elixir.Management
             }
             prevState = UnityInput.Current.GetKey(KeyCode.Q);
 
-            if (!lastPage.active && !nextPage.active)
+            if (!lastPage!.activeSelf && !nextPage!.activeSelf)
             {
                 menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(false);
                 menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(true);

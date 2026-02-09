@@ -229,6 +229,7 @@ namespace Elixir.Utilities
         public static Material DFade1 = new Material(uberShader);
         public static Material DBreath = new Material(uberShader);
         public static Material BlueFade = new Material(uberShader);
+        public static Material Outline = new Material(uberShader);
         public static string hexColor = "#" + ColorUtility.ToHtmlStringRGB(RGB.color);
         public static string hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DFade.color);
         public static string Menker1 = "#" + ColorUtility.ToHtmlStringRGB(Menker);
@@ -244,6 +245,7 @@ namespace Elixir.Utilities
             hexColor1 = "#" + ColorUtility.ToHtmlStringRGB(DFade.color);
             Menker1 = "#" + ColorUtility.ToHtmlStringRGB(Menker);
             DFade.color = Color.Lerp(ColorLib.Purple, ColorLib.Indigo, Mathf.PingPong(Time.time, 1f));
+            Outline.color = Color.Lerp(new Color32(76, 0, 192, 255), new Color32(101, 0, 255, 255), Mathf.PingPong(Time.time, 1f));
             DBreath.color = Color.Lerp(ColorLib.Purple, ColorLib.Indigo, Mathf.PingPong(Time.time, 1.5f));
         }
         public static Material Color2Mat(Color color)
