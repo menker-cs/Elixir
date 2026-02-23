@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using Elixir.Management;
+using Elixir.Mods.Categories;
 using Elixir.Utilities;
 using Photon.Pun;
 using System;
@@ -24,15 +25,19 @@ namespace Elixir
         public void Start()
         {
             Menu.Start();
+
             goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
             if (goop != null)
                 goopRenderer = goop.GetComponent<Renderer>();
+
+            Settings.AutoLoadPrefs();
         }
 
         static int fps;
         public void Update()
         {
             Menu.Update();
+
             #region Boards
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
 

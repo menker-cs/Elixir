@@ -1,13 +1,16 @@
-﻿using Elixir.Management;
-using static Elixir.Management.Menu;
+﻿using BepInEx;
+using Elixir.Management;
+using Elixir.Notifications;
 using Elixir.Utilities;
-using static Elixir.Utilities.ButtonManager;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using static Elixir.Utilities.Variables;
-using Elixir.Notifications;
-using BepInEx;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
+using static Elixir.Management.Menu;
+using static Elixir.Utilities.ButtonManager;
+using static Elixir.Utilities.Variables;
 
 namespace Elixir.Mods.Categories
 {
@@ -241,54 +244,50 @@ namespace Elixir.Mods.Categories
             UnityEngine.Application.OpenURL("https://discord.gg/QFeUpmg8vd");
         }
 
-        #region Prefs
+
+        static string PrefsFolder = Path.Combine(Paths.GameRootPath, "Elixir");
+        static string EnabledModsTxt = "EnabledMods.txt";
+        static string SettingsTxt = "Settings.txt";
+        static int SettingsVersion = 1;
+
         public static void SavePrefs()
         {
-            string menuFolder = Path.Combine(Paths.GameRootPath, "Elixir");
-            if (!Directory.Exists(menuFolder))
+            if (!Directory.Exists(PrefsFolder))
+                Directory.CreateDirectory(PrefsFolder);
+
+            File.WriteAllText(Path.Combine(PrefsFolder, EnabledModsTxt), string.Empty);
+
+            var enabledMods = Menu.categories
+                .Where(c => c?.buttons != null)
+                .SelectMany(c => c.buttons)
+                .Where(b => b.isToggleable && b.toggled)
+                .Select(b => b.title);
+
+            File.WriteAllLines(Path.Combine(PrefsFolder, EnabledModsTxt), enabledMods);
+
+            var settings = new Dictionary<string, string>
             {
-                Directory.CreateDirectory(menuFolder);
-            }
+                ["version"] = SettingsVersion.ToString(),
+                ["espSetting"] = espSetting.ToString(),
+                ["tracePos"] = tracePos.ToString(),
+                ["gunSetting"] = gunSetting.ToString(),
+                ["pageSetting"] = pageSetting.ToString(),
+                ["speedboost"] = speedboostchanger.ToString(),
+                ["flyspeed"] = flyspeedchanger.ToString(),
+            };
 
-            List<string> enabledMods = new List<string>();
-            List<string> settings = new List<string>();
-
-            foreach (var category in Menu.categories)
-            {
-                if (category == null || category.buttons == null) continue;
-
-                foreach (var mod in category.buttons)
-                {
-                    if (mod.isToggleable && mod.toggled)
-                    {
-                        enabledMods.Add(mod.title);
-                    }
-                }
-            }
-
-            settings.Add(espSetting.ToString());
-            settings.Add(tracePos.ToString());
-            settings.Add(gunSetting.ToString());
-            settings.Add(pageSetting.ToString()); // persist page mode
-            settings.Add(speedboostchanger.ToString());
-            settings.Add(flyspeedchanger.ToString());
-            settings.Add(disconnect ? "1" : "0");
-            settings.Add(vCounter ? "1" : "0");
-            settings.Add(tips ? "1" : "0");
-            settings.Add(alphabet ? "1" : "0");
-            settings.Add(Menu.menuRHand ? "1" : "0");
-            settings.Add(VisReportBool ? "1" : "0");
-
-            File.WriteAllLines(Path.Combine(menuFolder, "EnabledMods.txt"), enabledMods);
-            File.WriteAllLines(Path.Combine(menuFolder, "Settings.txt"), settings);
+            File.WriteAllLines(
+                Path.Combine(PrefsFolder, SettingsTxt),
+                settings.Select(kv => $"{kv.Key}={kv.Value}")
+            );
 
             NotificationLib.SendNotification("<color=white>[</color>Save<color=white>]</color> Saved Preferences");
         }
+
         public static void LoadPrefs()
         {
-            string menuFolder = Path.Combine(Paths.GameRootPath, "Elixir");
-            string enabledPath = Path.Combine(menuFolder, "EnabledMods.txt");
-            string settingPath = Path.Combine(menuFolder, "Settings.txt");
+            string enabledPath = Path.Combine(PrefsFolder, EnabledModsTxt);
+            string settingPath = Path.Combine(PrefsFolder, SettingsTxt);
 
             if (!File.Exists(enabledPath) || !File.Exists(settingPath))
             {
@@ -296,95 +295,62 @@ namespace Elixir.Mods.Categories
                 return;
             }
 
-            string[] enabledMods = File.ReadAllLines(enabledPath);
-            string[] settings = File.ReadAllLines(settingPath);
+            var settings = File.ReadAllLines(settingPath).Where(line => line.Contains('=')).Select(line => line.Split('=', 2)).ToDictionary(parts => parts[0].Trim(), parts => parts[1].Trim());
 
-            foreach (var category in Menu.categories)
+            espSetting = ParseInt(settings, "espSetting", espSetting);
+            tracePos = ParseInt(settings, "tracePos", tracePos);
+            gunSetting = ParseInt(settings, "gunSetting", gunSetting);
+            pageSetting = ParseInt(settings, "pageSetting", pageSetting);
+            speedboostchanger = ParseInt(settings, "speedboost", speedboostchanger);
+            flyspeedchanger = ParseInt(settings, "flyspeed", flyspeedchanger);
+            disconnect = ParseBool(settings, "disconnect", disconnect);
+            vCounter = ParseBool(settings, "vCounter", vCounter);
+            tips = ParseBool(settings, "tips", tips);
+            alphabet = ParseBool(settings, "alphabet", alphabet);
+            Menu.menuRHand = ParseBool(settings, "menuRHand", Menu.menuRHand);
+            VisReportBool = ParseBool(settings, "visReport", VisReportBool);
+
+            triggerMenu = pageSetting == 2;
+            gripMenu = pageSetting == 3;
+
+            var enabledMods = new HashSet<string>(File.ReadAllLines(enabledPath));
+            DisableAllMods();
+            foreach (var cat in Menu.categories.Where(c => c?.buttons != null))
             {
-                if (category == null || category.buttons == null) continue;
-
-                foreach (var mod in category.buttons)
+                foreach (var mod in cat.buttons.Where(m => m.isToggleable && enabledMods.Contains(m.title)))
                 {
-                    foreach (string enabledMod in enabledMods)
-                    {
-                        if (mod.title == enabledMod && mod.isToggleable)
-                        {
-                            mod.toggled = true;
-                        }
-                    }
-                }
-            }
-
-            if (settings.Length >= 12)
-            {
-                espSetting = int.Parse(settings[0]);
-                tracePos = int.Parse(settings[1]);
-                gunSetting = int.Parse(settings[2]);
-                pageSetting = int.Parse(settings[3]);
-                speedboostchanger = int.Parse(settings[4]);
-                flyspeedchanger = int.Parse(settings[5]);
-                disconnect = settings[6] == "1";
-                vCounter = settings[7] == "1";
-                tips = settings[8] == "1";
-                alphabet = settings[9] == "1";
-                Menu.menuRHand = settings[10] == "1";
-                VisReportBool = settings[11] == "1";
-
-                switch (pageSetting)
-                {
-                    case 1:
-                        triggerMenu = false;
-                        gripMenu = false;
-                        break;
-                    case 2:
-                        triggerMenu = true;
-                        gripMenu = false;
-                        break;
-                    case 3:
-                        triggerMenu = false;
-                        gripMenu = true;
-                        break;
+                    mod.toggled = true;
                 }
             }
 
             UpdateButtonDisplay();
-            Menu.Buttons();
 
             NotificationLib.SendNotification("<color=white>[</color>Load<color=white>]</color> Loaded Preferences");
+            Buttons();
         }
+
+        private static int ParseInt(Dictionary<string, string> d, string key, int fallback)
+        {
+            if (d.TryGetValue(key, out string val) && int.TryParse(val, out int result))
+                return result;
+            return fallback;
+        }
+
+        private static bool ParseBool(Dictionary<string, string> d, string key, bool fallback)
+        {
+            if (d.TryGetValue(key, out string val))
+                return val == "1";
+            return fallback;
+        }
+
+        static void SetTooltip(string contains, string tooltip)
+        {
+            var btn = GetButton(contains);
+            if (btn != null) btn.tooltip = tooltip;
+        }
+
         static void UpdateButtonDisplay()
         {
-            void SetTooltip(string contains, string tooltip)
-            {
-                var btn = GetButton(contains);
-                if (btn != null) btn.tooltip = tooltip;
-            }
-
-            foreach (var cat in Menu.categories)
-            {
-                if (cat == null || cat.buttons == null) continue;
-
-                foreach (var mod in cat.buttons)
-                {
-                    if (mod == null) continue;
-
-                    string title = mod.title ?? "";
-
-                    if (title.Contains("Right Handed Menu"))
-                        mod.toggled = Menu.menuRHand;
-                    else if (title.Contains("Toggle Tooltips"))
-                        mod.toggled = tips;
-                    else if (title.Contains("Toggle Disconnect"))
-                        mod.toggled = disconnect;
-                    else if (title.Contains("Toggle Version Counter"))
-                        mod.toggled = vCounter;
-                    else if (title.Contains("Sort Buttons Alphabetically"))
-                        mod.toggled = alphabet;
-                    else if (title.Contains("Visualize Antireport"))
-                        mod.toggled = VisReportBool;
-                }
-            }
-
             switch (espSetting)
             {
                 case 1: SetTooltip("Change ESP Color", "Current Setting: Infection"); break;
@@ -432,9 +398,29 @@ namespace Elixir.Mods.Categories
 
             SetTooltip("Change Anti Report Mode", Room.reconnectReport ? "Current Setting: Reconnect" : "Current Setting: Disconnect");
         }
-#endregion
 
-        public static int espSetting = 1;
+        public static void AutoLoadPrefs()
+        {
+            string enabledPath = Path.Combine(PrefsFolder, EnabledModsTxt);
+
+            if (!File.Exists(enabledPath))
+            {
+                Debug.Log("AutoLoadPrefs: Enabled mods file not found.");
+                return;
+            }
+
+            var lines = File.ReadAllLines(enabledPath).Where(line => !string.IsNullOrWhiteSpace(line)).Select(line => line.Trim()).ToArray();
+            bool load = lines.Any(line => string.Equals(line, "Auto Load Preferences", StringComparison.OrdinalIgnoreCase));
+
+            if (load)
+            {
+                LoadPrefs();
+                Debug.Log("Auto Loaded Preferences");
+            }
+        }
+
+
+public static int espSetting = 1;
 
         public static int pageSetting = 1;
 

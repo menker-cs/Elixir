@@ -10,6 +10,7 @@ using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
 using Elixir.Mods;
+using Elixir.Utilities;
 
 namespace Elixir.Management
 {
@@ -19,7 +20,8 @@ namespace Elixir.Management
         {
             categories.Add(new Category("Settings", new Module[] {
                 new Module() { title = "Save Preferences", tooltip = "Saves your current settings.", isToggleable = false, action = () => SavePrefs() },
-                new Module() { title = "Loads Preferences", tooltip = "Loads your preferences.", isToggleable = false, action = () => LoadPrefs() },
+                new Module() { title = "Load Preferences", tooltip = "Loads your preferences.", isToggleable = false, action = () => LoadPrefs() },
+                new Module() { title = "Auto Load Preferences", tooltip = "Loads your preferences.", isToggleable = true, action = () => { Variables.autoLoadPrefs = true; }, disableAction = () => { Variables.autoLoadPrefs = false; } },
                 new Module() { title = "Disable All Mods", tooltip = "Disables All The Mods On The Menu.", isToggleable = false, action = () => DisableAllMods() },
                 new Module() { title = "Right Handed Menu", tooltip = "Toggles what hand the menu is on.", isToggleable = true, toggled = false, action = () => MenuHand(true), disableAction = () => MenuHand(false) },
                 new Module() { title = "Change Page Mode", tooltip = "Current Setting: Page Buttons.", isToggleable = false, toggled = false, action = () => PagesChange() },

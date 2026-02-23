@@ -20,6 +20,7 @@ namespace Elixir.Utilities
         public static int fps;
         public static int Mat;
         public static bool InPcCondition;
+        public static bool autoLoadPrefs;
 
         private static Material unityColorMaterial = null!;
 
