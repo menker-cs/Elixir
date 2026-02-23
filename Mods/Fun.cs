@@ -508,6 +508,8 @@ namespace Elixir.Mods.Categories
         }
         public static void SplashGun()
         {
+            if (GorillaTagger.Instance == null) return;
+
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
@@ -515,7 +517,6 @@ namespace Elixir.Mods.Categories
 
                 Splash(GunTemplate.spherepointer.transform.position, GunTemplate.spherepointer.transform.rotation, 4f);
             }, false);
-            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
         }
         public static void SplashAura()
         {
@@ -526,19 +527,20 @@ namespace Elixir.Mods.Categories
         }
         public static void GiveSplash()
         {
+            if (GorillaTagger.Instance == null) return;
+
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
                 GorillaTagger.Instance.offlineVRRig.transform.position = LockedPlayer!.transform.position + new Vector3(0f, -2f, 0f);
                 Splash(LockedPlayer.rightHandTransform.position, LockedPlayer.rightHandTransform.rotation, 4f);
             }, true); 
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-            }
         }
 
         public static void SchitzoV1()
         {
+            if (GorillaTagger.Instance == null) return;
+
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
@@ -561,10 +563,11 @@ namespace Elixir.Mods.Categories
                 RPCFlush();
                 RPC2();
             }, true);
-            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
         }
         public static void SchitzoV2()
         {
+            if (GorillaTagger.Instance == null) return;
+
             GunTemplate.StartBothGuns(() =>
             {
                 GorillaTagger.Instance.offlineVRRig.enabled = false;
@@ -587,7 +590,6 @@ namespace Elixir.Mods.Categories
                 RPCFlush();
                 RPC2();
             }, true);
-            { GorillaTagger.Instance.offlineVRRig.enabled = true; }
         }
     }
 }

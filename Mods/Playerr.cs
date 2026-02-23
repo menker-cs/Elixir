@@ -131,23 +131,21 @@ namespace Elixir.Mods.Categories
         {
             if (GorillaTagger.Instance == null) return;
 
-            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T) && !IAmInfected)
+            if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T))
             {
                 foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
                 {
-                    if (RigIsInfected(vrrig))
+                    if (RigIsInfected(vrrig) && !IAmInfected)
                     {
                         GorillaTagger.Instance.offlineVRRig.enabled = false;
                         GorillaTagger.Instance.offlineVRRig.transform.position = vrrig.rightHandTransform.position;
                         GorillaTagger.Instance.myVRRig.transform.position = vrrig.rightHandTransform.position;
                         break;
                     }
+                    {
+                        GorillaTagger.Instance.offlineVRRig.enabled = true;
+                    }
                 }
-            }
-            else
-            {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
-                NotificationLib.SendNotification("<color=white>[</color>Tag Self:<color=white>]</color> You are already tagged");
             }
         }
         #endregion
