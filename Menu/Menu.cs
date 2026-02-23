@@ -1,7 +1,6 @@
 using BepInEx;
 using Elixir.Components;
 using Elixir.Utilities;
-using Oculus.Interaction.Body.Input;
 using Photon.Pun;
 using System;
 using System.Collections;
@@ -11,7 +10,6 @@ using System.Linq;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ButtonManager;
@@ -33,6 +31,11 @@ namespace Elixir.Management
         public static bool gripMenu = false;
         public static float cooldownTime = 0f;
         private const float cooldownDelay = 0.25f;
+
+        private static Transform? visualTransform = null;
+        private static Transform? homeTransform = null;
+        private static Transform? bigHomeTransform = null;
+        private static bool lastPageState = false;
 
         private static int GetMaxCategoryPage()
         {
@@ -108,6 +111,10 @@ namespace Elixir.Management
             var modules = visual!.transform.Find("Buttons")?.gameObject;
             var buttonTemplate = modules!.transform.Find("Button");
 
+            visualTransform = visual.transform;
+            homeTransform = visual.transform.Find("Home");
+            bigHomeTransform = visual.transform.Find("BigHome");
+
             var tempButton = modules.transform.Find("Button")?.gameObject;
             tempButton!.SetActive(false);
 
@@ -156,7 +163,7 @@ namespace Elixir.Management
             CoroutineHandler.StartCoroutine1(GetObjects());
         }
 
-        public static IEnumerator GetObjects()
+        private static IEnumerator GetObjects()
         {
             var obj1 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
             if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
@@ -190,7 +197,7 @@ namespace Elixir.Management
             foreach (GameObject btn in buttons) GameObject.Destroy(btn);
             buttons.Clear();
 
-            var visual = menu.transform.Find("Canvas/Visual");
+            var visual = visualTransform ?? menu.transform.Find("Canvas/Visual");
             if (visual != null && visual.Find("Home") != null)
             {
                 visual.Find("Home").gameObject.SetActive(!showingCategories);
@@ -212,13 +219,16 @@ namespace Elixir.Management
                     buttons.Add(module);
                     module.SetActive(true);
 
-                    module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().text = categories[i].name;
-                    module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().text = $"Opens the {categories[i].name} category";
+                    var buttonNameText = module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>();
+                    var buttonDescText = module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>();
+                    
+                    buttonNameText.text = categories[i].name;
+                    buttonDescText.text = $"Opens the {categories[i].name} category";
 
-                    module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
-                    module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+                    buttonNameText.ForceMeshUpdate();
+                    buttonDescText.ForceMeshUpdate();
 
-                    module.transform.Find("ButtonDescription").gameObject.SetActive(Variables.tips);
+                    buttonDescText.gameObject.SetActive(Variables.tips);
 
                     module.transform.Find("enabled")?.gameObject.SetActive(false);
                     module.transform.Find("disabled")?.gameObject.SetActive(false);
@@ -283,17 +293,14 @@ namespace Elixir.Management
             if (currentPage < 0) currentPage = 0;
             if (currentPage > maxPage) currentPage = maxPage;
 
-            Components.Module[] sorted;
+            Elixir.Management.Module[] sorted = categories[pageIndex].buttons;
             if (Variables.alphabet)
             {
                 sorted = categories[pageIndex].buttons.OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase).ToArray();
             }
-            else
-            {
-                sorted = categories[pageIndex].buttons;
-            }
 
-            for (int i = currentPage * btnPerPage; i < Mathf.Min(currentPage * btnPerPage + btnPerPage, sorted.Length); i++)
+            int endIndex = Mathf.Min(currentPage * btnPerPage + btnPerPage, sorted.Length);
+            for (int i = currentPage * btnPerPage; i < endIndex; i++)
             {
                 int index = i;
                 var mod = sorted[index];
@@ -302,13 +309,16 @@ namespace Elixir.Management
                 buttons.Add(module);
                 module.SetActive(true);
 
-                module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().text = mod.title;
-                module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().text = mod.tooltip;
+                var buttonNameText = module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>();
+                var buttonDescText = module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>();
+                
+                buttonNameText.text = mod.title;
+                buttonDescText.text = mod.tooltip;
 
-                module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
-                module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>().ForceMeshUpdate();
+                buttonNameText.ForceMeshUpdate();
+                buttonDescText.ForceMeshUpdate();
 
-                module.transform.Find("ButtonDescription").gameObject.SetActive(Variables.tips);
+                buttonDescText.gameObject.SetActive(Variables.tips);
 
                 var enabledObj = module.transform.Find("enabled")?.gameObject;
                 var disabledObj = module.transform.Find("disabled")?.gameObject;
@@ -316,24 +326,15 @@ namespace Elixir.Management
 
                 if (mod.isToggleable)
                 {
-                    if (mod.toggled)
-                    {
-                        enabledObj.SetActive(true);
-                        disabledObj.SetActive(false);
-                        nontoggleObj.SetActive(false);
-                    }
-                    else
-                    {
-                        enabledObj.SetActive(false);
-                        disabledObj.SetActive(true);
-                        nontoggleObj.SetActive(false);
-                    }
+                    enabledObj?.SetActive(mod.toggled);
+                    disabledObj?.SetActive(!mod.toggled);
+                    nontoggleObj?.SetActive(false);
                 }
                 else
                 {
-                    enabledObj.SetActive(false);
-                    disabledObj.SetActive(false);
-                    nontoggleObj.SetActive(true);
+                    enabledObj?.SetActive(false);
+                    disabledObj?.SetActive(false);
+                    nontoggleObj?.SetActive(true);
                 }
 
                 var btn = module.transform.Find("enabled (1)")?.GetComponent<UnityEngine.UI.Button>();
@@ -481,15 +482,20 @@ namespace Elixir.Management
             }
             prevState = UnityInput.Current.GetKey(KeyCode.Q);
 
-            if (!lastPage!.activeSelf && !nextPage!.activeSelf)
+            bool currentPageState = !lastPage!.activeSelf && !nextPage!.activeSelf;
+            if (currentPageState != lastPageState)
             {
-                menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(false);
-                menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(true);
-            }
-            else
-            {
-                menu.transform.Find("Canvas/Visual/Home").gameObject.SetActive(true);
-                menu.transform.Find("Canvas/Visual/BigHome").gameObject.SetActive(false);
+                lastPageState = currentPageState;
+                if (currentPageState)
+                {
+                    homeTransform?.gameObject.SetActive(false);
+                    bigHomeTransform?.gameObject.SetActive(true);
+                }
+                else
+                {
+                    homeTransform?.gameObject.SetActive(true);
+                    bigHomeTransform?.gameObject.SetActive(false);
+                }
             }
 
             if ((triggerMenu || gripMenu) && menu != null)
@@ -544,6 +550,7 @@ namespace Elixir.Management
                 foreach (var category in categories)
                 {
                     if (category == null || category.buttons == null) continue;
+
 
                     foreach (var mod in category.buttons)
                     {

@@ -21,7 +21,18 @@ namespace Elixir.Utilities
         public static int Mat;
         public static bool InPcCondition;
 
+        private static Material unityColorMaterial = null!;
+
         public static void Placeholder() { }
+
+        private static Material GetColorMaterial()
+        {
+            if (unityColorMaterial == null)
+            {
+                unityColorMaterial = new Material(Shader.Find("Unlit/Color"));
+            }
+            return unityColorMaterial;
+        }
 
         // --- Utility Methods ---
         public static void Outline(GameObject obj, Color clr)
@@ -35,13 +46,14 @@ namespace Elixir.Utilities
             gameObject.transform.localScale = obj.transform.localScale + new Vector3(-0.01f, 0.0145f, 0.0145f);
             gameObject.GetComponent<Renderer>().material.color = clr;
         }
+        
         public static void Trail(GameObject obj, Color clr, Color clr2)
         {
             GameObject trailObject = new GameObject("trail");
             trailObject.transform.position = obj.transform.position;
             trailObject.transform.SetParent(obj.transform);
             TrailRenderer trailRenderer = trailObject.AddComponent<TrailRenderer>();
-            trailRenderer.material = new Material(Shader.Find("Unlit/Color")) { color = clr };
+            trailRenderer.material.color = clr;
             trailRenderer.time = 0.5f;
             trailRenderer.startWidth = 0.025f;
             trailRenderer.endWidth = 0f;
@@ -174,7 +186,7 @@ namespace Elixir.Utilities
         public static void RPCFlush()
         {
             PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
-            GorillaNot.instance.rpcCallLimit = int.MaxValue;
+            MonkeAgent.instance.rpcCallLimit = int.MaxValue;
             PhotonNetwork.RemoveBufferedRPCs(GorillaTagger.Instance.myVRRig.ViewID, null, null);
             PhotonNetwork.OpCleanActorRpcBuffer(PhotonNetwork.LocalPlayer.ActorNumber);
             PhotonNetwork.OpCleanRpcBuffer(GorillaTagger.Instance.myVRRig.GetView);

@@ -1,5 +1,3 @@
-using Elixir.Mods.Categories;
-using Elixir.Components;
 using static Elixir.Management.Menu;
 using static Elixir.Utilities.ButtonManager;
 using static Elixir.Mods.Categories.Fun;
@@ -11,7 +9,6 @@ using static Elixir.Mods.Categories.SherbertClass;
 using static Elixir.Mods.Categories.Visuals;
 using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
-using PlayFab.ClientModels;
 using Elixir.Mods;
 
 namespace Elixir.Management

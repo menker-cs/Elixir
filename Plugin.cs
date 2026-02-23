@@ -14,11 +14,20 @@ namespace Elixir
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
+        private static GameObject? goop = null;
+        private static Renderer? goopRenderer = null;
+
         public void OnEnable() => ApplyHarmonyPatches();
 
         public void OnDisable() => RemoveHarmonyPatches();
 
-        public void Start() => Menu.Start();
+        public void Start()
+        {
+            Menu.Start();
+            goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
+            if (goop != null)
+                goopRenderer = goop.GetComponent<Renderer>();
+        }
 
         static int fps;
         public void Update()
@@ -27,12 +36,12 @@ namespace Elixir
             #region Boards
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
 
-            GameObject goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
-            if (goop != null && computer != null && wallMonitor != null)
+            if (goop != null && goopRenderer != null && computer != null && wallMonitor != null)
             {
-                computer.material = goop.GetComponent<Renderer>().material;
-                wallMonitor.material = goop.GetComponent<Renderer>().material;
-                ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goop.GetComponent<Renderer>().material, ref originalMat1!);
+                Material goopMat = goopRenderer.material;
+                computer.material = goopMat;
+                wallMonitor.material = goopMat;
+                ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goopMat, ref originalMat1!);
             }
 
             #region MOTD

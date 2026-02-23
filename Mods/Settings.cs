@@ -330,7 +330,6 @@ namespace Elixir.Mods.Categories
                 Menu.menuRHand = settings[10] == "1";
                 VisReportBool = settings[11] == "1";
 
-                // Apply pageSetting to menu navigation flags
                 switch (pageSetting)
                 {
                     case 1:
