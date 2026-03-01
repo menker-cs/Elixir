@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using Elixir.Components;
 using Elixir.Management;
 using Elixir.Mods.Categories;
 using Elixir.Utilities;
@@ -16,7 +17,6 @@ namespace Elixir
     public class Plugin : BaseUnityPlugin
     {
         private static GameObject? goop = null;
-        private static Renderer? goopRenderer = null;
 
         public void OnEnable() => ApplyHarmonyPatches();
 
@@ -25,12 +25,16 @@ namespace Elixir
         public void Start()
         {
             Menu.Start();
+            Settings.AutoLoadPrefs();
+            CoroutineHandler.StartCoroutine1(GetObjects());
 
             goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
-            if (goop != null)
-                goopRenderer = goop.GetComponent<Renderer>();
 
-            Settings.AutoLoadPrefs();
+            if (goop != null)
+            {
+                Material goopMat = goop.GetComponent<Renderer>().material;
+                ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goopMat, ref originalMat1!);
+            }
         }
 
         static int fps;
@@ -38,16 +42,9 @@ namespace Elixir
         {
             Menu.Update();
 
-            #region Boards
             fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
 
-            if (goop != null && goopRenderer != null && computer != null && wallMonitor != null)
-            {
-                Material goopMat = goopRenderer.material;
-                computer.material = goopMat;
-                wallMonitor.material = goopMat;
-                ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goopMat, ref originalMat1!);
-            }
+            UpdateClr();
 
             #region MOTD
             if (motdHeading == null || motdBody == null) return;
@@ -79,9 +76,6 @@ namespace Elixir
             if (gameModeText == null) return;
             gameModeText.SetText("Elixir");
             gameModeText.color = RGB.color;
-
-            #endregion
-            UpdateClr();
         }
 
     }

@@ -63,9 +63,6 @@ namespace Elixir.Management
         public static TextMeshPro? cocBody;
         public static TextMeshPro? gameModeText;
 
-        public static Renderer? computer;
-        public static Renderer? wallMonitor;
-
         public static GameObject? ThirdCam;
 
         private static void Home()
@@ -160,10 +157,9 @@ namespace Elixir.Management
             CreateButtons();
             Buttons();
             menu.SetActive(true);
-            CoroutineHandler.StartCoroutine1(GetObjects());
         }
 
-        private static IEnumerator GetObjects()
+        public static IEnumerator GetObjects()
         {
             var obj1 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdHeadingText");
             if (obj1 != null) motdHeading = obj1.GetComponent<TextMeshPro>();
@@ -176,9 +172,6 @@ namespace Elixir.Management
             var obj5 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text");
             if (obj5 != null) gameModeText = obj5.GetComponent<TextMeshPro>();
             var obj6 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
-            if (obj6 != null) computer = obj6.GetComponent<Renderer>();
-            var obj7 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomBoundaryStones/BoundaryStoneSet_Forest/wallmonitorforestbg");
-            if (obj7 != null) wallMonitor = obj7.GetComponent<Renderer>();
 
             ThirdCam = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera");
 
