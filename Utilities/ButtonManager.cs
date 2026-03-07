@@ -15,7 +15,7 @@ namespace Elixir.Utilities
             var mods = new List<Module>();
             var modsHash = new HashSet<string>();
 
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig == GorillaTagger.Instance.offlineVRRig)
                     continue;
