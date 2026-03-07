@@ -131,7 +131,7 @@ namespace Elixir.Mods.Categories
             {
                 if (PhotonNetwork.InRoom)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                     {
                         if (vrrig != GorillaTagger.Instance.offlineVRRig)
                         {
@@ -172,7 +172,7 @@ namespace Elixir.Mods.Categories
             {
                 if (PhotonNetwork.InRoom)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                     {
                         if (vrrig != GorillaTagger.Instance.offlineVRRig)
                         {
@@ -213,7 +213,7 @@ namespace Elixir.Mods.Categories
             {
                 if (PhotonNetwork.InRoom)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                     {
                         if (vrrig != GorillaTagger.Instance.offlineVRRig)
                         {
@@ -248,7 +248,7 @@ namespace Elixir.Mods.Categories
             {
                 if (PhotonNetwork.InRoom)
                 {
-                    foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                    foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                     {
                         if (vrrig != GorillaTagger.Instance.offlineVRRig)
                         {

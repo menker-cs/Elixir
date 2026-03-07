@@ -17,7 +17,7 @@ namespace Elixir.Mods
         {
             if (!PhotonNetwork.IsMasterClient || GorillaPaintbrawlManager.instance == null) return;
 
-            foreach (var vrrig in GorillaParent.instance.vrrigs)
+            foreach (var vrrig in VRRigCache.ActiveRigs)
             {
                 NetPlayer player = vrrig.OwningNetPlayer;
                 GorillaPaintbrawlManager.instance.HitPlayer(player);
@@ -55,7 +55,7 @@ namespace Elixir.Mods
             if (!PhotonNetwork.IsMasterClient || GorillaPaintbrawlManager.instance == null) return;
             GorillaPaintbrawlManager gpm = (GorillaPaintbrawlManager)GorillaGameManager.instance;
 
-            foreach (var vrrig in GorillaParent.instance.vrrigs)
+            foreach (var vrrig in VRRigCache.ActiveRigs)
             {
                 NetPlayer player = vrrig.OwningNetPlayer;
                 if (gpm.playerLives[player.ActorNumber] > 0) gpm.playerLives[player.ActorNumber] = 1;
@@ -81,7 +81,7 @@ namespace Elixir.Mods
 
             if (UnityEngine.Time.time - bTime >= delay)
             {
-                foreach (var vrrig in GorillaParent.instance.vrrigs)
+                foreach (var vrrig in VRRigCache.ActiveRigs)
                 {
                     NetPlayer player = vrrig.OwningNetPlayer;
 
@@ -169,7 +169,7 @@ namespace Elixir.Mods
                     GorillaGuardianManager gm = (GorillaGuardianManager)GorillaGameManager.instance;
                     if (gm.IsPlayerGuardian(NetworkSystem.Instance.LocalPlayer))
                     {
-                        foreach (VRRig l in GorillaParent.instance.vrrigs)
+                        foreach (VRRig l in VRRigCache.ActiveRigs)
                         {
                             RigManager.GetNetworkViewFromVRRig(l).SendRPC("GrabbedByPlayer", RpcTarget.Others, new object[] { true, false, false });
                             RPCFlush();
@@ -205,7 +205,7 @@ namespace Elixir.Mods
                         bool enabled = gm.enabled;
                         if (enabled)
                         {
-                            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                             {
                                 gm.EjectGuardian(RigManager.GetPlayerFromVRRig((vrrig)));
                             }

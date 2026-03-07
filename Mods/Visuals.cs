@@ -22,7 +22,7 @@ namespace Elixir.Mods.Categories
         }
         public static void ESP()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -33,7 +33,7 @@ namespace Elixir.Mods.Categories
         }
         public static void DisableESP()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -43,7 +43,7 @@ namespace Elixir.Mods.Categories
         }
         public static void BallESP()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -64,7 +64,7 @@ namespace Elixir.Mods.Categories
         }
         public static void Wireframe(bool d)
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -143,7 +143,7 @@ namespace Elixir.Mods.Categories
         }
         public static void BoxESP(bool d)
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -177,7 +177,7 @@ namespace Elixir.Mods.Categories
         }
         public static void Tracers()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -199,7 +199,7 @@ namespace Elixir.Mods.Categories
         }
         public static void DistanceESP()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig == null || vrrig == GorillaTagger.Instance.offlineVRRig) continue;
 
@@ -222,7 +222,7 @@ namespace Elixir.Mods.Categories
         }
         public static void Nametags()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
 
@@ -244,7 +244,7 @@ namespace Elixir.Mods.Categories
         }
         public static void MenuNametags()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
                 Photon.Realtime.Player player = RigManager.GetPlayerFromVRRig(vrrig);
@@ -270,7 +270,7 @@ namespace Elixir.Mods.Categories
         }
         public static void AdvNametags()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -336,7 +336,7 @@ namespace Elixir.Mods.Categories
         }
         public static void SnakeESP()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -358,7 +358,7 @@ namespace Elixir.Mods.Categories
         }
         public static void Beacons()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -416,7 +416,7 @@ namespace Elixir.Mods.Categories
         }
         public static void EnableSkeleton()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
@@ -430,7 +430,7 @@ namespace Elixir.Mods.Categories
         }
         public static void DisableSkeleton()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)
                 {
