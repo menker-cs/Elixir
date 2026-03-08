@@ -57,12 +57,12 @@ Once loaded in-game:
   
 > [!WARNING]
 > We highly recommend that you do not use other mods with Elixir unless you know they are safe, because they may interfere with the menu or increase your chance of being banned.
----
+
 > [!CAUTION]
 > This project is not affiliated with Another Axiom or Gorilla Tag.
 > All trademarks and copyrights belong to their respective owners.
 > Any bans that may occure are not are fault as it was your decision to use the menu and by doing that took the risk of any potential bans.
-
+---
 ## 💗 Support
 | Platform   | Link | Address |
 |------------|------|---------|
@@ -71,4 +71,5 @@ Once loaded in-game:
 | Litecoin   | [![LTC](https://img.shields.io/badge/Litecoin-Donate-lightgrey?style=for-the-badge&logo=litecoin)](litecoin:LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1) | [LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1](litecoin:LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1) |
 | Solana     | [![SOL](https://img.shields.io/badge/Solana-Donate-lightgrey?style=for-the-badge&logo=solana)](solana:HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm) | [HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm](solana:HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm) |
 
+---
 <Sub>Although it says Leanie and Lerpy were contributers everything that they added has been removed and neither are able to furthur contribute.</Sub>
