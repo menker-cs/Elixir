@@ -74,7 +74,7 @@ namespace Elixir.Mods.Categories
         {
             if (GorillaTagger.Instance == null) return;
 
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig && (Vector3.Distance(GorillaTagger.Instance.leftHandTransform.position, vrrig.headMesh.transform.position) < 4f || Vector3.Distance(GorillaTagger.Instance.rightHandTransform.position, vrrig.headMesh.transform.position) < 4f) && Inputs.rightGrip() || Inputs.leftGrip() || UnityInput.Current.GetKey(KeyCode.G))
                 {
@@ -91,7 +91,7 @@ namespace Elixir.Mods.Categories
         }
         public static void TagAll()
         {
-            foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 int actorNumber = vrrig.Creator.ActorNumber;
                 player = PhotonNetwork.CurrentRoom.GetPlayer(actorNumber, false);
@@ -133,7 +133,7 @@ namespace Elixir.Mods.Categories
 
             if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.2f | UnityInput.Current.GetKey(KeyCode.T))
             {
-                foreach (VRRig vrrig in GorillaParent.instance.vrrigs)
+                foreach (VRRig vrrig in VRRigCache.ActiveRigs)
                 {
                     if (RigIsInfected(vrrig) && !IAmInfected)
                     {

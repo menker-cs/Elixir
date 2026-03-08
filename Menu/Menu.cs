@@ -13,7 +13,7 @@ using UnityEngine;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Utilities.ButtonManager;
-
+using static Elixir.Plugin;
 namespace Elixir.Management
 {
     public class Menu : MonoBehaviour
@@ -56,14 +56,6 @@ namespace Elixir.Management
             GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 2f, GorillaTagger.Instance.tagHapticDuration / 2f);
             GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(114, false, 1);
         }
-
-        public static TextMeshPro? motdHeading;
-        public static TextMeshPro? motdBody;
-        public static TextMeshPro? cocHeading;
-        public static TextMeshPro? cocBody;
-        public static TextMeshPro? gameModeText;
-
-        public static GameObject? ThirdCam;
 
         private static void Home()
         {
@@ -171,7 +163,6 @@ namespace Elixir.Management
             if (obj4 != null) cocBody = obj4.GetComponent<TextMeshPro>();
             var obj5 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/GameModes Title Text");
             if (obj5 != null) gameModeText = obj5.GetComponent<TextMeshPro>();
-            var obj6 = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/GorillaComputerObject/ComputerUI/monitor/monitorScreen");
 
             ThirdCam = GameObject.Find("Player Objects/Third Person Camera/Shoulder Camera");
 

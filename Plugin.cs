@@ -5,6 +5,7 @@ using Elixir.Mods.Categories;
 using Elixir.Utilities;
 using Photon.Pun;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using static Elixir.Management.Menu;
@@ -16,11 +17,17 @@ namespace Elixir
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
-        private static GameObject? goop = null;
-
         public void OnEnable() => ApplyHarmonyPatches();
 
         public void OnDisable() => RemoveHarmonyPatches();
+
+        public static TextMeshPro? motdHeading;
+        public static TextMeshPro? motdBody;
+        public static TextMeshPro? cocHeading;
+        public static TextMeshPro? cocBody;
+        public static TextMeshPro? gameModeText;
+        public static GameObject? ThirdCam;
+
 
         public void Start()
         {
@@ -28,21 +35,20 @@ namespace Elixir
             Settings.AutoLoadPrefs();
             CoroutineHandler.StartCoroutine1(GetObjects());
 
-            goop = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/SpectralGooPile (combined by EdMeshCombiner)");
-
-            if (goop != null)
-            {
-                Material goopMat = goop.GetComponent<Renderer>().material;
-                ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, goopMat, ref originalMat1!);
-            }
+            ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
         }
 
         static int fps;
+        static float fpsDelay;
         public void Update()
         {
             Menu.Update();
 
-            fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
+            if (Time.time >= fpsDelay)
+            {
+                fps = (Time.deltaTime > 0) ? Mathf.RoundToInt(1 / Time.deltaTime) : 0;
+                fpsDelay = Time.time + 1f;
+            }
 
             UpdateClr();
 

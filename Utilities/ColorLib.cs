@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using UnityEngine;
 using UnityEngine.Networking;
-//using System.Drawing;
 
 namespace Elixir.Utilities
 {
@@ -220,7 +219,7 @@ namespace Elixir.Utilities
         #region Shaders
         public static Shader guiShader = Shader.Find("GUI/Text Shader");
         public static Shader uberShader = Shader.Find("GorillaTag/UberShader");
-        public static Shader uiShader = Shader.Find("UI/Default");
+        public static Shader defaultShader = Shader.Find("UI/Default");
         #endregion
 
         #region Changing Color
@@ -250,7 +249,7 @@ namespace Elixir.Utilities
         }
         public static Material Color2Mat(Color color)
         {
-            return new Material(uiShader)
+            return new Material(uberShader)
             {
                 color = color
             };
