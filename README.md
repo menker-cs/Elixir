@@ -62,15 +62,6 @@ Once loaded in-game:
 > This project is not affiliated with Another Axiom or Gorilla Tag.
 > All trademarks and copyrights belong to their respective owners.
 > Any bans that may occure are not are fault as it was your decision to use the menu and by doing that took the risk of any potential bans.
----
-## 💗 Support
-If you would like to support this project and help me stay motivated feel free to send me some money!
-| Platform   | Link | Address |
-|------------|------|---------|
-| Bitcoin    | [![BTC](https://img.shields.io/badge/Bitcoin-Donate-yellow?style=for-the-badge&logo=bitcoin)](bitcoin:bc1q2506ys3wyrej90d49c383dcg0vuuyw6aee8wdp) | [bc1q2506ys3wyrej90d49c383dcg0vuuyw6aee8wdp](bitcoin:bc1q2506ys3wyrej90d49c383dcg0vuuyw6aee8wdp) |
-| Ethereum   | [![ETH](https://img.shields.io/badge/Ethereum-Donate-blue?style=for-the-badge&logo=ethereum)](ethereum:0x3314d66792cF0231dB573BFD92622E61B63a0b35) | [0x3314d66792cF0231dB573BFD92622E61B63a0b35](ethereum:0x3314d66792cF0231dB573BFD92622E61B63a0b35) |
-| Litecoin   | [![LTC](https://img.shields.io/badge/Litecoin-Donate-lightgrey?style=for-the-badge&logo=litecoin)](litecoin:LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1) | [LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1](litecoin:LXjv4jc8WbcgyfHcY3NdHd7JewzSsPrBz1) |
-| Solana     | [![SOL](https://img.shields.io/badge/Solana-Donate-lightgrey?style=for-the-badge&logo=solana)](solana:HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm) | [HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm](solana:HXiG3vmQ9JLCetLhFQkvNfjVjRfeFnuH1vGd8fSbJgQm) |
 
 ---
 <Sub>Although it says Leanie and Lerpy were contributers everything that they added has been removed and neither are able to furthur contribute.</Sub>
