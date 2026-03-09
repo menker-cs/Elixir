@@ -2,8 +2,6 @@
 using GorillaLocomotion;
 using HarmonyLib;
 using Photon.Pun;
-using Photon.Realtime;
-using System;
 using TMPro;
 using UnityEngine;
 using static Elixir.Mods.Categories.Settings;
@@ -22,9 +20,12 @@ namespace Elixir.Mods.Categories
         }
         public static void ESP()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     vrrig.mainSkin.material.shader = Shader.Find("GUI/Text Shader");
                     vrrig.mainSkin.material.color = GetESPColor(vrrig);
@@ -43,9 +44,12 @@ namespace Elixir.Mods.Categories
         }
         public static void BallESP()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject ESPBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     ESPBall.transform.position = vrrig.transform.position;
@@ -64,9 +68,12 @@ namespace Elixir.Mods.Categories
         }
         public static void Wireframe(bool d)
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     if (!d)
                     {
@@ -143,9 +150,12 @@ namespace Elixir.Mods.Categories
         }
         public static void BoxESP(bool d)
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     if (!d)
                     {
@@ -177,9 +187,12 @@ namespace Elixir.Mods.Categories
         }
         public static void Tracers()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject line = new GameObject("Line");
                     LineRenderer Line = line.AddComponent<LineRenderer>();
@@ -199,57 +212,39 @@ namespace Elixir.Mods.Categories
         }
         public static void DistanceESP()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig == null || vrrig == GorillaTagger.Instance.offlineVRRig) continue;
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
+                {
+                    GameObject distance = new GameObject($"{vrrig.name}'s Distance");
+                    TextMeshPro textMeshPro = distance.AddComponent<TextMeshPro>();
 
-                GameObject distance = new GameObject($"{vrrig.name}'s Distance");
-                TextMeshPro textMeshPro = distance.AddComponent<TextMeshPro>();
+                    textMeshPro.fontSize = 3.5f;
+                    textMeshPro.alignment = TextAlignmentOptions.Center;
+                    textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
-                textMeshPro.fontSize = 3.5f;
-                textMeshPro.alignment = TextAlignmentOptions.Center;
-                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
+                    distance.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.65f, 0f);
+                    distance.transform.LookAt(Camera.main.transform);
+                    distance.transform.Rotate(0, 180, 0);
 
-                distance.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.65f, 0f);
-                distance.transform.LookAt(Camera.main.transform);
-                distance.transform.Rotate(0, 180, 0);
+                    float distanceTovrrig = Vector3.Distance(GorillaLocomotion.GTPlayer.Instance.headCollider.transform.position, vrrig.transform.position);
+                    textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"{Mathf.RoundToInt(distanceTovrrig)}M", Time.time);
 
-                float distanceTovrrig = Vector3.Distance(GorillaLocomotion.GTPlayer.Instance.headCollider.transform.position, vrrig.transform.position);
-                textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), $"{Mathf.RoundToInt(distanceTovrrig)}M", Time.time);
-
-                GameObject.Destroy(distance, Time.deltaTime);
+                    GameObject.Destroy(distance, Time.deltaTime);
+                }
             }
         }
         public static void Nametags()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
-
-                GameObject name = new GameObject($"{vrrig.name}'s Nametag");
-                TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
-
-                textMeshPro.fontSize = 3.5f;
-                textMeshPro.fontStyle = FontStyles.Normal;
-                textMeshPro.alignment = TextAlignmentOptions.Center;
-                textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), RigManager.GetPlayerFromVRRig(vrrig).NickName, Time.time);
-                textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
-
-                name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
-                name.transform.LookAt(Camera.main.transform);
-                name.transform.Rotate(0, 180, 0);
-
-                GameObject.Destroy(name, Time.deltaTime);
-            }
-        }
-        public static void MenuNametags()
-        {
-            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
-            {
-                if (vrrig == GorillaTagger.Instance.offlineVRRig) continue;
-                Photon.Realtime.Player player = RigManager.GetPlayerFromVRRig(vrrig);
-
-                if (player.CustomProperties.ContainsKey("Elixir"))
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject name = new GameObject($"{vrrig.name}'s Nametag");
                     TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
@@ -257,10 +252,10 @@ namespace Elixir.Mods.Categories
                     textMeshPro.fontSize = 3.5f;
                     textMeshPro.fontStyle = FontStyles.Normal;
                     textMeshPro.alignment = TextAlignmentOptions.Center;
-                    textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir User", Time.time);
+                    textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), RigManager.GetPlayerFromVRRig(vrrig).NickName, Time.time);
                     textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
 
-                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.15f, 0f);
+                    name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 0.90f, 0f);
                     name.transform.LookAt(Camera.main.transform);
                     name.transform.Rotate(0, 180, 0);
 
@@ -268,11 +263,45 @@ namespace Elixir.Mods.Categories
                 }
             }
         }
-        public static void AdvNametags()
+        public static void MenuNametags()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
+                {
+                    Photon.Realtime.Player player = RigManager.GetPlayerFromVRRig(vrrig);
+
+                    if (player.CustomProperties.ContainsKey("Elixir"))
+                    {
+                        GameObject name = new GameObject($"{vrrig.name}'s Nametag");
+                        TextMeshPro textMeshPro = name.AddComponent<TextMeshPro>();
+
+                        textMeshPro.fontSize = 3.5f;
+                        textMeshPro.fontStyle = FontStyles.Normal;
+                        textMeshPro.alignment = TextAlignmentOptions.Center;
+                        textMeshPro.text = GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir User", Time.time);
+                        textMeshPro.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/motdBodyText").GetComponent<TextMeshPro>().font;
+
+                        name.transform.position = vrrig.headMesh.transform.position + new Vector3(0f, 1.15f, 0f);
+                        name.transform.LookAt(Camera.main.transform);
+                        name.transform.Rotate(0, 180, 0);
+
+                        GameObject.Destroy(name, Time.deltaTime);
+                    }
+                }
+            }
+        }
+        public static void AdvNametags()
+        {
+            if (!PhotonNetwork.InRoom)
+                return;
+
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
+            {
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject advName = new GameObject("Text");
                     TextMeshPro textMeshPro = advName.AddComponent<TextMeshPro>();
@@ -336,9 +365,12 @@ namespace Elixir.Mods.Categories
         }
         public static void SnakeESP()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject trailObject = new GameObject("PlayerTrail");
                     trailObject.transform.position = vrrig.transform.position;
@@ -358,9 +390,12 @@ namespace Elixir.Mods.Categories
         }
         public static void Beacons()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     GameObject line = new GameObject("Line");
                     LineRenderer Line = line.AddComponent<LineRenderer>();
@@ -416,9 +451,12 @@ namespace Elixir.Mods.Categories
         }
         public static void EnableSkeleton()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
-                if (vrrig != GorillaTagger.Instance.offlineVRRig)
+                if (vrrig != GorillaTagger.Instance.offlineVRRig && vrrig != null)
                 {
                     vrrig.skeleton.UpdateColor(vrrig.playerColor);
                     vrrig.skeleton.renderer.sharedMaterial.shader = Shader.Find("GUI/Text Shader");
@@ -430,6 +468,9 @@ namespace Elixir.Mods.Categories
         }
         public static void DisableSkeleton()
         {
+            if (!PhotonNetwork.InRoom)
+                return;
+
             foreach (VRRig vrrig in VRRigCache.ActiveRigs)
             {
                 if (vrrig != GorillaTagger.Instance.offlineVRRig)

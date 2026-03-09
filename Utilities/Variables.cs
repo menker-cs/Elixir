@@ -21,21 +21,17 @@ namespace Elixir.Utilities
         public static int Mat;
         public static bool InPcCondition;
         public static bool autoLoadPrefs;
-
-        private static Material unityColorMaterial = null!;
+        public static string Status = GetString("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
 
         public static void Placeholder() { }
-
-        private static Material GetColorMaterial()
+        public static string GetString(string url)
         {
-            if (unityColorMaterial == null)
-            {
-                unityColorMaterial = new Material(Shader.Find("Unlit/Color"));
-            }
-            return unityColorMaterial;
+            HttpClient client = new HttpClient();
+            string stringg = client.GetStringAsync(url).Result;
+            return stringg;
         }
 
-        // --- Utility Methods ---
+        #region GameObject Stuff & Vector3
         public static void Outline(GameObject obj, Color clr)
         {
             GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -61,55 +57,132 @@ namespace Elixir.Utilities
             trailRenderer.startColor = clr;
             trailRenderer.endColor = clr2;
         }
-        public static void IsModded()
+        public static Vector3 Orbit(Transform transform, int speed)
         {
-            if (!PhotonNetwork.IsConnected)
+            return transform.position + new Vector3(MathF.Cos((float)Time.frameCount / speed), 1f, MathF.Sin((float)Time.frameCount / speed));
+        }
+        public static Vector3 RandomPos(Transform transform, float range)
+        {
+            return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
+        }
+        #endregion
+
+        #region Rig Stuff
+        public static VRRig GetVRRigFromPlayer(NetPlayer p)
+        {
+            return GorillaGameManager.instance.FindPlayerVRRig(p);
+        }
+        public static Player NetPlayerToPlayer(NetPlayer p)
+        {
+            return p.GetPlayerRef();
+        }
+        public static VRRig GetRandomVRRig(bool includeSelf)
+        {
+            VRRig random = VRRigCache.ActiveRigs[UnityEngine.Random.Range(0, VRRigCache.ActiveRigs.Count - 1)];
+            if (includeSelf)
             {
-                NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
-                return;
+                return random;
             }
-
-            string message = GetHTMode().Contains("MODDED") ? "<color=blue>Room</color> : You are in a modded lobby." : "<color=blue>Room</color> : You are not in a modded lobby.";
-            NotificationLib.SendNotification(message);
-        }
-
-        public static string GetHTMode()
-        {
-            if (PhotonNetwork.CurrentRoom == null || !PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("gameMode"))
+            else
             {
-                return "ERROR";
+                if (random != GorillaTagger.Instance.offlineVRRig)
+                {
+                    return random;
+                }
+                else
+                {
+                    return GetRandomVRRig(includeSelf);
+                }
             }
-            return PhotonNetwork.CurrentRoom.CustomProperties["gameMode"].ToString();
         }
-
-        public static Photon.Realtime.Player NetPlayerToPhotonPlayer(NetPlayer netPlayer) => netPlayer.GetPlayerRef();
-
-        public static NetPlayer PhotonPlayerToNetPlayer(Photon.Realtime.Player player)
+        public static NetworkView GetNetworkViewFromVRRig(VRRig p)
         {
-            VRRig rig = GorillaGameManager.instance.FindPlayerVRRig(player);
-            return rig != null ? rig.Creator : null!;
+            return (NetworkView)Traverse.Create(p).Field("netView").GetValue();
         }
-
-        public static NetPlayer GetNetPlayerFromRig(VRRig vrrig) => vrrig.Creator;
-
-        public static VRRig GetRigFromNetPlayer(NetPlayer netPlayer) => GorillaGameManager.instance.FindPlayerVRRig(netPlayer);
-
-        public static PhotonView GetPhotonViewFromRig(VRRig vrrig)
+        public static PhotonView GetPhotonViewFromVRRig(VRRig p)
         {
-            return (PhotonView)Traverse.Create(vrrig).Field("photonView").GetValue();
+            NetworkView? view = Traverse.Create(p).Field("netView").GetValue() as NetworkView;
+            return RigManager.NetView2PhotonView(view);
         }
-
-        public static PhotonView GetPhotonViewFromNetPlayer(NetPlayer netPlayer) => GetPhotonViewFromRig(GorillaGameManager.instance.FindPlayerVRRig(netPlayer));
-
-        public static bool GetGamemode(string gamemodeName)
+        public static PhotonView NetView2PhotonView(NetworkView? view)
         {
-            return GorillaGameManager.instance.GameModeName().ToLower().Contains(gamemodeName.ToLower());
+            bool flag = view == null;
+            PhotonView? result;
+            if (flag)
+            {
+                Debug.Log("null netview passed to converter");
+                result = null;
+            }
+            else
+            {
+                result = view?.GetView;
+            }
+            return result!;
+
         }
-
-        public static bool IsOtherPlayer(VRRig rig) => rig != null && rig != GorillaTagger.Instance.offlineVRRig && !rig.isOfflineVRRig && !rig.isMyPlayer;
-
+        public static VRRig GetOwnVRRig()
+        {
+            return GorillaTagger.Instance.offlineVRRig;
+        }
+        public static NetPlayer GetNetPlayerFromVRRig(VRRig p)
+        {
+            return RigManager.ToNetPlayer(RigManager.GetPhotonViewFromVRRig(p).Owner);
+        }
+        public static NetPlayer ToNetPlayer(Player player)
+        {
+            foreach (NetPlayer netPlayer in NetworkSystem.Instance.AllNetPlayers)
+            {
+                bool flag = netPlayer.GetPlayerRef() == player;
+                if (flag)
+                {
+                    return netPlayer;
+                }
+            }
+            return null!;
+        }
+        public static VRRig GetClosestVRRig()
+        {
+            float num = float.MaxValue;
+            VRRig? outRig = null;
+            foreach (VRRig vrrig in VRRigCache.ActiveRigs)
+            {
+                if (Vector3.Distance(GorillaTagger.Instance.bodyCollider.transform.position, vrrig.transform.position) < num)
+                {
+                    num = Vector3.Distance(GorillaTagger.Instance.bodyCollider.transform.position, vrrig.transform.position);
+                    outRig = vrrig;
+                }
+            }
+            return outRig!;
+        }
+        public static Player GetRandomPlayer(bool includeSelf)
+        {
+            if (includeSelf)
+            {
+                return PhotonNetwork.PlayerList[UnityEngine.Random.Range(0, PhotonNetwork.PlayerList.Length - 1)];
+            }
+            else
+            {
+                return PhotonNetwork.PlayerListOthers[UnityEngine.Random.Range(0, PhotonNetwork.PlayerListOthers.Length - 1)];
+            }
+        }
+        public static Player GetPlayerFromVRRig(VRRig p)
+        {
+            return GetPhotonViewFromVRRig(p).Owner;
+        }
+        public static Player GetPlayerFromID(string id)
+        {
+            Photon.Realtime.Player? found = null;
+            foreach (Photon.Realtime.Player target in PhotonNetwork.PlayerList)
+            {
+                if (target.UserId == id)
+                {
+                    found = target;
+                    break;
+                }
+            }
+            return found!;
+        }
         public static bool IAmInfected => GorillaTagger.Instance.offlineVRRig != null && RigIsInfected(GorillaTagger.Instance.offlineVRRig);
-
         public static bool RigIsInfected(VRRig vrrig)
         {
             string materialName = vrrig.mainSkin.material.name;
@@ -124,20 +197,13 @@ namespace Elixir.Utilities
 
             return "QUEST";
         }
-        public static void IsMasterCheck()
+        public static bool IsUserMaster(VRRig rig)
         {
-            if (!PhotonNetwork.IsConnected)
-            {
-                NotificationLib.SendNotification("<color=blue>Room</color> : You are not connected to a room.");
-                return;
-            }
+            return rig.OwningNetPlayer.IsMasterClient;
+        }
+        #endregion
 
-            NotificationLib.SendNotification(PhotonNetwork.IsMasterClient ? "<color=blue>Room</color> : You are master." : "<color=blue>Room</color> : " + PhotonNetwork.MasterClient + "is master client");
-        }
-        public static void UseGravity(bool useGravity)
-        {
-            GorillaLocomotion.GTPlayer.Instance.GetComponent<Rigidbody>().useGravity = useGravity;
-        }
+        #region My Rig stuff
         public static IEnumerator Chase(VRRig target)
         {
             Transform myRig = GorillaTagger.Instance!.offlineVRRig.transform;
@@ -162,28 +228,9 @@ namespace Elixir.Utilities
                 }
             }
         }
-        public static bool InLobby() => PhotonNetwork.InLobby;
-        public static bool IsMaster() => PhotonNetwork.IsMasterClient;
-        public static bool IsUserMaster(VRRig rig)
-        {
-            return rig.OwningNetPlayer.IsMasterClient;
-        }
-        public static Vector3 Orbit(Transform transform, int speed)
-        {
-            return transform.position + new Vector3(MathF.Cos((float)Time.frameCount / speed), 1f, MathF.Sin((float)Time.frameCount / speed));
-        }
-        public static Vector3 RandomPos(Transform transform, float range)
-        {
-            return transform.position + new Vector3(UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range), UnityEngine.Random.Range(-range, range));
-        }
-        public static string GetStatus(string url) 
-        {
-            HttpClient client = new HttpClient();
-            string stringg = client.GetStringAsync(url).Result;
-            return stringg;
-        }
-        public static string Status = GetStatus("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/status.txt");
+        #endregion
 
+        #region RPC Flush Stuff
         public static void RPCFlush()
         {
             PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
@@ -207,6 +254,7 @@ namespace Elixir.Utilities
                 }
             }, SendOptions.SendReliable);
         }
+        #endregion
     }
 }
 

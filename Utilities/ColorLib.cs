@@ -9,211 +9,210 @@ namespace Elixir.Utilities
 {
     public class ColorLib
     {
-        #region Non-Transparent Colors
-        public static Color32 Elixir = new Color32(25, 25, 25, 255);
-        public static Color32 Menker = new Color32(111, 252, 243, 255);
-        public static Color32 Menker2 = new Color32(40, 137, 130, 255);
+        #region Solid
+        public static Color Elixir = new Color(0.10f, 0.10f, 0.10f, 1f);
+        public static Color Menker = new Color(0.44f, 0.99f, 0.95f, 1f);
+        public static Color Menker2 = new Color(0.16f, 0.54f, 0.51f, 1f);
 
         // Reds
-        public static Color32 Red = new Color32(255, 0, 0, 255);
-        public static Color32 DarkRed = new Color32(180, 0, 0, 255);
-        public static Color32 Salmon = new Color32(250, 128, 114, 255);
-        public static Color32 WineRed = new Color32(123, 0, 0, 255);
-        public static Color32 IndianRed = new Color32(205, 92, 92, 255);
-        public static Color32 Crimson = new Color32(220, 20, 60, 255);
-        public static Color32 FireBrick = new Color32(178, 34, 34, 255);
-        public static Color32 Coral = new Color32(255, 127, 80, 255);
-        public static Color32 DarkCoral = new Color32(235, 107, 60, 255);
-        public static Color32 Tomato = new Color32(255, 99, 71, 255);
-        public static Color32 Maroon = new Color32(128, 0, 0, 255);
+        public static Color Red = new Color(1.00f, 0.00f, 0.00f, 1f);
+        public static Color DarkRed = new Color(0.71f, 0.00f, 0.00f, 1f);
+        public static Color Salmon = new Color(0.98f, 0.50f, 0.45f, 1f);
+        public static Color WineRed = new Color(0.48f, 0.00f, 0.00f, 1f);
+        public static Color IndianRed = new Color(0.80f, 0.36f, 0.36f, 1f);
+        public static Color Crimson = new Color(0.86f, 0.08f, 0.24f, 1f);
+        public static Color FireBrick = new Color(0.70f, 0.13f, 0.13f, 1f);
+        public static Color Coral = new Color(1.00f, 0.50f, 0.31f, 1f);
+        public static Color DarkCoral = new Color(0.92f, 0.42f, 0.24f, 1f);
+        public static Color Tomato = new Color(1.00f, 0.39f, 0.28f, 1f);
+        public static Color Maroon = new Color(0.50f, 0.00f, 0.00f, 1f);
 
         // Greens
-        public static Color32 Green = new Color32(0, 255, 0, 255);
-        public static Color32 Lime = new Color32(0, 128, 0, 255);
-        public static Color32 DarkGreen = new Color32(0, 100, 0, 255);
-        public static Color32 Olive = new Color32(128, 128, 0, 255);
-        public static Color32 ForestGreen = new Color32(34, 139, 34, 255);
-        public static Color32 SeaGreen = new Color32(46, 139, 87, 255);
-        public static Color32 MediumSeaGreen = new Color32(60, 179, 113, 255);
-        public static Color32 Aquamarine = new Color32(127, 255, 212, 255);
-        public static Color32 MediumAquamarine = new Color32(102, 205, 170, 255);
-        public static Color32 DarkSeaGreen = new Color32(143, 188, 143, 255);
+        public static Color Green = new Color(0.00f, 1.00f, 0.00f, 1f);
+        public static Color Lime = new Color(0.00f, 0.50f, 0.00f, 1f);
+        public static Color DarkGreen = new Color(0.00f, 0.39f, 0.00f, 1f);
+        public static Color Olive = new Color(0.50f, 0.50f, 0.00f, 1f);
+        public static Color ForestGreen = new Color(0.13f, 0.55f, 0.13f, 1f);
+        public static Color SeaGreen = new Color(0.18f, 0.55f, 0.34f, 1f);
+        public static Color MediumSeaGreen = new Color(0.24f, 0.70f, 0.44f, 1f);
+        public static Color Aquamarine = new Color(0.50f, 1.00f, 0.83f, 1f);
+        public static Color MediumAquamarine = new Color(0.40f, 0.80f, 0.67f, 1f);
+        public static Color DarkSeaGreen = new Color(0.56f, 0.74f, 0.56f, 1f);
 
         // Blues
-        public static Color32 Blue = new Color32(0, 0, 255, 255);
-        public static Color32 Navy = new Color32(0, 0, 128, 255);
-        public static Color32 DarkBlue = new Color32(0, 0, 160, 255);
-        public static Color32 RoyalBlue = new Color32(65, 105, 225, 255);
-        public static Color32 DodgerBlue = new Color32(30, 144, 255, 255);
-        public static Color32 DarkDodgerBlue = new Color32(8, 90, 177, 255);
-        public static Color32 DeepSkyBlue = new Color32(0, 191, 255, 255);
-        public static Color32 SkyBlue = new Color32(135, 206, 235, 255);
-        public static Color32 SteelBlue = new Color32(70, 130, 180, 255);
-        public static Color32 Cyan = new Color32(0, 255, 255, 255);
+        public static Color Blue = new Color(0.00f, 0.00f, 1.00f, 1f);
+        public static Color Navy = new Color(0.00f, 0.00f, 0.50f, 1f);
+        public static Color DarkBlue = new Color(0.00f, 0.00f, 0.63f, 1f);
+        public static Color RoyalBlue = new Color(0.25f, 0.41f, 0.88f, 1f);
+        public static Color DodgerBlue = new Color(0.12f, 0.56f, 1.00f, 1f);
+        public static Color DarkDodgerBlue = new Color(0.03f, 0.35f, 0.69f, 1f);
+        public static Color DeepSkyBlue = new Color(0.00f, 0.75f, 1.00f, 1f);
+        public static Color SkyBlue = new Color(0.53f, 0.81f, 0.92f, 1f);
+        public static Color SteelBlue = new Color(0.27f, 0.51f, 0.71f, 1f);
+        public static Color Cyan = new Color(0.00f, 1.00f, 1.00f, 1f);
 
         // Yellows
-        public static Color32 Yellow = new Color32(255, 255, 0, 255);
-        public static Color32 Gold = new Color32(255, 215, 0, 255);
-        public static Color32 LightYellow = new Color32(255, 255, 224, 255);
-        public static Color32 LemonChiffon = new Color32(255, 250, 205, 255);
-        public static Color32 Khaki = new Color32(240, 230, 140, 255);
-        public static Color32 PaleGoldenrod = new Color32(238, 232, 170, 255);
-        public static Color32 LightGoldenrodYellow = new Color32(250, 250, 210, 255);
+        public static Color Yellow = new Color(1.00f, 1.00f, 0.00f, 1f);
+        public static Color Gold = new Color(1.00f, 0.84f, 0.00f, 1f);
+        public static Color LightYellow = new Color(1.00f, 1.00f, 0.88f, 1f);
+        public static Color LemonChiffon = new Color(1.00f, 0.98f, 0.80f, 1f);
+        public static Color Khaki = new Color(0.94f, 0.90f, 0.55f, 1f);
+        public static Color PaleGoldenrod = new Color(0.93f, 0.91f, 0.67f, 1f);
+        public static Color LightGoldenrodYellow = new Color(0.98f, 0.98f, 0.82f, 1f);
 
         // Oranges
-        public static Color32 Orange = new Color32(255, 165, 0, 255);
-        public static Color32 DarkOrange = new Color32(255, 140, 0, 255);
-        public static Color32 RedOrange = new Color32(255, 69, 0, 255);
-        public static Color32 PeachPuff = new Color32(255, 218, 185, 255);
-        public static Color32 DarkGoldenrod = new Color32(184, 134, 11, 255);
-        public static Color32 Peru = new Color32(205, 133, 63, 255);
-        public static Color32 OrangeRed = new Color32(255, 69, 0, 255);
+        public static Color Orange = new Color(1.00f, 0.65f, 0.00f, 1f);
+        public static Color DarkOrange = new Color(1.00f, 0.55f, 0.00f, 1f);
+        public static Color RedOrange = new Color(1.00f, 0.27f, 0.00f, 1f);
+        public static Color PeachPuff = new Color(1.00f, 0.85f, 0.73f, 1f);
+        public static Color DarkGoldenrod = new Color(0.72f, 0.53f, 0.04f, 1f);
+        public static Color Peru = new Color(0.80f, 0.52f, 0.25f, 1f);
+        public static Color OrangeRed = new Color(1.00f, 0.27f, 0.00f, 1f);
 
         // Purples
-        public static Color32 Magenta = new Color32(255, 0, 255, 255);
-        public static Color32 Purple = new Color32(123, 3, 252, 255);
-        public static Color32 DarkPurple = new Color32(38, 23, 77, 255);
-        public static Color32 Lavender = new Color32(230, 230, 250, 255);
-        public static Color32 Plum = new Color32(221, 160, 221, 255);
-        public static Color32 Indigo = new Color32(75, 0, 130, 255);
-        public static Color32 MediumOrchid = new Color32(186, 85, 211, 255);
-        public static Color32 SlateBlue = new Color32(106, 90, 205, 255);
-        public static Color32 DarkSlateBlue = new Color32(72, 61, 139, 255);
+        public static Color Magenta = new Color(1.00f, 0.00f, 1.00f, 1f);
+        public static Color Purple = new Color(0.48f, 0.01f, 0.99f, 1f);
+        public static Color DarkPurple = new Color(0.15f, 0.09f, 0.30f, 1f);
+        public static Color Lavender = new Color(0.90f, 0.90f, 0.98f, 1f);
+        public static Color Plum = new Color(0.87f, 0.63f, 0.87f, 1f);
+        public static Color Indigo = new Color(0.29f, 0.00f, 0.51f, 1f);
+        public static Color MediumOrchid = new Color(0.73f, 0.33f, 0.83f, 1f);
+        public static Color SlateBlue = new Color(0.42f, 0.35f, 0.80f, 1f);
+        public static Color DarkSlateBlue = new Color(0.28f, 0.24f, 0.55f, 1f);
 
         // Pinks
-        public static Color32 Pink = new Color32(255, 192, 203, 255);
-        public static Color32 LightSalmon = new Color32(255, 160, 122, 255);
-        public static Color32 DarkSalmon = new Color32(233, 150, 122, 255);
-        public static Color32 LightCoral = new Color32(240, 128, 128, 255);
-        public static Color32 MistyRose = new Color32(255, 228, 225, 255);
-        public static Color32 HotPink = new Color32(255, 105, 180, 255);
-        public static Color32 DeepPink = new Color32(255, 20, 147, 255);
+        public static Color Pink = new Color(1.00f, 0.75f, 0.80f, 1f);
+        public static Color LightSalmon = new Color(1.00f, 0.63f, 0.48f, 1f);
+        public static Color DarkSalmon = new Color(0.91f, 0.59f, 0.48f, 1f);
+        public static Color LightCoral = new Color(0.94f, 0.50f, 0.50f, 1f);
+        public static Color MistyRose = new Color(1.00f, 0.89f, 0.88f, 1f);
+        public static Color HotPink = new Color(1.00f, 0.41f, 0.71f, 1f);
+        public static Color DeepPink = new Color(1.00f, 0.08f, 0.58f, 1f);
 
         // Browns
-        public static Color32 Brown = new Color32(139, 69, 19, 255);
-        public static Color32 RosyBrown = new Color32(188, 143, 143, 255);
-        public static Color32 SaddleBrown = new Color32(139, 69, 19, 255);
-        public static Color32 Sienna = new Color32(160, 82, 45, 255);
-        public static Color32 Chocolate = new Color32(210, 105, 30, 255);
-        public static Color32 SandyBrown = new Color32(244, 164, 96, 255);
-        public static Color32 DarkSandyBrown = new Color32(224, 144, 76, 255);
-        public static Color32 BurlyWood = new Color32(222, 184, 135, 255);
-        public static Color32 Tan = new Color32(210, 180, 140, 255);
+        public static Color Brown = new Color(0.55f, 0.27f, 0.07f, 1f);
+        public static Color RosyBrown = new Color(0.74f, 0.56f, 0.56f, 1f);
+        public static Color SaddleBrown = new Color(0.55f, 0.27f, 0.07f, 1f);
+        public static Color Sienna = new Color(0.63f, 0.32f, 0.18f, 1f);
+        public static Color Chocolate = new Color(0.82f, 0.41f, 0.12f, 1f);
+        public static Color SandyBrown = new Color(0.96f, 0.64f, 0.38f, 1f);
+        public static Color DarkSandyBrown = new Color(0.88f, 0.56f, 0.30f, 1f);
+        public static Color BurlyWood = new Color(0.87f, 0.72f, 0.53f, 1f);
+        public static Color Tan = new Color(0.82f, 0.71f, 0.55f, 1f);
 
         // Whites
-        public static Color32 White = new Color32(255, 255, 255, 255);
-        public static Color32 Linen = new Color32(250, 240, 230, 255);
-        public static Color32 OldLace = new Color32(253, 245, 230, 255);
-        public static Color32 SeaShell = new Color32(255, 245, 238, 255);
-        public static Color32 MintCream = new Color32(245, 255, 250, 255);
+        public static Color White = new Color(1.00f, 1.00f, 1.00f, 1f);
+        public static Color Linen = new Color(0.98f, 0.94f, 0.90f, 1f);
+        public static Color OldLace = new Color(0.99f, 0.96f, 0.90f, 1f);
+        public static Color SeaShell = new Color(1.00f, 0.96f, 0.93f, 1f);
+        public static Color MintCream = new Color(0.96f, 1.00f, 0.98f, 1f);
 
         // Blacks and Grays
-        public static Color32 Black = new Color32(0, 0, 0, 255);
-        public static Color32 Grey = new Color32(128, 128, 128, 255);
-        public static Color32 LightGrey = new Color32(192, 192, 192, 255);
-        public static Color32 DarkGrey = new Color32(80, 80, 80, 255);
-        public static Color32 DarkerGrey = new Color32(40, 40, 40, 255);
-        #endregion
+        public static Color Black = new Color(0.00f, 0.00f, 0.00f, 1f);
+        public static Color Grey = new Color(0.50f, 0.50f, 0.50f, 1f);
+        public static Color LightGrey = new Color(0.75f, 0.75f, 0.75f, 1f);
+        public static Color DarkGrey = new Color(0.31f, 0.31f, 0.31f, 1f);
+        public static Color DarkerGrey = new Color(0.16f, 0.16f, 0.16f, 1f);
+#endregion
 
-        #region Transparent Colors
-
+        #region Transparent
         // Reds
-        public static Color32 RedTransparent = new Color32(255, 0, 0, 80);
-        public static Color32 DarkRedTransparent = new Color32(180, 0, 0, 80);
-        public static Color32 SalmonTransparent = new Color32(250, 128, 114, 80);
-        public static Color32 IndianRedTransparent = new Color32(205, 92, 92, 80);
-        public static Color32 CrimsonTransparent = new Color32(220, 20, 60, 80); 
-        public static Color32 WineRedTransparent = new Color32(123, 0, 0, 80);
-        public static Color32 FireBrickTransparent = new Color32(178, 34, 34, 80);
-        public static Color32 CoralTransparent = new Color32(255, 127, 80, 80);
-        public static Color32 TomatoTransparent = new Color32(255, 99, 71, 80);
-        public static Color32 MaroonTransparent = new Color32(128, 0, 0, 80);
+        public static Color RedTransparent = new Color(1.00f, 0.00f, 0.00f, 0.31f);
+        public static Color DarkRedTransparent = new Color(0.71f, 0.00f, 0.00f, 0.31f);
+        public static Color SalmonTransparent = new Color(0.98f, 0.50f, 0.45f, 0.31f);
+        public static Color IndianRedTransparent = new Color(0.80f, 0.36f, 0.36f, 0.31f);
+        public static Color CrimsonTransparent = new Color(0.86f, 0.08f, 0.24f, 0.31f);
+        public static Color WineRedTransparent = new Color(0.48f, 0.00f, 0.00f, 0.31f);
+        public static Color FireBrickTransparent = new Color(0.70f, 0.13f, 0.13f, 0.31f);
+        public static Color CoralTransparent = new Color(1.00f, 0.50f, 0.31f, 0.31f);
+        public static Color TomatoTransparent = new Color(1.00f, 0.39f, 0.28f, 0.31f);
+        public static Color MaroonTransparent = new Color(0.50f, 0.00f, 0.00f, 0.31f);
 
         // Greens
-        public static Color32 GreenTransparent = new Color32(0, 255, 0, 80);
-        public static Color32 LimeTransparent = new Color32(0, 128, 0, 80);
-        public static Color32 DarkGreenTransparent = new Color32(0, 100, 0, 80);
-        public static Color32 OliveTransparent = new Color32(128, 128, 0, 80);
-        public static Color32 ForestGreenTransparent = new Color32(34, 139, 34, 80);
-        public static Color32 SeaGreenTransparent = new Color32(46, 139, 87, 80);
-        public static Color32 MediumSeaGreenTransparent = new Color32(60, 179, 113, 80);
-        public static Color32 AquamarineTransparent = new Color32(127, 255, 212, 80);
-        public static Color32 MediumAquamarineTransparent = new Color32(102, 205, 170, 80);
-        public static Color32 DarkSeaGreenTransparent = new Color32(143, 188, 143, 80);
+        public static Color GreenTransparent = new Color(0.00f, 1.00f, 0.00f, 0.31f);
+        public static Color LimeTransparent = new Color(0.00f, 0.50f, 0.00f, 0.31f);
+        public static Color DarkGreenTransparent = new Color(0.00f, 0.39f, 0.00f, 0.31f);
+        public static Color OliveTransparent = new Color(0.50f, 0.50f, 0.00f, 0.31f);
+        public static Color ForestGreenTransparent = new Color(0.13f, 0.55f, 0.13f, 0.31f);
+        public static Color SeaGreenTransparent = new Color(0.18f, 0.55f, 0.34f, 0.31f);
+        public static Color MediumSeaGreenTransparent = new Color(0.24f, 0.70f, 0.44f, 0.31f);
+        public static Color AquamarineTransparent = new Color(0.50f, 1.00f, 0.83f, 0.31f);
+        public static Color MediumAquamarineTransparent = new Color(0.40f, 0.80f, 0.67f, 0.31f);
+        public static Color DarkSeaGreenTransparent = new Color(0.56f, 0.74f, 0.56f, 0.31f);
 
         // Blues
-        public static Color32 BlueTransparent = new Color32(0, 0, 255, 80);
-        public static Color32 NavyTransparent = new Color32(0, 0, 128, 80);
-        public static Color32 DarkBlueTransparent = new Color32(0, 0, 139, 80);
-        public static Color32 RoyalBlueTransparent = new Color32(65, 105, 225, 80);
-        public static Color32 DodgerBlueTransparent = new Color32(30, 144, 255, 80);
-        public static Color32 DarkDodgerBlueTransparent = new Color32(8, 90, 177, 80);
-        public static Color32 DeepSkyBlueTransparent = new Color32(0, 191, 255, 80);
-        public static Color32 SkyBlueTransparent = new Color32(135, 206, 235, 80);
-        public static Color32 SteelBlueTransparent = new Color32(70, 130, 180, 80);
-        public static Color32 CyanTransparent = new Color32(0, 255, 255, 80);
+        public static Color BlueTransparent = new Color(0.00f, 0.00f, 1.00f, 0.31f);
+        public static Color NavyTransparent = new Color(0.00f, 0.00f, 0.50f, 0.31f);
+        public static Color DarkBlueTransparent = new Color(0.00f, 0.00f, 0.55f, 0.31f);
+        public static Color RoyalBlueTransparent = new Color(0.25f, 0.41f, 0.88f, 0.31f);
+        public static Color DodgerBlueTransparent = new Color(0.12f, 0.56f, 1.00f, 0.31f);
+        public static Color DarkDodgerBlueTransparent = new Color(0.03f, 0.35f, 0.69f, 0.31f);
+        public static Color DeepSkyBlueTransparent = new Color(0.00f, 0.75f, 1.00f, 0.31f);
+        public static Color SkyBlueTransparent = new Color(0.53f, 0.81f, 0.92f, 0.31f);
+        public static Color SteelBlueTransparent = new Color(0.27f, 0.51f, 0.71f, 0.31f);
+        public static Color CyanTransparent = new Color(0.00f, 1.00f, 1.00f, 0.31f);
 
         // Yellows
-        public static Color32 YellowTransparent = new Color32(255, 255, 0, 80);
-        public static Color32 GoldTransparent = new Color32(255, 215, 0, 80);
-        public static Color32 LightYellowTransparent = new Color32(255, 255, 224, 80);
-        public static Color32 LemonChiffonTransparent = new Color32(255, 250, 205, 80);
-        public static Color32 KhakiTransparent = new Color32(240, 230, 140, 80);
-        public static Color32 PaleGoldenrodTransparent = new Color32(238, 232, 170, 80);
-        public static Color32 LightGoldenrodYellowTransparent = new Color32(250, 250, 210, 80);
+        public static Color YellowTransparent = new Color(1.00f, 1.00f, 0.00f, 0.31f);
+        public static Color GoldTransparent = new Color(1.00f, 0.84f, 0.00f, 0.31f);
+        public static Color LightYellowTransparent = new Color(1.00f, 1.00f, 0.88f, 0.31f);
+        public static Color LemonChiffonTransparent = new Color(1.00f, 0.98f, 0.80f, 0.31f);
+        public static Color KhakiTransparent = new Color(0.94f, 0.90f, 0.55f, 0.31f);
+        public static Color PaleGoldenrodTransparent = new Color(0.93f, 0.91f, 0.67f, 0.31f);
+        public static Color LightGoldenrodYellowTransparent = new Color(0.98f, 0.98f, 0.82f, 0.31f);
 
         // Oranges
-        public static Color32 OrangeTransparent = new Color32(255, 165, 0, 80);
-        public static Color32 DarkOrangeTransparent = new Color32(255, 140, 0, 80);
-        public static Color32 RedOrangeTransparent = new Color32(255, 69, 0, 80);
-        public static Color32 PeachPuffTransparent = new Color32(255, 218, 185, 80);
-        public static Color32 DarkGoldenrodTransparent = new Color32(184, 134, 11, 80);
-        public static Color32 PeruTransparent = new Color32(205, 133, 63, 80);
-        public static Color32 OrangeRedTransparent = new Color32(255, 69, 0, 80);
+        public static Color OrangeTransparent = new Color(1.00f, 0.65f, 0.00f, 0.31f);
+        public static Color DarkOrangeTransparent = new Color(1.00f, 0.55f, 0.00f, 0.31f);
+        public static Color RedOrangeTransparent = new Color(1.00f, 0.27f, 0.00f, 0.31f);
+        public static Color PeachPuffTransparent = new Color(1.00f, 0.85f, 0.73f, 0.31f);
+        public static Color DarkGoldenrodTransparent = new Color(0.72f, 0.53f, 0.04f, 0.31f);
+        public static Color PeruTransparent = new Color(0.80f, 0.52f, 0.25f, 0.31f);
+        public static Color OrangeRedTransparent = new Color(1.00f, 0.27f, 0.00f, 0.31f);
 
         // Purples
-        public static Color32 MagentaTransparent = new Color32(255, 0, 255, 80);
-        public static Color32 PurpleTransparent = new Color32(123, 3, 252, 80);
-        public static Color32 LavenderTransparent = new Color32(230, 230, 250, 80);
-        public static Color32 PlumTransparent = new Color32(221, 160, 221, 80);
-        public static Color32 IndigoTransparent = new Color32(75, 0, 130, 80);
-        public static Color32 MediumOrchidTransparent = new Color32(186, 85, 211, 80);
-        public static Color32 SlateBlueTransparent = new Color32(106, 90, 205, 80);
-        public static Color32 DarkSlateBlueTransparent = new Color32(72, 61, 139, 80);
+        public static Color MagentaTransparent = new Color(1.00f, 0.00f, 1.00f, 0.31f);
+        public static Color PurpleTransparent = new Color(0.48f, 0.01f, 0.99f, 0.31f);
+        public static Color LavenderTransparent = new Color(0.90f, 0.90f, 0.98f, 0.31f);
+        public static Color PlumTransparent = new Color(0.87f, 0.63f, 0.87f, 0.31f);
+        public static Color IndigoTransparent = new Color(0.29f, 0.00f, 0.51f, 0.31f);
+        public static Color MediumOrchidTransparent = new Color(0.73f, 0.33f, 0.83f, 0.31f);
+        public static Color SlateBlueTransparent = new Color(0.42f, 0.35f, 0.80f, 0.31f);
+        public static Color DarkSlateBlueTransparent = new Color(0.28f, 0.24f, 0.55f, 0.31f);
 
         // Pinks
-        public static Color32 PinkTransparent = new Color32(255, 192, 203, 80);
-        public static Color32 LightSalmonTransparent = new Color32(255, 160, 122, 80);
-        public static Color32 DarkSalmonTransparent = new Color32(233, 150, 122, 80);
-        public static Color32 LightCoralTransparent = new Color32(240, 128, 128, 80);
-        public static Color32 MistyRoseTransparent = new Color32(255, 228, 225, 80);
-        public static Color32 HotPinkTransparent = new Color32(255, 105, 180, 80);
-        public static Color32 DeepPinkTransparent = new Color32(255, 20, 147, 80);
+        public static Color PinkTransparent = new Color(1.00f, 0.75f, 0.80f, 0.31f);
+        public static Color LightSalmonTransparent = new Color(1.00f, 0.63f, 0.48f, 0.31f);
+        public static Color DarkSalmonTransparent = new Color(0.91f, 0.59f, 0.48f, 0.31f);
+        public static Color LightCoralTransparent = new Color(0.94f, 0.50f, 0.50f, 0.31f);
+        public static Color MistyRoseTransparent = new Color(1.00f, 0.89f, 0.88f, 0.31f);
+        public static Color HotPinkTransparent = new Color(1.00f, 0.41f, 0.71f, 0.31f);
+        public static Color DeepPinkTransparent = new Color(1.00f, 0.08f, 0.58f, 0.31f);
 
         // Browns
-        public static Color32 BrownTransparent = new Color32(165, 42, 42, 80);
-        public static Color32 RosyBrownTransparent = new Color32(188, 143, 143, 80);
-        public static Color32 SaddleBrownTransparent = new Color32(139, 69, 19, 80);
-        public static Color32 SiennaTransparent = new Color32(160, 82, 45, 80);
-        public static Color32 ChocolateTransparent = new Color32(210, 105, 30, 80);
-        public static Color32 SandyBrownTransparent = new Color32(244, 164, 96, 80);
-        public static Color32 BurlyWoodTransparent = new Color32(222, 184, 135, 80);
-        public static Color32 TanTransparent = new Color32(210, 180, 140, 80);
+        public static Color BrownTransparent = new Color(0.65f, 0.16f, 0.16f, 0.31f);
+        public static Color RosyBrownTransparent = new Color(0.74f, 0.56f, 0.56f, 0.31f);
+        public static Color SaddleBrownTransparent = new Color(0.55f, 0.27f, 0.07f, 0.31f);
+        public static Color SiennaTransparent = new Color(0.63f, 0.32f, 0.18f, 0.31f);
+        public static Color ChocolateTransparent = new Color(0.82f, 0.41f, 0.12f, 0.31f);
+        public static Color SandyBrownTransparent = new Color(0.96f, 0.64f, 0.38f, 0.31f);
+        public static Color BurlyWoodTransparent = new Color(0.87f, 0.72f, 0.53f, 0.31f);
+        public static Color TanTransparent = new Color(0.82f, 0.71f, 0.55f, 0.31f);
 
         // Whites
-        public static Color32 WhiteTransparent = new Color32(255, 255, 255, 80);
-        public static Color32 LightWhiteTransparent = new Color32(255, 255, 255, 10);
-        public static Color32 LinenTransparent = new Color32(250, 240, 230, 80);
-        public static Color32 OldLaceTransparent = new Color32(253, 245, 230, 80);
-        public static Color32 SeaShellTransparent = new Color32(255, 245, 238, 80);
-        public static Color32 MintCreamTransparent = new Color32(245, 255, 250, 80);
+        public static Color WhiteTransparent = new Color(1.00f, 1.00f, 1.00f, 0.31f);
+        public static Color LightWhiteTransparent = new Color(1.00f, 1.00f, 1.00f, 0.04f);
+        public static Color LinenTransparent = new Color(0.98f, 0.94f, 0.90f, 0.31f);
+        public static Color OldLaceTransparent = new Color(0.99f, 0.96f, 0.90f, 0.31f);
+        public static Color SeaShellTransparent = new Color(1.00f, 0.96f, 0.93f, 0.31f);
+        public static Color MintCreamTransparent = new Color(0.96f, 1.00f, 0.98f, 0.31f);
 
         // Blacks and Grays
-        public static Color32 BlackTransparent = new Color32(0, 0, 0, 80);
-        public static Color32 GreyTransparent = new Color32(80, 80, 80, 80);
-        public static Color32 LightGreyTransparent = new Color32(192, 192, 192, 80);
-        public static Color32 DarkGreyTransparent = new Color32(40, 40, 40, 80);
-        public static Color32 DarkerGreyTransparent = new Color32(40, 40, 40, 80);
+        public static Color BlackTransparent = new Color(0.00f, 0.00f, 0.00f, 0.31f);
+        public static Color GreyTransparent = new Color(0.31f, 0.31f, 0.31f, 0.31f);
+        public static Color LightGreyTransparent = new Color(0.75f, 0.75f, 0.75f, 0.31f);
+        public static Color DarkGreyTransparent = new Color(0.16f, 0.16f, 0.16f, 0.31f);
+        public static Color DarkerGreyTransparent = new Color(0.16f, 0.16f, 0.16f, 0.31f);
         #endregion
 
         #region Shaders

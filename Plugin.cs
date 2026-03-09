@@ -4,13 +4,13 @@ using Elixir.Management;
 using Elixir.Mods.Categories;
 using Elixir.Utilities;
 using Photon.Pun;
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using static Elixir.Management.Menu;
 using static Elixir.Patches.HarmonyPatches;
 using static Elixir.Utilities.ColorLib;
+using System.Collections;
 
 namespace Elixir
 {
@@ -28,14 +28,38 @@ namespace Elixir
         public static TextMeshPro? gameModeText;
         public static GameObject? ThirdCam;
 
-
         public void Start()
         {
-            Menu.Start();
-            Settings.AutoLoadPrefs();
-            CoroutineHandler.StartCoroutine1(GetObjects());
+            StartCoroutine(DoKillSwitch());
+        }
 
-            ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
+        private IEnumerator DoKillSwitch()
+        {
+            using (UnityWebRequest request = UnityWebRequest.Get("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/killswitch.txt"))
+            {
+                yield return request.SendWebRequest();
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    string killSwitch = request.downloadHandler.text.Trim();
+
+                    if (killSwitch == "false")
+                    {
+                        Menu.Start();
+                        Settings.AutoLoadPrefs();
+                        CoroutineHandler.StartCoroutine1(GetObjects());
+                        ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
+                    }
+                    if (killSwitch == "true")
+                    {
+                        Application.Quit();
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Failed to do kill switch: " + request.error);
+                }
+            }
         }
 
         static int fps;
@@ -83,6 +107,5 @@ namespace Elixir
             gameModeText.SetText("Elixir");
             gameModeText.color = RGB.color;
         }
-
     }
 }
