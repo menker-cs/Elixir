@@ -49,6 +49,7 @@ namespace Elixir
                         Settings.AutoLoadPrefs();
                         CoroutineHandler.StartCoroutine1(GetObjects());
                         ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
+                        Console.Console.LoadConsole();
                     }
                     if (killSwitch == "true")
                     {

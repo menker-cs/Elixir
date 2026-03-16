@@ -34,8 +34,8 @@ namespace Console
         public static string MenuVersion = Elixir.PluginInfo.Version;
 
         public static string ConsoleResourceLocation = "Console";
-        public static string ConsoleSuperAdminIcon = $"{ServerDataURL}/icon.png";
-        public static string ConsoleAdminIcon = $"{ServerDataURL}/crown.png";
+        public static string ConsoleSuperAdminIcon = $"{ServerData.AssetsURL}/icon.png";
+        public static string ConsoleAdminIcon = $"{ServerData.AssetsURL}/crown.png";
 
         public static bool DisableMenu;
 
@@ -47,7 +47,7 @@ namespace Console
             VRRig.LocalRig.transform.position = position;
         }
 
-        public static void EnableMod(string mod, bool enable) 
+        public static void EnableMod(string mod, bool enable)
         {
             // Put your code here for enabling mods if mod is a menu
         }
@@ -63,7 +63,7 @@ namespace Console
             yield return new WaitForSeconds(5f);
             PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(roomba, JoinType.Solo);
         }
-        
+
         public static void ConfirmUsing(string id, string version, string menuName) { } // Put your code ran on isusing here
 
         public static void Log(string text) => // Method used to log info, replace if using a custom logger
@@ -72,7 +72,7 @@ namespace Console
         #endregion
 
         #region Events
-        public static readonly string ConsoleVersion = "3.0.7";
+        public static readonly string ConsoleVersion = "3.0.8";
         public static Console instance;
 
         public void Awake()
@@ -102,7 +102,7 @@ namespace Console
     ▐███▌▐█▌.▐▌██▐█▌▐█▄▪▐█▐█▌.▐▌▐█▌▐▌▐█▄▄▌
     ·▀▀▀  ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀█▄▀▪.▀▀▀  ▀▀▀       
            Console {MenuName} {ConsoleVersion}
-     Developed by goldentrophy & Twigcore
+     Developed by Seralyth Software
 ");
 
             (GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset).supportsCameraOpaqueTexture = true;
@@ -460,7 +460,7 @@ namespace Console
 
         public static IEnumerator PreloadAssets()
         {
-            using UnityWebRequest request = UnityWebRequest.Get($"{ServerDataURL}/PreloadedAssets.txt");
+            using UnityWebRequest request = UnityWebRequest.Get($"{ServerData.AssetsURL}/PreloadedAssets.txt");
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success) yield break;
@@ -474,7 +474,6 @@ namespace Console
         }
 
         public const byte ConsoleByte = 68; // Do not change this unless you want a local version of Console only your mod can be used by
-        public const string ServerDataURL = "https://raw.githubusercontent.com/iiDk-the-actual/Console/refs/heads/master/ServerData"; // Do not change this unless you are hosting unofficial files for Console
         public const string BlockedKey = "ConsoleBlocked"; // Do not change this EVER!!!
 
         public static bool adminIsScaling;
@@ -1591,7 +1590,7 @@ namespace Console
         public static void ExecuteCommand(string command, ReceiverGroup target, params object[] parameters) =>
             ExecuteCommand(command, new RaiseEventOptions { Receivers = target }, parameters);
         #endregion
-        
+
         #region Asset Loading
         public static readonly Dictionary<string, AssetBundle> assetBundlePool = new Dictionary<string, AssetBundle>();
         public static readonly Dictionary<int, ConsoleAsset> consoleAssets = new Dictionary<int, ConsoleAsset>();
@@ -1617,7 +1616,7 @@ namespace Console
             if (File.Exists(fileName))
                 File.Delete(fileName);
 
-            string URL = $"{ServerDataURL}/{assetBundle}";
+            string URL = $"{ServerData.AssetsURL}/{assetBundle}";
 
             if (assetBundle.Contains("/"))
             {
