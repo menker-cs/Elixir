@@ -258,22 +258,20 @@ namespace Elixir.Utilities
             byte[] imageData;
             using (var httpClient = new HttpClient())
             {
-                var response = httpClient.GetAsync(url).Result;
-                response.EnsureSuccessStatusCode();
+                HttpResponseMessage response;
+                response = httpClient.GetAsync(url).Result;     
                 imageData = response.Content.ReadAsByteArrayAsync().Result;
             }
-
-            var material = new Material(Shader.Find("GorillaTag/UberShader"))
-            {
-                shaderKeywords = new[] { "_USE_TEXTURE" }
-            };
 
             var texture = new Texture2D(2, 2);
             ImageConversion.LoadImage(texture, imageData);
             texture.Apply();
 
-            material.mainTexture = texture;
-
+            var material = new Material(Shader.Find("GorillaTag/UberShader"))
+            {
+                shaderKeywords = new[] { "_USE_TEXTURE" },
+                mainTexture = texture
+            };
             return material;
         }
         public static string ClrToHex(Color c)
