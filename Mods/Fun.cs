@@ -132,7 +132,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -147,7 +147,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -169,7 +169,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -185,7 +185,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -206,7 +206,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -221,7 +221,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
                 body.velocity = GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform.forward * 10f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -236,7 +236,7 @@ namespace Elixir.Mods.Categories
                 UnityEngine.Object.Destroy(draw.GetComponent<SphereCollider>());
                 draw.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 draw.GetComponent<Renderer>().material.color = ColorLib.MenuMat[0].color;
-                GameObject.Destroy(draw, 5f);
+                GameObject.Destroy(draw, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -245,7 +245,7 @@ namespace Elixir.Mods.Categories
                 UnityEngine.Object.Destroy(draw.GetComponent<SphereCollider>());
                 draw.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 draw.GetComponent<Renderer>().material.color = ColorLib.MenuMat[0].color;
-                GameObject.Destroy(draw, 5f);
+                GameObject.Destroy(draw, 3f);
             }
         }
 
@@ -265,7 +265,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -279,7 +279,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -299,7 +299,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -313,7 +313,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -331,7 +331,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }, false);
         }
 
@@ -349,7 +349,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }, false);
         }
 
@@ -371,7 +371,7 @@ namespace Elixir.Mods.Categories
                 body.rotation = UnityEngine.Random.rotation;
                 body.velocity = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f)) * 25f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab)
             {
@@ -387,7 +387,7 @@ namespace Elixir.Mods.Categories
                 body.rotation = UnityEngine.Random.rotation;
                 body.velocity = new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3f, 3f)) * 25f;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -407,7 +407,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
@@ -421,7 +421,7 @@ namespace Elixir.Mods.Categories
                 body.useGravity = true;
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 
@@ -442,7 +442,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
                 Trail(orb, SkyBlue, DarkDodgerBlue);
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
             if (ControllerInputPoller.instance.leftGrab || UnityInput.Current.GetKey(KeyCode.G))
             {
@@ -457,7 +457,7 @@ namespace Elixir.Mods.Categories
                 body.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
                 Trail(orb, SkyBlue, DarkDodgerBlue);
-                GameObject.Destroy(orb, 5f);
+                GameObject.Destroy(orb, 3f);
             }
         }
 

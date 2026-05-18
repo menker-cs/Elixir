@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Photon.Pun.PhotonNetwork;
-
+using static Elixir.Utilities.ControllerInputLibrary;
 using Time = UnityEngine.Time;
 
 namespace Elixir.Mods
@@ -229,6 +229,118 @@ namespace Elixir.Mods
                         }
                     }
                 }
+            }
+        }
+        #endregion
+
+        #region Exploits
+
+        public static bool LocalGrabbingPlayer(VRRig vrrig)
+        {
+            if (!vrrig.isOfflineVRRig && !vrrig.isLocal)
+            {
+                TakeMyHand_HandLink leftLink = vrrig.leftHandLink;
+                TakeMyHand_HandLink rightLink = vrrig.rightHandLink;
+
+                if (leftLink.grabbedPlayer == NetworkSystem.Instance.LocalPlayer || rightLink.grabbedPlayer == NetworkSystem.Instance.LocalPlayer)
+                    return true;
+                else
+                    return false;
+            } else { return false; }
+        }
+
+        public static void FlingPlayerGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                foreach (VRRig vrrig in VRRigCache.ActiveRigs)
+                {
+                    if (LocalGrabbingPlayer(vrrig))
+                    {
+                        TakeMyHand_HandLink leftLink = vrrig.leftHandLink;
+                        TakeMyHand_HandLink rightLink = vrrig.rightHandLink;
+
+                        bool righthand = VRRig.LocalRig.rightHandLink.grabbedPlayer == RigManager.GetNetPlayerFromVRRig(vrrig);
+
+                        if (righthand && RightTrigger())
+                        {
+                            VRRig.LocalRig.enabled = false;
+                            VRRig.LocalRig.transform.position = VRRig.LocalRig.transform.position + GunTemplate.spherepointer.transform.position * 25f;
+                        }
+
+                        if (!righthand && LeftTrigger())
+                        {
+                            VRRig.LocalRig.enabled = false;
+                            VRRig.LocalRig.transform.position = VRRig.LocalRig.transform.position + GunTemplate.spherepointer.transform.position * 25f;
+                        }
+                    }
+                    else
+                    {
+                        VRRig.LocalRig.enabled = true;
+                    }
+                }
+            }, false);
+        }
+
+        public static void TeleportPlayerGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                foreach (VRRig vrrig in VRRigCache.ActiveRigs)
+                {
+                    if (LocalGrabbingPlayer(vrrig))
+                    {
+                        TakeMyHand_HandLink leftLink = vrrig.leftHandLink;
+                        TakeMyHand_HandLink rightLink = vrrig.rightHandLink;
+
+                        bool righthand = VRRig.LocalRig.rightHandLink.grabbedPlayer == RigManager.GetNetPlayerFromVRRig(vrrig);
+
+                        if (righthand && RightTrigger())
+                        {
+                            VRRig.LocalRig.enabled = false;
+                            VRRig.LocalRig.transform.position = GunTemplate.spherepointer.transform.position;
+                        }
+
+                        if (!righthand && LeftTrigger())
+                        {
+                            VRRig.LocalRig.enabled = false;
+                            VRRig.LocalRig.transform.position = GunTemplate.spherepointer.transform.position;
+                        }
+                    }
+                    else
+                    {
+                        VRRig.LocalRig.enabled = true;
+                    }
+                }
+            }, false);
+        }
+
+        private static float lastBreak = 0f;
+        public static void BreakPlayerGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                if (Time.time > lastBreak)
+                {
+                    lastBreak = Time.time + 1f;
+                    PhotonNetwork.OpRemoveCompleteCacheOfPlayer((NetPlayerToPlayer(GetPlayerFromVRRig(GunTemplate.LockedPlayer)).ActorNumber));
+                }
+            }, true);
+        }
+
+        public static void BreakAllPlayers()
+        {
+            foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerList)
+            {
+                PhotonNetwork.OpRemoveCompleteCacheOfPlayer(player.ActorNumber);
+            }
+        }
+
+        public static void BreakOtherPlayers()
+        {
+            foreach (Photon.Realtime.Player player in PhotonNetwork.PlayerListOthers)
+            {
+                PhotonNetwork.OpRemoveCompleteCacheOfPlayer(player.ActorNumber);
             }
         }
         #endregion

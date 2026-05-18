@@ -4,7 +4,7 @@
     {
         public const string GUID = "com.elixir.menu.gtag";
         public const string Name = "Elixir";
-        public const string Version = "8.0";
+        public const string Version = "9.0";
         public const bool MenuBeta = false;
     }
 }

@@ -32,7 +32,6 @@ namespace Elixir.Mods.Categories
         }
 
         #region Advantage
-        // TY Cha
         public static void TagPlayer(VRRig plr)
         {
             if (GorillaTagger.Instance == null) return;
@@ -307,15 +306,15 @@ namespace Elixir.Mods.Categories
         {
             if (GorillaTagger.Instance == null) return;
 
-            if (ControllerInputPoller.instance.rightGrab | UnityInput.Current.GetKey(KeyCode.G))
+            if (ControllerInputLibrary.RightGrip())
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
-                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.rightHandTransform.rotation;
-            }
-            else
+                VRRig.LocalRig.enabled = false;
+
+                VRRig.LocalRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+                VRRig.LocalRig.transform.rotation = GorillaTagger.Instance.rightHandTransform.rotation;
+            } else
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                VRRig.LocalRig.enabled = true;
             }
         }
         public static void FreezeRig()

@@ -88,7 +88,7 @@ namespace Elixir
                 $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
                 $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
                 $"<color={hexColor1}>I Hope You Enjoy The Menu</color> \n" +
-                $"Made by <color={hexColor1}>Menker</color>");
+                $"Made by <color={hexColor1}>Menker & sodaa</color>");
 
             motdBody.alignment = TextAlignmentOptions.Top;
             #endregion

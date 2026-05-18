@@ -11,6 +11,7 @@ using static Elixir.Mods.Categories.World;
 using static Elixir.Utilities.Variables;
 using Elixir.Mods;
 using Elixir.Utilities;
+using Elixir.Patches;
 
 namespace Elixir.Management
 {
@@ -30,7 +31,6 @@ namespace Elixir.Management
                 new Module() { title = "Toggle Square Menu", tooltip = "Toggles if the menu is a square.", isToggleable = true, toggled = false, action = () => RoundedMenu(true), disableAction = () => RoundedMenu(false) },
                 new Module() { title = "Toggle Version Counter", tooltip = "Shows or hides the on-screen version counter.", isToggleable = true, toggled = true, action = () => ToggleVCounter(true), disableAction = () => ToggleVCounter(false) },
                 new Module() { title = "Sort Buttons Alphabetically", tooltip = "Sorts buttons in alphabetical order when enabled.", isToggleable = true, toggled = false, action = () => Alphabet(true), disableAction = () => Alphabet(false) },
-                new Module() { title = "Visualize Antireport", tooltip = "Displays a visual indicator for anti-report features.", isToggleable = true, toggled = false, action = () => VisReport(true), disableAction = () => VisReport(false) },
                 new Module() { title = "Change Anti Report Mode", tooltip = "Current Setting: Disconnect", isToggleable = false, toggled = false, action = () => ReportChange() },
                 new Module() { title = "Change ESP Color", tooltip = "Current Setting: Infection", isToggleable = false, action = () => ESPChange() },
                 new Module() { title = "Change Tracer Position", tooltip = "Current Setting: Right Hand", isToggleable = false, action = () => TracerPos() },
@@ -53,11 +53,7 @@ namespace Elixir.Management
                 new Module() { title = "Connect To US Servers", tooltip = "Forces connection to the US server cluster.", isToggleable = false, action = () => Servers("us") },
                 new Module() { title = "Connect To USW Servers", tooltip = "Forces connection to the US West server cluster.", isToggleable = false, action = () => Servers("usw") },
                 new Module() { title = "Connect To EU Servers", tooltip = "Forces connection to the EU server cluster.", isToggleable = false, action = () => Servers("eu") },
-                new Module() { title = "Join Menu Code", tooltip = "Joins the room with the menu's custom code.", isToggleable = false, action = () => JoinRoom("$ELIXIR$") },
-                new Module() { title = "Join Code MODS", tooltip = "Joins the room using code 'MODS'.", isToggleable = false, action = () => JoinRoom("MODS") },
-                new Module() { title = "Join Code PBBV", tooltip = "Joins the room using code 'PBBV'.", isToggleable = false, action = () => JoinRoom("PBBV") },
-                new Module() { title = "Join Code DAISY09", tooltip = "Joins the room using code 'DAISY09'.", isToggleable = false, action = () => JoinRoom("DAISY09") },
-                new Module() { title = "Mute Gun", tooltip = "Mutes sounds originating from guns.", isToggleable = true, action = () => MuteGun() },
+                new Module() { title = "Join Menu Code", tooltip = "Joins the room with the menu's custom code.", isToggleable = false, action = () => JoinRoom("$ELIXIR$") },                new Module() { title = "Mute Gun", tooltip = "Mutes sounds originating from guns.", isToggleable = true, action = () => MuteGun() },
                 new Module() { title = "Mute Everyone", tooltip = "Mutes all other players in the room.", isToggleable = false, action = () => MuteAll() },
                 new Module() { title = "Report Gun", tooltip = "Sends a report for the current gun (if applicable).", isToggleable = true, action = () => ReportGun() },
                 new Module() { title = "Report Everyone", tooltip = "Sends a report for all players in the room.", isToggleable = false, action = () => ReportAll() },
@@ -68,6 +64,7 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Movement", new Module[] {
+                new Module() { title = "Keyboard Fly [PC]", tooltip = "Move your character using keyboard WASD controls.", isToggleable = true, action = () => WASDFly() },
                 new Module() { title = "Platforms [G]", tooltip = "Creates solid platforms beneath your hands while gripping.", isToggleable = true, action = () => Platforms(false, false) },
                 new Module() { title = "Invis Platforms [G]", tooltip = "Creates invisible grip platforms for stealth movement.", isToggleable = true, action = () => Platforms(true, false) },
                 new Module() { title = "Plank Platforms", tooltip = "Spawns wide plank-like platforms to stand or walk on.", isToggleable = true, action = () => Platforms(false, true) },
@@ -89,8 +86,7 @@ namespace Elixir.Management
                 new Module() { title = "Velocity Fly [P]", tooltip = "Fly with slingshot-style physics using trigger.", isToggleable = true, action = () => VelocityFly() },
                 new Module() { title = "Iron Monke [G]", tooltip = "Gain extra weight and strong gravity when gripping.", isToggleable = true, action = () => IronMonkey() },
                 new Module() { title = "Forward & Backward [T]", tooltip = "Allows directional control forward/backward with trigger.", isToggleable = true, action = () => Carmonkey() },
-                new Module() { title = "Up & Down [T]", tooltip = "Move vertically using trigger input.", isToggleable = true, action = () => UpAndDown() },
-                new Module() { title = "WASD [PC]", tooltip = "Move your character using keyboard WASD controls.", isToggleable = true, action = () => WASDFly() },
+                new Module() { title = "Up & Down [T]", tooltip = "Move vertically using trigger input.", isToggleable = true, action = () => UpAndDown() },             
                 new Module() { title = "Joystick Fly", tooltip = "Fly using joystick movement controls.", isToggleable = true, action = () => DroneFly() },
                 new Module() { title = "No Gravity", tooltip = "Removes gravity effect from your player.", isToggleable = true, action = () => NoGravity() },
                 new Module() { title = "Moon Walk", tooltip = "Simulates moon-like low gravity movement.", isToggleable = true, action = () => MoonWalk() },
@@ -123,7 +119,7 @@ namespace Elixir.Management
                 new Module() { title = "T Pose [G]", tooltip = "Puts your avatar into a static T-pose.", isToggleable = true, action = () => Tpose() },
                 new Module() { title = "Helicopter [G]", tooltip = "Spins your body rapidly like a helicopter.", isToggleable = true, action = () => Helicopter() },
                 new Module() { title = "Fake Lag [G]", tooltip = "Simulates lag by freezing and resuming motion randomly.", isToggleable = true, action = () => FakeLag() },
-                new Module() { title = "Grab Rig [G]", tooltip = "Allows grabbing and pulling on your rig manually.", isToggleable = true, action = () => GrabRig() },
+                new Module() { title = "Grab Rig [G] [SS]", tooltip = "Allows grabbing and pulling on your rig manually.", isToggleable = true, action = () => GrabRig() },
                 new Module() { title = "Spaz Rig", tooltip = "Applies random spaz-like movements to your rig.", isToggleable = true, action = () => Spaz() },
                 new Module() { title = "Spaz Hands", tooltip = "Causes your hands to twitch erratically.", isToggleable = true, action = () => SpazHands() },
                 new Module() { title = "Annoy Player Gun", tooltip = "Targets another player with an annoying effect gun.", isToggleable = true, action = () => AnnoyPlayerGun() },
@@ -138,38 +134,42 @@ namespace Elixir.Management
                 new Module() { title = "Grab Your Rig Gun", tooltip = "Lets you grab your rig's attached gun.", isToggleable = true, action = () => GrabGun() },
                 new Module() { title = "Backshots Gun", tooltip = "Special gun effect that fires backward shots.", isToggleable = true, action = () => SexGun() },
                 new Module() { title = "Head Gun", tooltip = "Attaches a gun to your head model.", isToggleable = true, action = () => HeadGun() },
-                new Module() { title = "Get Head Gun", tooltip = "Gives you a gun that attaches to your head.", isToggleable = true, action = () => GetHeadGun() },
-                new Module() { title = "Tag Gun", tooltip = "Shoots tagging projectiles instead of normal shots.", isToggleable = true, action = () => TagGun() },
-                new Module() { title = "Tag Aura [G]", tooltip = "Creates an aura that tags nearby players when gripping.", isToggleable = true, action = () => TagAura() },
-                new Module() { title = "Tag All", tooltip = "Tags all players instantly when triggered.", isToggleable = false, action = () => TagAll() },
-                new Module() { title = "Tag Self [T]", tooltip = "Tags yourself for quick testing.", isToggleable = true, action = () => TagSelf() },
+                new Module() { title = "Get Head Gun", tooltip = "Gives you a gun that attaches to your head.", isToggleable = true, action = () => GetHeadGun() }, 
                 new Module() { title = "Max Quest Score", tooltip = "Sets your quest score to a maxed-out value.", isToggleable = false, action = () => QuestScore(99999) },
                 new Module() { title = "69420 Quest Score", tooltip = "Sets your quest score to a funny custom value.", isToggleable = false, action = () => QuestScore(69420) },
             }));
 
             categories.Add(new Category("Visuals", new Module[] {
-                new Module() { title = "Chams", tooltip = "Highlights players and objects with colored materials.", isToggleable = true, action = () => ESP(), disableAction = () => DisableESP() },
-                new Module() { title = "Tracers", tooltip = "Draws visible lines between you and other players.", isToggleable = true, action = () => Tracers() },
-                new Module() { title = "Beacons", tooltip = "Displays beacon markers over key targets.", isToggleable = true, action = () => Beacons() },
-                new Module() { title = "2D Box ESP", tooltip = "Shows 2D boxes around players for easy identification.", isToggleable = true, action = () => BoxESP(false) },
-                new Module() { title = "3D Box ESP", tooltip = "Shows 3D bounding boxes around players.", isToggleable = true, action = () => BoxESP(true) },
-                new Module() { title = "2D Wireframe ESP", tooltip = "Displays entities as 3D wireframes for visibility.", isToggleable = true, action = () => Wireframe(false) },
-                new Module() { title = "3D Wireframe ESP", tooltip = "Alternative wireframe visualization mode.", isToggleable = true, action = () => Wireframe(true) },
-                new Module() { title = "CSGO ESP", tooltip = "Activates a CSGO-style enemy highlight system.", isToggleable = true, action = () => CSGO() },
-                new Module() { title = "Sphere ESP", tooltip = "Draws spheres around visible entities.", isToggleable = true, action = () => BallESP() },
-                new Module() { title = "Bug ESP", tooltip = "Shows ESP outlines for bug entities.", isToggleable = true, action = () => EntityESP(false) },
-                new Module() { title = "Bat ESP", tooltip = "Shows ESP outlines for bat entities.", isToggleable = true, action = () => EntityESP(true) },
-                new Module() { title = "Distance ESP", tooltip = "Displays distance information beside each tracked target.", isToggleable = true, action = () => DistanceESP() },
-                new Module() { title = "Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => Nametags() },
-                new Module() { title = "Elixr User Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => MenuNametags() },
-                new Module() { title = "Advanced Nametags", tooltip = "Adds extra information (like ping) to nametags.", isToggleable = true, action = () => AdvNametags() },
-                new Module() { title = "VR Info Display", tooltip = "Displays VR performance or device info overlay.", isToggleable = true, action = () => InfoDisplay() },
-                new Module() { title = "Snake ESP", tooltip = "Renders a moving snake trail behind players.", isToggleable = true, action = () => SnakeESP() },
-                new Module() { title = "Skeleton ESP", tooltip = "Draws skeletal outlines for player avatars.", isToggleable = true, action = () => EnableSkeleton(), disableAction = () => DisableSkeleton() },
+                new Module() { title = "Chams", tooltip = "Highlights players and objects with colored materials.", isToggleable = true, action = () => Chams(true), disableAction = () => Chams(false) },
+                new Module() { title = "Tracers", tooltip = "Draws visible lines between you and other players.", isToggleable = true, action = () => Tracers(true), disableAction =() => Tracers(false) },
+                new Module() { title = "Box ESP", tooltip = "Shows 2D boxes around players for easy identification.", isToggleable = true, action = () => BoxESP(true), disableAction =() => BoxESP(false) },
+                new Module() { title = "Distance ESP", tooltip = "Displays distance information beside each tracked target.", isToggleable = true, action = () => DistanceNametags(true), disableAction =() => DistanceNametags(false) },
+                new Module() { title = "Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => Nametags(true), disableAction =() => Nametags(false) },
+                new Module() { title = "Elixr User Nametags", tooltip = "Shows floating nametags above players’ heads.", isToggleable = true, action = () => MenuNametag(true), disableAction =() => MenuNametag(false) },
+                new Module() { title = "Advanced Nametags", tooltip = "Adds extra information (like ping) to nametags.", isToggleable = true, action = () => AdvNametags(true), disableAction =() => AdvNametags(false) },
+                new Module() { title = "VR Info Display", tooltip = "Displays VR performance or device info overlay.", isToggleable = true, action = () => InfoDisplay(true), disableAction =() => InfoDisplay(false) },
+                new Module() { title = "Snake ESP", tooltip = "Renders a moving snake trail behind players.", isToggleable = true, action = () => SnakeESP(true), disableAction =() => SnakeESP(false) },
+                new Module() { title = "Bone ESP", tooltip = "Draws the bones inside of the players avatars.", isToggleable = true, action = () => BoneESP(true), disableAction = () => BoneESP(false) },
+                new Module() { title = "Skeleton ESP", tooltip = "Draws skeletal outlines for player avatars.", isToggleable = true, action = () => SkeletonEsp(true), disableAction = () => SkeletonEsp(false) },
                 new Module() { title = "Ignore Gun [CS]", tooltip = "Prevents ESP from highlighting held guns.", isToggleable = true, action = () => Ignore() },
             }));
 
+            categories.Add(new Category("Exploits", new Module[] {
+                new Module() { title = "Unlock VIM", tooltip = "Unlocks the VIM subscription.", isToggleable = true, action =() => VIMPatch.enabled = true, disableAction =() => VIMPatch.enabled = false },
+                new Module() { title = "Tag Gun", tooltip = "Shoots tagging projectiles instead of normal shots.", isToggleable = true, action = () => TagGun() },
+                new Module() { title = "Tag Aura [G]", tooltip = "Creates an aura that tags nearby players when gripping.", isToggleable = true, action = () => TagAura() },
+                new Module() { title = "Tag All", tooltip = "Tags all players instantly when triggered.", isToggleable = false, action = () => TagAll() },
+                new Module() { title = "Tag Self [T]", tooltip = "Tags yourself for quick testing.", isToggleable = true, action = () => TagSelf() },
+                new Module() { title = "Fling Player Gun", tooltip = "While grabbing a player, press trigger to fling them.", isToggleable = true, action = () => Potentially_OP.FlingPlayerGun() },
+                new Module() { title = "Teleport Player Gun", tooltip = "While grabbing a player, press trigger to teleport them.", isToggleable = true, action = () => Potentially_OP.TeleportPlayerGun() },
+                new Module() { title = "Destroy Player Gun", tooltip = "Destroys a player, makingthem broken for new players that join.", isToggleable = true, action = () => Potentially_OP.BreakPlayerGun() },
+                new Module() { title = "Destroy All", tooltip = "Destroys a player, makingthem broken for new players that join.", isToggleable = false, action = () => Potentially_OP.BreakAllPlayers() },
+                new Module() { title = "Destroy Others", tooltip = "Destroys a player, makingthem broken for new players that join.", isToggleable = false, action = () => Potentially_OP.BreakOtherPlayers() },
+            }));
+
             categories.Add(new Category("Entity Mods", new Module[] {
+                new Module() { title = "Bug ESP", tooltip = "Shows ESP outlines for bug entities.", isToggleable = true, action = () => EntityESP(false) },
+                new Module() { title = "Bat ESP", tooltip = "Shows ESP outlines for bat entities.", isToggleable = true, action = () => EntityESP(true) },
                 new Module() { title = "Grab Bug [G]", tooltip = "Allows grabbing and tossing bug entities.", isToggleable = true, action = () => GrabBug() },
                 new Module() { title = "Bug Gun", tooltip = "Spawns a gun that fires bug projectiles.", isToggleable = true, action = () => BugGun() },
                 new Module() { title = "Snipe Bug [G]", tooltip = "Lets you aim and shoot long-range bug attacks.", isToggleable = true, action = () => SnipeBug() },
@@ -179,14 +179,6 @@ namespace Elixir.Management
                 new Module() { title = "Snipe Bat [G]", tooltip = "Enables long-range bat attacks using your gun.", isToggleable = true, action = () => SnipeBat() },
                 new Module() { title = "Bat Halo", tooltip = "Creates a halo of bats orbiting your player.", isToggleable = true, action = () => BatHalo() },
             }));
-
-            categories.Add(new Category("Sherbert Mods", new Module[] {
-                new Module() { title = "Sherbert", tooltip = "Summons or dismisses the Sherbert companion.", isToggleable = true, action = SherbertFollow, disableAction = StopSherbertFollow },
-                new Module() { title = "Throwable Sherbert [G]", tooltip = "Spawns a Sherbert which you can throw around.", isToggleable = true, action = () => Sherbert() },
-                new Module() { title = "Sherbert Launcher [G]", tooltip = "Launches Sherbert out of your hand.", isToggleable = true, action = () => LaunchSherbert() },
-                new Module() { title = "Killer Sherbert", tooltip = "If Sherbert touches you, you die.", isToggleable = true, action = () => SherbertKiller(), disableAction = StopSherbertFollow },
-                new Module() { title = "Kill Sherbert", tooltip = "Kills Sherbert.", isToggleable = false, action = () => KillSherbert() },
-            })); 
 
             categories.Add(new Category("Splash Mods", new Module[] {
                 new Module() { title = "Splash Hands [G]", tooltip = "Creates water splash effects from your hands.", isToggleable = true, action = () => SplashHands() },
@@ -209,6 +201,11 @@ namespace Elixir.Management
                 new Module() { title = "Big Gun Orb", tooltip = "Shoots large orbs from your gun.", isToggleable = true, action = () => OrbGun1() },
                 new Module() { title = "Orb Rain", tooltip = "Causes orbs to rain down from above.", isToggleable = true, action = () => OrbRain() },
                 new Module() { title = "Orb Rain Trace", tooltip = "Creates tracer lines for raining orbs.", isToggleable = true, action = () => OrbRain1() },
+                new Module() { title = "Sherbert", tooltip = "Summons or dismisses the Sherbert companion.", isToggleable = true, action = SherbertFollow, disableAction = StopSherbertFollow },
+                new Module() { title = "Throwable Sherbert [G]", tooltip = "Spawns a Sherbert which you can throw around.", isToggleable = true, action = () => Sherbert() },
+                new Module() { title = "Sherbert Launcher [G]", tooltip = "Launches Sherbert out of your hand.", isToggleable = true, action = () => LaunchSherbert() },
+                new Module() { title = "Killer Sherbert", tooltip = "If Sherbert touches you, you die.", isToggleable = true, action = () => SherbertKiller(), disableAction = StopSherbertFollow },
+                new Module() { title = "Kill Sherbert", tooltip = "Kills Sherbert.", isToggleable = false, action = () => KillSherbert() },
             }));
 
             categories.Add(new Category("World", new Module[] {
@@ -223,14 +220,14 @@ namespace Elixir.Management
             }));
 
             categories.Add(new Category("Paintbrawl Mods", new Module[] {
-                new Module() { title = "PB Kill All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBKillAll() },
-                new Module() { title = "PB Kill Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBKillGun() },
-                new Module() { title = "PB Revive All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRevAll() },
-                new Module() { title = "PB Revive Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBRevGun() },
-                new Module() { title = "PB Infinite Lives [M]", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.PBInfLives(true), disableAction = () => Potentially_OP.PBInfLives(false) },
-                new Module() { title = "PB Give Infinite Lives [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBGiveInfLives() },
-                new Module() { title = "PB Balloon Spam All [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBSpamBalloons() },
-                new Module() { title = "PB Restart Game [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRestart() },
+                new Module() { title = "Kill All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBKillAll() },
+                new Module() { title = "Kill Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBKillGun() },
+                new Module() { title = "Revive All [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRevAll() },
+                new Module() { title = "Revive Gun [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBRevGun() },
+                new Module() { title = "Infinite Lives [M]", tooltip = "", isToggleable = true, toggled = false, action = () => Potentially_OP.PBInfLives(true), disableAction = () => Potentially_OP.PBInfLives(false) },
+                new Module() { title = "Give Infinite Lives [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBGiveInfLives() },
+                new Module() { title = "Balloon Spam All [M]", tooltip = "", isToggleable = true, action = () => Potentially_OP.PBSpamBalloons() },
+                new Module() { title = "Restart Game [M]", tooltip = "", isToggleable = false, action = () => Potentially_OP.PBRestart() },
             }));
 
             categories.Add(new Category("Guardian Mods", new Module[] {
@@ -243,10 +240,10 @@ namespace Elixir.Management
 
             categories.Add(new Category("Credits", new Module[] {
                 new Module() { title = "Menker - Owner/Main Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "sodaa - Main Dev/Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Cha554 - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Cheemz - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "GLXY - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Fwog - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Join The Discord", tooltip = "", isToggleable = false, action = () => Discord() },
             }));
         }
