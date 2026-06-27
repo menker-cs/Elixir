@@ -82,9 +82,6 @@ namespace Elixir.Management
 
         public static void Start()
         {
-            GameObject OnScreenGUI = new GameObject("Elixir GUI");
-            OnScreenGUI.AddComponent<GUIHandler>();
-
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("Elixir", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
