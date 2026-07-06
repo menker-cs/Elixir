@@ -10,13 +10,13 @@
   </Target>
 
   <ItemGroup>
-    <None Remove="Resources\ElixirBundle" />
+    <None Remove="Resources\elixirbundle" />
     <None Remove="Resources\keybundle" />
     <None Remove="Resources\notifbundle" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ElixirBundle" />
+    <EmbeddedResource Include="Resources\elixirbundle" />
     <EmbeddedResource Include="Resources\notifbundle" />
   </ItemGroup>
 

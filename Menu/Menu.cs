@@ -86,7 +86,7 @@ namespace Elixir.Management
             table.Add("Elixir", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
 
-            var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");
+            var bundle = LoadAssetBundle("Elixir.Resources.elixirbundle");
             var asset = bundle.LoadAsset<GameObject>("Elixir");
             menu = GameObject.Instantiate(asset);
 
