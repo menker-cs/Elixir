@@ -325,8 +325,8 @@ namespace Elixir.Utilities
         }
 
         public static Material fmby = Url2Mat("https://i.ebayimg.com/images/g/XI8AAOSwwvRlMHkz/s-l1200.jpg");
-        public static Material SherbMat = Url2Mat("https://raw.githubusercontent.com/Cha554/Stone-Networking/main/Stone/Sherbert.jpg");
-        public static Material AngrySherbMat = Url2Mat("https://raw.githubusercontent.com/Cha554/Stone-Networking/main/Sherbert(1).jpg");
+        public static Material SherbMat = Url2Mat("https://raw.githubusercontent.com/menker-cs/Elixir/main/Resources/sherbert.jpg");
+        public static Material AngrySherbMat = Url2Mat("https://raw.githubusercontent.com/menker-cs/Elixir/main/Resources/sherbert(1).jpg");
 
         #region Menu Colors
         public static Material[] MenuMat = new Material[]
