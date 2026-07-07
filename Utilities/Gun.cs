@@ -25,191 +25,195 @@ namespace Elixir.Utilities
         public static GameObject? spherepointer;
         public static VRRig? LockedPlayer;
         public static Vector3 lr;
-        public static Color32 TriggeredPointerColor = new Color32(53, 0, 0, 255);
-        public static Color32 TriggeredLineColor = new Color32(53, 0, 0, 255);
+        public static Color32 TriggeredPointerColor = new Color(0.15f, 0.00f, 0.28f, 1f);
+        public static Color32 TriggeredLineColor = new Color(0.15f, 0.00f, 0.28f, 1f);
 
         public static RaycastHit raycastHit;
-        public static void StartVrGun(Action action, bool LockOn)
+        
+        private static Vector3 CalculateBezierPoint(Vector3 start, Vector3 mid, Vector3 end, float t) =>
+            (1f - t) * (1f - t) * start + 2f * (1f - t) * t * mid + t * t * end;
+
+        public static void CurveLineRenderer(LineRenderer lr, Vector3 starte, Vector3 mid, Vector3 ende, int positioncount = 150)
         {
-            if (ControllerInputPoller.instance.rightGrab)
+            lr.positionCount = positioncount;
+            lr.positionCount = positioncount;
+            for (int i = 0; i < positioncount; i++)
             {
-                Physics.Raycast(GorillaTagger.Instance.rightHandTransform.position, -GorillaTagger.Instance.rightHandTransform.up, out raycastHit, float.MaxValue);
-                if (spherepointer == null && gunSetting != 3)
-                {
-                    spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    spherepointer.AddComponent<Renderer>();
-                    spherepointer.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
-                    spherepointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-                    GameObject.Destroy(spherepointer.GetComponent<BoxCollider>());
-                    GameObject.Destroy(spherepointer.GetComponent<Rigidbody>());
-                    GameObject.Destroy(spherepointer.GetComponent<Collider>());
-                    lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
-                }
-                else
-                {
-                    if (gunSetting == 3)
-                    {
-                        Destroy(spherepointer!.GetComponent<Renderer>());
-                    }
-                    if (LockedPlayer == null)
-                    {
-                        spherepointer!.transform.position = raycastHit.point;
-                        spherepointer.GetComponent<Renderer>().material.color = Indigo;
-                    }
-                    else
-                    {
-                        spherepointer!.transform.position = LockedPlayer.transform.position;
-                    }
-                    lr = Vector3.Lerp(lr, (GorillaTagger.Instance.rightHandTransform.position + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
-                    GameObject gameObject = new GameObject("Line");
-                    LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-                    lineRenderer.startWidth = 0.022f;
-                    lineRenderer.endWidth = 0.022f;
-                    lineRenderer.startColor = Color.black;
-                    lineRenderer.endColor = Indigo;
-                    lineRenderer.useWorldSpace = true;
-                    lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                    if (gunSetting != 2)
-                    {
-                        lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.rightHandTransform.position, spherepointer.transform.position });
-                    }
-                    GameObject.Destroy(lineRenderer, Time.deltaTime);
-                    if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f)
-                    {
-                        trigger = true;
-                        lineRenderer.startColor = TriggeredLineColor;
-                        lineRenderer.endColor = TriggeredLineColor;
-                        spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
-                        if (LockOn)
-                        {
-                            if (LockedPlayer == null)
-                            {
-                                LockedPlayer = raycastHit.collider.GetComponentInParent<VRRig>();
-                            }
-                            if (LockedPlayer != null)
-                            {
-                                spherepointer.transform.position = LockedPlayer.transform.position;
-                                action();
-                            }
-                            return;
-                        }
-                        action();
-                        return;
-                    }
-                    else
-                    {
-                        trigger = false;
-                        if (LockedPlayer != null)
-                        {
-                            LockedPlayer = null;
-                        }
-                    }
-                }
-            }
-            else if (spherepointer != null)
-            {
-                GameObject.Destroy(spherepointer);
-                spherepointer = null;
-                LockedPlayer = null;
-                trigger = false;
+                float t = (float)i / (positioncount - 1);
+                Vector3 vector = CalculateBezierPoint(starte, mid, ende, t);
+                lr.SetPosition(i, vector);
             }
         }
 
-        public static void StartPcGun(Action action, bool LockOn)
+        private static void CreatePointer()
         {
-            Ray ray = GameObject.Find("Shoulder Camera").activeSelf ? GameObject.Find("Shoulder Camera").GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition) : GorillaTagger.Instance.mainCamera.GetComponent<Camera>().ScreenPointToRay(UnityInput.Current.mousePosition);
-            if (Mouse.current.rightButton.isPressed)
+            if (spherepointer != null || gunSetting == 3)
+                return;
+
+            spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            spherepointer.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
+            spherepointer.AddComponent<Renderer>();
+            spherepointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
+
+            GameObject.Destroy(spherepointer.GetComponent<BoxCollider>());
+            GameObject.Destroy(spherepointer.GetComponent<Rigidbody>());
+            GameObject.Destroy(spherepointer.GetComponent<Collider>());
+
+            lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
+        }
+
+        private static void RemovePointer()
+        {
+            if (spherepointer == null)
+                return;
+
+            GameObject.Destroy(spherepointer);
+            spherepointer = null;
+            LockedPlayer = null;
+            trigger = false;
+        }
+
+        private static void DrawLine(Vector3 start)
+        {
+            lr = Vector3.Lerp(lr, (start + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
+
+            var obj = new GameObject("Line");
+            var line = obj.AddComponent<LineRenderer>();
+
+            line.startWidth = 0.022f;
+            line.endWidth = 0.022f;
+            line.startColor = Color.black;
+            line.endColor = Indigo;
+            if(trigger)
             {
-                if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit raycastHit, float.PositiveInfinity, -32777) && spherepointer == null)
+                line.endColor = TriggeredLineColor;
+            }
+            line.useWorldSpace = true;
+            line.material = new Material(Shader.Find("GUI/Text Shader"));
+
+            CurveLineRenderer(line, start, lr, spherepointer.transform.position);
+            GameObject.Destroy(line, Time.deltaTime);
+        }
+
+        public static void StartVrGun(Action action, bool lockOn, Action disableAction = null)
+        {
+            if (!ControllerInputPoller.instance.rightGrab)
+            {
+                RemovePointer();
+                return;
+            }
+
+            Physics.Raycast(GorillaTagger.Instance.rightHandTransform.position, -GorillaTagger.Instance.rightHandTransform.up, out raycastHit, float.MaxValue);
+
+            CreatePointer();
+
+            if (gunSetting == 3 && spherepointer != null)
+                GameObject.Destroy(spherepointer.GetComponent<Renderer>());
+
+            spherepointer.transform.position = LockedPlayer ? LockedPlayer.transform.position : raycastHit.point;
+
+            if (LockedPlayer == null)
+                spherepointer.GetComponent<Renderer>().material.color = Indigo;
+
+            DrawLine(GorillaTagger.Instance.rightHandTransform.position);
+
+            if (!ControllerInputPoller.instance.rightControllerIndexFloat.Equals(0f) && ControllerInputPoller.instance.rightControllerIndexFloat > .5f)
+            {
+                trigger = true;
+                spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
+
+                if (lockOn)
                 {
-                    if (spherepointer == null && gunSetting != 3)
+                    LockedPlayer ??= raycastHit.collider.GetComponentInParent<VRRig>();
+
+                    if (LockedPlayer != null)
                     {
-                        spherepointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        spherepointer.AddComponent<Renderer>();
-                        spherepointer.transform.localScale = gunSetting == 3 ? new Vector3(0.0001f, 0.0001f, 0.0001f) : new Vector3(0.12f, 0.12f, 0.12f);
-                        spherepointer.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-                        GameObject.Destroy(spherepointer.GetComponent<BoxCollider>());
-                        GameObject.Destroy(spherepointer.GetComponent<Rigidbody>());
-                        GameObject.Destroy(spherepointer.GetComponent<Collider>());
-                        lr = GorillaTagger.Instance.offlineVRRig.rightHandTransform.position;
+                        spherepointer.transform.position = LockedPlayer.transform.position;
+                        action();
                     }
-                    if (gunSetting == 3)
-                    {
-                        Destroy(spherepointer!.GetComponent<Renderer>());
-                    }
-                }
-                if (LockedPlayer == null)
-                {
-                    spherepointer!.transform.position = raycastHit.point;
-                    spherepointer.GetComponent<Renderer>().material.color = Indigo;
-                }
-                else
-                {
-                    spherepointer!.transform.position = LockedPlayer.transform.position;
-                }
-                lr = Vector3.Lerp(lr, (GorillaTagger.Instance.rightHandTransform.position + spherepointer.transform.position) / 2f, Time.deltaTime * 6f);
-                GameObject gameObject = new GameObject("Line");
-                LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
-                lineRenderer.startWidth = 0.022f;
-                lineRenderer.endWidth = 0.022f;
-                lineRenderer.startColor = Color.black;
-                lineRenderer.endColor = Indigo;
-                lineRenderer.useWorldSpace = true;
-                lineRenderer.material = new Material(Shader.Find("GUI/Text Shader"));
-                if (gunSetting != 2)
-                {//
-                    lineRenderer.SetPositions(new Vector3[] { GorillaTagger.Instance.headCollider.transform.position, spherepointer.transform.position });
-                }
-                GameObject.Destroy(lineRenderer, Time.deltaTime);
-                if (Mouse.current.leftButton.isPressed)
-                {
-                    trigger = true;
-                    lineRenderer.startColor = TriggeredLineColor;
-                    lineRenderer.endColor = TriggeredLineColor;
-                    spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
-                    if (LockOn)
-                    {
-                        if (LockedPlayer == null)
-                        {
-                            LockedPlayer = raycastHit.collider.GetComponentInParent<VRRig>();
-                        }
-                        if (LockedPlayer != null)
-                        {
-                            spherepointer.transform.position = LockedPlayer.transform.position;
-                            action();
-                        }
-                        return;
-                    }
-                    action();
+
                     return;
                 }
                 else
                 {
-                    trigger = false;
-                    if (LockedPlayer != null)
-                    {
-                        LockedPlayer = null;
-                    }
+                    action();
                 }
+                
+                return;
             }
-            else if (spherepointer != null)
-            {
-                GameObject.Destroy(spherepointer);
-                spherepointer = null;
-                LockedPlayer = null;
-                trigger = false;
-            }
+
+            trigger = false;
+            LockedPlayer = null;
+            disableAction?.Invoke();
         }
 
-        public static void StartBothGuns(Action action, bool locko)
+        public static void StartPcGun(Action action, bool lockOn, Action disableAction = null)
+        {
+            Camera cam = GameObject.Find("Shoulder Camera").activeSelf
+                ? GameObject.Find("Shoulder Camera").GetComponent<Camera>()
+                : GorillaTagger.Instance.mainCamera.GetComponent<Camera>();
+
+            Ray ray = cam.ScreenPointToRay(UnityInput.Current.mousePosition);
+
+            if (!Mouse.current.rightButton.isPressed)
+            {
+                RemovePointer();
+                return;
+            }
+
+            if (!Physics.Raycast(ray, out raycastHit, float.PositiveInfinity, -32777))
+                return;
+
+            CreatePointer();
+
+            if (gunSetting == 3 && spherepointer != null)
+                GameObject.Destroy(spherepointer.GetComponent<Renderer>());
+
+            spherepointer.transform.position = LockedPlayer ? LockedPlayer.transform.position : raycastHit.point;
+
+            if (LockedPlayer == null)
+                spherepointer.GetComponent<Renderer>().material.color = Indigo;
+
+            DrawLine(GorillaTagger.Instance.headCollider.transform.position);
+
+            if (Mouse.current.leftButton.isPressed)
+            {
+                trigger = true;
+                spherepointer.GetComponent<Renderer>().material.color = TriggeredPointerColor;
+
+                if (lockOn)
+                {
+                    LockedPlayer ??= raycastHit.collider.GetComponentInParent<VRRig>();
+
+                    if (LockedPlayer != null)
+                    {
+                        spherepointer.transform.position = LockedPlayer.transform.position;
+                        action();
+                    }
+
+                    return;
+                }
+                else
+                {
+                    action();
+                }
+                return;
+            }
+
+            trigger = false;
+            LockedPlayer = null;
+            disableAction?.Invoke();
+        }
+
+        public static void StartBothGuns(Action action, bool locko, Action disableAction = null)
         {
             if (XRSettings.isDeviceActive)
             {
-                StartVrGun(action, locko);
+                StartVrGun(action, locko, disableAction);
             }
             if (!XRSettings.isDeviceActive)
             {
-                StartPcGun(action, locko);
+                StartPcGun(action, locko, disableAction);
             }
         }
         public static bool trigger = false;

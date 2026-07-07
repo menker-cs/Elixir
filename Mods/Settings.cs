@@ -119,12 +119,12 @@ namespace Elixir.Mods.Categories
             switch (espSetting)
             {
                 case 1:
-                    NotificationLib.SendNotification("<color=white>[</color>ESP Color:<color=white>] </color>Infection");
-                    GetButton("Change ESP Color").tooltip = "Current Setting: Infection";
-                    break;
-                case 2:
                     NotificationLib.SendNotification("<color=white>[</color>ESP Color:<color=white>] </color>Casual");
                     GetButton("Change ESP Color").tooltip = "Current Setting: Casual";
+                    break;
+                case 2:
+                    NotificationLib.SendNotification("<color=white>[</color>ESP Color:<color=white>] </color>Infection");
+                    GetButton("Change ESP Color").tooltip = "Current Setting: Infection";
                     break;
                 case 3:
                     NotificationLib.SendNotification("<color=white>[</color>ESP Color:<color=white>] </color>RGB");
@@ -160,25 +160,6 @@ namespace Elixir.Mods.Categories
                 case 4:
                     NotificationLib.SendNotification("<color=white>[</color>Tracer Position:<color=white>] </color>Head");
                     GetButton("Change Tracer Position").tooltip = "Current Setting: Head";
-                    break;
-            }
-        }
-        public static void GunChange()
-        {
-            gunSetting++;
-            if (gunSetting > 2)
-            {
-                gunSetting = 1;
-            }
-            switch (gunSetting)
-            {
-                case 1:
-                    NotificationLib.SendNotification("<color=white>[</color>Gun Setting:<color=white>] </color>Ball + Line");
-                    GetButton("Change Gun Type").tooltip = "Current Setting: Ball + Line";
-                    break;
-                case 2:
-                    NotificationLib.SendNotification("<color=white>[</color>Gun Setting:<color=white>] </color>Ball");
-                    GetButton("Change Gun Type").tooltip = "Current Setting: Ball";
                     break;
             }
         }
@@ -269,6 +250,7 @@ namespace Elixir.Mods.Categories
             {
                 ["version"] = SettingsVersion.ToString(),
                 ["espSetting"] = espSetting.ToString(),
+                ["clickSound"] = CurrentClickSound.ToString(),
                 ["tracePos"] = tracePos.ToString(),
                 ["gunSetting"] = gunSetting.ToString(),
                 ["pageSetting"] = pageSetting.ToString(),
@@ -301,6 +283,7 @@ namespace Elixir.Mods.Categories
             tracePos = ParseInt(settings, "tracePos", tracePos);
             gunSetting = ParseInt(settings, "gunSetting", gunSetting);
             pageSetting = ParseInt(settings, "pageSetting", pageSetting);
+            CurrentClickSound = ParseInt(settings, "clickSound", CurrentClickSound);
             speedboostchanger = ParseInt(settings, "speedboost", speedboostchanger);
             flyspeedchanger = ParseInt(settings, "flyspeed", flyspeedchanger);
             disconnect = ParseBool(settings, "disconnect", disconnect);
@@ -420,7 +403,7 @@ namespace Elixir.Mods.Categories
         }
 
 
-public static int espSetting = 1;
+        public static int espSetting = 1;
 
         public static int pageSetting = 1;
 

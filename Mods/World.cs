@@ -50,6 +50,132 @@ namespace Elixir.Mods.Categories
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Environment/WeatherDayNight/snow").transform.position = new Vector3(-55.2344f, 58.7391f, -56.9323f);
             GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Environment/WeatherDayNight/snow/snow partic").SetActive(t);
         }
+
+        public static bool whip = true;
+
+        public static void SpawnHoverboard(Vector3 position, Quaternion rotation, Vector3 velocity, Color col, RpcTarget rpc)
+        {
+            FreeHoverboardManager.instance.photonView.RPC("DropBoard_RPC", rpc, new object[]
+                {
+                     whip,
+                     BitPackUtils.PackWorldPosForNetwork(position),
+                     BitPackUtils.PackQuaternionForNetwork(rotation),
+                     BitPackUtils.PackWorldPosForNetwork(velocity),
+                     BitPackUtils.PackWorldPosForNetwork(Vector3.zero),
+                     BitPackUtils.PackColorForNetwork(col)
+                });
+            whip = !whip;
+            Potentially_OP.RPCProtection();
+        }
+
+        public static Color RandomColor
+        {
+            get
+            {
+                return new Color(
+                    UnityEngine.Random.value,
+                    UnityEngine.Random.value,
+                    UnityEngine.Random.value
+                );
+            }
+        }
+
+        static float ina;
+
+        public static void SpawnHoverboard()
+        {
+            GTPlayer.Instance.SetHoverAllowed(true);
+            FreeHoverboardManager.instance.SendDropBoardRPC(GorillaTagger.Instance.rightHandTransform.position, Quaternion.identity, Vector3.zero, Vector3.zero, RandomColor);
+        }
+
+        public static void HoverboardShoot(float speed)
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                if (Time.time > ina)
+                {
+                    ina = Time.time + 0.9f / speed;
+                    SpawnHoverboard(
+                       GorillaTagger.Instance.rightHandTransform.transform.position,
+                       GorillaTagger.Instance.rightHandTransform.rotation,
+                       GorillaTagger.Instance.rightHandTransform.forward * 10 * speed,
+                       RandomColor,
+                       RpcTarget.All
+                    );
+                }
+            }
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                if (Time.time > ina)
+                {
+                    ina = Time.time + 0.9f / speed;
+                    SpawnHoverboard(
+                       GorillaTagger.Instance.leftHandTransform.transform.position,
+                       GorillaTagger.Instance.leftHandTransform.rotation,
+                       GorillaTagger.Instance.leftHandTransform.forward * 10 * speed,
+                       RandomColor,
+                       RpcTarget.All
+                    );
+                }
+            }
+        }
+
+        public static void HoverboardGun()
+        {
+            GunTemplate.StartBothGuns(() =>
+            {
+                VRRig.LocalRig.enabled = false;
+                VRRig.LocalRig.transform.position = GunTemplate.spherepointer.transform.position + new Vector3(0,1.5f);
+                if(Time.time > ina)
+                {
+                    ina = Time.time + 0.5f;
+                    SpawnHoverboard(
+                        GunTemplate.spherepointer.transform.position,
+                        Quaternion.identity,
+                        Vector3.zero,
+                        RandomColor,
+                        RpcTarget.All
+                    );
+                }
+            }, false, () =>
+            {
+                VRRig.LocalRig.enabled = true;
+            });
+        }
+
+        public static void HoverboardSpam(float delay)
+        {
+            if (ControllerInputPoller.instance.rightGrab)
+            {
+                if (Time.time > ina)
+                {
+                    ina = Time.time + delay;
+                    SpawnHoverboard(
+                       GorillaTagger.Instance.rightHandTransform.transform.position,
+                       GorillaTagger.Instance.rightHandTransform.rotation,
+                       Vector3.zero,
+                       RandomColor,
+                       RpcTarget.All
+                    );
+                }
+                ;
+            }
+            if (ControllerInputPoller.instance.leftGrab)
+            {
+                if (Time.time > ina)
+                {
+                    ina = Time.time + delay;
+                    SpawnHoverboard(
+                       GorillaTagger.Instance.leftHandTransform.transform.position,
+                       GorillaTagger.Instance.leftHandTransform.rotation,
+                       Vector3.zero,
+                       RandomColor,
+                       RpcTarget.All
+                    );
+                }
+            }
+        }
+
         public static void Rain()
         {
             for (int i = 1; i < BetterDayNightManager.instance.weatherCycle.Length; i++)
@@ -88,7 +214,7 @@ namespace Elixir.Mods.Categories
             if (tmp == null)
             {
                 tmp = StumpText.AddComponent<TextMeshPro>();
-                tmp.fontSize = 2f;
+                tmp.fontSize = 0.9f;
                 tmp.fontStyle = FontStyles.Bold;
                 tmp.characterSpacing = 1f;
                 tmp.alignment = TextAlignmentOptions.Center;
@@ -98,13 +224,29 @@ namespace Elixir.Mods.Categories
 
             tmp.text =
                 GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), "Elixir Menu", Time.time) + "\n" +
-                $"<size=2>Status: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), Variables.Status, Time.time) + "\n" +
+                $"<size=1.15>Status: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), Variables.Status, Time.time) + "\n" +
                 $"VERSION: " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Magenta), ColorLib.ClrToHex(Purple), PluginInfo.Version, Time.time) + "</size>\n" +
-                $"<size=1.5>Made By " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Menker2), ColorLib.ClrToHex(Menker), "Menker", Time.time);
+                $"<size=0.75>Made By " + GradientText.MakeAnimatedGradient(ColorLib.ClrToHex(Menker2), ColorLib.ClrToHex(Menker), "Menker • Cosmic • Moe", Time.time);
 
             StumpText.transform.position = new Vector3(-66.8087f, 12.1808f, -82.5265f);
             StumpText.transform.LookAt(Camera.main.transform);
             StumpText.transform.Rotate(0f, 180f, 0f);
+        }
+
+        public static void MakeTMPRainbow(TMPro.TMP_Text tmp)
+        {
+            int n = 6;
+            TMPro.VertexGradient vg = new TMPro.VertexGradient();
+
+            float baseHue = Mathf.Repeat(Time.time * 0.5f, 1f);
+
+            vg.topLeft = Color.HSVToRGB(Mathf.Repeat(baseHue + 0f / (n - 1), 1f), 1f, 1f);
+            vg.topRight = Color.HSVToRGB(Mathf.Repeat(baseHue + 1f / (n - 1), 1f), 1f, 1f);
+            vg.bottomLeft = Color.HSVToRGB(Mathf.Repeat(baseHue + 2f / (n - 1), 1f), 1f, 1f);
+            vg.bottomRight = Color.HSVToRGB(Mathf.Repeat(baseHue + 3f / (n - 1), 1f), 1f, 1f);
+
+            tmp.enableVertexGradient = true;
+            tmp.colorGradient = vg;
         }
 
         public static void STUMPY()

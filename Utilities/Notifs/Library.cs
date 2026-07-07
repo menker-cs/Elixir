@@ -42,36 +42,28 @@ namespace Elixir.Notifications
 
         private IEnumerator WaitForCamera()
         {
-            int attempts = 0;
-            while (Camera.main == null && attempts < 200)
+            while (true)
             {
-                attempts++;
-                yield return new WaitForSeconds(0.1f);
+                if (Camera.main != null &&
+                    GorillaTagger.Instance != null &&
+                    GorillaTagger.Instance.headCollider != null)
+                    break;
+
+                yield return null;
             }
 
             mainCamera = Camera.main;
 
-            attempts = 0;
-            while (GorillaTagger.Instance == null && attempts < 100)
-            {
-                attempts++;
-                yield return new WaitForSeconds(0.1f);
-            }
+            yield return null;
 
             CreateHUD();
             initialized = true;
 
-            if (pendingNotifications.Count > 0)
+            while (pendingNotifications.Count > 0)
             {
-                while (pendingNotifications.Count > 0)
-                {
-                    string message = pendingNotifications.Dequeue();
-                    CoroutineHandler.StartCoroutine1(SpawnNotif(message));
-                    yield return new WaitForSeconds(0.2f);
-                }
+                CoroutineHandler.StartCoroutine1(SpawnNotif(pendingNotifications.Dequeue()));
+                yield return new WaitForSeconds(0.2f);
             }
-
-            yield return new WaitForSeconds(0.5f);
         }
 
         public static AssetBundle LoadAssetBundle(string path)

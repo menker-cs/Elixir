@@ -1,5 +1,6 @@
 using BepInEx;
 using Elixir.Components;
+using Elixir.Notifications;
 using Elixir.Utilities;
 using Photon.Pun;
 using System;
@@ -12,8 +13,8 @@ using TMPro;
 using UnityEngine;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
-using static Elixir.Utilities.ButtonManager;
 using static Elixir.Plugin;
+using static Elixir.Utilities.ButtonManager;
 namespace Elixir.Management
 {
     public class Menu : MonoBehaviour
@@ -51,10 +52,50 @@ namespace Elixir.Management
             return bundle;
         }
 
+        public static int CurrentClickSound = 114;
+
+        public static void ChangeClickSound()
+        {
+            switch(CurrentClickSound)
+            {
+                case 114:
+                    CurrentClickSound = 67;
+                    break;
+                case 67:
+                    CurrentClickSound = 66;
+                    break;
+                case 66:
+                    CurrentClickSound = 84;
+                    break;
+                case 84:
+                    CurrentClickSound = 114;
+                    break;
+            }
+            switch (CurrentClickSound)
+            {
+                case 114:
+                    NotificationLib.SendNotification("<color=white>[</color>Button Sound:<color=white>] </color>Default");
+                    GetButton("Change Button Sound").tooltip = "Current Setting: Default";
+                    break;
+                case 67:
+                    NotificationLib.SendNotification("<color=white>[</color>Button Sound:<color=white>] </color>Button");
+                    GetButton("Change Button Sound").tooltip = "Current Setting: Button";
+                    break;
+                case 66:
+                    NotificationLib.SendNotification("<color=white>[</color>Button Sound:<color=white>] </color>Keyboard");
+                    GetButton("Change Button Sound").tooltip = "Current Setting: Keyboard";
+                    break;
+                case 84:
+                    NotificationLib.SendNotification("<color=white>[</color>Button Sound:<color=white>] </color>Pop");
+                    GetButton("Change Button Sound").tooltip = "Current Setting: Pop";
+                    break;
+            }
+        }
+
         private static void OnButtonClick()
         {
             GorillaTagger.Instance.StartVibration(false, GorillaTagger.Instance.tagHapticStrength / 2f, GorillaTagger.Instance.tagHapticDuration / 2f);
-            GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(114, false, 1);
+            GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(CurrentClickSound, false, 1);
         }
 
         private static void Home()
@@ -82,11 +123,14 @@ namespace Elixir.Management
 
         public static void Start()
         {
+            GameObject OnScreenGUI = new GameObject("Elixir GUI");
+            OnScreenGUI.AddComponent<GUIHandler>();
+
             ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
             table.Add("Elixir", true);
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(table);
 
-            var bundle = LoadAssetBundle("Elixir.Resources.elixirbundle");
+            var bundle = LoadAssetBundle("Elixir.Resources.ElixirBundle");
             var asset = bundle.LoadAsset<GameObject>("Elixir");
             menu = GameObject.Instantiate(asset);
 

@@ -7,9 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using BepInEx;
-using UnityEngine.Animations.Rigging;
 using Elixir.Management;
-using UnityEngine.InputSystem.HID;
 using Elixir.Mods.Categories;
 
 namespace Elixir.Components
@@ -33,7 +31,6 @@ namespace Elixir.Components
                             if (Vector3.Distance(clickerObj.transform.position, button.transform.position) < 0.025f)
                             {
                                 button.onClick.Invoke();
-                                GorillaTagger.Instance.offlineVRRig.PlayHandTapLocal(114, false, 1);
                                 cooldown = Time.frameCount;
                             }
                         }

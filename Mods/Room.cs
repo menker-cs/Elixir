@@ -145,7 +145,6 @@ namespace Elixir.Mods.Categories
                                 if (gorillaPlayerScoreboardLine.linePlayer == NetworkSystem.Instance.LocalPlayer)
                                 {
                                     Vector3 reportButton = gorillaPlayerScoreboardLine.reportButton.gameObject.transform.position + new Vector3(0f, 0.001f, 0.0004f);
-                                    VisualizeAntiReport(reportButton, range);
                                     if (Vector3.Distance(reportButton, lHand) < range)
                                     {
                                         NotificationLib.SendNotification("<color=blue>Anti-Report:</color> : " + vrrig.playerText1.text + " Attempted to Report You!");
@@ -227,7 +226,6 @@ namespace Elixir.Mods.Categories
                                 if (gorillaPlayerScoreboardLine.linePlayer == NetworkSystem.Instance.LocalPlayer)
                                 {
                                     Vector3 reportButton = gorillaPlayerScoreboardLine.reportButton.gameObject.transform.position + new Vector3(0f, 0.001f, 0.0004f);
-                                    VisualizeAntiReport(reportButton, range);
                                     if (Vector3.Distance(reportButton, lHand) < range)
                                     {
                                         //NotificationLib.SendNotification("<color=blue>Anti-Report:</color> : " + vrrig.playerText1.text + " Attempted to Report You!");
@@ -278,20 +276,6 @@ namespace Elixir.Mods.Categories
                     }
                 }
             }
-        }
-        public static void VisualizeAntiReport(Vector3 position, float range)
-        {
-            GameObject report = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            UnityEngine.Object.Destroy(report.GetComponent<Collider>());
-            UnityEngine.Object.Destroy(report.GetComponent<Rigidbody>());
-            report.transform.position = position;
-            report.transform.localScale = new Vector3(range, range, range);
-            report.GetComponent<Renderer>().material.shader = Shader.Find("GUI/Text Shader");
-            Color c = ColorLib.MenuMat[0].color;
-            c.a = 0.1f;
-            report.GetComponent<Renderer>().material.color = c;
-            UnityEngine.Object.Destroy(report, Time.deltaTime);
-
         }
         #endregion
     }

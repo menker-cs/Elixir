@@ -1,8 +1,9 @@
 ﻿using BepInEx;
 using Elixir.Notifications;
+using Elixir.Patches;
 using Elixir.Utilities;
 using GorillaLocomotion;
-using static GorillaLocomotion.GTPlayer;
+using GorillaTag.Gravity;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Reflection;
 using UnityEngine;
 using static Elixir.Utilities.GunTemplate;
 using static Elixir.Utilities.Variables;
+using static GorillaLocomotion.GTPlayer;
 
 namespace Elixir.Mods.Categories
 {
@@ -31,8 +33,41 @@ namespace Elixir.Mods.Categories
             }
         }
 
+        static PlanetZone rotateZone;
+
+        public static void Rotate(Vector3 direction)
+        {
+            direction = -direction;
+            if (rotateZone == null)
+            {
+                rotateZone = new GameObject("RotateZone").AddComponent<PlanetZone>();
+                rotateZone.rotationDistance = float.MaxValue;
+                rotateZone.AddTarget(GTPlayerTransform.Instance);
+            }
+
+            direction.Normalize();
+
+            MiscPatches.PlanetZoneOverride.overide = true;
+            MiscPatches.PlanetZoneOverride.overideV = direction;
+
+            rotateZone.transform.position = GTPlayerTransform.Instance.transform.position + direction * 5f;
+
+            GTPlayerTransform.Instance.SetPersonalGravityDirection(direction);
+        }
+
+        public static void FixRotations()
+        {
+            MiscPatches.PlanetZoneOverride.overide = false;
+            GTPlayerTransform.Instance.SetPersonalGravityDirection(Vector3.down);
+
+            if (rotateZone != null)
+            {
+                UnityEngine.Object.Destroy(rotateZone.gameObject);
+                rotateZone = null;
+            }
+        }
+
         #region Advantage
-        // TY Cha
         public static void TagPlayer(VRRig plr)
         {
             if (GorillaTagger.Instance == null) return;
@@ -307,15 +342,15 @@ namespace Elixir.Mods.Categories
         {
             if (GorillaTagger.Instance == null) return;
 
-            if (ControllerInputPoller.instance.rightGrab | UnityInput.Current.GetKey(KeyCode.G))
+            if (ControllerInputLibrary.RightGrip())
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
-                GorillaTagger.Instance.offlineVRRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
-                GorillaTagger.Instance.offlineVRRig.transform.rotation = GorillaTagger.Instance.rightHandTransform.rotation;
-            }
-            else
+                VRRig.LocalRig.enabled = false;
+
+                VRRig.LocalRig.transform.position = GorillaTagger.Instance.rightHandTransform.position;
+                VRRig.LocalRig.transform.rotation = GorillaTagger.Instance.rightHandTransform.rotation;
+            } else
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                VRRig.LocalRig.enabled = true;
             }
         }
         public static void FreezeRig()
