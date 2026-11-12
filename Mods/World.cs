@@ -84,8 +84,8 @@ namespace Elixir.Mods.Categories
 
         public static void SpawnHoverboard()
         {
-            GTPlayer.Instance.SetHoverAllowed(true);
-            FreeHoverboardManager.instance.SendDropBoardRPC(GorillaTagger.Instance.rightHandTransform.position, Quaternion.identity, Vector3.zero, Vector3.zero, RandomColor);
+            GTPlayer.Instance.isHoverAllowed = true;
+            FreeHoverboardManager.instance.SendDropBoardRPC(GorillaTagger.Instance.rightHandTransform.position, Quaternion.identity, Vector3.zero, Vector3.zero, RandomColor, Vector3.one);
         }
 
         public static void HoverboardShoot(float speed)

@@ -1,5 +1,4 @@
-﻿using CjLib;
-using HarmonyLib;
+﻿using HarmonyLib;
 using System.Net.Http;
 using System.Reflection;
 using UnityEngine;

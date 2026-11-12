@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Elixir")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36b46b1b05416002af0c106a917fe86b69fb370c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Elixir")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Elixir")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
