@@ -21,7 +21,7 @@ namespace Elixir.Notifications
         private static readonly List<GameObject> activeNotifications = new List<GameObject>();
         private bool initialized;
 
-        private static readonly Queue<string> pendingNotifications = new Queue<string>();
+        private static readonly Queue<(string message, float deleteTime)> pendingNotifications = new Queue<(string, float)>();
         private static readonly int maxQueueSize = 10;
 
         public static bool disableNotifications = false;
@@ -61,7 +61,10 @@ namespace Elixir.Notifications
 
             while (pendingNotifications.Count > 0)
             {
-                CoroutineHandler.StartCoroutine1(SpawnNotif(pendingNotifications.Dequeue()));
+                var notification = pendingNotifications.Dequeue();
+
+                CoroutineHandler.StartCoroutine1(SpawnNotif(notification.message, notification.deleteTime));
+
                 yield return new WaitForSeconds(0.2f);
             }
         }
@@ -103,21 +106,20 @@ namespace Elixir.Notifications
             );
         }
 
-        public static void SendNotification(string message)
+        public static void SendNotification(string message, float deleteTime = 2.5f)
         {
-            if (!Instance.initialized || notifObj == null || HUD == null)
+            if (Instance == null || !Instance.initialized || notifObj == null || HUD == null)
             {
                 if (pendingNotifications.Count < maxQueueSize)
                 {
-                    pendingNotifications.Enqueue(message);
+                    pendingNotifications.Enqueue((message, deleteTime));
                 }
                 return;
             }
-
-            CoroutineHandler.StartCoroutine1(SpawnNotif(message));
+            CoroutineHandler.StartCoroutine1(SpawnNotif(message, deleteTime));
         }
 
-        static IEnumerator SpawnNotif(string message)
+        static IEnumerator SpawnNotif(string message, float deleteTime = 2.5f)
         {
             if (notifObj == null || HUD == null || mainCamera == null)
                 yield break;
@@ -170,7 +172,7 @@ namespace Elixir.Notifications
                 notif.transform.localScale = endScale;
             }
 
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(deleteTime);
 
             fadeTime = 0.25f;
             elapsed = 0f;

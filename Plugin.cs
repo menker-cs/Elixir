@@ -11,6 +11,7 @@ using static Elixir.Management.Menu;
 using static Elixir.Patches.HarmonyPatches;
 using static Elixir.Utilities.ColorLib;
 using System.Collections;
+using Elixir.Notifications;
 
 namespace Elixir
 {
@@ -30,14 +31,10 @@ namespace Elixir
 
         public void Start()
         {
-            //StartCoroutine(DoKillSwitch());
-            Menu.Start();
-            Settings.AutoLoadPrefs();
-            CoroutineHandler.StartCoroutine1(GetObjects());
-            ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
+            StartCoroutine(DoKillSwitch());
         }
 
-        private IEnumerator DoKillSwitch()
+        public static IEnumerator DoKillSwitch()
         {
             using (UnityWebRequest request = UnityWebRequest.Get("https://raw.githubusercontent.com/menker-cs/Elixir/refs/heads/main/killswitch.txt"))
             {
@@ -55,7 +52,9 @@ namespace Elixir
                     }
                     if (killSwitch == "true")
                     {
-                        Application.Quit();
+                        GameObject OnScreenGUI = new GameObject("Elixir GUI");
+                        OnScreenGUI.AddComponent<GUIHandler>();
+                        NotificationLib.SendNotification($"The Menu Is Currently Disabled. Status: {Variables.Status}", 10);
                     }
                 }
                 else

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Elixir.Management;
+using Elixir.Mods.Categories;
+using Elixir.Notifications;
+using Elixir.Utilities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -64,7 +68,7 @@ namespace Elixir.Components
         private string inputText = "";
         private bool focusInput = false;
 
-        public bool devModeActive = false;
+        public static bool devModeActive = false;
 
         private struct LogEntry { public string text; public int type; }
         private List<LogEntry> logs = new List<LogEntry>();
@@ -286,6 +290,12 @@ namespace Elixir.Components
 
                         ExitGames.Client.Photon.Hashtable table = Photon.Pun.PhotonNetwork.LocalPlayer.CustomProperties;
                         table.Remove("Elixir");
+
+                        Menu.Start();
+                        Settings.AutoLoadPrefs();
+                        CoroutineHandler.StartCoroutine1(Menu.GetObjects());
+                        Menu.ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, ColorLib.Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref Menu.originalMat1!);
+                        NotificationLib.SendNotification("Dev Mode Toggled, Killswitch Bypassed.");
                     }
                     else
                     {

@@ -709,6 +709,22 @@ namespace Elixir.Management
 
                 if (SearchQueryBar != null)
                     SearchQueryBar.text = SearchQuery;
+
+                Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
+
+                if (body != null)
+                {
+                    var Keyboard = menu.transform.Find("keyboard")?.gameObject;
+                    if (Keyboard != null)
+                    {
+                        if (Vector3.Distance(body.position, Keyboard.transform.position) > 3)
+                        {
+                            menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
+                            menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
+                            menu.transform.localScale = Vector3.one * 0.01f;
+                        }
+                    }
+                }
             }
         }
 
