@@ -8,7 +8,7 @@ namespace Elixir.Components
     public class GUIHandler : MonoBehaviour
     {
         public string watermarkText = "Elixir | V10.0";
-        public string subText = "by Menker • Cosmic • Moe";
+        public string subText = "by Menker • Nova";
 
         public int paddingX = 12;
         public int paddingY = 10;

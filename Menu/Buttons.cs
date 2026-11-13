@@ -38,6 +38,7 @@ namespace Elixir.Management
                 new Module() { title = "Change Tracer Position", tooltip = "Current Setting: Right Hand", isToggleable = false, action = () => TracerPos() },
                 new Module() { title = "Change Fly Speed", tooltip = "Current Setting: Normal", isToggleable = false, action = () => FlySpeed() },
                 new Module() { title = "Change Speed Boost", tooltip = "Current Setting: Normal", isToggleable = false, action = () => SpeedSpeed() },
+                new Module() { title = "Reduce Menu Flashing", isToggleable = false, action = () => MenuFlash() },
             }));
 
             categories.Insert(1, new Category("Enabled Mods", new Module[] { }));
@@ -249,13 +250,14 @@ namespace Elixir.Management
 
             categories.Add(new Category("Credits", new Module[] {
                 new Module() { title = "Menker - Owner/Main Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Cosmic - Main Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Moe - Main Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Nova - Main Dev", tooltip = "", isToggleable = false, action = () => Discord("https://discord.gg/mistt") },
+                new Module() { title = "Cosmic - Ex Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
+                new Module() { title = "Moe - Ex Dev", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "sodaa - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Cha554 - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "Cheemz - Mod Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
                 new Module() { title = "GLXY - Temp Contributer", tooltip = "", isToggleable = false, action = () => Placeholder() },
-                new Module() { title = "Join The Discord", tooltip = "", isToggleable = false, action = () => Discord() },
+                new Module() { title = "Join The Discord [Elixir]", tooltip = "", isToggleable = false, action = () => Discord("https://discord.gg/QFeUpmg8vd") },
             }));
 
 

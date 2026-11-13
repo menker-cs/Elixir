@@ -15,6 +15,7 @@ using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Plugin;
 using static Elixir.Utilities.ButtonManager;
+using static MarkOneMitts;
 namespace Elixir.Management
 {
     public class Menu : MonoBehaviour
@@ -23,7 +24,7 @@ namespace Elixir.Management
         private static GameObject? nextPage = null;
         private static GameObject? lastPage = null;
         private static int currentPage = 0;
-        private const int btnPerPage = 6;
+        private const int btnPerPage = 7;
         public static int pageIndex = 0;
         public static List<Category> categories = new List<Category>();
         private static List<GameObject> buttons = new List<GameObject>();
@@ -145,8 +146,8 @@ namespace Elixir.Management
             var buttonTemplate = modules!.transform.Find("Button");
 
             visualTransform = visual.transform;
-            homeTransform = visual.transform.Find("Home");
-            bigHomeTransform = visual.transform.Find("BigHome");
+            homeTransform = menu.transform.Find("Canvas/Visual/Dock/Home");
+            bigHomeTransform = menu.transform.Find("Canvas/Visual/Dock/BigHome");
 
             var tempButton = modules.transform.Find("Button")?.gameObject;
             tempButton!.SetActive(false);
@@ -155,8 +156,19 @@ namespace Elixir.Management
             version!.text = $"V{Elixir.PluginInfo.Version} {(PluginInfo.MenuBeta ? "Beta" : "")}";
 
             var leaveButton = visual.transform.Find("Home (1)")?.GetComponent<UnityEngine.UI.Button>();
-            var backButton = visual.transform.Find("Home")?.GetComponent<UnityEngine.UI.Button>();
-            var backButton2 = visual.transform.Find("BigHome")?.GetComponent<UnityEngine.UI.Button>();
+            var backButton = menu.transform.Find("Canvas/Visual/Dock/Home").gameObject?.GetComponent<UnityEngine.UI.Button>();
+            var backButton2 = menu.transform.Find("Canvas/Visual/Dock/BigHome").gameObject?.GetComponent<UnityEngine.UI.Button>();
+
+            var SearchButtons = visual.transform.Find("Search").gameObject?.GetComponent<UnityEngine.UI.Button>();
+
+            if (SearchButtons != null)
+            {
+                SearchButtons.onClick.AddListener(() =>
+                {
+                    HandleSearchLogic();
+                    OnButtonClick();
+                });
+            }
 
             if (leaveButton != null)
             {
@@ -187,12 +199,121 @@ namespace Elixir.Management
                 });
             }
 
-            nextPage = visual.transform.Find("NextPage").gameObject;
-            lastPage = visual.transform.Find("LastPage").gameObject;
+            nextPage = menu.transform.Find("Canvas/Visual/Dock/NextPage").gameObject;
+            lastPage = menu.transform.Find("Canvas/Visual/Dock/LastPage").gameObject;
 
             CreateButtons();
             Buttons();
             menu.SetActive(true);
+        }
+        public static bool IsSearching = false;
+        public static bool AddedSearchLogic = false;
+        public static string SearchQuery = string.Empty;
+        public static void HandleSearchLogic()
+        {
+            IsSearching = !IsSearching;
+
+            var Keyboard = menu.transform.Find("keyboard")?.gameObject;
+            var KeyboardBG = menu.transform.Find("backKeyboard")?.gameObject;
+            var Dock = menu.transform.Find("Canvas/Visual/Dock")?.gameObject;
+
+            if (Keyboard == null || KeyboardBG == null || Dock == null) return;
+
+            Keyboard.SetActive(IsSearching);
+            KeyboardBG.SetActive(IsSearching);
+            Dock.SetActive(!IsSearching);
+
+            if (IsSearching)
+            {
+                showingCategories = false;
+                currentPage = 0;
+                Buttons();
+            }
+            else
+            {
+                SearchQuery = string.Empty;
+                currentPage = 0;
+                Buttons();
+            }
+
+            if (AddedSearchLogic) return;
+
+            var Canvas = Keyboard.transform.Find("Canvas");
+            if (Canvas == null) return;
+
+            void AddKey(Transform parent, string key, Action action)
+            {
+                var button = parent?.Find(key)?.GetComponent<UnityEngine.UI.Button>();
+                if (button != null) button.onClick.AddListener(() => action());
+            }
+
+            void AddCharacter(string key)
+            {
+                AddKey(Canvas.Find("Keys1"), key, () => SearchQuery += key);
+                AddKey(Canvas.Find("Keys 2"), key, () => SearchQuery += key);
+                AddKey(Canvas.Find("Keys 3"), key, () => SearchQuery += key);
+            }
+
+            string[] rowOne = { "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P" };
+            string[] rowTwo = { "A", "S", "D", "F", "G", "H", "J", "K", "L" };
+            string[] rowThree = { "Z", "X", "C", "V", "B", "N", "M" };
+
+            foreach (string key in rowOne)
+            {
+                string captured = key;
+                AddKey(Canvas.Find("Keys1"), captured, () =>
+                {
+                    SearchQuery += captured;
+                    currentPage = 0;
+                    Buttons();
+                    OnButtonClick();
+                });
+            }
+
+            foreach (string key in rowTwo)
+            {
+                string captured = key;
+                AddKey(Canvas.Find("Keys 2"), captured, () =>
+                {
+                    SearchQuery += captured;
+                    currentPage = 0;
+                    Buttons();
+                    OnButtonClick();
+                });
+            }
+
+            foreach (string key in rowThree)
+            {
+                string captured = key;
+                AddKey(Canvas.Find("Keys 3"), captured, () =>
+                {
+                    SearchQuery += captured;
+                    currentPage = 0;
+                    Buttons();
+                    OnButtonClick();
+                });
+            }
+
+            AddKey(Canvas, "Delete", () =>
+            {
+                if (!string.IsNullOrEmpty(SearchQuery))
+                {
+                    SearchQuery = SearchQuery.Substring(0, SearchQuery.Length - 1);
+                    currentPage = 0;
+                    Buttons();
+                    OnButtonClick();
+                }
+            });
+
+            AddKey(Canvas, "Space", () =>
+            {
+                SearchQuery += " ";
+                currentPage = 0;
+                Buttons();
+                OnButtonClick();
+            });
+
+            AddedSearchLogic = true;
         }
 
         public static IEnumerator GetObjects()
@@ -212,7 +333,23 @@ namespace Elixir.Management
 
             yield return null;
         }
+        private static Module[] GetSearchResults()
+        {
+            List<Module> allMods = new List<Module>();
+            foreach (var category in categories)
+            {
+                if (category == null || category.buttons == null) continue;
+                allMods.AddRange(category.buttons);
+            }
 
+            if (!string.IsNullOrEmpty(SearchQuery))
+                allMods = allMods.Where(m => m.title.IndexOf(SearchQuery, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+            if (Variables.alphabet)
+                allMods = allMods.OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase).ToList();
+
+            return allMods.ToArray();
+        }
 
         private static bool showingCategories = true;
 
@@ -222,23 +359,21 @@ namespace Elixir.Management
 
             var modules = menu!.transform.Find("Canvas/Visual/Buttons").gameObject;
             var templateButton = modules.transform.Find("Button").gameObject;
-            foreach (GameObject btn in buttons) GameObject.Destroy(btn);
+
+            foreach (GameObject btn in buttons)
+                GameObject.Destroy(btn);
+
             buttons.Clear();
 
-            var visual = visualTransform ?? menu.transform.Find("Canvas/Visual");
-            if (visual != null && visual.Find("Home") != null)
-            {
-                visual.Find("Home").gameObject.SetActive(!showingCategories);
-            }
+            if (showingCategories)
+                menu.transform.Find("Canvas/Visual/Dock/Home")?.gameObject.SetActive(false);
 
-            #region Categories Logic
             if (showingCategories)
             {
                 int maxCategoryPage = GetMaxCategoryPage();
                 int catCount = categories.Count;
 
-                if (currentPage < 0) currentPage = 0;
-                if (currentPage > maxCategoryPage) currentPage = maxCategoryPage;
+                currentPage = Mathf.Clamp(currentPage, 0, maxCategoryPage);
 
                 for (int i = currentPage * btnPerPage; i < Mathf.Min(currentPage * btnPerPage + btnPerPage, catCount); i++)
                 {
@@ -248,15 +383,8 @@ namespace Elixir.Management
                     module.SetActive(true);
 
                     var buttonNameText = module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>();
-                    var buttonDescText = module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>();
-                    
                     buttonNameText.text = categories[i].name;
-                    buttonDescText.text = $"Opens the {categories[i].name} category";
-
                     buttonNameText.ForceMeshUpdate();
-                    buttonDescText.ForceMeshUpdate();
-
-                    buttonDescText.gameObject.SetActive(Variables.tips);
 
                     module.transform.Find("enabled")?.gameObject.SetActive(false);
                     module.transform.Find("disabled")?.gameObject.SetActive(false);
@@ -273,25 +401,25 @@ namespace Elixir.Management
                     });
                 }
 
-                if (visual != null)
+                if (visualTransform != null)
                 {
-                    var bigHome = visual.Find("BigHome");
-                    if (bigHome != null) bigHome.gameObject.SetActive(false);
+                    var bigHome = menu.transform.Find("Canvas/Visual/Dock/BigHome");
+                    bigHome?.gameObject.SetActive(false);
                 }
 
                 if (lastPage != null)
                 {
                     var lastBtn = lastPage.GetComponent<UnityEngine.UI.Button>();
                     lastBtn.onClick.RemoveAllListeners();
+
                     if (currentPage > 0)
-                    {
                         lastBtn.onClick.AddListener(() =>
                         {
                             currentPage--;
                             Buttons();
                             OnButtonClick();
                         });
-                    }
+
                     lastPage.SetActive(currentPage > 0);
                 }
 
@@ -299,54 +427,50 @@ namespace Elixir.Management
                 {
                     var nextBtn = nextPage.GetComponent<UnityEngine.UI.Button>();
                     nextBtn.onClick.RemoveAllListeners();
+
                     if (currentPage < maxCategoryPage)
-                    {
                         nextBtn.onClick.AddListener(() =>
                         {
                             currentPage++;
                             Buttons();
                             OnButtonClick();
                         });
-                    }
+
                     nextPage.SetActive(currentPage < maxCategoryPage);
                 }
 
                 return;
             }
-            #endregion
-            #region Mods Logic
-            int mods = categories[pageIndex].buttons.Length;
-            int maxPage = (mods > 0) ? (mods - 1) / btnPerPage : 0;
 
-            if (currentPage < 0) currentPage = 0;
-            if (currentPage > maxPage) currentPage = maxPage;
+            Module[] sorted;
 
-            Elixir.Management.Module[] sorted = categories[pageIndex].buttons;
-            if (Variables.alphabet)
+            if (IsSearching)
+                sorted = GetSearchResults();
+            else
             {
-                sorted = categories[pageIndex].buttons.OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase).ToArray();
+                sorted = categories[pageIndex].buttons;
+
+                if (Variables.alphabet)
+                    sorted = sorted.OrderBy(m => m.title, StringComparer.OrdinalIgnoreCase).ToArray();
             }
 
-            int endIndex = Mathf.Min(currentPage * btnPerPage + btnPerPage, sorted.Length);
-            for (int i = currentPage * btnPerPage; i < endIndex; i++)
+            int maxPage = sorted.Length > 0 ? (sorted.Length - 1) / btnPerPage : 0;
+            currentPage = Mathf.Clamp(currentPage, 0, maxPage);
+
+            int startIndex = currentPage * btnPerPage;
+            int endIndex = Mathf.Min(startIndex + btnPerPage, sorted.Length);
+
+            for (int i = startIndex; i < endIndex; i++)
             {
-                int index = i;
-                var mod = sorted[index];
+                var mod = sorted[i];
 
                 var module = GameObject.Instantiate(templateButton, modules.transform);
                 buttons.Add(module);
                 module.SetActive(true);
 
                 var buttonNameText = module.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>();
-                var buttonDescText = module.transform.Find("ButtonDescription").GetComponent<TextMeshProUGUI>();
-                
                 buttonNameText.text = mod.title;
-                buttonDescText.text = mod.tooltip;
-
                 buttonNameText.ForceMeshUpdate();
-                buttonDescText.ForceMeshUpdate();
-
-                buttonDescText.gameObject.SetActive(Variables.tips);
 
                 var enabledObj = module.transform.Find("enabled")?.gameObject;
                 var disabledObj = module.transform.Find("disabled")?.gameObject;
@@ -366,83 +490,81 @@ namespace Elixir.Management
                 }
 
                 var btn = module.transform.Find("enabled (1)")?.GetComponent<UnityEngine.UI.Button>();
+
                 btn!.onClick.AddListener(() =>
                 {
                     if (mod.isToggleable)
                     {
                         mod.toggled = !mod.toggled;
 
-                        if (enabledObj != null && disabledObj != null)
-                        {
-                            enabledObj.SetActive(mod.toggled);
-                            disabledObj.SetActive(!mod.toggled);
-                        }
+                        enabledObj?.SetActive(mod.toggled);
+                        disabledObj?.SetActive(!mod.toggled);
 
                         if (mod.toggled)
-                        {
                             mod.action?.Invoke();
-                        }
                         else
-                        {
                             mod.disableAction?.Invoke();
-                        }
                     }
                     else
-                    {
                         mod.action?.Invoke();
-                    }
 
                     Buttons();
                     OnButtonClick();
+                    HandleInformationTablet(mod);
                 });
             }
-            #endregion
-            #region Page Navigation Logic
-            bool last = lastPage?.active ?? false;
-            bool next = nextPage?.active ?? false;
-            if (!last && !next)
-            {
-                visual.Find("Home").gameObject.SetActive(false);
-                visual.Find("BigHome").gameObject.SetActive(true);
-            }
-            else
-            {
-                visual.Find("Home").gameObject.SetActive(true);
-                visual.Find("BigHome").gameObject.SetActive(false);
-            }
+
+            bool hasPreviousPage = currentPage > 0;
+            bool hasNextPage = currentPage < maxPage;
+
+            homeTransform?.gameObject.SetActive(hasPreviousPage || hasNextPage);
+            bigHomeTransform?.gameObject.SetActive(!hasPreviousPage && !hasNextPage);
 
             if (lastPage != null)
             {
                 var lastBtn = lastPage.GetComponent<UnityEngine.UI.Button>();
                 lastBtn.onClick.RemoveAllListeners();
-                if (currentPage > 0)
-                {
+
+                if (hasPreviousPage)
                     lastBtn.onClick.AddListener(() =>
                     {
                         currentPage--;
                         Buttons();
                         OnButtonClick();
                     });
-                }
-                lastPage.SetActive(currentPage > 0);
+
+                lastPage.SetActive(hasPreviousPage);
             }
 
             if (nextPage != null)
             {
                 var nextBtn = nextPage.GetComponent<UnityEngine.UI.Button>();
                 nextBtn.onClick.RemoveAllListeners();
-                if (currentPage < maxPage)
-                {
+
+                if (hasNextPage)
                     nextBtn.onClick.AddListener(() =>
                     {
                         currentPage++;
                         Buttons();
                         OnButtonClick();
                     });
-                }
-                nextPage.SetActive(currentPage < maxPage);
+
+                nextPage.SetActive(hasNextPage);
             }
-            #endregion
+        }
+
+        public static void HandleInformationTablet(Module button)
+        {
+            Transform informationMain = menu.transform.Find("InformationCanvas/Front/Side");
+
+            TextMeshProUGUI modName = informationMain.Find("ModName")?.GetComponent<TextMeshProUGUI>();
+
+            TextMeshProUGUI modDesc = informationMain.Find("ModDesc")?.GetComponent<TextMeshProUGUI>();
+            modName.text = button.title;
+            modDesc.text = button.tooltip;
+
+            modName.ForceMeshUpdate();
+            modDesc.ForceMeshUpdate();
         }
 
         private static bool prevState = false;
@@ -451,15 +573,17 @@ namespace Elixir.Management
             if (menu == null || GorillaTagger.Instance == null) return;
 
             var input = UnityInput.Current;
-            bool pc = input.GetKey(KeyCode.Q),
-                 leftSeocon = ControllerInputPoller.instance.leftControllerSecondaryButton,
-                 rightSeocon = ControllerInputPoller.instance.rightControllerSecondaryButton,
-                 shouldShow = false;
+
+            bool pc = input.GetKey(KeyCode.Q);
+            bool leftSeocon = ControllerInputPoller.instance.leftControllerSecondaryButton;
+            bool rightSeocon = ControllerInputPoller.instance.rightControllerSecondaryButton;
+            bool shouldShow = false;
 
             if (leftSeocon && !menuRHand)
             {
                 shouldShow = !shouldShow;
                 var leftHand = GorillaTagger.Instance.leftHandTransform;
+
                 if (leftHand != null)
                 {
                     menu.transform.position = leftHand.position + leftHand.right * 0.045f;
@@ -470,6 +594,7 @@ namespace Elixir.Management
             {
                 shouldShow = !shouldShow;
                 var rightHand = GorillaTagger.Instance.rightHandTransform;
+
                 if (rightHand != null)
                 {
                     menu.transform.position = rightHand.position - rightHand.right * 0.045f;
@@ -480,9 +605,10 @@ namespace Elixir.Management
             {
                 shouldShow = !shouldShow;
                 Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
+
                 if (body != null)
                 {
-                    menu.transform.position = body.position + (body.forward * 0.4f) + (body.up * 0.3f);
+                    menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
                     menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
                     menu.transform.localScale = Vector3.one * 0.01f;
                 }
@@ -496,50 +622,43 @@ namespace Elixir.Management
                     ButtonInteractor.AddButtonClicker(menuRHand ? GorillaLocomotion.GTPlayer.Instance.LeftHand.controllerTransform : GorillaLocomotion.GTPlayer.Instance.RightHand.controllerTransform);
                 }
             }
-            else
+            else if (menu.activeSelf)
             {
-                if (menu.activeSelf)
-                {
-                    menu.SetActive(false);
-                    GameObject.Destroy(clickerObj);
-                }
+                menu.SetActive(false);
+                GameObject.Destroy(clickerObj);
             }
-            if (UnityInput.Current.GetKey(KeyCode.Q) != prevState)
-            {
-                ThirdCam?.SetActive(!UnityInput.Current.GetKey(KeyCode.Q));
-            }
-            prevState = UnityInput.Current.GetKey(KeyCode.Q);
 
-            bool currentPageState = !lastPage!.activeSelf && !nextPage!.activeSelf;
-            if (currentPageState != lastPageState)
+            if (pc != prevState)
+                ThirdCam?.SetActive(!pc);
+
+            prevState = pc;
+
+            if (lastPage != null && nextPage != null)
             {
-                lastPageState = currentPageState;
-                if (currentPageState)
+                bool currentPageState = !lastPage.activeSelf && !nextPage.activeSelf;
+
+                if (currentPageState != lastPageState)
                 {
-                    homeTransform?.gameObject.SetActive(false);
-                    bigHomeTransform?.gameObject.SetActive(true);
-                }
-                else
-                {
-                    homeTransform?.gameObject.SetActive(true);
-                    bigHomeTransform?.gameObject.SetActive(false);
+                    lastPageState = currentPageState;
+                    homeTransform?.gameObject.SetActive(!currentPageState);
+                    bigHomeTransform?.gameObject.SetActive(currentPageState);
                 }
             }
+
+            Module[] currentModules = IsSearching ? GetSearchResults() : categories[pageIndex].buttons;
+            int maxPage = currentModules.Length > 0 ? (currentModules.Length - 1) / btnPerPage : 0;
 
             if ((triggerMenu || gripMenu) && menu != null)
             {
-                lastPage.SetActive(false);
-                nextPage.SetActive(false);
+                lastPage?.SetActive(false);
+                nextPage?.SetActive(false);
 
-                int mods = categories[pageIndex].buttons.Length;
-                int maxPage = (mods > 0) ? (mods - 1) / btnPerPage : 0;
+                bool cooldown = Time.time >= cooldownTime;
 
-                bool coooldown = Time.time >= cooldownTime;
-
-                if (coooldown && currentPage < maxPage)
+                if (cooldown && currentPage < maxPage)
                 {
                     bool inputR = triggerMenu ? ControllerInputPoller.instance.rightControllerIndexFloat > 0.5f : ControllerInputPoller.instance.rightGrab;
-                    bool arrowR = UnityInput.Current.GetKeyDown(KeyCode.RightArrow);
+                    bool arrowR = input.GetKeyDown(KeyCode.RightArrow);
 
                     if (inputR || arrowR)
                     {
@@ -550,10 +669,10 @@ namespace Elixir.Management
                     }
                 }
 
-                if (coooldown && currentPage > 0)
+                if (cooldown && currentPage > 0)
                 {
                     bool inputL = triggerMenu ? ControllerInputPoller.instance.leftControllerIndexFloat > 0.5f : ControllerInputPoller.instance.leftGrab;
-                    bool arrowL = UnityInput.Current.GetKeyDown(KeyCode.LeftArrow);
+                    bool arrowL = input.GetKeyDown(KeyCode.LeftArrow);
 
                     if (inputL || arrowL)
                     {
@@ -566,11 +685,8 @@ namespace Elixir.Management
             }
             else
             {
-                int mods = categories[pageIndex].buttons.Length;
-                int maxPage = (mods > 0) ? (mods - 1) / btnPerPage : 0;
-
-                if (lastPage != null) lastPage.SetActive(currentPage > 0);
-                if (nextPage != null) nextPage.SetActive(currentPage < maxPage);
+                lastPage?.SetActive(currentPage > 0);
+                nextPage?.SetActive(currentPage < maxPage);
             }
 
             if (categories != null)
@@ -579,15 +695,20 @@ namespace Elixir.Management
                 {
                     if (category == null || category.buttons == null) continue;
 
-
                     foreach (var mod in category.buttons)
                     {
                         if (mod.isToggleable && mod.toggled)
-                        {
                             mod.action?.Invoke();
-                        }
                     }
                 }
+            }
+
+            if (IsSearching)
+            {
+                var SearchQueryBar = menu.transform.Find("keyboard/Canvas/Typing/Text")?.GetComponent<TextMeshProUGUI>();
+
+                if (SearchQueryBar != null)
+                    SearchQueryBar.text = SearchQuery;
             }
         }
 

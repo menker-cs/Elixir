@@ -30,7 +30,11 @@ namespace Elixir
 
         public void Start()
         {
-            StartCoroutine(DoKillSwitch());
+            //StartCoroutine(DoKillSwitch());
+            Menu.Start();
+            Settings.AutoLoadPrefs();
+            CoroutineHandler.StartCoroutine1(GetObjects());
+            ChangeBoardMaterial("Environment Objects/LocalObjects_Prefab/TreeRoom", "UnityTempFile", 4, Color2Mat(new Color(0.94f, 0.43f, 0.94f, 1f)), ref originalMat1!);
         }
 
         private IEnumerator DoKillSwitch()
@@ -42,7 +46,6 @@ namespace Elixir
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     string killSwitch = request.downloadHandler.text.Trim();
-
                     if (killSwitch == "false")
                     {
                         Menu.Start();
@@ -88,7 +91,7 @@ namespace Elixir
                 $"Current FPS: <color={hexColor1}>{fps}</color> \n" +
                 $"Current Room: <color={hexColor1}>{(PhotonNetwork.InRoom ? PhotonNetwork.CurrentRoom.Name.ToUpper() : "Not Connected To A Room")} </color> \n\n" +
                 $"<color={hexColor1}>I Hope You Enjoy The Menu</color> \n" +
-                $"Made by <color={hexColor1}>Menker & sodaa</color>");
+                $"Made by <color={hexColor1}>Menker & Nova</color>");
 
             motdBody.alignment = TextAlignmentOptions.Top;
             #endregion
