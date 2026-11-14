@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR;
 using static Elixir.Components.ButtonInteractor;
 using static Elixir.Management.Buttons;
 using static Elixir.Plugin;
@@ -216,11 +217,22 @@ namespace Elixir.Management
             var Keyboard = menu.transform.Find("keyboard")?.gameObject;
             var KeyboardBG = menu.transform.Find("backKeyboard")?.gameObject;
             var Dock = menu.transform.Find("Canvas/Visual/Dock")?.gameObject;
+            if (!XRSettings.isDeviceActive)
+            {
+                if (IsSearching)
+                {
+                    ThirdCam.SetActive(false);
+                }
+                else
+                {
+                    ThirdCam.SetActive(true);
+                }
+            }
 
             if (Keyboard == null || KeyboardBG == null || Dock == null) return;
 
             Keyboard.SetActive(IsSearching);
-            KeyboardBG.SetActive(IsSearching);
+            KeyboardBG.SetActive(false);
             Dock.SetActive(!IsSearching);
 
             if (IsSearching)
@@ -398,6 +410,7 @@ namespace Elixir.Management
                         showingCategories = false;
                         Buttons();
                         OnButtonClick();
+                        HandleInformationTablet(categories[catIndex].buttons[catIndex]);
                     });
                 }
 
@@ -552,7 +565,28 @@ namespace Elixir.Management
                 nextPage.SetActive(hasNextPage);
             }
         }
+        public static bool ConstantInformationUse = false;
+        public static void ConstantInformation()
+        {
+            foreach (var button in buttons)
+            {
+                if (Vector3.Distance(ButtonInteractor.clickerObj.transform.position, button.transform.position) < 0.025f)
+                {
+                    string title = button.transform.Find("ButtonName").GetComponent<TextMeshProUGUI>().text;
 
+                    foreach (var category in categories)
+                    {
+                        var mod = category.buttons.FirstOrDefault(m => m.title == title);
+
+                        if (mod != null)
+                        {
+                            HandleInformationTablet(mod);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
         public static void HandleInformationTablet(Module button)
         {
             Transform informationMain = menu.transform.Find("InformationCanvas/Front/Side");
@@ -560,6 +594,7 @@ namespace Elixir.Management
             TextMeshProUGUI modName = informationMain.Find("ModName")?.GetComponent<TextMeshProUGUI>();
 
             TextMeshProUGUI modDesc = informationMain.Find("ModDesc")?.GetComponent<TextMeshProUGUI>();
+
             modName.text = button.title;
             modDesc.text = button.tooltip;
 
@@ -579,38 +614,60 @@ namespace Elixir.Management
             bool rightSeocon = ControllerInputPoller.instance.rightControllerSecondaryButton;
             bool shouldShow = false;
 
-            if (leftSeocon && !menuRHand)
-            {
-                shouldShow = !shouldShow;
-                var leftHand = GorillaTagger.Instance.leftHandTransform;
 
-                if (leftHand != null)
+            if (!IsSearching)
+            {
+                if (leftSeocon && !menuRHand)
                 {
-                    menu.transform.position = leftHand.position + leftHand.right * 0.045f;
-                    menu.transform.rotation = leftHand.rotation * Quaternion.Euler(0f, -90f, -90f);
+                    shouldShow = !shouldShow;
+                    var leftHand = GorillaTagger.Instance.leftHandTransform;
+
+                    if (leftHand != null)
+                    {
+                        menu.transform.position = leftHand.position + leftHand.right * 0.045f;
+                        menu.transform.rotation = leftHand.rotation * Quaternion.Euler(0f, -90f, -90f);
+                    }
+                }
+                else if (rightSeocon && menuRHand)
+                {
+                    shouldShow = !shouldShow;
+                    var rightHand = GorillaTagger.Instance.rightHandTransform;
+
+                    if (rightHand != null)
+                    {
+                        menu.transform.position = rightHand.position - rightHand.right * 0.045f;
+                        menu.transform.rotation = rightHand.rotation * Quaternion.Euler(0f, 90f, 90f);
+                    }
+                }
+                else if (pc)
+                {
+                    shouldShow = !shouldShow;
+                    Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
+
+                    if (body != null)
+                    {
+                        menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
+                        menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
+                        menu.transform.localScale = Vector3.one * 0.01f;
+                    }
                 }
             }
-            else if (rightSeocon && menuRHand)
+            else
             {
-                shouldShow = !shouldShow;
-                var rightHand = GorillaTagger.Instance.rightHandTransform;
-
-                if (rightHand != null)
-                {
-                    menu.transform.position = rightHand.position - rightHand.right * 0.045f;
-                    menu.transform.rotation = rightHand.rotation * Quaternion.Euler(0f, 90f, 90f);
-                }
-            }
-            else if (pc)
-            {
-                shouldShow = !shouldShow;
+                shouldShow = true;
                 Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
-
                 if (body != null)
                 {
-                    menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
-                    menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
-                    menu.transform.localScale = Vector3.one * 0.01f;
+                    var Keyboard = menu.transform.Find("keyboard")?.gameObject;
+                    if (Keyboard != null)
+                    {
+                        if (Vector3.Distance(body.position, Keyboard.transform.position) > 1.5f)
+                        {
+                            menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
+                            menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
+                            menu.transform.localScale = Vector3.one * 0.01f;
+                        }
+                    }
                 }
             }
 
@@ -628,8 +685,11 @@ namespace Elixir.Management
                 GameObject.Destroy(clickerObj);
             }
 
-            if (pc != prevState)
-                ThirdCam?.SetActive(!pc);
+            if (!IsSearching)
+            {
+                if (pc != prevState)
+                    ThirdCam?.SetActive(!pc);
+            }
 
             prevState = pc;
 
@@ -710,22 +770,9 @@ namespace Elixir.Management
                 if (SearchQueryBar != null)
                     SearchQueryBar.text = SearchQuery;
 
-                Transform body = GorillaLocomotion.GTPlayer.Instance.bodyCollider.transform;
-
-                if (body != null)
-                {
-                    var Keyboard = menu.transform.Find("keyboard")?.gameObject;
-                    if (Keyboard != null)
-                    {
-                        if (Vector3.Distance(body.position, Keyboard.transform.position) > 3)
-                        {
-                            menu.transform.position = body.position + body.forward * 0.4f + body.up * 0.3f;
-                            menu.transform.rotation = Quaternion.LookRotation(body.forward, body.up);
-                            menu.transform.localScale = Vector3.one * 0.01f;
-                        }
-                    }
-                }
             }
+
+            if (ConstantInformationUse) { ConstantInformation(); }
         }
 
         public static Material? originalMat1;

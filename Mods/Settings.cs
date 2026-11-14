@@ -78,25 +78,7 @@ namespace Elixir.Mods.Categories
                     break;
             }
         }
-        public static bool MenuFlashs = false;
-        public static void MenuFlash()
-        {
-            MenuFlashs = !MenuFlashs;
 
-            var MenuBG = menu.transform.Find("Back Canvas")?.gameObject;
-            var KeyboardBG = menu.transform.Find("backKeyboard")?.gameObject;
-            var InformationBG = menu.transform.Find("InformationCanvas/Back")?.gameObject;
-
-            if (MenuBG != null && KeyboardBG != null && InformationBG != null)
-            {
-                MenuBG.SetActive(!MenuFlashs);
-                if (IsSearching)
-                {
-                    KeyboardBG.SetActive(!MenuFlashs);
-                }
-                InformationBG.SetActive(!MenuFlashs);
-            }
-        }
         public static void SpeedSpeed()
         {
             speedboostchanger++;

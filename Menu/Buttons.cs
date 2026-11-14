@@ -38,7 +38,7 @@ namespace Elixir.Management
                 new Module() { title = "Change Tracer Position", tooltip = "Current Setting: Right Hand", isToggleable = false, action = () => TracerPos() },
                 new Module() { title = "Change Fly Speed", tooltip = "Current Setting: Normal", isToggleable = false, action = () => FlySpeed() },
                 new Module() { title = "Change Speed Boost", tooltip = "Current Setting: Normal", isToggleable = false, action = () => SpeedSpeed() },
-                new Module() { title = "Reduce Menu Flashing", isToggleable = false, action = () => MenuFlash() },
+                new Module() { title = "Constant Information", tooltip = "Makes it so when your pointer gets close to a button, it will show information about it without clicking it", isToggleable = true, action = () => Menu.ConstantInformationUse = true, disableAction =() => Menu.ConstantInformationUse = false, toggled = Menu.ConstantInformationUse },
             }));
 
             categories.Insert(1, new Category("Enabled Mods", new Module[] { }));
