@@ -39,6 +39,7 @@ namespace Elixir.Management
                 new Module() { title = "Change Fly Speed", tooltip = "Current Setting: Normal", isToggleable = false, action = () => FlySpeed() },
                 new Module() { title = "Change Speed Boost", tooltip = "Current Setting: Normal", isToggleable = false, action = () => SpeedSpeed() },
                 new Module() { title = "Constant Information", tooltip = "Makes it so when your pointer gets close to a button, it will show information about it without clicking it", isToggleable = true, action = () => Menu.ConstantInformationUse = true, disableAction =() => Menu.ConstantInformationUse = false, toggled = Menu.ConstantInformationUse },
+                new Module() { title = "Clear Menu", tooltip = "Makes the menu clear.", isToggleable = true, toggled = false, action = () => ToggleClearMenu(true), disableAction = () => ToggleClearMenu(false) },
             }));
 
             categories.Insert(1, new Category("Enabled Mods", new Module[] { }));

@@ -15,7 +15,43 @@ using static Elixir.Utilities.Variables;
 namespace Elixir.Mods.Categories
 {
     public class Settings
-    { 
+    {
+        public static bool ClearMenu = false;
+
+        private static Dictionary<Image, float> OriginalAlphas = new Dictionary<Image, float>();
+
+        public static void ToggleClearMenu(bool setActive)
+        {
+            ClearMenu = setActive;
+
+            foreach (Image image in Menu.menu.GetComponentsInChildren<Image>(true))
+            {
+                if (image == null) continue;
+
+                if (setActive)
+                {
+                    if (!OriginalAlphas.ContainsKey(image))
+                        OriginalAlphas.Add(image, image.color.a);
+
+                    Color color = image.color;
+                    color.a = 26.8421f / 255f;
+                    image.color = color;
+                }
+                else
+                {
+                    if (OriginalAlphas.TryGetValue(image, out float alpha))
+                    {
+                        Color color = image.color;
+                        color.a = alpha;
+                        image.color = color;
+                    }
+                }
+            }
+
+            if (!setActive)
+                OriginalAlphas.Clear();
+        }
+
         public static void ToggleDisconnect(bool setActive)
         {
             disconnect = setActive;
