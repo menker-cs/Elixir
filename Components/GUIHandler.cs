@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Elixir.Components
 {
@@ -69,6 +70,7 @@ namespace Elixir.Components
         private bool focusInput = false;
 
         public static bool devModeActive = false;
+        public static bool ArrayList = true;
 
         private struct LogEntry { public string text; public int type; }
         private List<LogEntry> logs = new List<LogEntry>();
@@ -92,7 +94,7 @@ namespace Elixir.Components
             inputBgTex = MakeTex(1, 1, new Color(0.08f, 0.03f, 0.14f, 0.95f));
             clearTex = MakeTex(1, 1, Color.clear);
 
-            Log("System initialised. Press ` to toggle console.", 3);
+            Log("System initialised. Press F12 to toggle console.", 3);
         }
 
         void OnDestroy()
@@ -112,7 +114,7 @@ namespace Elixir.Components
         {
             if (Keyboard.current == null) return;
 
-            if (Keyboard.current.backquoteKey.wasPressedThisFrame)
+            if (Keyboard.current.f12Key.wasPressedThisFrame)
             {
                 consoleOpen = !consoleOpen;
                 if (consoleOpen)
@@ -153,6 +155,36 @@ namespace Elixir.Components
 
             if (consoleOpen)
                 DrawConsole();
+
+            if (ArrayList)
+                DrawArrayList();
+        }
+        void DrawArrayList()
+        {
+            GUIStyle style = new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 14,
+                fontStyle = FontStyle.Bold,
+                alignment = TextAnchor.MiddleRight,
+                normal =
+                {
+                    textColor = Menu.menu.transform.Find("Canvas/Visual").GetComponent<Image>().color
+                }
+            };
+
+            float y = 10f;
+
+            foreach (var category in Menu.categories)
+            {
+                foreach (var button in category.buttons)
+                {
+                    if (button.toggled)
+                    {
+                        GUI.Label(new Rect(Screen.width - 210, y, 200, 25), button.title, style);
+                        y += 25f;
+                    }
+                }
+            }
         }
 
         void DrawWatermark()
